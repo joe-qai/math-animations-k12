@@ -1,9 +1,17 @@
 [project]
+sub_id = "3481e5bf"
+name = "K12-数学学习网站"
 requires = [ "nodejs-24" ]
 project_type = "web"
 template = "nextjs"
 version = "0.1.9"
 appliedPatches = [ ]
+
+[preview]
+preview_enable = "enabled"
+
+[subprojects]
+path = ["."]
 
 [dev]
 build = [ "bash", "./scripts/prepare.sh" ]

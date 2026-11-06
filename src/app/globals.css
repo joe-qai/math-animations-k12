@@ -56,24 +56,24 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: oklch(0.975 0.012 85); /* 演算纸米白 */
+  --foreground: oklch(0.2 0.025 170); /* 墨绿文字 */
+  --card: oklch(0.992 0.008 85);
+  --card-foreground: oklch(0.2 0.025 170);
+  --popover: oklch(0.992 0.008 85);
+  --popover-foreground: oklch(0.2 0.025 170);
+  --primary: oklch(0.26 0.05 170); /* 黑板墨绿 */
+  --primary-foreground: oklch(0.96 0.02 80);
+  --secondary: oklch(0.93 0.02 90);
+  --secondary-foreground: oklch(0.24 0.03 170);
+  --muted: oklch(0.94 0.02 90);
+  --muted-foreground: oklch(0.42 0.025 170);
+  --accent: oklch(0.9 0.06 82); /* 粉笔黄 */
+  --accent-foreground: oklch(0.26 0.05 170);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: oklch(0.88 0.02 90);
+  --input: oklch(0.88 0.02 90);
+  --ring: oklch(0.5 0.06 170);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);

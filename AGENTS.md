@@ -63,3 +63,31 @@
 
 - 模板默认预装核心组件库 `shadcn/ui`，位于`src/components/ui/`目录下
 - Next.js 项目**必须默认**采用 shadcn/ui 组件、风格和规范，**除非用户指定用其他的组件和规范。**
+
+---
+
+## 数益坊 · K12 数学学习网站（本项目）
+
+### 项目概述
+面向 K12 中小学的数学学习网站。内容按「学段 → 年级 → 课时」组织，每个课时含知识点精讲（概念/公式/例题）+ 随堂交互练习（选择题，即时判分），实现「学 — 练 — 测」闭环。
+
+### 关键入口 / 路由
+- `/` 首页：hero、三学段入口卡、三步学习法、精选课时
+- `/stage/[stage]` 学段页：小学/初中/高中，按年级聚合该学段课时
+- `/lesson/[id]` 课时页：知识讲解 + 交互练习
+- 学段 id：`xiaoxue` / `chuzhong` / `gaozhong`
+
+### 数据与组件
+- **课程内容集中在 `src/lib/data.ts`**：`stages`（学段）、`lessons`（课时）及其 `questions`（练习题）。新增课时/题目只需改此文件，无需改路由。
+  - `QuizQuestion`：`prompt`/`options`/`answer`(正确项索引从0)/`explanation`
+  - `KnowledgeBlock.kind`：`concept|formula|example`（决定讲解标签配色）
+  - `LessonCard` 自动按 `lesson.grade` 分类展示。
+- 业务组件：`src/components/lesson-card.tsx`（课时卡）、`src/components/quiz.tsx`（**'use client'** 交互练习，本地 state）、`src/components/layout/*`（页头/页脚）。
+
+### 设计与主题
+- 设计方向记于 `DESIGN.md`：意象「黑板 × 演算纸」，配色已写入 `src/app/globals.css` 的 `:root` 变量（纸面米白底、黑板墨绿主色、粉笔黄 accent）。
+- 后续加学段/页面时须保持该视觉语言与信息架构一致。
+
+### 运行时注意
+- 无外部 API，纯静态内容，无 `app/api` 路由；交付验收以 `pnpm lint --quiet` + `pnpm ts-check` + 页面冒烟为准（经 `test_run`）。
+- 页脚 `© year` 使用服务端组件渲染一次，属静态范围，无 hydration 风险。
