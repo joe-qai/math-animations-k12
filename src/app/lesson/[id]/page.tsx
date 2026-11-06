@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { ChevronLeft, Clock, Gauge } from 'lucide-react';
 import { lessonMap, stageMap, type KnowledgeBlock } from '@/lib/data';
 import { Quiz } from '@/components/quiz';
+import { DemoBlock } from '@/components/demos/demo-block';
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -86,6 +87,22 @@ export default async function LessonPage({ params }: Props) {
               </span>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 原理动画：先看懂 */}
+      <section className="mx-auto max-w-4xl px-4 pt-12 sm:px-6">
+        <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
+          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-xs font-semibold text-primary-foreground">
+            看
+          </span>
+          动画看懂原理
+        </h2>
+        <p className="mt-2 text-sm text-muted-foreground">
+          先通过动画理解背后的数学原理，再进入文字讲解 —— 看得懂，才算真的会。
+        </p>
+        <div className="mt-6">
+          <DemoBlock demo={lesson.demo} />
         </div>
       </section>
 

@@ -25,6 +25,7 @@ export interface Lesson {
   difficulty: 1 | 2 | 3; // 1 基础 / 2 进阶 / 3 挑战
   estimatedMinutes: number;
   tags: string[];
+  demo: string; // 对应原理动画演示组件 key
   knowledge: KnowledgeBlock[];
   questions: QuizQuestion[];
 }
@@ -99,6 +100,7 @@ export const lessons: Lesson[] = [
     difficulty: 1,
     estimatedMinutes: 15,
     tags: ['计算', '口算'],
+    demo: 'ten-frame',
     knowledge: [
       {
         title: '数的组成',
@@ -154,6 +156,7 @@ export const lessons: Lesson[] = [
     difficulty: 2,
     estimatedMinutes: 20,
     tags: ['分数', '运算'],
+    demo: 'fraction-pie',
     knowledge: [
       {
         title: '分数的意义',
@@ -210,6 +213,7 @@ export const lessons: Lesson[] = [
     difficulty: 2,
     estimatedMinutes: 25,
     tags: ['方程', '代数'],
+    demo: 'equation-balance',
     knowledge: [
       {
         title: '方程的意义',
@@ -265,6 +269,7 @@ export const lessons: Lesson[] = [
     difficulty: 2,
     estimatedMinutes: 25,
     tags: ['函数', '图像'],
+    demo: 'linear-function',
     knowledge: [
       {
         title: '一次函数定义',
@@ -321,6 +326,7 @@ export const lessons: Lesson[] = [
     difficulty: 1,
     estimatedMinutes: 20,
     tags: ['集合', '基础'],
+    demo: 'venn',
     knowledge: [
       {
         title: '集合的概念',
@@ -376,6 +382,7 @@ export const lessons: Lesson[] = [
     difficulty: 3,
     estimatedMinutes: 30,
     tags: ['三角函数', '图像'],
+    demo: 'sine-wave',
     knowledge: [
       {
         title: '正弦函数',

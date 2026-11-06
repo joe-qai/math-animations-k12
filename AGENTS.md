@@ -82,12 +82,26 @@
   - `QuizQuestion`：`prompt`/`options`/`answer`(正确项索引从0)/`explanation`
   - `KnowledgeBlock.kind`：`concept|formula|example`（决定讲解标签配色）
   - `LessonCard` 自动按 `lesson.grade` 分类展示。
-- 业务组件：`src/components/lesson-card.tsx`（课时卡）、`src/components/quiz.tsx`（**'use client'** 交互练习，本地 state）、`src/components/layout/*`（页头/页脚）。
+  - 每个 `Lesson` 含 `demo` 字段，指向对应的原理动画组件 key。
+- 业务组件：
+  - `src/components/lesson-card.tsx`（课时卡）
+  - `src/components/quiz.tsx`（**'use client'** 交互练习，本地 state，即时判分）
+  - `src/components/layout/*`（页头/页脚）
+  - `src/components/demos/*`（**原理动画演示体系**，核心看点）
+- **原理动画演示体系**（`src/components/demos/`）：
+  - `demo-player.tsx`：通用分步播放器（自动播放/暂停/下一步/重播 + 步骤进度条），负责播放控制与步骤说明。
+  - `demo-block.tsx`：服务端渲染入口，按 `demo` key 从 `demoRegistry` 匹配对应演示组件。
+  - `index.tsx`：`demoRegistry`（key → 组件映射），新增演示需在此注册。
+  - 现有演示：`ten-frame`（凑十法十格框）、`fraction-pie`（分数通分圆饼）、`equation-balance`（一元一次方程天平）、`linear-function`（一次函数描点连线）、`venn`（集合交集/并集韦恩图）、`sine-wave`（正弦函数单位圆→波形）。
+  - **动画栈依赖 `framer-motion`**，所有演示组件均为 `'use client'`。
+- 课时页结构（`/lesson/[id]`）：「看（动画看懂原理）→ 学（知识精讲）→ 练（随堂练习）」三步闭环。
 
 ### 设计与主题
 - 设计方向记于 `DESIGN.md`：意象「黑板 × 演算纸」，配色已写入 `src/app/globals.css` 的 `:root` 变量（纸面米白底、黑板墨绿主色、粉笔黄 accent）。
 - 后续加学段/页面时须保持该视觉语言与信息架构一致。
+- **新增课时默认应配一个可视化原理动画**（复用/扩展 demos 体系），保持"先看动画、再练题"的产品内核。
 
 ### 运行时注意
 - 无外部 API，纯静态内容，无 `app/api` 路由；交付验收以 `pnpm lint --quiet` + `pnpm ts-check` + 页面冒烟为准（经 `test_run`）。
 - 页脚 `© year` 使用服务端组件渲染一次，属静态范围，无 hydration 风险。
+- 动画用 framer-motion 实现交互式分步演示（非视频文件），无外部素材依赖。
