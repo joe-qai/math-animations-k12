@@ -98,6 +98,7 @@ CHAPTERS = {
     "yiyuan-erci-fangcheng": 7,
     "erci-fangcheng-yingyong": 7,
     "erci-hanshu": 7,
+    "yuan-jiben-xingzhi": 7,
 }
 
 
