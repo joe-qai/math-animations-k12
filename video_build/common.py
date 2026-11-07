@@ -147,7 +147,13 @@ class NarratedScene(Scene):
         self.begin(idx)
 
     def finish_section(self) -> None:
-        self.finish(self._last_idx)
+        # 先把画面停住等旁白讲完，字幕留到最后一句，再收尾
+        idx = self._last_idx
+        used = self.renderer.time - self._t0
+        pad = self.timings[idx]["duration"] - used - 0.4
+        if pad > 0:
+            self.wait(pad)
+        self.finish(idx)
 
     # ---------- 常用画面元素 ----------
     def header_note(self, s: str, color: str = DIM, size: int = 24) -> Text:
