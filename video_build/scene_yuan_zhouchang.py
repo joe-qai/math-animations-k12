@@ -24,34 +24,34 @@ class YuanZhouchangScene(NarratedScene):
     def scene_story(self):
         self.section(0, "车轮转一圈，能走多远")
 
-        c = [-4.6, 0.55, 0]
-        wheel = Circle(radius=1.15, color=GOLD, stroke_width=3,
+        c = [-4.8, 0.40, 0]
+        wheel = Circle(radius=1.50, color=GOLD, stroke_width=3,
                        fill_color=GOLD, fill_opacity=0.10).move_to(c)
         self.play(Create(wheel), run_time=1.4)
 
         spokes = VGroup()
         for k in range(4):
             ang = PI / 4 + k * PI / 2
-            spokes.add(Line(c, [c[0] + 1.15 * np.cos(ang), c[1] + 1.15 * np.sin(ang), 0],
+            spokes.add(Line(c, [c[0] + 1.50 * np.cos(ang), c[1] + 1.50 * np.sin(ang), 0],
                             color=GOLD, stroke_width=1.8))
         hub = Dot(c, radius=0.07, color=GOLD)
         self.play(Create(spokes), FadeIn(hub), run_time=1.1)
 
-        ground = Line([-6.4, -0.62, 0], [2.2, -0.62, 0], color=DIM, stroke_width=2.4)
+        ground = Line([-6.6, -1.10, 0], [1.9, -1.10, 0], color=DIM, stroke_width=2.4)
         self.play(Create(ground), run_time=0.8)
 
-        mark = Dot([c[0], c[1] - 1.15, 0], radius=0.09, color=RED)
+        mark = Dot([c[0], c[1] - 1.50, 0], radius=0.09, color=RED)
         self.play(FadeIn(mark), run_time=0.5)
 
         qs = VGroup(
             txt("车轮转一圈，能走多远？", size=29, color=CHALK),
             txt("答案是：量出车轮的周长", size=27, color=GOLD),
             txt("周长：围成圆那一圈的长度", size=26, color=GREEN),
-        ).arrange(DOWN, buff=0.32).move_to([3.5, 1.0, 0])
+        ).arrange(DOWN, buff=0.32).move_to([3.9, 1.1, 0])
         for q in qs:
             self.play(FadeIn(q, shift=UP * 0.05), run_time=0.7)
 
-        note = txt("拿根绳子绕一圈，再拉直量一量", size=25, color=DIM).move_to([3.5, -0.95, 0])
+        note = txt("拿根绳子绕一圈，再拉直量一量", size=25, color=DIM).move_to([3.9, -0.35, 0])
         self.play(FadeIn(note, shift=UP * 0.05), run_time=0.8)
         self.wait(2.2)
         self.finish_section()
@@ -94,23 +94,23 @@ class YuanZhouchangScene(NarratedScene):
     def scene_ratio(self):
         self.section(2, "周长总是直径的 3 倍多")
 
-        specs = [(0.55, "直径 2", 6.28), (0.95, "直径 4", 12.56), (1.35, "直径 6", 18.84)]
-        x = -5.4
+        specs = [(0.45, "直径 2", 6.28), (0.80, "直径 4", 12.56), (1.15, "直径 6", 18.84)]
+        x = -6.5
         for rr, dl, cc in specs:
             circ = Circle(radius=rr, color=BLUE, stroke_width=2.6,
                           fill_color=BLUE, fill_opacity=0.10)
-            circ.move_to([x + rr, -1.55 + rr, 0])
-            dline = Line([x, -1.55, 0], [x + 2 * rr, -1.55, 0], color=GOLD, stroke_width=2.4)
-            lab = txt(dl, size=22, color=GOLD).move_to([x + rr, -2.35, 0])
+            circ.move_to([x + rr, -1.5 + rr, 0])
+            dline = Line([x, -1.5, 0], [x + 2 * rr, -1.5, 0], color=GOLD, stroke_width=2.4)
+            lab = txt(dl, size=22, color=GOLD).move_to([x + rr, -2.3, 0])
             self.play(Create(circ), Create(dline), run_time=0.8)
             self.play(FadeIn(lab), run_time=0.4)
-            x += 2 * rr + 0.55
+            x += 2 * rr + 0.45
 
         head = VGroup(
             txt("直径 / 厘米", size=24, color=DIM),
             txt("周长 / 厘米", size=24, color=BLUE),
             txt("周长 ÷ 直径", size=24, color=GREEN),
-        ).arrange_in_grid(rows=1, cols=3, buff=1.05).move_to([1.9, 1.6, 0])
+        ).arrange_in_grid(rows=1, cols=3, buff=1.05).move_to([2.85, 1.6, 0])
         self.play(FadeIn(head, shift=UP * 0.05), run_time=0.9)
 
         rows = [("2", "6.28", "3.14"), ("4", "12.56", "3.14"), ("6", "18.84", "3.14")]
@@ -120,11 +120,11 @@ class YuanZhouchangScene(NarratedScene):
                 txt(a, size=26, color=CHALK),
                 txt(b, size=26, color=BLUE),
                 txt(c_, size=26, color=GREEN),
-            ).arrange_in_grid(rows=1, cols=3, buff=1.55).move_to([1.9, y, 0])
+            ).arrange_in_grid(rows=1, cols=3, buff=1.55).move_to([2.85, y, 0])
             self.play(FadeIn(row, shift=RIGHT * 0.04), run_time=0.6)
             y -= 0.75
 
-        concl = txt("周长总是直径的 3 倍多一点", size=28, color=GOLD).move_to([0, -2.9, 0])
+        concl = txt("周长总是直径的 3 倍多一点", size=27, color=GOLD).move_to([2.85, -1.6, 0])
         self.play(FadeIn(concl, shift=UP * 0.05), run_time=0.9)
         self.wait(2.4)
         self.finish_section()
@@ -133,8 +133,8 @@ class YuanZhouchangScene(NarratedScene):
     def scene_pi(self):
         self.section(3, "圆周率 π 和周长公式")
 
-        pi_t = txt("π", size=64, color=GOLD).move_to([-4.6, 1.3, 0])
-        pi_l = txt("圆周率", size=27, color=GOLD).move_to([-4.6, 0.35, 0])
+        pi_t = txt("π", size=80, color=GOLD).move_to([-4.9, 1.15, 0])
+        pi_l = txt("圆周率", size=27, color=GOLD).move_to([-4.9, 0.08, 0])
         self.play(FadeIn(pi_t, scale=0.9), run_time=0.9)
         self.play(FadeIn(pi_l, shift=UP * 0.05), run_time=0.7)
 
