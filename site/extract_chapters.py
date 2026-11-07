@@ -48,6 +48,7 @@ CHAPTERS = {
     "yuan-zhouchang": 7,
     "yuan-mianji": 7,
     "baifenshu": 7,
+    "bi": 7,
     "lianjia-lianjian": 7,
     "renshi-zhongbiao": 7,
     "fenlei-zhengli": 7,
