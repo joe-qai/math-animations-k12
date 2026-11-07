@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>平均数、中位数、众数 · 同一个班，三种看法 · 数益坊</title>
+<meta name="description" content="老师报平均分、鞋店看哪个尺码最好卖、班长想知道中间的同学有多高——这三件事分别用到平均数、众数和中位数。它们都用来描述一组数据，但看问题的角度完全不同：平均数每个数都参与计算，信息最全，却最怕极端值；中位数排好队取中间，稳定不被拉偏；众数看谁出现得最多，适合找「最常见」。这节课把它们算清楚，也说清什么时候该用哪一个。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">61 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>平均数、中位数、众数</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">七年级</span>
+          <span class="chip">进阶</span>
+          <span class="chip">带配音视频</span>
+        </div>
+        <h1>平均数、中位数、众数</h1>
+        <p class="subtitle">同一个班，三种看法</p>
+        <p class="brief">老师报平均分、鞋店看哪个尺码最好卖、班长想知道中间的同学有多高——这三件事分别用到平均数、众数和中位数。它们都用来描述一组数据，但看问题的角度完全不同：平均数每个数都参与计算，信息最全，却最怕极端值；中位数排好队取中间，稳定不被拉偏；众数看谁出现得最多，适合找「最常见」。这节课把它们算清楚，也说清什么时候该用哪一个。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:18</b></span>
+          <span>建议学习 <b>14 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+          <span>章节 <b>7 段</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">平均数 = 总和÷个数</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>看视频：先有画面</h2><span class="hint">3:18</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/posters/pingjunshu.jpg">
+                <source src="assets/videos/pingjunshu.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/pingjunshu.mp4">点此下载视频</a>。
+              </video>
+            </div>
+            <div class="chapters" role="group" aria-label="视频章节"><button class="chapter" type="button" data-t="0.0"><span class="t">0:00</span>三个数，三种眼光</button><button class="chapter" type="button" data-t="27.48"><span class="t">0:27</span>平均数：加起来再除</button><button class="chapter" type="button" data-t="56.83"><span class="t">0:56</span>平均数怕极端值</button><button class="chapter" type="button" data-t="80.91"><span class="t">1:20</span>中位数：排好队，取中间</button><button class="chapter" type="button" data-t="112.83"><span class="t">1:52</span>众数：出现次数最多的</button><button class="chapter" type="button" data-t="140.61"><span class="t">2:20</span>三个数，怎么选</button><button class="chapter" type="button" data-t="167.98"><span class="t">2:47</span>例题与三个易错点</button></div>
+          </div>
+          <p class="video-note">第 1 节用考试分数、鞋码销量、身高排队三个场景对应三个统计量；第 2 节用四个身高演示平均数的算法，并给出加权平均数的写法；第 3 节用「四个人 10 元、一个人 100 元」的柱状图，画出平均数 28 与大多数人 10 两条线，说明平均数被极端值拉偏；第 4 节先排序再取正中间，偶数个数据取两个的平均；第 5 节给出现次数最多的数打标记，说明众数可以有多个、也可能没有；第 6 节用三张卡片对比适用场景；第 7 节用五次成绩算出三个量并列出三个易错点。</p>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>三个统计量，都在描述「一般水平」</h3></div>
+  <p>一组数据往往很多，想用一句话说明它「大概是多少」，就要找一个代表值。平均数、中位数、众数就是最常用的三个。</p><p>它们算出来的结果可能一样，也可能差很远。选哪个，取决于数据长什么样、你想说明什么问题。</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>平均数与加权平均数</h3></div>
+  <p>平均数 = 所有数据之和 ÷ 数据个数。四个人的身高是 1.5、1.6、1.6、1.7 米，加起来 6.4 米，除以 4，平均身高 1.6 米。</p><p>如果每个数据的重要程度不同，就用加权平均数：把每个数据乘上它的权重，再相加。例如总评成绩 = 期末 × 0.6 + 平时 × 0.4，权重之和为 1。</p><p>平均数的优点是每个数据都参与计算，信息用得最全；缺点是怕极端值，一个特别大的数就能把它拉偏。</p><p class="formula-big">平均数 = 总和 ÷ 个数</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>中位数与众数</h3></div>
+  <p>中位数：把数据从小到大排好队，位置在正中间的那个数。数据有奇数个时，正中间只有一个；有偶数个时，正中间有两个，取这两个数的平均数。求中位数一定要先排序。</p><p>众数：一组数据中出现次数最多的那个数。众数可能有多个（几个数并列最多），也可能不存在（每个数都只出现一次）。它不受极端值影响，适合回答「哪种最常见」。</p><p class="formula-big">中位数：排序后取中间</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>怎么选</h3></div>
+  <p>数据比较整齐、没有极端值时，用平均数，它把每个数据都用上了；出现极端值、或者只想知道中间水平时，用中位数，它更稳定；关心哪种出现得最多、最畅销时，用众数。</p><p>题目问「哪个数更能代表这组数据」，通常就是在提醒你：先看有没有极端值。</p><p class="formula-big">有极端值 → 中位数更稳</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>平均数 = 总和 ÷ 个数，每个数据都参与计算，信息最全但怕极端值；加权平均数按权重相乘再相加。中位数要先从小到大排序，再取正中间那个，偶数个数据取中间两个的平均，它不受极端值影响。众数是出现次数最多的数，可以有多个，也可能没有。选哪个看数据：整齐无极端值用平均数，有极端值或看中间水平用中位数，找最常见用众数。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>求中位数忘了先排序，直接取原数据中间那个，结果就错了。</li><li>偶数个数据只取一个中间数，忘了取中间两个数的平均数。</li><li>以为众数一定只有一个，实际上可以有几个并列，也可能一个都没有。</li><li>把平均数当成「大多数人的水平」。平均数被极端值拉偏时，它代表不了大多数人。</li><li>算加权平均数时直接把几个数相加除以个数，没有按权重乘。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">数据 2、3、5、7、9 的中位数是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>3</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>5</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>7</span></button></div>
+    <div class="feedback" role="status" data-explain="一共 5 个数据，已从小到大排列，正中间第 3 个是 5，所以中位数是 5。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">数据 4、4、6、8、8、9 的中位数是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>6</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>8</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>7</span></button></div>
+    <div class="feedback" role="status" data-explain="偶数个数据，正中间有两个：6 和 8，取它们的平均数 (6 + 8) ÷ 2 = 7。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">数据 3、5、5、7、9 的众数是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>5</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>7</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>没有众数</span></button></div>
+    <div class="feedback" role="status" data-explain="5 出现了两次，其他数都只出现一次，出现次数最多的是 5，所以众数是 5。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">某小组 5 人的零花钱是 10、10、10、10、100 元，用哪个数代表大多数人的水平最合适？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>平均数 28 元</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>中位数 10 元</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>总和 140 元</span></button></div>
+    <div class="feedback" role="status" data-explain="有一个极端值 100，平均数被拉高到 28 元，不能代表大多数人。排序后正中间是 10，中位数更能代表这组数据的中间水平。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-sanjiaoxing-neijiao.html"><span class="dir">← 上一节</span><span class="title">三角形内角和与三边关系</span></a><a class="next" href="lesson-wanquan.html"><span class="dir">下一节 →</span><span class="title">完全平方公式</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>会求一组数据的平均数、中位数、众数</li><li>理解加权平均数，知道权重的意义</li><li>知道平均数容易受极端值影响，中位数更稳定</li><li>求中位数时会先排序，偶数个数据会取中间两个的平均</li><li>知道众数可以有多个、也可能不存在</li><li>能根据数据特点选择合适的统计量描述一组数据</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

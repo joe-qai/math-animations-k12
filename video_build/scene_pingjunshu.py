@@ -51,17 +51,17 @@ class PingjunshuScene(NarratedScene):
         ]
         y = 1.55
         for label, name, vals, col in rows:
-            b = bars(vals, y - 0.55, -6.55, bw=0.4, gap=0.16,
+            b = bars(vals, y - 0.55, -6.6, bw=0.3, gap=0.12,
                      scale=0.5, color=col)
             self.play(LaggedStart(*[GrowFromEdge(r, DOWN) for r in b],
                                   lag_ratio=0.12), run_time=1.3)
-            lb = txt(label, size=26, color=CHALK).move_to([-3.55, y - 0.18, 0])
-            ar = txt("→", size=26, color=DIM).move_to([-1.75, y - 0.18, 0])
-            nm = label_box(name, size=28, color=col).move_to([0.55, y - 0.18, 0])
+            lb = txt(label, size=24, color=CHALK).move_to([-3.35, y - 0.18, 0])
+            ar = txt("→", size=26, color=DIM).move_to([-1.85, y - 0.18, 0])
+            nm = label_box(name, size=28, color=col).move_to([0.45, y - 0.18, 0])
             self.play(FadeIn(lb, shift=RIGHT * 0.05), run_time=0.6)
             self.play(FadeIn(ar, shift=RIGHT * 0.05), run_time=0.4)
             self.play(FadeIn(nm, scale=0.97), run_time=0.7)
-            desc = txt(self._desc(name), size=24, color=DIM).move_to([4.6, y - 0.18, 0])
+            desc = txt(self._desc(name), size=24, color=DIM).move_to([4.5, y - 0.18, 0])
             self.play(FadeIn(desc, shift=RIGHT * 0.05), run_time=0.6)
             y -= 1.42
 
@@ -85,42 +85,46 @@ class PingjunshuScene(NarratedScene):
         for i, d in enumerate(data):
             bx = Rectangle(width=1.35, height=1.0, stroke_width=2,
                            stroke_color=BLUE, fill_color=BLUE, fill_opacity=0.12)
-            bx.move_to([-4.6 + i * 1.65, 1.95, 0])
+            bx.move_to([-5.9 + i * 1.5, 2.05, 0])
             boxes.add(VGroup(bx, txt(d + " m", size=26, color=CHALK).move_to(bx)))
         self.play(LaggedStart(*[FadeIn(b, scale=0.94) for b in boxes],
                               lag_ratio=0.12), run_time=1.4)
-        cap = txt("四个人的身高", size=24, color=DIM).move_to([-2.1, 1.1, 0])
+        cap = txt("四个人的身高（米）", size=23, color=DIM).move_to([-3.65, 1.22, 0])
         self.play(FadeIn(cap), run_time=0.6)
 
         s1 = VGroup(
-            txt("1.5 + 1.6 + 1.6 + 1.7", size=28, color=CHALK),
-            txt("=", size=28, color=DIM),
-            txt("6.4", size=28, color=GOLD),
-        ).arrange(RIGHT, buff=0.24).move_to([-1.5, 0.05, 0])
+            txt("1.5 + 1.6 + 1.6 + 1.7", size=27, color=CHALK),
+            txt("=", size=27, color=DIM),
+            txt("6.4", size=27, color=GOLD),
+        ).arrange(RIGHT, buff=0.22).move_to([-3.8, 0.5, 0])
         self.play(FadeIn(s1, shift=UP * 0.05), run_time=0.9)
 
         s2 = VGroup(
             txt("6.4 ÷ 4", size=30, color=CHALK),
             txt("=", size=30, color=DIM),
             txt("1.6", size=34, color=GREEN),
-        ).arrange(RIGHT, buff=0.24).move_to([-1.5, -1.05, 0])
+        ).arrange(RIGHT, buff=0.24).move_to([-3.8, -0.5, 0])
         self.play(FadeIn(s2, shift=UP * 0.05), run_time=0.9)
 
-        note = txt("平均数 = 所有数据之和 ÷ 数据个数", size=26, color=CHALK)
-        note.move_to([2.4, 1.9, 0])
+        note = txt("平均数 = 所有数据之和 ÷ 数据个数", size=25, color=GOLD)
+        note.move_to([4.0, 2.15, 0])
         self.play(FadeIn(note, shift=UP * 0.05), run_time=0.9)
 
-        w = label_box("加权平均数：成绩×0.6 + 平时×0.4", size=25, color=BLUE)
-        w.move_to([2.4, 0.55, 0])
+        plus = VGroup(
+            txt("优点：每个数据都参与计算", size=24, color=GREEN),
+            txt("信息用得最全", size=24, color=GREEN),
+        ).arrange(DOWN, buff=0.3).move_to([4.0, 1.05, 0])
+        for m in plus:
+            self.play(FadeIn(m, shift=UP * 0.05), run_time=0.7)
+
+        w = label_box("加权平均数：成绩×0.6 + 平时×0.4", size=24, color=BLUE)
+        w.move_to([-3.8, -1.55, 0])
         self.play(FadeIn(w, scale=0.97), run_time=1.0)
 
-        note2 = txt("数据有轻有重，就按权重乘一乘", size=24, color=DIM)
-        note2.move_to([2.4, -0.5, 0])
+        note2 = txt("数据有轻有重，就按权重乘一乘", size=23, color=DIM)
+        note2.move_to([-3.8, -2.35, 0])
         self.play(FadeIn(note2, shift=UP * 0.05), run_time=0.8)
 
-        tail = txt("优点：每个数据都参与了计算", size=25, color=GREEN)
-        tail.move_to([0, -2.55, 0])
-        self.play(FadeIn(tail, shift=UP * 0.05), run_time=0.9)
         self.wait(2.6)
         self.finish_section()
 
@@ -129,7 +133,7 @@ class PingjunshuScene(NarratedScene):
         self.section(2, "平均数怕极端值")
 
         vals = [10, 10, 10, 10, 100]
-        g = bars(vals, -2.0, -4.6, bw=0.7, gap=0.5, scale=0.024, color=BLUE)
+        g = bars(vals, -2.0, -4.6, bw=0.7, gap=0.5, scale=0.028, color=BLUE)
         self.play(LaggedStart(*[GrowFromEdge(r, DOWN) for r in g],
                               lag_ratio=0.14), run_time=1.6)
         base = Line(P(-5.0, -2.0), P(1.8, -2.0), color=DIM, stroke_width=2)
@@ -144,15 +148,15 @@ class PingjunshuScene(NarratedScene):
         big = txt("一个人 100 元", size=24, color=ORANGE).move_to([0.3, 1.35, 0])
         self.play(FadeIn(big, shift=UP * 0.05), run_time=0.7)
 
-        mline = DashedLine(P(-5.0, -1.33), P(1.9, -1.33), color=ORANGE,
+        mline = DashedLine(P(-5.0, -1.216), P(2.2, -1.216), color=ORANGE,
                            stroke_width=2.4, dash_length=0.14)
-        mlab = txt("平均数 28", size=25, color=ORANGE).move_to([3.6, -1.33, 0])
+        mlab = txt("平均数 28", size=25, color=ORANGE).move_to([4.0, -1.216, 0])
         self.play(Create(mline), run_time=0.9)
         self.play(FadeIn(mlab, shift=RIGHT * 0.05), run_time=0.7)
 
-        tline = DashedLine(P(-5.0, -1.76), P(1.9, -1.76), color=GREEN,
+        tline = DashedLine(P(-5.0, -1.72), P(2.2, -1.72), color=GREEN,
                            stroke_width=2.4, dash_length=0.14)
-        tlab = txt("大多数人 10", size=25, color=GREEN).move_to([3.8, -1.76, 0])
+        tlab = txt("大多数人 10", size=25, color=GREEN).move_to([4.2, -1.72, 0])
         self.play(Create(tline), run_time=0.8)
         self.play(FadeIn(tlab, shift=RIGHT * 0.05), run_time=0.7)
 
@@ -171,14 +175,14 @@ class PingjunshuScene(NarratedScene):
         for i, v in enumerate(raw):
             row.add(txt(v, size=28, color=CHALK).move_to([-4.4 + i * 1.5, 2.15, 0]))
         self.play(FadeIn(row), run_time=0.9)
-        l0 = txt("原数据", size=23, color=DIM).move_to([-6.35, 2.15, 0])
+        l0 = txt("原数据", size=21, color=DIM).move_to([-6.1, 2.15, 0])
         self.play(FadeIn(l0), run_time=0.5)
 
         order = ["10", "10", "10", "10", "100"]
         row2 = VGroup()
         for i, v in enumerate(order):
             row2.add(txt(v, size=28, color=CHALK).move_to([-4.4 + i * 1.5, 1.1, 0]))
-        l1 = txt("从小到大排好", size=23, color=DIM).move_to([-6.9, 1.1, 0])
+        l1 = txt("排序后", size=21, color=DIM).move_to([-6.1, 1.1, 0])
         a1 = txt("① 先排序", size=24, color=GOLD).move_to([4.9, 2.15, 0])
         self.play(FadeIn(l1, shift=RIGHT * 0.05), run_time=0.6)
         self.play(FadeIn(row2, shift=UP * 0.05), run_time=1.0)
@@ -197,17 +201,17 @@ class PingjunshuScene(NarratedScene):
         six = ["2", "3", "5", "7", "9", "12"]
         row3 = VGroup()
         for i, v in enumerate(six):
-            row3.add(txt(v, size=28, color=CHALK).move_to([-4.2 + i * 1.45, -1.35, 0]))
+            row3.add(txt(v, size=28, color=CHALK).move_to([-4.9 + i * 1.35, -1.35, 0]))
         self.play(FadeIn(row3), run_time=0.9)
         m1 = SurroundingRectangle(row3[2], color=BLUE, buff=0.18, stroke_width=2.4)
         m2 = SurroundingRectangle(row3[3], color=BLUE, buff=0.18, stroke_width=2.4)
         self.play(Create(m1), Create(m2), run_time=0.9)
 
         res = VGroup(
-            txt("(5 + 7) ÷ 2", size=28, color=CHALK),
-            txt("=", size=28, color=DIM),
-            txt("6", size=32, color=GREEN),
-        ).arrange(RIGHT, buff=0.22).move_to([3.7, -1.35, 0])
+            txt("(5 + 7) ÷ 2", size=26, color=CHALK),
+            txt("=", size=26, color=DIM),
+            txt("6", size=30, color=GREEN),
+        ).arrange(RIGHT, buff=0.2).move_to([4.5, -1.35, 0])
         self.play(FadeIn(res, shift=UP * 0.05), run_time=0.9)
 
         note = txt("中位数不受极端值影响，位置在中间就稳", size=25, color=GREEN)
@@ -228,18 +232,18 @@ class PingjunshuScene(NarratedScene):
 
         ticks = VGroup()
         for i in range(4):
-            ticks.add(Line(P(-4.35 + i * 1.55, 1.25), P(-4.25 + i * 1.55, 1.35),
+            ticks.add(Line(P(-4.55 + i * 1.55, 1.44), P(-4.05 + i * 1.55, 1.44),
                            color=GOLD, stroke_width=3))
         self.play(LaggedStart(*[Create(t) for t in ticks], lag_ratio=0.1),
                   run_time=1.2)
-        cnt = txt("出现 4 次", size=26, color=GOLD).move_to([0.6, 1.3, 0])
-        self.play(FadeIn(cnt, shift=RIGHT * 0.05), run_time=0.7)
+        cnt = txt("都出现了 4 次，最多", size=25, color=GOLD).move_to([-1.98, 0.95, 0])
+        self.play(FadeIn(cnt, shift=UP * 0.05), run_time=0.7)
 
         res = VGroup(
             txt("众数", size=30, color=DIM),
             txt("=", size=30, color=DIM),
             txt("10", size=34, color=GREEN),
-        ).arrange(RIGHT, buff=0.22).move_to([2.6, 2.6, 0])
+        ).arrange(RIGHT, buff=0.22).move_to([4.3, 2.5, 0])
         self.play(FadeIn(res, shift=UP * 0.05), run_time=0.9)
 
         t1 = VGroup(
@@ -278,7 +282,7 @@ class PingjunshuScene(NarratedScene):
             self.play(Create(box), run_time=0.8)
             nm = label_box(name, size=30, color=col).move_to([x, 0.95, 0])
             self.play(FadeIn(nm, scale=0.97), run_time=0.7)
-            c1 = txt(cond, size=24, color=CHALK).move_to([x, 0.05, 0])
+            c1 = txt(cond, size=22, color=CHALK).move_to([x, 0.05, 0])
             self.play(FadeIn(c1, shift=UP * 0.05), run_time=0.7)
             c2 = txt(why, size=23, color=DIM).move_to([x, -0.75, 0])
             self.play(FadeIn(c2, shift=UP * 0.05), run_time=0.7)
