@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>相似三角形 · 形状相同，大小可以不同 · 数益坊</title>
+<meta name="description" content="照片放大、竿影、地图上的三角形，形状一样、大小不同——这就是相似。这一节从生活例子讲起，给出「对应角相等、对应边成比例」的定义与相似比，再讲三条判定（两角相等、两边成比例且夹角相等、三边成比例），讲清对应线段比、周长比都等于相似比、而面积比等于相似比平方这串性质，最后用 DE ∥ BC 的例题走一遍 A 型图的推理。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">77 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>相似三角形</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">八年级</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>相似三角形</h1>
+        <p class="subtitle">形状相同，大小可以不同</p>
+        <p class="brief">照片放大、竿影、地图上的三角形，形状一样、大小不同——这就是相似。这一节从生活例子讲起，给出「对应角相等、对应边成比例」的定义与相似比，再讲三条判定（两角相等、两边成比例且夹角相等、三边成比例），讲清对应线段比、周长比都等于相似比、而面积比等于相似比平方这串性质，最后用 DE ∥ BC 的例题走一遍 A 型图的推理。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>2:59</b></span>
+          <span>建议学习 <b>12 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">两角相等即相似</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>相似三角形 视频讲解</h2><span class="hint">2:59</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/xiangsi-sanjiaoxing.jpg">
+                <source src="assets/videos/xiangsi-sanjiaoxing.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/xiangsi-sanjiaoxing.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>相似三角形与相似比</h3></div>
+  <p>对应角相等、对应边成比例的两个三角形叫相似三角形，记作 △ABC ∽ △DEF。</p><p>对应边的比叫相似比。写相似式时字母必须一一对应：A 对 D、B 对 E、C 对 F，顺序错了比例就全错。</p><p class="formula-big">△ABC ∽ △DEF</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>三条判定</h3></div>
+  <p>① 两角分别相等（AA）；② 两边成比例，且夹角相等；③ 三边成比例。</p><p>AA 最常用：找角通常比算边长容易。第二条一定是夹角，不能是随便一个角。</p><p class="formula-big">两角相等 → 相似</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>相似三角形的性质</h3></div>
+  <p>对应角相等、对应边成比例；对应高、对应中线、对应角平分线的比都等于相似比；周长比也等于相似比。</p><p>面积比等于相似比的平方。相似比 1 : 2，面积比是 1 : 4；相似比 1 : 3，面积比是 1 : 9。</p><p class="formula-big">面积比 = 相似比²</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>平行线出相似</h3></div>
+  <p>DE ∥ BC 时，∠ADE = ∠B，∠AED = ∠C，所以 △ADE ∽ △ABC，这就是 A 型图。</p><p>X 型图是两条直线相交、被一组平行线截出的两个三角形，同样由内错角相等得到相似。</p><p class="formula-big">DE ∥ BC → △ADE ∽ △ABC</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例：DE ∥ BC，AD = 2，DB = 3，DE = 4</h3></div>
+  <p>由 DE ∥ BC 得 △ADE ∽ △ABC，相似比是 AD : AB = 2 : (2 + 3) = 2 : 5。</p><p>所以 DE : BC = 2 : 5，BC = 4 × 5 ÷ 2 = 10。</p><p class="formula-big">BC = 10</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例：相似比 1 : 2 的两个三角形</h3></div>
+  <p>对应高、中线、角平分线之比都是 1 : 2，周长比也是 1 : 2。</p><p>面积比是 1² : 2² = 1 : 4，不能写成 1 : 2。</p><p class="formula-big">周长 1 : 2，面积 1 : 4</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>对应角相等、对应边成比例的两个三角形叫相似三角形，对应边的比叫相似比，写相似式时字母要一一对应。判定有三条：两角分别相等（AA，最常用）、两边成比例且夹角相等、三边成比例。性质：对应角相等、对应边成比例，对应高、中线、角平分线之比与周长比都等于相似比，而面积比等于相似比的平方。DE ∥ BC 时会形成 A 型相似，由同位角相等即可判定；AD = 2、DB = 3、DE = 4 时相似比 2 : 5，BC = 10。三个易错点：面积比漏平方、相似式字母不对应、两边成比例时忘了必须是夹角。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>面积比当成相似比：面积比要平方。</li><li>相似式字母不对应：顺序错了，所有的比都会错。</li><li>把夹角写成任意角：两边成比例必须配夹角。</li><li>平行线模型混淆：A 型与 X 型对应的线段不同，要先看清图形。</li><li>忘记第三组角：AA 只需两组，第三组由内角和自然相等，不必再证。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">两个相似三角形的相似比是 1 : 2，它们的面积比是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>1 : 2</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>1 : 3</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>1 : 4</span></button></div>
+    <div class="feedback" role="status" data-explain="面积比等于相似比的平方：1² : 2² = 1 : 4。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">判定两个三角形相似，最常用的方法是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>两角分别相等</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>三边都相等</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>有两边相等</span></button></div>
+    <div class="feedback" role="status" data-explain="两角分别相等（AA）最常用，因为第三组角由内角和自然相等，找角也比算边长容易。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">△ABC ∽ △DEF，相似比 1 : 3，则周长比是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>1 : 9</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>1 : 3</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>3 : 1</span></button></div>
+    <div class="feedback" role="status" data-explain="周长比等于相似比，是 1 : 3；1 : 9 是面积比。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">△ABC 中 DE ∥ BC，AD : DB = 2 : 3，DE = 4，则 BC 等于？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>6</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>8</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>10</span></button></div>
+    <div class="feedback" role="status" data-explain="相似比 = AD : AB = 2 : 5，所以 DE : BC = 2 : 5，BC = 4 × 5 ÷ 2 = 10。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-teshu-pingxing-sibianxing.html"><span class="dir">← 上一节</span><span class="title">特殊平行四边形</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解相似图形：形状相同、大小不一定相同</li><li>掌握相似三角形的定义：对应角相等、对应边成比例</li><li>知道相似比的含义，写相似式时字母一一对应</li><li>会用 AA 判定两个三角形相似，并会找相等的角</li><li>知道另外两条判定：两边成比例且夹角相等、三边成比例</li><li>记住性质：对应线段比与周长比等于相似比，面积比等于相似比的平方</li><li>会用平行线构造的 A 型相似求线段长</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

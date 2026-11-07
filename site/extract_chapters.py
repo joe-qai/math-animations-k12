@@ -93,6 +93,7 @@ CHAPTERS = {
     "fanbili-hanshu": 7,
     "pingxing-xingzhi": 7,
     "teshu-pingxing-sibianxing": 7,
+    "xiangsi-sanjiaoxing": 7,
 }
 
 
