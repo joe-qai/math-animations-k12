@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>函数概念与一次函数 · 从变量到 y = kx + b · 数益坊</title>
+<meta name="description" content="骑车时路程随时间变，一个量变、另一个跟着变，这就是变量；始终不变的叫常量。当 x 每取一个值，y 都有唯一确定的值对应，就说 y 是 x 的函数。这一节从变量讲到函数的定义，再讲一次函数 y = kx + b 的图像、k 与 b 各管什么，最后用待定系数法由两点求解析式。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">69 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>函数概念与一次函数</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">八年级</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>函数概念与一次函数</h1>
+        <p class="subtitle">从变量到 y = kx + b</p>
+        <p class="brief">骑车时路程随时间变，一个量变、另一个跟着变，这就是变量；始终不变的叫常量。当 x 每取一个值，y 都有唯一确定的值对应，就说 y 是 x 的函数。这一节从变量讲到函数的定义，再讲一次函数 y = kx + b 的图像、k 与 b 各管什么，最后用待定系数法由两点求解析式。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:39</b></span>
+          <span>建议学习 <b>15 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">k 管方向，b 管位置</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>函数概念与一次函数 视频讲解</h2><span class="hint">3:39</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/hanshu-yici.jpg">
+                <source src="assets/videos/hanshu-yici.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/hanshu-yici.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>变量与常量</h3></div>
+  <p>在一个变化过程中，数值会变的量叫变量，始终不变的量叫常量。比如匀速骑车，时间是变量、路程也是变量，每分钟骑的距离是常量。</p><p>骑车每分钟 200 米，x 分钟走的路程就是 y = 200x。时间一变，路程跟着变。</p><p class="formula-big">y = 200x</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>函数的定义</h3></div>
+  <p>在一个变化过程中有两个变量 x 和 y，如果 x 每取一个确定的值，y 都有唯一确定的值和它对应，就说 y 是 x 的函数，x 叫自变量，y 叫因变量。</p><p>关键词是「唯一确定」：一个 x 只能对应一个 y。比如 x = 4 时 y 若既能取 2 又能取 −2，那就不是函数。</p><p class="formula-big">y 是 x 的函数</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>三种表示方法</h3></div>
+  <p>解析式：写成一个式子，如 y = 200x；列表：把几组对应值列成表格；图像：把对应点画在坐标系里。</p><p>三种方法说的是同一个关系。题目给哪一种，就先用哪一种。</p><p class="formula-big">解析式 · 列表 · 图像</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>一次函数</h3></div>
+  <p>形如 y = kx + b（k、b 是常数，k ≠ 0）的函数叫一次函数。k 是一次项系数，b 是常数项。</p><p>当 b = 0 时，y = kx，叫正比例函数。k 必须不为 0：k = 0 时 y = b 是固定的数，不再随 x 变化，不是一次函数。</p><p class="formula-big">y = kx + b（k ≠ 0）</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>图像与性质</h3></div>
+  <p>一次函数的图像是一条直线，取两点就能画：x = 0 得 (0, b)，y = 0 得 (−b/k, 0)。</p><p>k &gt; 0 时直线从左往右上升，y 随 x 增大而增大；k &lt; 0 时下降，y 随 x 增大而减小；|k| 越大越陡。b 是直线与 y 轴交点的纵坐标。</p><p class="formula-big">k 决定方向，b 决定位置</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例题：待定系数法</h3></div>
+  <p>已知直线过 (0, 3) 和 (2, 7)，求解析式。设 y = kx + b，代入 (0, 3) 得 b = 3；代入 (2, 7) 得 2k + 3 = 7，解得 k = 2。</p><p>所以解析式是 y = 2x + 3。一次函数只需要两个点，四步是：设、代、解、写。</p><p class="formula-big">y = 2x + 3</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>一个变化过程中，会变的量叫变量，不变的是常量。若 x 每取一个确定的值，y 都有唯一确定的值对应，则 y 是 x 的函数，x 是自变量。函数有解析式、列表、图像三种表示。一次函数形如 y = kx + b，其中 k ≠ 0；b = 0 时是正比例函数 y = kx；k = 0 时 y = b 不是一次函数。图像是一条直线，过 (0, b) 与 (−b/k, 0)。k &gt; 0 上升、y 随 x 增大而增大；k &lt; 0 下降、y 随 x 增大而减小；|k| 越大越陡；b 决定直线与 y 轴交点的位置。求解析式用待定系数法：设 y = kx + b、代入两点、解出 k 与 b、写出解析式。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>把 k = 0 的情况当成一次函数：此时 y = b 是固定的数，不随 x 变化。</li><li>把 b 叫成「距离」：b 是直线与 y 轴交点的纵坐标，可以是负数。</li><li>判断增减性不看 k 的符号，只看 b 的大小。</li><li>画图时把直线画成线段：一次函数的图像是向两端无限延伸的直线。</li><li>求解析式只代入一个点：一次函数有两个待定系数，需要两组条件。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">一次函数 y = kx + b 中，k 必须满足什么条件？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>k ≠ 0</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>k &gt; 0</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>k = 0</span></button></div>
+    <div class="feedback" role="status" data-explain="k = 0 时 y = b 是固定的数，不随 x 变化，就不是一次函数了。k 可以小于 0。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">一次函数 y = −2x + 1 的图像经过下面哪个点？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>(1, 0)</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>(0, 1)</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>(0, −1)</span></button></div>
+    <div class="feedback" role="status" data-explain="令 x = 0，得 y = 1，所以图像与 y 轴交于 (0, 1)。把 x = 1 代入得 y = −1，所以 (1, 0) 不在图像上。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">一次函数 y = 3x − 2 中，y 随 x 增大而怎样变化？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>减小</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>保持不变</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>增大</span></button></div>
+    <div class="feedback" role="status" data-explain="k = 3 &gt; 0，所以直线从左往右上升，y 随 x 增大而增大。判断增减性只看 k 的符号。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">一条直线经过 (0, 2) 和 (1, 5)，它的解析式是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>y = 3x + 2</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>y = 2x + 3</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>y = 3x − 2</span></button></div>
+    <div class="feedback" role="status" data-explain="代入 (0, 2) 得 b = 2；再代入 (1, 5)：k + 2 = 5，得 k = 3，所以 y = 3x + 2。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-duicheng-dengyao.html"><span class="dir">← 上一节</span><span class="title">轴对称与等腰三角形</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>分清变量与常量，理解「一个量变、另一个跟着变」</li><li>掌握函数的定义：x 每取一个确定的值，y 都有唯一确定的值对应</li><li>知道自变量、因变量，了解解析式、列表、图像三种表示方法</li><li>理解一次函数 y = kx + b（k ≠ 0），知道 b = 0 时是正比例函数</li><li>会画一次函数的图像：取两点连线，知道它是一条直线</li><li>理解 k 决定升降与陡缓、b 决定与 y 轴交点的位置</li><li>会用待定系数法由两点求一次函数解析式</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
