@@ -28,27 +28,33 @@ class YinshiScene(NarratedScene):
     def scene_story(self):
         self.section(0, "把和差写成乘积")
 
-        left = VGroup(
-            txt("12", size=64, color=CHALK),
-            txt("=", size=44, color=DIM),
-            txt("3 × 4", size=52, color=GOLD),
-        ).arrange(RIGHT, buff=0.35).move_to([-3.6, 1.35, 0])
-        self.play(FadeIn(left, shift=UP * 0.05), run_time=1.2)
-        n1 = txt("因数分解", size=26, color=DIM).move_to([-3.6, 0.25, 0])
-        self.play(FadeIn(n1), run_time=0.7)
+        l1 = txt("12", size=54, color=CHALK)
+        l1.move_to([0, 1.65, 0])
+        l1.align_to(P(-2.35, 0), RIGHT)
+        r1 = txt("3 × 4", size=44, color=GOLD)
+        r1.move_to([0, 1.65, 0])
+        r1.align_to(P(-1.45, 0), LEFT)
+        self.play(FadeIn(l1, shift=UP * 0.05), run_time=0.8)
+        self.play(FadeIn(r1, shift=UP * 0.05), run_time=0.9)
+        a1 = Arrow(P(-2.28, 1.65), P(-1.5, 1.65), color=DIM, stroke_width=2.6,
+                   max_tip_length_to_length_ratio=0.3)
+        self.play(Create(a1), run_time=0.5)
+        n1 = txt("因数分解", size=24, color=DIM).next_to(r1, RIGHT, buff=0.5)
+        self.play(FadeIn(n1, shift=RIGHT * 0.05), run_time=0.7)
 
-        right = VGroup(
-            txt("a² − b²", size=46, color=CHALK),
-            txt("=", size=40, color=DIM),
-            txt("(a + b)(a − b)", size=42, color=GREEN),
-        ).arrange(RIGHT, buff=0.3).move_to([3.3, 1.35, 0])
-        self.play(FadeIn(right, shift=UP * 0.05), run_time=1.3)
-        n2 = txt("因式分解", size=26, color=DIM).move_to([3.3, 0.25, 0])
-        self.play(FadeIn(n2), run_time=0.7)
-
-        arrow = Arrow(P(-1.1, 1.35), P(0.7, 1.35), color=DIM, stroke_width=3,
-                      max_tip_length_to_length_ratio=0.2)
-        self.play(Create(arrow), run_time=0.8)
+        l2 = txt("a² − b²", size=42, color=CHALK)
+        l2.move_to([0, 0.3, 0])
+        l2.align_to(P(-2.35, 0), RIGHT)
+        r2 = txt("(a + b)(a − b)", size=40, color=GREEN)
+        r2.move_to([0, 0.3, 0])
+        r2.align_to(P(-1.45, 0), LEFT)
+        self.play(FadeIn(l2, shift=UP * 0.05), run_time=0.9)
+        self.play(FadeIn(r2, shift=UP * 0.05), run_time=1.1)
+        a2 = Arrow(P(-2.28, 0.3), P(-1.5, 0.3), color=DIM, stroke_width=2.6,
+                   max_tip_length_to_length_ratio=0.3)
+        self.play(Create(a2), run_time=0.5)
+        n2 = txt("因式分解", size=24, color=DIM).next_to(r2, RIGHT, buff=0.5)
+        self.play(FadeIn(n2, shift=RIGHT * 0.05), run_time=0.7)
 
         t1 = VGroup(
             txt("加减的式子 → 几个式子相乘", size=30, color=GOLD),
