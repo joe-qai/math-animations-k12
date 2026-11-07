@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>直线与圆的位置关系 · 相离、相切、相交与切线 · 数益坊</title>
+<meta name="description" content="太阳和地平线的关系，其实就是直线和圆的关系：离得远没有交点叫相离，刚刚接触只有一个交点叫相切，升起来以后有两个交点叫相交。判断只有一条标准——比较圆心到直线的距离 d 与半径 r。这一节从这三种位置关系讲起，重点放在切线上：判定要「经过半径外端且垂直于半径」，性质是「切线垂直于过切点的半径」，两条合起来就是做题时连半径、找直角的固定动作。再用切线长定理处理圆外一点引两条切线的问题，最后讲三角形的内切圆与内心。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">83 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>直线与圆的位置关系</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">九年级</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>直线与圆的位置关系</h1>
+        <p class="subtitle">相离、相切、相交与切线</p>
+        <p class="brief">太阳和地平线的关系，其实就是直线和圆的关系：离得远没有交点叫相离，刚刚接触只有一个交点叫相切，升起来以后有两个交点叫相交。判断只有一条标准——比较圆心到直线的距离 d 与半径 r。这一节从这三种位置关系讲起，重点放在切线上：判定要「经过半径外端且垂直于半径」，性质是「切线垂直于过切点的半径」，两条合起来就是做题时连半径、找直角的固定动作。再用切线长定理处理圆外一点引两条切线的问题，最后讲三角形的内切圆与内心。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:08</b></span>
+          <span>建议学习 <b>13 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">比 d 和 r，连半径</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>直线与圆的位置关系 视频讲解</h2><span class="hint">3:08</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/zhixian-yuan-weizhi.jpg">
+                <source src="assets/videos/zhixian-yuan-weizhi.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/zhixian-yuan-weizhi.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>三种位置关系</h3></div>
+  <p>设圆心到直线的距离为 d，圆的半径为 r：d &gt; r 相离，没有公共点；d = r 相切，只有一个公共点；d &lt; r 相交，有两个公共点。</p><p>相切时这条直线叫圆的切线，唯一的公共点叫切点；相交时这条直线叫割线。反过来，由位置关系也能推出 d 与 r 的大小关系。</p><p class="formula-big">d = r 时相切</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>切线的判定</h3></div>
+  <p>经过半径的外端，并且垂直于这条半径的直线，是圆的切线。两个条件缺一不可：点在圆上，且与半径垂直。</p><p>两种常见情形：直线与圆已经有公共点时，连半径、证垂直；还没说明有公共点时，过圆心作垂线、证垂线段等于半径。</p><p class="formula-big">过半径外端且垂直 → 切线</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>切线的性质</h3></div>
+  <p>圆的切线垂直于经过切点的半径。所以题目里一出现切线，第一反应就是把切点和圆心连起来，得到一个直角。</p><p>判定与性质正好互逆：一个是由垂直得切线，一个是由切线得垂直。</p><p class="formula-big">切线 ⊥ 过切点的半径</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>切线长定理</h3></div>
+  <p>从圆外一点可以引圆的两条切线，它们的切线长相等，并且这一点和圆心的连线平分两条切线的夹角。</p><p>把两条半径也连上，会得到两个全等的直角三角形，所以切线长相等、夹角被平分，还能顺带求四边形的周长。</p><p class="formula-big">PA = PB</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>三角形的内切圆</h3></div>
+  <p>和三角形三边都相切的圆叫三角形的内切圆，圆心叫内心，内心是三条角平分线的交点，到三边距离相等。</p><p>直角三角形里常用：r = (a + b − c) / 2，其中 a、b 是直角边，c 是斜边。</p><p class="formula-big">r = (a + b − c) / 2</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例：连半径得直角</h3></div>
+  <p>已知 PA 切 ⊙O 于点 A，∠APO = 30°，OP = 4，求半径。</p><p>连 OA，由切线性质得 OA ⊥ PA，直角三角形中 ∠AOP = 60°，所以 OA = OP × sin30° = 2。</p><p class="formula-big">OA = OP · sin30° = 2</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>直线和圆只有三种位置关系，判断标准是比较圆心到直线的距离 d 与半径 r：d &gt; r 相离没有公共点，d = r 相切只有一个公共点，d &lt; r 相交有两个公共点。切线是这一节的重点，判定定理是「经过半径外端且垂直于这条半径」，两个条件缺一不可；性质是「切线垂直于过切点的半径」。所以做题的口诀是：见切线，连半径，得直角。从圆外一点引两条切线，切线长相等，且该点与圆心的连线平分夹角，这就是切线长定理。三角形的内切圆与三边都相切，圆心叫内心，是三条角平分线的交点，直角三角形里还能用 r = (a + b − c)/2 直接算半径。最后别把内心和外心弄反。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>判定切线只证了垂直，忘了说明直线经过圆上的点。</li><li>用切线性质时没有连半径，直角找不出来，题目卡住。</li><li>把切线长定理（长度相等）和切割线定理（乘积相等）混为一谈。</li><li>内心与外心搞反：内心是角平分线交点，外心是垂直平分线交点。</li><li>判断位置关系时把 d 当成两点间距离，而不是圆心到直线的距离。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">已知圆心到直线的距离 d = 3，圆的半径 r = 3，则直线与圆的位置关系是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>相离</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>相切</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>相交</span></button></div>
+    <div class="feedback" role="status" data-explain="d = r 时直线与圆只有一个公共点，是相切，这条直线就是圆的切线。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">下列能判定直线是圆的切线的是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>直线经过半径的外端</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>直线与半径垂直</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>直线经过半径的外端且垂直于这条半径</span></button></div>
+    <div class="feedback" role="status" data-explain="判定定理要求两个条件同时满足：经过半径的外端（点在圆上），并且垂直于这条半径。只垂直不够。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">PA、PB 分别切 ⊙O 于 A、B，PA = 5，则 PB 等于？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>5</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>10</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>无法确定</span></button></div>
+    <div class="feedback" role="status" data-explain="由切线长定理，从圆外一点引圆的两条切线，切线长相等，所以 PB = PA = 5。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">直角三角形的两条直角边是 3 和 4，斜边是 5，则内切圆半径是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>2</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>1</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>2.5</span></button></div>
+    <div class="feedback" role="status" data-explain="r = (a + b − c)/2 = (3 + 4 − 5)/2 = 1，所以内切圆半径是 1。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-yuan-jiben-xingzhi.html"><span class="dir">← 上一节</span><span class="title">圆的基本性质</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>会用 d 与 r 的大小关系判断直线和圆的位置关系</li><li>知道相切时只有一个公共点，这条直线叫切线</li><li>掌握切线判定定理的两个条件，并会分两种情形作辅助线</li><li>记住切线垂直于过切点的半径，见切线就连半径</li><li>会用切线长定理：两条切线长相等，连线平分夹角</li><li>知道内心是角平分线交点，会算直角三角形的内切圆半径</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

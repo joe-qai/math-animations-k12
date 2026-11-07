@@ -120,27 +120,28 @@ class ZhixianYuanWeizhiScene(NarratedScene):
         c = circ(cx, cy, r, CHALK, 2.6)
         a = pt(cx, cy, r, 90)
         oa = Line(P(cx, cy), a, color=GREEN, stroke_width=2.8)
-        tang = Line(P(cx - 2.7, a[1]), P(cx + 2.7, a[1]), color=GOLD, stroke_width=3.2)
+        tang = Line(P(cx - 1.9, a[1]), P(cx + 1.9, a[1]), color=GOLD, stroke_width=3.2)
         self.play(Create(c), run_time=1.0)
         self.play(Create(oa), run_time=0.8)
         self.play(Create(tang), run_time=1.0)
 
         rm = right_mark(a, DOWN, RIGHT, 0.2, GOLD)
         dot = Dot(a, radius=0.065, color=GOLD)
-        la = txt("A", size=22, color=GOLD).move_to(a + RIGHT * 0.24 + UP * 0.2)
+        la = txt("A", size=22, color=GOLD).move_to(a + RIGHT * 0.36 + UP * 0.32)
         self.play(Create(rm), FadeIn(dot), FadeIn(la), run_time=0.8)
         self.wait(0.7)
 
-        th = txt("经过半径外端，且垂直于半径的直线，是切线", size=24, color=GOLD)
-        th.move_to([2.55, 2.15, 0])
-        self.play(FadeIn(th, shift=UP * 0.04), run_time=1.0)
+        th1 = txt("经过半径外端", size=25, color=GOLD).move_to([2.75, 2.35, 0])
+        th2 = txt("且垂直于半径的直线，是切线", size=23, color=GOLD).move_to([2.75, 1.72, 0])
+        self.play(FadeIn(th1, shift=UP * 0.04), run_time=0.85)
+        self.play(FadeIn(th2, shift=UP * 0.04), run_time=0.85)
         self.wait(0.6)
 
         rows = [
             ("已经有公共点：连半径，证垂直", GREEN),
             ("没有公共点：作垂线，证 d = r", BLUE),
         ]
-        y = 0.95
+        y = 0.62
         for s, col in rows:
             t = txt(s, size=24, color=col).move_to([2.9, y, 0])
             self.play(FadeIn(t, shift=RIGHT * 0.04), run_time=0.9)
@@ -148,7 +149,7 @@ class ZhixianYuanWeizhiScene(NarratedScene):
         self.wait(0.9)
 
         note = txt("两个条件缺一不可：点在圆上，且垂直", size=23, color=RED)
-        note.move_to([2.9, -1.5, 0])
+        note.move_to([2.9, -1.6, 0])
         self.play(FadeIn(note, shift=UP * 0.04), run_time=0.95)
         self.wait(11.0)
         self.finish_section()
@@ -243,30 +244,43 @@ class ZhixianYuanWeizhiScene(NarratedScene):
     def scene_incircle(self):
         self.section(5, "三角形的内切圆")
 
-        A = P(-3.9, 1.9)
-        B = P(-5.4, -1.15)
-        C = P(-1.4, -1.15)
+        B = P(-5.5, -1.25)
+        C = P(-1.7, -1.25)
+        A = P(-5.5, 1.6)
         tri = Polygon(A, B, C, color=CHALK, stroke_width=2.8)
         self.play(Create(tri), run_time=1.2)
+        self.play(Create(right_mark(B, UP, RIGHT, 0.2, DIM)), run_time=0.6)
 
-        # 直角三角形：a=4, b=3, c=5 缩放
-        m = 0.78
-        rr = (3 + 4 - 5) / 2 * m
+        # 直角三角形：两直角边 3 : 4，斜边 5，整体缩放 m
+        m = 0.95
+        rr = m
         ix, iy = B[0] + rr, B[1] + rr
         inc = circ(ix, iy, rr, GOLD, 2.6)
         self.play(Create(inc), run_time=1.1)
         self.play(FadeIn(Dot(P(ix, iy), radius=0.06, color=GOLD)), run_time=0.5)
 
-        ti = txt("I", size=22, color=GOLD).move_to([ix - 0.24, iy + 0.18, 0])
+        ti = txt("I", size=22, color=GOLD).move_to([ix - 0.26, iy + 0.2, 0])
         self.play(FadeIn(ti), run_time=0.5)
 
         # 到三边的垂线
-        d1 = Line(P(ix, iy), P(ix, B[1]), color=GREEN, stroke_width=2.2)
-        d2 = Line(P(ix, iy), P(B[0], iy), color=GREEN, stroke_width=2.2)
-        d3 = Line(P(ix, iy), _foot(A, C, P(ix, iy)), color=GREEN, stroke_width=2.2)
+        f1 = P(ix, B[1])
+        f2 = P(B[0], iy)
+        f3 = _foot(A, C, P(ix, iy))
+        d1 = Line(P(ix, iy), f1, color=GREEN, stroke_width=2.2)
+        d2 = Line(P(ix, iy), f2, color=GREEN, stroke_width=2.2)
+        d3 = Line(P(ix, iy), f3, color=GREEN, stroke_width=2.2)
         self.play(Create(d1), Create(d2), Create(d3), run_time=1.2)
-        self.play(Create(right_mark(P(ix, B[1]), UP, RIGHT, 0.16, GREEN)),
-                  Create(right_mark(P(B[0], iy), RIGHT, UP, 0.16, GREEN)), run_time=0.8)
+
+        u_ac = (C - A)
+        u_ac = u_ac / np.linalg.norm(u_ac)
+        v_r = (f3 - P(ix, iy))
+        v_r = v_r / np.linalg.norm(v_r)
+        self.play(Create(right_mark(f1, UP, RIGHT, 0.16, GREEN)),
+                  Create(right_mark(f2, RIGHT, UP, 0.16, GREEN)),
+                  Create(right_mark(f3, u_ac, v_r, 0.16, GREEN)), run_time=0.9)
+
+        lr = txt("r", size=22, color=GREEN).move_to([ix + 0.26, iy - 0.42, 0])
+        self.play(FadeIn(lr), run_time=0.5)
         self.wait(0.8)
 
         rows = [

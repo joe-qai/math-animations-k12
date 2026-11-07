@@ -90,6 +90,7 @@ $jobs = @(
     @{ File = "scene_erci_fangcheng_yingyong.py"; Scene = "ErciFangchengYingyongScene"; Id = "erci-fangcheng-yingyong" }
     @{ File = "scene_erci_hanshu.py"; Scene = "ErciHanshuScene"; Id = "erci-hanshu" }
     @{ File = "scene_yuan_jiben_xingzhi.py"; Scene = "YuanJibenXingzhiScene"; Id = "yuan-jiben-xingzhi" }
+    @{ File = "scene_zhixian_yuan_weizhi.py"; Scene = "ZhixianYuanWeizhiScene"; Id = "zhixian-yuan-weizhi" }
 )
 
 foreach ($j in $jobs) {
