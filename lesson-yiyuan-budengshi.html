@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一元一次不等式（组） · 「最多」「至少」，用不等号说 · 数益坊</title>
+<meta name="description" content="带 50 元买 6 元一瓶的饮料，最多买 8 瓶——这类「最多」「至少」的问题，等号写不出来，要用不等号。这一节从买饮料讲起，讲清不等式、解与解集，三条基本性质（尤其是乘除负数要变号），五步解法与数轴表示，不等式组的四句口诀，最后用一道例题和一道应用题收尾。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">73 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>一元一次不等式（组）</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">八年级</span>
+          <span class="chip">进阶</span>
+        </div>
+        <h1>一元一次不等式（组）</h1>
+        <p class="subtitle">「最多」「至少」，用不等号说</p>
+        <p class="brief">带 50 元买 6 元一瓶的饮料，最多买 8 瓶——这类「最多」「至少」的问题，等号写不出来，要用不等号。这一节从买饮料讲起，讲清不等式、解与解集，三条基本性质（尤其是乘除负数要变号），五步解法与数轴表示，不等式组的四句口诀，最后用一道例题和一道应用题收尾。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:04</b></span>
+          <span>建议学习 <b>13 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">负数乘除要变号</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>一元一次不等式（组） 视频讲解</h2><span class="hint">3:04</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/yiyuan-budengshi.jpg">
+                <source src="assets/videos/yiyuan-budengshi.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/yiyuan-budengshi.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>不等式、解与解集</h3></div>
+  <p>用不等号连接的式子叫不等式。使不等式成立的未知数的值，叫不等式的解；所有解合在一起，叫解集。</p><p>和解方程不同，不等式的解通常不是一个数，而是一段范围。比如带 50 元买 6 元一瓶的饮料，最多买 8 瓶，写成 x ≤ 8。</p><p class="formula-big">x ≤ 8</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>不等式的基本性质</h3></div>
+  <p>两边都加或减同一个数，不等号方向不变；两边都乘或除以同一个正数，方向也不变。</p><p>两边都乘或除以同一个负数，不等号必须变号。例：−2x &gt; 4，两边除以 −2，得 x &lt; −2，方向反了。</p><p class="formula-big">乘除负数 → 变号</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>解不等式的五步与数轴</h3></div>
+  <p>去分母、去括号、移项、合并同类项、系数化为一。前四步和解方程一样，区别在最后一步：系数是负数时要变号。</p><p>解集画在数轴上：大于向右，小于向左；有等号画实心点，没有等号画空心圈。</p><p class="formula-big">五步：去分母 → 系数化为一</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>一元一次不等式组</h3></div>
+  <p>几个一元一次不等式合在一起，叫一元一次不等式组；解集是它们解集的公共部分。</p><p>口诀：同大取大，同小取小，大小小大中间找，大大小小无解。比如 x &gt; 2 且 x &lt; 5，解集是 2 &lt; x &lt; 5。</p><p class="formula-big">同大取大，同小取小</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例题：解 2(x + 1) &gt; 3x − 4</h3></div>
+  <p>去括号：2x + 2 &gt; 3x − 4；移项：2x − 3x &gt; −4 − 2；合并：−x &gt; −6。</p><p>系数化为一：两边除以 −1，不等号变向，得 x &lt; 6。数轴上在 6 处画空心圈，向左画。</p><p class="formula-big">x &lt; 6</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>应用题：把「最多」翻译成不等号</h3></div>
+  <p>「至少」对应 ≥，「最多」「不超过」对应 ≤，「超过」对应 &gt;。找出这些词，题目就变成不等式。</p><p>例：一瓶 6 元、带 50 元，买 x 瓶要 6x 元，钱够就是 6x ≤ 50，解得 x ≤ 8.33…，取整数最多 8 瓶。</p><p class="formula-big">6x ≤ 50</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>用不等号连接的式子叫不等式；使不等式成立的未知数的值叫解，所有解合起来叫解集，通常是一段范围。三条基本性质：两边同加同减不变向；两边同乘除正数不变向；两边同乘除负数必须变号。解一元一次不等式按去分母、去括号、移项、合并同类项、系数化为一五步进行，最后一步遇负数要变号。解集画在数轴上：大于向右、小于向左，有等号实心、无等号空心。不等式组的解集是公共部分，口诀是「同大取大，同小取小，大小小大中间找，大大小小无解」。应用题把「至少」「最多」「不超过」翻译成不等号，再求解并检验实际意义。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>乘除负数忘记变号：这是最常见、也最致命的一处错误。</li><li>实心点与空心点画错：有等号才取得到，画实心。</li><li>解集只写一个数：不等式组的解集是一段范围或「无解」。</li><li>移项忘记变号：移项要改变符号，和解方程一样。</li><li>应用题不检验：解出的范围要符合实际，个数取整数。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">若 a &gt; b，则 −2a 与 −2b 的大小关系是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>−2a &gt; −2b</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>−2a &lt; −2b</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>−2a = −2b</span></button></div>
+    <div class="feedback" role="status" data-explain="两边同乘负数 −2，不等号要变向：a &gt; b 变成 −2a &lt; −2b。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">不等式 x + 3 &lt; 7 的解集是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>x &lt; 4</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>x &gt; 4</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>x &lt; 10</span></button></div>
+    <div class="feedback" role="status" data-explain="两边同减 3，不等号方向不变：x &lt; 7 − 3 = 4。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">在数轴上表示 x ≥ 2，应该怎么画？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>2 处空心点，向右画</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>2 处空心点，向左画</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>2 处实心点，向右画</span></button></div>
+    <div class="feedback" role="status" data-explain="有等号取得到，画实心点；大于向右画。所以是 2 处实心点、向右。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">不等式组 x &gt; 1 且 x &lt; 4 的解集是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>1 &lt; x &lt; 4</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>x &gt; 4</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>x &lt; 1</span></button></div>
+    <div class="feedback" role="status" data-explain="「大小小大中间找」，取公共部分，解集是 1 与 4 之间：1 &lt; x &lt; 4。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-eryuan-yici.html"><span class="dir">← 上一节</span><span class="title">二元一次方程组</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>知道不等式的含义，认识 &gt;、&lt;、≥、≤、≠ 这些不等号</li><li>理解不等式的解与解集的区别：解集是一段范围</li><li>掌握不等式的基本性质，特别是乘除负数时不等号要变向</li><li>会按去分母、去括号、移项、合并、系数化为一五步解一元一次不等式</li><li>会在数轴上表示解集，分清实心点与空心点</li><li>知道不等式组的解集是公共部分，会背四句口诀</li><li>会把「至少」「最多」「不超过」翻译成不等号，解决简单应用题</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

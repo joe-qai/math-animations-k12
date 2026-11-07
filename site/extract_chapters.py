@@ -89,6 +89,7 @@ CHAPTERS = {
     "pinlv-gailv": 7,
     "erci-genshi": 7,
     "eryuan-yici": 7,
+    "yiyuan-budengshi": 7,
 }
 
 
