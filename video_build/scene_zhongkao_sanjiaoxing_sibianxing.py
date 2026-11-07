@@ -69,8 +69,8 @@ class ZhongkaoSanjiaoxingSibianxingScene(NarratedScene):
     def scene_congruent(self):
         self.section(1, "全等：五种判定与书写")
 
-        A, B, C = (-5.9, -1.5), (-2.9, -1.5), (-5.15, 0.75)
-        D, E, F = (0.3, -1.5), (3.3, -1.5), (1.05, 0.75)
+        A, B, C = (-5.9, -1.15), (-2.9, -1.15), (-5.15, 1.1)
+        D, E, F = (0.3, -1.15), (3.3, -1.15), (1.05, 1.1)
         self.play(Create(tri(A, B, C)), Create(tri(D, E, F, color=BLUE)), run_time=1.1)
         self.play(FadeIn(label_at("A", A, -0.28, -0.12)),
                   FadeIn(label_at("B", B, 0.28, -0.12)),
@@ -87,12 +87,12 @@ class ZhongkaoSanjiaoxingSibianxingScene(NarratedScene):
         self.wait(0.4)
 
         crit = txt("SSS    SAS    ASA    AAS    HL", size=27, color=GREEN)
-        crit.move_to([0, -2.05, 0])
+        crit.move_to([0, -2.1, 0])
         self.play(FadeIn(crit, shift=UP * 0.04), run_time=0.9)
         self.wait(0.4)
 
         bad = txt("边边角 SSA 不成立：两边和其中一边的对角", size=22, color=RED)
-        bad.move_to([0, -2.75, 0])
+        bad.move_to([0, -2.8, 0])
         self.play(FadeIn(bad, shift=UP * 0.04), run_time=0.85)
         self.wait(11.0)
         self.finish_section()
@@ -146,21 +146,21 @@ class ZhongkaoSanjiaoxingSibianxingScene(NarratedScene):
         self.section(3, "特殊四边形：一条判定链")
 
         # 平行四边形
-        para = Polygon(P(-5.7, 0.0), P(-3.5, 0.0), P(-2.8, 1.35), P(-5.0, 1.35),
+        para = Polygon(P(-5.9, 0.0), P(-3.7, 0.0), P(-3.0, 1.35), P(-5.2, 1.35),
                        color=GOLD, stroke_width=2.6)
-        rec = Rectangle(width=2.2, height=1.3, color=GREEN, stroke_width=2.6)
-        rec.move_to(P(-1.9, 0.7))
-        rho = Polygon(P(-5.4, -0.9), P(-3.3, -0.9), P(-4.1, -2.25), P(-6.2, -2.25),
+        rec = Rectangle(width=1.9, height=1.3, color=GREEN, stroke_width=2.6)
+        rec.move_to(P(-1.6, 0.7))
+        rho = Polygon(P(-4.4, -0.8), P(-3.05, -1.55), P(-4.4, -2.3), P(-5.75, -1.55),
                       color=BLUE, stroke_width=2.6)
         sq = Square(side_length=1.35, color=ORANGE, stroke_width=2.6)
         sq.move_to(P(-1.9, -1.55))
 
         self.play(Create(para), run_time=0.8)
-        self.play(FadeIn(txt("平行四边形", size=21, color=GOLD).move_to([-4.3, 1.78, 0])),
+        self.play(FadeIn(txt("平行四边形", size=21, color=GOLD).move_to([-4.55, 1.72, 0])),
                   run_time=0.5)
-        self.play(Create(rec), FadeIn(txt("矩形", size=21, color=GREEN).move_to([-1.9, 1.72, 0])),
+        self.play(Create(rec), FadeIn(txt("矩形", size=21, color=GREEN).move_to([-1.6, 1.7, 0])),
                   run_time=0.8)
-        self.play(Create(rho), FadeIn(txt("菱形", size=21, color=BLUE).move_to([-4.3, -2.62, 0])),
+        self.play(Create(rho), FadeIn(txt("菱形", size=21, color=BLUE).move_to([-4.4, -2.62, 0])),
                   run_time=0.8)
         self.play(Create(sq), FadeIn(txt("正方形", size=21, color=ORANGE).move_to([-1.9, -2.62, 0])),
                   run_time=0.8)
@@ -249,6 +249,11 @@ class ZhongkaoSanjiaoxingSibianxingScene(NarratedScene):
         self.play(FadeIn(Dot(Pt, radius=0.07, color=GOLD)), run_time=0.5)
         foot1 = P(Pt[0], -1.7)
         self.play(Create(Line(Pt, foot1, color=GREEN, stroke_width=2.0)), run_time=0.7)
+        u2 = np.array([np.cos(ang * DEGREES), np.sin(ang * DEGREES), 0.0])
+        rel = Pt - O
+        t2 = float(rel[0] * u2[0] + rel[1] * u2[1])
+        foot2 = P(O[0] + t2 * u2[0], O[1] + t2 * u2[1])
+        self.play(Create(Line(Pt, foot2, color=GREEN, stroke_width=2.0)), run_time=0.7)
         self.wait(0.4)
 
         note = txt("角平分线上的点到两边距离相等", size=21, color=GREEN)

@@ -74,6 +74,10 @@ def split_even(text: str, font: ImageFont.FreeTypeFont, max_w: int,
         score = abs(i - n / 2)
         if text[i - 1] not in BREAKS:
             score += 2.2  # 非标点处断行略差
+        if text[i] in "（(【[":
+            score -= 2.4  # 优先在左括号前断行，避免拆开括号内容
+        if text[i - 1] in "（(【[":
+            score += 3.0  # 左括号后断行很难看
         if best is None or score < best[0]:
             best = (score, i)
     if best is None:

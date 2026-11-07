@@ -80,8 +80,8 @@ class ZhongkaoYuanSanjiaoHanshuScene(NarratedScene):
         self.play(FadeIn(Dot(P(*O), radius=0.06, color=GOLD)),
                   FadeIn(label_at("O", O, -0.24, 0.14, GOLD)), run_time=0.5)
 
-        A = (-5.75, -0.65)
-        B = (-2.95, -0.65)
+        A = (-5.6, -0.65)
+        B = (-3.1, -0.65)
         M = (O[0], -0.65)
         chord = Line(P(*A), P(*B), color=GOLD, stroke_width=2.8)
         diam = Line(P(O[0], O[1] + r), P(O[0], O[1] - r), color=BLUE, stroke_width=2.4)
@@ -222,19 +222,17 @@ class ZhongkaoYuanSanjiaoHanshuScene(NarratedScene):
         self.play(FadeIn(label_at("A", A, -0.12, 0.26)),
                   FadeIn(label_at("B", B, 0.28, -0.14)),
                   FadeIn(label_at("C", Cc, -0.3, -0.16)), run_time=0.6)
-        # 角 B：真实内角 34.05°，从 145.95° 扫到 180°
-        self.play(Create(Arc(radius=0.62, start_angle=145.95 * DEGREES,
-                             angle=34.05 * DEGREES, arc_center=P(*B),
+        # ∠A = 55.95°，从 −90° 扫到 −34.05°
+        self.play(Create(Arc(radius=0.7, start_angle=-90 * DEGREES,
+                             angle=55.95 * DEGREES, arc_center=P(*A),
                              color=GOLD, stroke_width=2.4)), run_time=0.7)
-        self.play(FadeIn(txt("A", size=18, color=GOLD).move_to([-2.55, -0.95, 0])),
-                  run_time=0.4)
         self.wait(0.2)
 
-        self.play(FadeIn(txt("对边", size=20, color=GOLD).move_to([-5.35, -0.15, 0])),
+        self.play(FadeIn(txt("对边", size=20, color=GOLD).move_to([-4.0, -1.8, 0])),
                   run_time=0.5)
-        self.play(FadeIn(txt("邻边", size=20, color=GREEN).move_to([-4.0, -1.78, 0])),
+        self.play(FadeIn(txt("邻边", size=20, color=GREEN).move_to([-5.35, -0.15, 0])),
                   run_time=0.5)
-        self.play(FadeIn(txt("斜边", size=20, color=BLUE).move_to([-4.35, 0.15, 0])),
+        self.play(FadeIn(txt("斜边", size=20, color=BLUE).move_to([-3.7, 0.12, 0])),
                   run_time=0.5)
         self.wait(0.4)
 
@@ -275,10 +273,10 @@ class ZhongkaoYuanSanjiaoHanshuScene(NarratedScene):
         self.play(Create(tower), run_time=0.8)
         sight = Line(P(*obs), P(*top), color=GOLD, stroke_width=2.6)
         self.play(Create(sight), run_time=0.9)
-        self.play(Create(Arc(radius=1.3, start_angle=0,
-                             angle=27.4 * DEGREES, arc_center=P(*obs),
+        self.play(Create(Arc(radius=1.35, start_angle=0,
+                             angle=40.0 * DEGREES, arc_center=P(*obs),
                              color=RED, stroke_width=2.4)), run_time=0.7)
-        self.play(FadeIn(txt("仰角 α", size=21, color=RED).move_to([-4.55, -1.35, 0])),
+        self.play(FadeIn(txt("仰角 α", size=21, color=RED).move_to([-4.3, -1.35, 0])),
                   FadeIn(Dot(P(*obs), radius=0.06, color=GOLD)), run_time=0.6)
         self.wait(0.4)
 
