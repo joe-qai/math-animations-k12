@@ -59,9 +59,15 @@ class YuanZhongJisuanScene(NarratedScene):
         self.play(Create(ar), run_time=1.0)
         self.play(Create(l1), Create(l2), run_time=0.8)
 
-        ln = txt("弧长 l", size=23, color=GOLD).move_to([-2.35, 1.65, 0])
-        rad = txt("半径 r", size=23, color=GREEN).move_to([-3.55, -0.55, 0])
-        ang = txt("圆心角 n", size=23, color=BLUE).move_to([-2.75, 0.9, 0])
+        ang_arc = Arc(radius=0.5, start_angle=20 * DEGREES, angle=110 * DEGREES,
+                      arc_center=P(-3.6, 0.55), color=BLUE, stroke_width=2.6)
+        rad_line = Line(P(-3.6, 0.55), pt(-3.6, 0.55, 1.75, 270),
+                        color=GREEN, stroke_width=2.4)
+        self.play(Create(ang_arc), Create(rad_line), run_time=0.9)
+
+        ln = txt("弧长 ℓ", size=23, color=GOLD).move_to([-3.6, 2.68, 0])
+        rad = txt("半径 r", size=23, color=GREEN).move_to([-3.12, -0.72, 0])
+        ang = txt("n°", size=22, color=BLUE).move_to([-3.36, 1.3, 0])
         self.play(FadeIn(ln), FadeIn(rad), FadeIn(ang), run_time=0.9)
         self.wait(1.0)
 
@@ -86,7 +92,7 @@ class YuanZhongJisuanScene(NarratedScene):
 
     # ---------------- 1. 弧长公式 ---------------- 25.2
     def scene_arc(self):
-        self.section(1, "弧长：l = nπr / 180")
+        self.section(1, "弧长：ℓ = nπr / 180")
 
         c = circ(-3.5, 0.6, 1.6, CHALK, 2.5)
         self.play(Create(c), run_time=1.0)
@@ -100,7 +106,7 @@ class YuanZhongJisuanScene(NarratedScene):
             ("圆的周长 = 2πr", CHALK),
             ("整个圆 = 360°", CHALK),
             ("圆心角 n° 占 n/360", GOLD),
-            ("l = (n/360) · 2πr", GOLD),
+            ("ℓ = (n/360) · 2πr", GOLD),
         ]
         y = 2.0
         for s, col in rows:
@@ -109,7 +115,7 @@ class YuanZhongJisuanScene(NarratedScene):
             y -= 0.78
         self.wait(0.8)
 
-        res = txt("l = nπr / 180", size=40, color=GOLD).move_to([3.0, -1.25, 0])
+        res = txt("ℓ = nπr / 180", size=40, color=GOLD).move_to([3.0, -1.25, 0])
         self.play(FadeIn(res, scale=0.98), run_time=1.0)
         self.wait(0.7)
 
@@ -125,7 +131,7 @@ class YuanZhongJisuanScene(NarratedScene):
 
         fan = sector(-3.2, 0.4, 1.9, 25, 145, GOLD, 0.10)
         self.play(Create(fan), run_time=1.4)
-        rl = txt("r", size=24, color=GREEN).move_to([-2.3, 0.75, 0])
+        rl = txt("r", size=23, color=GREEN).move_to([-1.35, 1.28, 0])
         self.play(FadeIn(rl), run_time=0.5)
         self.wait(0.7)
 
@@ -133,16 +139,16 @@ class YuanZhongJisuanScene(NarratedScene):
         self.play(FadeIn(f1, scale=0.98), run_time=1.0)
         self.wait(0.6)
 
-        f2 = txt("S = ½ l r", size=38, color=GREEN).move_to([3.1, 0.55, 0])
+        f2 = txt("S = ½ ℓ r", size=38, color=GREEN).move_to([3.1, 0.55, 0])
         self.play(FadeIn(f2, scale=0.98), run_time=1.0)
         self.wait(0.7)
 
-        note = txt("已知弧长时，用 ½ l r 更快", size=24, color=CHALK)
+        note = txt("已知弧长时，用 ½ ℓ r 更快", size=24, color=CHALK)
         note.move_to([3.1, -0.65, 0])
         self.play(FadeIn(note, shift=UP * 0.04), run_time=0.9)
         self.wait(0.7)
 
-        expl = txt("把扇形看成一个三角形：底是弧 l，高是 r", size=22, color=DIM)
+        expl = txt("把扇形看成一个三角形：底是弧 ℓ，高是 r", size=22, color=DIM)
         expl.move_to([0, -2.2, 0])
         self.play(FadeIn(expl, shift=UP * 0.04), run_time=0.95)
         self.wait(8.5)
@@ -162,7 +168,7 @@ class YuanZhongJisuanScene(NarratedScene):
         self.play(Create(side1), Create(side2), run_time=1.0)
         self.play(Create(base), run_time=0.9)
 
-        ll = txt("母线 l", size=22, color=GREEN).move_to([-5.3, 0.75, 0])
+        ll = txt("母线 ℓ", size=22, color=GREEN).move_to([-5.75, 0.95, 0])
         rl = txt("半径 r", size=22, color=BLUE).move_to([-4.6, -1.45, 0])
         self.play(FadeIn(ll), FadeIn(rl), run_time=0.8)
         self.wait(0.8)
@@ -171,8 +177,8 @@ class YuanZhongJisuanScene(NarratedScene):
         fan = sector(3.0, -0.5, 1.75, 55, 155, GOLD, 0.10)
         self.play(Create(fan), run_time=1.4)
 
-        a1 = txt("扇形半径 = 母线 l", size=23, color=GREEN).move_to([3.0, 1.75, 0])
-        a2 = txt("扇形弧长 = 底面周长 2πr", size=23, color=BLUE).move_to([3.0, 1.15, 0])
+        a1 = txt("扇形半径 = 母线 ℓ", size=23, color=GREEN).move_to([3.0, 2.15, 0])
+        a2 = txt("扇形弧长 = 底面周长 2πr", size=23, color=BLUE).move_to([3.0, 1.55, 0])
         self.play(FadeIn(a1, shift=UP * 0.04), run_time=0.85)
         self.play(FadeIn(a2, shift=UP * 0.04), run_time=0.85)
         self.wait(0.8)
@@ -192,15 +198,15 @@ class YuanZhongJisuanScene(NarratedScene):
     def scene_surface(self):
         self.section(4, "侧面积与全面积")
 
-        f1 = txt("S侧 = ½ · (2πr) · l", size=32, color=CHALK).move_to([0, 2.05, 0])
+        f1 = txt("S侧 = ½ · (2πr) · ℓ", size=32, color=CHALK).move_to([0, 2.05, 0])
         self.play(FadeIn(f1, shift=UP * 0.04), run_time=0.95)
         self.wait(0.8)
 
-        f2 = txt("S侧 = πrl", size=44, color=GOLD).move_to([0, 0.95, 0])
+        f2 = txt("S侧 = πrℓ", size=44, color=GOLD).move_to([0, 0.95, 0])
         self.play(FadeIn(f2, scale=0.98), run_time=1.0)
         self.wait(0.9)
 
-        f3 = txt("S全 = πrl + πr²", size=38, color=GREEN).move_to([0, -0.25, 0])
+        f3 = txt("S全 = πrℓ + πr²", size=38, color=GREEN).move_to([0, -0.25, 0])
         self.play(FadeIn(f3, scale=0.98), run_time=1.0)
         self.wait(0.8)
 
@@ -209,7 +215,7 @@ class YuanZhongJisuanScene(NarratedScene):
         self.play(FadeIn(note1, shift=UP * 0.04), run_time=0.9)
         self.wait(0.7)
 
-        box = label_box("母线 l 是直角三角形的斜边，一定比 r 长", size=22, color=RED)
+        box = label_box("母线 ℓ 是直角三角形的斜边，一定比 r 长", size=22, color=RED)
         box.move_to([0, -2.55, 0])
         self.play(FadeIn(box, scale=0.97), run_time=1.05)
         self.wait(9.5)
@@ -224,9 +230,9 @@ class YuanZhongJisuanScene(NarratedScene):
         self.wait(0.7)
 
         rows = [
-            ("弧长 l = (120/180) · π · 6 = 4π", GOLD),
+            ("弧长 ℓ = (120/180) · π · 6 = 4π", GOLD),
             ("面积 S = (120/360) · π · 36 = 12π", GREEN),
-            ("验证：½ l r = ½ · 4π · 6 = 12π", BLUE),
+            ("验证：½ ℓ r = ½ · 4π · 6 = 12π", BLUE),
         ]
         y = 1.05
         for s, col in rows:
@@ -240,8 +246,8 @@ class YuanZhongJisuanScene(NarratedScene):
         self.play(FadeIn(note, shift=UP * 0.04), run_time=0.95)
         self.wait(0.8)
 
-        box = label_box("先算弧长，再用 ½ l r 验证", size=24, color=GOLD)
-        box.move_to([0, -2.7, 0])
+        box = label_box("先算弧长，再用 ½ ℓ r 验证", size=24, color=GOLD)
+        box.move_to([0, -2.9, 0])
         self.play(FadeIn(box, scale=0.97), run_time=1.0)
         self.wait(11.0)
         self.finish_section()
@@ -252,7 +258,7 @@ class YuanZhongJisuanScene(NarratedScene):
 
         rows = [
             ("① 弧长分母写成 360", "应该是 180"),
-            ("② ½ l r 里的 l 是弧长", "不是半径，也不是母线"),
+            ("② ½ ℓ r 里的 ℓ 是弧长", "不是半径，也不是母线"),
             ("③ 圆锥展开后扇形半径是母线", "不是底面半径 r"),
             ("④ 求全面积忘加底面圆", "侧面积 + πr²"),
         ]

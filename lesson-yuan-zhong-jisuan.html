@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>圆中的计算 · 弧长、扇形面积与圆锥 · 数益坊</title>
+<meta name="description" content="跑道弯道是一段弧，折扇扇面是一个扇形，它们的大小都只跟两件事有关：圆心角 n 和半径 r。圆心角占整个圆 360° 的几分之几，弧长和面积就占整个圆的几分之几。于是得到弧长 l = nπr/180，扇形面积 S = nπr²/360，还有一个更好用的形式 S = ½ l r。后半节把圆锥的侧面剪开铺平：得到一个扇形，扇形的半径是母线 l，扇形的弧长正好是底面周长 2πr，由此推出侧面积 πrl、全面积 πrl + πr²，再用一道「半径 6、圆心角 120°」的例题把公式走一遍。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">84 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>圆中的计算</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">九年级</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>圆中的计算</h1>
+        <p class="subtitle">弧长、扇形面积与圆锥</p>
+        <p class="brief">跑道弯道是一段弧，折扇扇面是一个扇形，它们的大小都只跟两件事有关：圆心角 n 和半径 r。圆心角占整个圆 360° 的几分之几，弧长和面积就占整个圆的几分之几。于是得到弧长 l = nπr/180，扇形面积 S = nπr²/360，还有一个更好用的形式 S = ½ l r。后半节把圆锥的侧面剪开铺平：得到一个扇形，扇形的半径是母线 l，扇形的弧长正好是底面周长 2πr，由此推出侧面积 πrl、全面积 πrl + πr²，再用一道「半径 6、圆心角 120°」的例题把公式走一遍。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:09</b></span>
+          <span>建议学习 <b>13 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">弧长面积，看圆心角</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>圆中的计算 视频讲解</h2><span class="hint">3:09</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/yuan-zhong-jisuan.jpg">
+                <source src="assets/videos/yuan-zhong-jisuan.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/yuan-zhong-jisuan.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>弧长与扇形的共同点</h3></div>
+  <p>弧长和扇形面积都只跟两个量有关：圆心角 n 和半径 r。圆心角占整个圆 360° 的几分之几，弧长和面积就占整个圆的几分之几。</p><p>所以先把「占几分之几」想清楚，再乘整个圆的周长或面积，公式就不容易记混。</p><p class="formula-big">占几分之几 = n / 360</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>弧长公式</h3></div>
+  <p>圆的周长是 2πr，圆心角 n° 占 n/360，所以 l = (n/360)·2πr，约分得 l = nπr/180。</p><p>例：半径 6、圆心角 120°，l = (120/180)·π·6 = 4π。</p><p class="formula-big">l = nπr / 180</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>扇形面积公式</h3></div>
+  <p>整个圆的面积是 πr²，所以 S = (n/360)·πr²。</p><p>还有一个更好用的形式：S = ½ l r，其中 l 是弧长、r 是半径。已知弧长时用它更快。</p><p class="formula-big">S = ½ l r</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>圆锥侧面展开图</h3></div>
+  <p>把圆锥的侧面沿一条母线剪开铺平，得到一个扇形。这个扇形的半径就是圆锥的母线 l，扇形的弧长正好是底面圆的周长 2πr。</p><p>母线 l、底面半径 r、高 h 组成直角三角形，所以 l 一定比 r 长。</p><p class="formula-big">扇形弧长 = 2πr</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>圆锥的侧面积与全面积</h3></div>
+  <p>侧面积用 S = ½ l r 的公式，把弧长换成 2πr：S侧 = ½·(2πr)·l = πrl。</p><p>全面积再加上一个底面圆：S全 = πrl + πr²。</p><p class="formula-big">S全 = πrl + πr²</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例：半径 6、圆心角 120°</h3></div>
+  <p>求这段弧的弧长与所在扇形的面积。</p><p>弧长 l = (120/180)·π·6 = 4π；面积 S = (120/360)·π·36 = 12π。用 S = ½ l r 验证：½·4π·6 = 12π，一致。</p><p class="formula-big">l = 4π，S = 12π</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>圆中的计算只有一条主线：看圆心角占整个圆 360° 的几分之几。弧长 l = nπr/180，分母是 180；扇形面积 S = nπr²/360，也可以写成更好用的 S = ½ l r，这里的 l 是弧长。圆锥的侧面展开后是一个扇形，扇形的半径是母线 l，扇形的弧长是底面周长 2πr，于是侧面积 S侧 = πrl，全面积再补一个底面圆，得 S全 = πrl + πr²。做题时先写清楚「占几分之几」，再套公式，最后用另一个公式验算一遍，既能防记错，也能防算错。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>弧长公式分母写成 360：应为 180，因为 2πr 里的 2 与 360 约掉了一个 2。</li><li>把 S = ½ l r 里的 l 当成半径或母线，它其实是弧长。</li><li>圆锥展开后把扇形半径当成底面半径 r，实际是母线 l。</li><li>求全面积只算侧面积，忘了加底面圆 πr²。</li><li>圆锥的母线与高混为一谈：母线是斜边，高是直角边。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">半径是 3、圆心角是 120° 的弧，弧长是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>2π</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>3π</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>π</span></button></div>
+    <div class="feedback" role="status" data-explain="l = nπr/180 = (120×π×3)/180 = 2π。注意分母是 180，不是 360。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">一个扇形的弧长是 4π，半径是 6，它的面积是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>24π</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>12π</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>6π</span></button></div>
+    <div class="feedback" role="status" data-explain="用 S = ½ l r = ½ × 4π × 6 = 12π，比先求圆心角再套面积公式更快。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">圆锥的底面半径是 2，母线是 5，它的侧面积是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>10π</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>20π</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>5π</span></button></div>
+    <div class="feedback" role="status" data-explain="侧面展开后是扇形，半径是母线 5、弧长是底面周长 2π×2 = 4π，所以 S侧 = ½ × 4π × 5 = 10π，也就是 πrl。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">同一个圆锥（底面半径 2、母线 5），全面积是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>10π</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>14π</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>24π</span></button></div>
+    <div class="feedback" role="status" data-explain="S全 = πrl + πr² = 10π + 4π = 14π，别忘了加上底面圆。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-zhixian-yuan-weizhi.html"><span class="dir">← 上一节</span><span class="title">直线与圆的位置关系</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解圆心角占 360° 的几分之几，弧长和面积就占几分之几</li><li>记住弧长公式 l = nπr/180，分母是 180</li><li>记住扇形面积的两个公式，并会用 S = ½ l r</li><li>知道圆锥侧面展开图是扇形，扇形半径是母线 l</li><li>会算圆锥侧面积 πrl 与全面积 πrl + πr²</li><li>养成用两个公式互相验证的习惯</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

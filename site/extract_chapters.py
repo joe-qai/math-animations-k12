@@ -100,6 +100,8 @@ CHAPTERS = {
     "erci-hanshu": 7,
     "yuan-jiben-xingzhi": 7,
     "zhixian-yuan-weizhi": 7,
+    "yuan-zhong-jisuan": 7,
+    "lieju-fa-gailv": 7,
 }
 
 
