@@ -95,6 +95,7 @@ CHAPTERS = {
     "teshu-pingxing-sibianxing": 7,
     "xiangsi-sanjiaoxing": 7,
     "shitu-touying": 7,
+    "yiyuan-erci-fangcheng": 7,
 }
 
 
