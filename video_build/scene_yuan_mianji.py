@@ -76,8 +76,8 @@ class YuanMianjiScene(NarratedScene):
     def scene_split(self):
         self.section(1, "切成 16 份，拼成一个长方形")
 
-        C = [-3.9, 0.15, 0]
-        R = 1.5
+        C = [-4.0, 0.10, 0]
+        R = 1.8
         circ = Circle(radius=R, color=CHALK, stroke_width=2.4).move_to(C)
         self.play(Create(circ), run_time=1.0)
 
@@ -88,11 +88,18 @@ class YuanMianjiScene(NarratedScene):
                            color=DIM, stroke_width=1.2))
         self.play(LaggedStart(*[Create(l) for l in lines], lag_ratio=0.05), run_time=1.6)
 
-        secs, tgts = self.make_split(R, C, 2.5, 0.05)
+        secs, tgts = self.make_split(R, C, 2.4, 0.05)
         self.play(FadeOut(circ), FadeOut(lines), FadeIn(secs), run_time=1.0)
 
         self.play(LaggedStart(*[ReplacementTransform(s, t) for s, t in zip(secs, tgts)],
                               lag_ratio=0.05), run_time=4.0, rate_func=smooth)
+
+        x0 = 2.4 - PI * R / 2
+        x1 = 2.4 + PI * R / 2
+        outline = DashedVMobject(
+            Rectangle(width=x1 - x0, height=R, color=GREEN, stroke_width=2.4)
+            .move_to([2.4, 0.05, 0]), num_dashes=60)
+        self.play(Create(outline), run_time=0.9)
 
         cap = txt("分的份数越多，越接近长方形", size=26, color=GREEN)
         cap.move_to([0.6, -2.35, 0])
@@ -104,24 +111,24 @@ class YuanMianjiScene(NarratedScene):
     def scene_dims(self):
         self.section(2, "长是 πr，宽是 r")
 
-        _, strip = self.make_split(1.5, [-3.9, 0.15, 0], 2.5, 0.05)
+        _, strip = self.make_split(1.8, [-4.0, 0.1, 0], 3.0, -0.55)
         self.play(FadeIn(strip), run_time=0.9)
 
-        x0 = 2.5 - PI * 1.5 / 2
-        x1 = 2.5 + PI * 1.5 / 2
-        br = Brace(Line([x0, -0.7, 0], [x1, -0.7, 0]), DOWN, buff=0.14, color=GOLD)
+        x0 = 3.0 - PI * 1.8 / 2
+        x1 = 3.0 + PI * 1.8 / 2
+        br = Brace(Line([x0, -1.45, 0], [x1, -1.45, 0]), DOWN, buff=0.14, color=GOLD)
         bl = txt("长 ≈ 圆周长的一半 = πr", size=25, color=GOLD).next_to(br, DOWN, buff=0.1)
         self.play(Create(br), FadeIn(bl), run_time=1.0)
 
-        vb = Brace(Line([x0 - 0.12, -0.7, 0], [x0 - 0.12, 0.8, 0]), LEFT, buff=0.14, color=BLUE)
+        vb = Brace(Line([x0 - 0.12, -1.45, 0], [x0 - 0.12, 0.35, 0]), LEFT, buff=0.14, color=BLUE)
         vl = txt("宽 = r", size=25, color=BLUE).next_to(vb, LEFT, buff=0.1)
         self.play(Create(vb), FadeIn(vl), run_time=0.9)
 
         rows = VGroup(
-            txt("圆周长 = 2πr", size=28, color=CHALK),
-            txt("一半就是 πr", size=28, color=GOLD),
-            txt("所以 长 = πr，宽 = r", size=28, color=GREEN),
-        ).arrange(DOWN, buff=0.32, aligned_edge=LEFT).move_to([2.9, 1.85, 0])
+            txt("圆周长 = 2πr", size=27, color=CHALK),
+            txt("一半就是 πr", size=27, color=GOLD),
+            txt("长 = πr，宽 = r", size=27, color=GREEN),
+        ).arrange(DOWN, buff=0.34, aligned_edge=LEFT).move_to([-4.4, 1.45, 0])
         for r_ in rows:
             self.play(FadeIn(r_, shift=RIGHT * 0.05), run_time=0.65)
             self.wait(0.2)
