@@ -44,6 +44,7 @@ CHAPTERS = {
     "jianyi-fangcheng": 7,
     "pingxing-mianji": 7,
     "tixing-mianji": 7,
+    "changfangti-tiji": 7,
     "lianjia-lianjian": 7,
     "renshi-zhongbiao": 7,
     "fenlei-zhengli": 7,
