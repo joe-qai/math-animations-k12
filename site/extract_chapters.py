@@ -102,6 +102,7 @@ CHAPTERS = {
     "zhixian-yuan-weizhi": 7,
     "yuan-zhong-jisuan": 7,
     "lieju-fa-gailv": 7,
+    "ruijiao-sanjiao-hanshu": 7,
 }
 
 

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>锐角三角函数 · 正弦、余弦、正切与特殊角 · 数益坊</title>
+<meta name="description" content="推车上坡、放风筝、梯子靠墙，这些问题的共同点是：角度固定，直角三角形里两条边的比值就固定，只随角的大小改变，跟三角形大小无关。这个比值就是三角函数。在直角三角形里认准三条边——对边、邻边、斜边，就得到 sinA = 对边/斜边、cosA = 邻边/斜边、tanA = 对边/邻边。接着把 30°、45°、60° 的三个值背熟，看清锐角变大时正弦、正切变大而余弦变小的规律，再掌握 sin²A + cos²A = 1、tanA = sinA/cosA 和互余关系。最后用 5-12-13 的直角三角形把三个函数各算一遍。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">86 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>锐角三角函数</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">九年级</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>锐角三角函数</h1>
+        <p class="subtitle">正弦、余弦、正切与特殊角</p>
+        <p class="brief">推车上坡、放风筝、梯子靠墙，这些问题的共同点是：角度固定，直角三角形里两条边的比值就固定，只随角的大小改变，跟三角形大小无关。这个比值就是三角函数。在直角三角形里认准三条边——对边、邻边、斜边，就得到 sinA = 对边/斜边、cosA = 邻边/斜边、tanA = 对边/邻边。接着把 30°、45°、60° 的三个值背熟，看清锐角变大时正弦、正切变大而余弦变小的规律，再掌握 sin²A + cos²A = 1、tanA = sinA/cosA 和互余关系。最后用 5-12-13 的直角三角形把三个函数各算一遍。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:37</b></span>
+          <span>建议学习 <b>14 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">定角，认边，写比值</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>锐角三角函数 视频讲解</h2><span class="hint">3:37</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/ruijiao-sanjiao-hanshu.jpg">
+                <source src="assets/videos/ruijiao-sanjiao-hanshu.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/ruijiao-sanjiao-hanshu.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>为什么叫函数</h3></div>
+  <p>角度固定，直角三角形里任意两边的比值就固定；三角形放大或缩小，比值不变。也就是说，比值由角的大小唯一确定。</p><p>既然角一变比值就跟着变，这个「角 → 比值」的对应关系就是函数，叫三角函数。</p><p class="formula-big">比值只与角的大小有关</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>三个定义</h3></div>
+  <p>在直角三角形中，对角 A：对边比斜边叫正弦 sinA，邻边比斜边叫余弦 cosA，对边比邻边叫正切 tanA。</p><p>认边之前先看是哪个角：对边是角对面的边，邻边是挨着角的那条直角边，斜边永远是直角所对的最长边。</p><p class="formula-big">sinA = 对边/斜边</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>特殊角的值</h3></div>
+  <p>30°：sin = 1/2，cos = √3/2，tan = √3/3；45°：sin = cos = √2/2，tan = 1；60°：sin = √3/2，cos = 1/2，tan = √3。</p><p>窍门：正弦按 1/2、√2/2、√3/2 依次变大，余弦正好倒过来，正切从 √3/3 增到 1 再到 √3。</p><p class="formula-big">sin30° = 1/2</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>变化规律与范围</h3></div>
+  <p>锐角从 0° 增到 90°，正弦和正切逐渐变大，余弦逐渐变小。所以同一个三角形里，大角对大边，正弦值也大。</p><p>因为直角边一定比斜边短，所以 0 &lt; sinA &lt; 1、0 &lt; cosA &lt; 1；正切是两条直角边之比，可以大于 1。</p><p class="formula-big">0 &lt; sinA &lt; 1</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>两条常用关系</h3></div>
+  <p>sin²A + cos²A = 1，它其实就是勾股定理两边同除以斜边的平方；tanA = sinA / cosA。</p><p>互余关系：若 A + B = 90°，则 sinA = cosB，因为 A 的对边正好是 B 的邻边。</p><p class="formula-big">sin²A + cos²A = 1</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例：斜边 13、直角边 5</h3></div>
+  <p>Rt△ABC 中 ∠C = 90°，AB = 13，BC = 5，求 ∠A 的三个三角函数值。</p><p>先由勾股定理得 AC = √(13² − 5²) = 12。对边 BC = 5、邻边 AC = 12、斜边 AB = 13，所以 sinA = 5/13，cosA = 12/13，tanA = 5/12。</p><p class="formula-big">sinA = 5/13，cosA = 12/13</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>三角函数来自一个简单的事实：角固定，直角三角形两边的比值就固定，跟三角形画多大没关系。在直角三角形里认准对边、邻边、斜边，就有 sinA = 对边/斜边、cosA = 邻边/斜边、tanA = 对边/邻边。特殊角的三组值必须背熟：30° 是 1/2、√3/2、√3/3，45° 是 √2/2、√2/2、1，60° 是 √3/2、1/2、√3。锐角变大时，正弦和正切变大、余弦变小；正弦和余弦都在 0 到 1 之间，正切可以很大。再加上 sin²A + cos²A = 1、tanA = sinA/cosA 和互余关系 sinA = cos(90° − A)，这一节的工具就齐了。做题三步：定角、认边、写比值。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>对边、邻边找错：认边之前先看清是哪个角，换了角，对边和邻边就换了。</li><li>把 sinA 拆成 sin 乘 A：sinA 是一个整体记号，不能拆，也不能漏写角。</li><li>算出 sin 或 cos 大于 1：直角边一定比斜边短，正弦、余弦不可能大于 1。</li><li>特殊角的值记混：30° 的余弦是 √3/2，60° 的正弦才是 √3/2。</li><li>用互余关系时把角对错：必须是两个角的和等于 90°。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">Rt△ABC 中 ∠C = 90°，AB = 13，BC = 5，AC = 12，则 sinA 等于？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>5/13</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>12/13</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>5/12</span></button></div>
+    <div class="feedback" role="status" data-explain="∠A 的对边是 BC = 5，斜边是 AB = 13，所以 sinA = 对边/斜边 = 5/13。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">同一个三角形中，cosA 等于？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>5/13</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>12/13</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>12/5</span></button></div>
+    <div class="feedback" role="status" data-explain="∠A 的邻边是 AC = 12，斜边是 AB = 13，所以 cosA = 邻边/斜边 = 12/13。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">sin30° 的值是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>√3/2</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>√2/2</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>1/2</span></button></div>
+    <div class="feedback" role="status" data-explain="30° 角所对的直角边是斜边的一半，所以 sin30° = 1/2；√3/2 是 cos30°，也是 sin60°。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">若 ∠A + ∠B = 90°，则下列关系正确的是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>无法确定</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>sinA = cosB</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>sinA = 1 − cosB</span></button></div>
+    <div class="feedback" role="status" data-explain="两角互余时，一个角的对边正好是另一个角的邻边，斜边相同，所以 sinA = cosB。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-lieju-fa-gailv.html"><span class="dir">← 上一节</span><span class="title">列举法求概率</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解角度固定时，两边比值固定，与三角形大小无关</li><li>会认对边、邻边、斜边，写出 sinA、cosA、tanA</li><li>记牢 30°、45°、60° 的三角函数值</li><li>知道锐角变大时 sin、tan 变大，cos 变小</li><li>记住 sin、cos 都小于 1，tan 可以大于 1</li><li>会用 sin²A + cos²A = 1 与互余关系</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
