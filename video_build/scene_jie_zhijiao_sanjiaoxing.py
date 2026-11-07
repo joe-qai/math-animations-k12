@@ -104,7 +104,7 @@ class JieZhijiaoSanjiaoxingScene(NarratedScene):
 
         ar = Arc(radius=0.85, start_angle=142.4 * DEGREES, angle=37.6 * DEGREES, arc_center=A,
                  color=GOLD, stroke_width=2.4)
-        br = Arc(radius=0.55, start_angle=270 * DEGREES, angle=37.6 * DEGREES, arc_center=B,
+        br = Arc(radius=0.55, start_angle=270 * DEGREES, angle=52.4 * DEGREES, arc_center=B,
                  color=BLUE, stroke_width=2.2)
         self.play(Create(ar), Create(br), run_time=0.8)
         self.wait(0.6)
@@ -266,9 +266,9 @@ class JieZhijiaoSanjiaoxingScene(NarratedScene):
         ar = Arc(radius=0.7, start_angle=0, angle=30 * DEGREES, arc_center=eye,
                  color=GOLD, stroke_width=2.2)
         self.play(Create(ar), run_time=0.6)
-        self.play(FadeIn(txt("30°", size=21, color=GOLD).move_to([-4.55, -0.95, 0])), run_time=0.5)
-        self.play(FadeIn(txt("30", size=21, color=BLUE).move_to([-3.65, -1.32, 0])), run_time=0.5)
-        self.play(FadeIn(txt("1.6", size=20, color=DIM).move_to([-5.75, -1.06, 0])), run_time=0.5)
+        self.play(FadeIn(txt("30°", size=19, color=GOLD).move_to([-4.4, -0.85, 0])), run_time=0.5)
+        self.play(FadeIn(txt("30 米", size=21, color=BLUE).move_to([-3.45, -0.72, 0])), run_time=0.5)
+        self.play(FadeIn(txt("1.6", size=20, color=DIM).move_to([-5.85, -1.02, 0])), run_time=0.5)
         self.wait(0.6)
 
         rows = [
