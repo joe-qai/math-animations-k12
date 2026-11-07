@@ -270,13 +270,13 @@ class LiejuFaGailvScene(NarratedScene):
     def scene_fair(self):
         self.section(5, "公平，还是不公平")
 
-        f1 = txt("两人获胜概率相等 → 游戏公平", size=28, color=GOLD).move_to([0, 2.0, 0])
-        f2 = txt("不相等 → 不公平，要改规则", size=26, color=CHALK).move_to([0, 1.15, 0])
+        f1 = txt("两人获胜概率相等 → 游戏公平", size=28, color=GOLD).move_to([0, 2.15, 0])
+        f2 = txt("不相等 → 不公平，要改规则", size=26, color=CHALK).move_to([0, 1.35, 0])
         self.play(FadeIn(f1, shift=UP * 0.04), run_time=0.9)
         self.play(FadeIn(f2, shift=UP * 0.04), run_time=0.9)
         self.wait(0.9)
 
-        h = txt("频率与概率", size=28, color=BLUE).move_to([0, 0.0, 0])
+        h = txt("频率与概率", size=28, color=BLUE).move_to([0, 0.45, 0])
         self.play(FadeIn(h, scale=0.98), run_time=0.8)
         self.wait(0.5)
 
@@ -285,15 +285,15 @@ class LiejuFaGailvScene(NarratedScene):
             ("概率是一个固定的数", GOLD),
             ("试验次数越多，频率越接近概率", GREEN),
         ]
-        y = -0.95
+        y = -0.6
         for s, col in rows:
             t = txt(s, size=24, color=col).move_to([0, y, 0])
             self.play(FadeIn(t, shift=UP * 0.04), run_time=0.85)
-            y -= 0.82
+            y -= 0.72
         self.wait(0.9)
 
         box = label_box("概率算出来就固定，频率要试了才知道", size=23, color=RED)
-        box.move_to([0, -2.75, 0])
+        box.move_to([0, -2.95, 0])
         self.play(FadeIn(box, scale=0.97), run_time=1.05)
         self.wait(8.0)
         self.finish_section()

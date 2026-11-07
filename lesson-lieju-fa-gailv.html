@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>列举法求概率 · 直接列举、列表与树状图 · 数益坊</title>
+<meta name="description" content="抛硬币、掷骰子、摸球，这些结果事先都不能确定，但可能性有大小，这个大小就是概率。求概率最朴素的办法是数：P = 事件包含的结果数 ÷ 所有等可能的结果数。这一节按结果的数量分三种情形讲：结果少时直接列举，比如一枚硬币正反两种；结果多时用列表，比如两枚骰子 6×6 = 36 种，和为 7 的有 6 种；试验分几步完成时用树状图，比如两红一白不放回摸两次，共 6 条路径，两次都摸到红球有 2 条。最后讲放回与不放回的区别、如何判断游戏公平，以及频率和概率不是一回事。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">85 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>列举法求概率</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">九年级</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>列举法求概率</h1>
+        <p class="subtitle">直接列举、列表与树状图</p>
+        <p class="brief">抛硬币、掷骰子、摸球，这些结果事先都不能确定，但可能性有大小，这个大小就是概率。求概率最朴素的办法是数：P = 事件包含的结果数 ÷ 所有等可能的结果数。这一节按结果的数量分三种情形讲：结果少时直接列举，比如一枚硬币正反两种；结果多时用列表，比如两枚骰子 6×6 = 36 种，和为 7 的有 6 种；试验分几步完成时用树状图，比如两红一白不放回摸两次，共 6 条路径，两次都摸到红球有 2 条。最后讲放回与不放回的区别、如何判断游戏公平，以及频率和概率不是一回事。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:20</b></span>
+          <span>建议学习 <b>13 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">写全结果再数个数</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>列举法求概率 视频讲解</h2><span class="hint">3:20</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/lieju-fa-gailv.jpg">
+                <source src="assets/videos/lieju-fa-gailv.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/lieju-fa-gailv.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>概率的定义</h3></div>
+  <p>如果一次试验有 n 种等可能的结果，事件 A 包含其中的 m 种，那么 P(A) = m/n。</p><p>用这个公式的前提是：每种结果必须等可能，而且列举时不重复、不遗漏。</p><p class="formula-big">P(A) = m / n</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>直接列举</h3></div>
+  <p>结果很少时，直接把所有结果写出来数一数。抛一枚硬币有正、反两种，P(正面) = 1/2。</p><p>掷一枚骰子有六个结果，偶数有 2、4、6 三种，P(偶数) = 3/6 = 1/2。</p><p class="formula-big">P(偶数) = 3/6 = 1/2</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>列表法</h3></div>
+  <p>同时掷两枚骰子，第一枚 6 种、第二枚 6 种，共 36 种等可能结果。列一个 6×6 的表格，把点数和填进去，数一数就得到个数。</p><p>和为 7 的有 6 种，所以 P(和为 7) = 6/36 = 1/6。注意两枚骰子是不同的，(1,2) 与 (2,1) 算两种。</p><p class="formula-big">P(和为 7) = 6/36 = 1/6</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>树状图</h3></div>
+  <p>试验分几步完成时，每一步画一层分支，最后数路径。两红一白不放回摸两次：第一次 3 种，第二次只剩 2 种，共 3×2 = 6 条路径。</p><p>两次都是红球的路径有 2 条，所以 P = 2/6 = 1/3。</p><p class="formula-big">P(两红) = 2/6 = 1/3</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>放回与不放回</h3></div>
+  <p>放回：每次摸完放回去，每一步的分支数都不变，两次共 3×3 = 9 种。</p><p>不放回：摸走的球不再放回，第二步的分支数少一个，两次共 3×2 = 6 种。这个区别最容易出错。</p><p class="formula-big">放回 3×3，不放回 3×2</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>公平与频率</h3></div>
+  <p>两人获胜的概率相等，游戏就公平；不相等就不公平，需要改规则。</p><p>频率是试验中发生的次数除以总次数，会上下波动；概率是一个固定的数。试验次数越多，频率越接近概率，但不能说频率就是概率。</p><p class="formula-big">次数越多，频率越接近概率</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>求概率的第一步永远是写全所有等可能的结果。结果少时直接列举，比如硬币正反两种，P(正面) = 1/2；结果多时用列表，两枚骰子 6×6 = 36 种，和为 7 的有 6 种，P = 1/6；试验分几步完成时用树状图，两红一白不放回摸两次共 3×2 = 6 条路径，两次都红有 2 条，P = 1/3。列举时牢记两条：结果必须等可能，列举必须不重不漏。放回与不放回的区别在于每一步的分支数变不变。概率还能用来判断游戏是否公平，两人概率相等才公平。最后分清频率与概率：频率会波动，概率是固定的数，试验次数越多频率越接近概率。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>列举时漏掉结果，或者把 (1,2) 和 (2,1) 当成同一种。</li><li>没确认各种结果是否等可能，就直接数个数套公式。</li><li>放回与不放回弄混，第二步的分支数算错。</li><li>把频率当成概率，认为做几次试验就能得到概率。</li><li>用树状图时只数最后一层的分支，忘了路径总数要逐层相乘。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">掷一枚均匀的骰子，掷出的点数是 3 的倍数的概率是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>1/3</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>1/2</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>1/6</span></button></div>
+    <div class="feedback" role="status" data-explain="六个等可能结果中，3 的倍数有 3、6 两种，所以 P = 2/6 = 1/3。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">同时掷两枚均匀的骰子，点数和为 7 的概率是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>1/12</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>7/36</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>1/6</span></button></div>
+    <div class="feedback" role="status" data-explain="两枚骰子共 6×6 = 36 种等可能结果，和为 7 的有 (1,6)(2,5)(3,4)(4,3)(5,2)(6,1) 共 6 种，P = 6/36 = 1/6。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">袋中两红一白，不放回地摸两次，两次都是红球的概率是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>1/9</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>1/3</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>1/2</span></button></div>
+    <div class="feedback" role="status" data-explain="树状图共 3×2 = 6 条路径，两次都是红球的有 2 条，所以 P = 2/6 = 1/3。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">关于频率与概率，下列说法正确的是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>概率随试验次数改变</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>频率就是概率</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>试验次数越多，频率越接近概率</span></button></div>
+    <div class="feedback" role="status" data-explain="概率是由所有等可能结果决定的固定值；频率是试验结果算出来的，会波动，试验次数越多越接近概率。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-yuan-zhong-jisuan.html"><span class="dir">← 上一节</span><span class="title">圆中的计算</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解概率的含义，会用 P = 事件结果数 ÷ 所有等可能结果数</li><li>结果少时能直接列举，做到不重复、不遗漏</li><li>结果多时会用列表法数出所有等可能结果</li><li>试验分步时会用树状图，路径数就是总结果数</li><li>分清放回与不放回，正确计算每一步的分支数</li><li>会判断游戏是否公平，分清频率与概率</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
