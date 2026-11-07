@@ -50,6 +50,7 @@ CHAPTERS = {
     "baifenshu": 7,
     "bi": 7,
     "zhengfan-bili": 7,
+    "shanxing-tongjitu": 7,
     "lianjia-lianjian": 7,
     "renshi-zhongbiao": 7,
     "fenlei-zhengli": 7,
