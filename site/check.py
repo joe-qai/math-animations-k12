@@ -25,16 +25,21 @@ def check_links() -> None:
 
 
 def check_pages() -> None:
+    import json
+
+    data = {}
+    path = ROOT / "assets" / "videos" / "chapters.json"
+    if path.exists():
+        data = json.loads(path.read_text(encoding="utf-8"))
     lessons = sorted(ROOT.glob("lesson-*.html"))
     print(f"[PAGES] lesson pages={len(lessons)}")
     for page in lessons:
         text = page.read_text(encoding="utf-8")
         q = len(re.findall(r'class="q" data-answer=', text))
-        ch = len(re.findall(r'class="chapter"', text))
         video = re.search(r'<source src="([^"]+)"', text)
         size = (ROOT / video.group(1)).stat().st_size / 1024 / 1024 if video else 0
-        has_poster = 'poster="assets/videos/posters/' in text
-        print(f"   {page.name:26s} questions={q} chapters={ch} video={size:.1f}MB poster={has_poster}")
+        has_poster = 'poster="assets/videos/covers/' in text
+        print(f"   {page.name:26s} questions={q} video={size:.1f}MB cover={has_poster}")
 
 
 def check_quiz_answers() -> None:

@@ -8,7 +8,6 @@
 from __future__ import annotations
 
 import html
-import json
 import subprocess
 from pathlib import Path
 
@@ -181,17 +180,6 @@ def mmss(seconds: float) -> str:
     return f"{seconds // 60}:{seconds % 60:02d}"
 
 
-def chapter_times(lesson_id: str, count: int) -> list[float] | None:
-    path = VIDEO_DIR / "chapters.json"
-    if not path.exists():
-        return None
-    data = json.loads(path.read_text(encoding="utf-8"))
-    points = data.get(lesson_id)
-    if not points or len(points) != count:
-        return None
-    return points
-
-
 def head(title: str, description: str, prefix: str = "") -> str:
     return f"""<!DOCTYPE html>
 <html lang="zh-CN">
@@ -283,7 +271,7 @@ def lesson_card(lesson: dict, prefix: str = "") -> str:
     poster = VIDEO_DIR / "posters" / f"{lesson['id']}.jpg"
     if poster.exists():
         thumb = (
-            f'<img src="assets/videos/posters/{lesson["id"]}.jpg" alt="" decoding="async">'
+            f'<img src="assets/videos/covers/{lesson["id"]}.jpg" alt="" decoding="async">'
             '<span class="thumb-shade"></span>'
         )
     else:
@@ -293,30 +281,15 @@ def lesson_card(lesson: dict, prefix: str = "") -> str:
   <a class="lesson-thumb" href="{prefix}{lesson['file']}" tabindex="-1" aria-hidden="true">
     {thumb}
     <span class="stage-badge">{esc(stage['name'])} · {esc(lesson['grade'])}</span>
-    <span class="play-badge"><i></i>{mmss(seconds)} 配音视频</span>
+    <span class="play-badge"><i></i>{mmss(seconds)}</span>
   </a>
   <div class="lesson-body">
     <div class="meta-line"><span>{esc(stage['name'])}</span><span>/</span><span>{esc(lesson['grade'])}</span><span>/</span><span>约 {lesson['minutes']} 分钟</span></div>
     <h3><a href="{prefix}{lesson['file']}">{esc(lesson['title'])}</a></h3>
     <p>{esc(lesson['brief'])}</p>
-    <div class="tags">{tags}<span class="tag video">带配音</span></div>
+    <div class="tags">{tags}</div>
   </div>
 </article>"""
-
-
-def chapter_list(lesson: dict) -> str:
-    points = chapter_times(lesson["id"], len(lesson["chapters"]))
-    rows = []
-    for i, name in enumerate(lesson["chapters"]):
-        if points:
-            t = points[i]
-            rows.append(
-                f'<button class="chapter" type="button" data-t="{t}">'
-                f'<span class="t">{mmss(t)}</span>{esc(name)}</button>'
-            )
-        else:
-            rows.append(f'<span class="chapter"><span class="t">{i + 1:02d}</span>{esc(name)}</span>')
-    return '<div class="chapters" role="group" aria-label="视频章节">' + "".join(rows) + "</div>"
 
 
 def quiz(lesson: dict) -> str:
@@ -428,7 +401,7 @@ def build_home() -> str:
     return (
         head(
             "数益坊 · K12 数学动画课",
-            "数益坊：用带配音的动画讲解 K12 数学公式与定理。从一年级的凑十法，到高中的数列求和，每节课都有文字精讲与练习。",
+            "数益坊：用动画讲解 K12 数学公式与定理。从一年级的凑十法，到高中的数列求和，每节课都有文字精讲与练习。",
         )
         + header("", "home")
         + f"""
@@ -446,7 +419,7 @@ def build_home() -> str:
           </div>
           <div class="hero-stats">
             <div><b>{len(LESSONS)}</b><span>节动画课时</span></div>
-            <div><b>{video_count}</b><span>支配音视频</span></div>
+            <div><b>{video_count}</b><span>支讲解视频</span></div>
             <div><b>{question_count}</b><span>道随堂练习</span></div>
           </div>
         </div>
@@ -473,7 +446,7 @@ def build_home() -> str:
         <div class="step reveal">
           <span class="step-num">STEP 01</span>
           <h3>看 · 动画解说</h3>
-          <p>带中文配音的分步动画，一句解说配一屏画面。可以按章节跳转，看到不懂的地方随时暂停。</p>
+          <p>带中文配音的分步动画，一句解说配一屏画面。看到不懂的地方，随时暂停、回看。</p>
           <span class="step-tag">先给生活例子</span>
         </div>
         <div class="step reveal">
@@ -546,14 +519,14 @@ def build_catalog() -> str:
         )
 
     return (
-        head("全部课时 · 数益坊", "数益坊全部课时：小学到高中，按学段与年级排列，每节课都配带中文配音的动画、文字精讲与随堂练习。")
+        head("全部课时 · 数益坊", "数益坊全部课时：小学到高中，按学段与年级排列，每节课都配动画、文字精讲与随堂练习。")
         + header("", "lessons")
         + f"""
 <main id="main">
   <div class="wrap">
     <header class="catalog-head">
       <h1>全部课时</h1>
-      <p>{len(LESSONS)} 节课时，{len(LESSONS)} 支带配音的动画。按学段筛选，或者从头顺着学——每一节都能独立看懂。</p>
+      <p>{len(LESSONS)} 节课时，{len(LESSONS)} 支动画短片。按学段筛选，或者从头顺着学——每一节都能独立看懂。</p>
       <div class="filters" role="group" aria-label="按学段筛选">{filter_html}</div>
     </header>
     {''.join(groups)}
@@ -662,7 +635,6 @@ def build_lesson(lesson: dict, prev: dict | None, nxt: dict | None) -> str:
           <span class="chip stage {lesson['stage']}">{esc(stage['name'])}</span>
           <span class="chip">{esc(lesson['grade'])}</span>
           <span class="chip">{DIFFICULTY[lesson['difficulty']]}</span>
-          <span class="chip">带配音视频</span>
         </div>
         <h1>{esc(lesson['title'])}</h1>
         <p class="subtitle">{esc(lesson['subtitle'])}</p>
@@ -671,7 +643,6 @@ def build_lesson(lesson: dict, prev: dict | None, nxt: dict | None) -> str:
           <span>视频 <b>{mmss(seconds)}</b></span>
           <span>建议学习 <b>{lesson['minutes']} 分钟</b></span>
           <span>练习 <b>{len(lesson['questions'])} 题</b></span>
-          <span>章节 <b>{len(lesson['chapters'])} 段</b></span>
         </div>
       </div>
       <aside class="keyformula">
@@ -683,17 +654,15 @@ def build_lesson(lesson: dict, prev: dict | None, nxt: dict | None) -> str:
     <div class="lesson-layout">
       <div class="lesson-main">
         <section class="block" id="video">
-          <div class="block-head"><span class="num">01</span><h2>看视频：先有画面</h2><span class="hint">{mmss(seconds)}</span></div>
+          <div class="block-head"><span class="num">01</span><h2>{esc(lesson['title'])} 视频讲解</h2><span class="hint">{mmss(seconds)}</span></div>
           <div class="video-card">
             <div class="video-wrap">
-              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/posters/{lesson['id']}.jpg">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/{lesson['id']}.jpg">
                 <source src="{lesson['video']}" type="video/mp4">
                 你的浏览器不支持视频播放，<a href="{lesson['video']}">点此下载视频</a>。
               </video>
             </div>
-            {chapter_list(lesson)}
           </div>
-          <p class="video-note">{esc(lesson['videoNote'])}</p>
         </section>
 
         <section class="block" id="knowledge">
