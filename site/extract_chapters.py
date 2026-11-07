@@ -106,6 +106,8 @@ CHAPTERS = {
     "jie-zhijiao-sanjiaoxing": 7,
     "fangcheng-budengshi-yingyong": 7,
     "hanshu-fangcheng-tuxiang": 7,
+    "chigui-zuotu": 7,
+    "tongjitu-xuanze": 7,
 }
 
 

@@ -94,16 +94,16 @@ class ChiguiZuotuScene(NarratedScene):
 
         # 圆规
         cx = -3.6
-        top = P(cx, -0.45)
-        foot_l = P(cx - 0.5, -1.8)
-        foot_r = P(cx + 0.5, -1.8)
+        top = P(cx, -0.15)
+        foot_l = P(cx - 0.5, -1.5)
+        foot_r = P(cx + 0.5, -1.5)
         self.play(Create(Line(top, foot_l, color=CHALK, stroke_width=2.6)),
                   Create(Line(top, foot_r, color=CHALK, stroke_width=2.6)),
                   run_time=0.8)
         self.play(FadeIn(Dot(top, radius=0.09, color=GOLD)), run_time=0.4)
         self.play(Create(arc_at(foot_l, 1.0, 205, 335, GREEN, 2.2)), run_time=0.7)
         self.play(FadeIn(txt("圆规：只能画弧、截取", size=21, color=GREEN)
-                         .move_to([-3.6, -3.05, 0])), run_time=0.7)
+                         .move_to([-3.6, -2.9, 0])), run_time=0.7)
         self.wait(0.6)
 
         rows = [
@@ -193,7 +193,7 @@ class ChiguiZuotuScene(NarratedScene):
         self.play(FadeIn(Dot(p1, radius=0.06, color=GOLD)),
                   FadeIn(Dot(p2, radius=0.06, color=GOLD)), run_time=0.6)
 
-        r2 = 1.05
+        r2 = 1.3
         half = R1 * np.sin(ang / 2 * DEGREES)
         proj = R1 * np.cos(ang / 2 * DEGREES)
         t = proj + np.sqrt(max(r2 * r2 - half * half, 0.01))
@@ -201,8 +201,8 @@ class ChiguiZuotuScene(NarratedScene):
 
         d1 = np.degrees(np.arctan2(R[1] - p1[1], R[0] - p1[0]))
         d2 = np.degrees(np.arctan2(R[1] - p2[1], R[0] - p2[0]))
-        self.play(Create(arc_at(p1, r2, d1 - 34, d1 + 34, GREEN, 2.0)), run_time=0.7)
-        self.play(Create(arc_at(p2, r2, d2 - 34, d2 + 34, GREEN, 2.0)), run_time=0.7)
+        self.play(Create(arc_at(p1, r2, d1 - 24, d1 + 24, GREEN, 2.0)), run_time=0.7)
+        self.play(Create(arc_at(p2, r2, d2 - 24, d2 + 24, GREEN, 2.0)), run_time=0.7)
         self.play(FadeIn(Dot(R, radius=0.07, color=GREEN)), run_time=0.5)
         self.play(Create(Line(V, P(V[0] + (t + 1.25) * np.cos(ang / 2 * DEGREES),
                                    V[1] + (t + 1.25) * np.sin(ang / 2 * DEGREES)),
