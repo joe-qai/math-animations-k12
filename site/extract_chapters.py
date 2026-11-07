@@ -74,6 +74,7 @@ CHAPTERS = {
     "xiangjiao-pingxing": 7,
     "sanjiaoxing": 7,
     "pingjunshu": 7,
+    "shishu": 7,
     "yiyuan-yici-fangcheng": 7,
     "wanquan-pingfang": 7,
     "dengcha-shulie": 7,
