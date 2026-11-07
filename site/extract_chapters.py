@@ -83,6 +83,7 @@ CHAPTERS = {
     "dengcha-shulie": 7,
     "gougu-dingli": 9,
     "quandeng": 7,
+    "gougu-nidingli": 7,
 }
 
 
