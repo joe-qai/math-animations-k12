@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>统计图的选择与综合实践 · 选对图，读懂数据 · 数益坊</title>
+<meta name="description" content="同一组数据，选错统计图就看不出重点：比较每种有多少人要用条形图，看一周气温怎么变要用折线图，看各部分占多少要用扇形图，看连续数据怎么分布要用频数直方图。这一节先把四种图的适用场景和规矩讲清，再讲抽样与估计——总体、个体、样本、样本容量，样本要随机、要有代表性，用样本的比例估计总体。最后是两个综合实践：用相似或解直角三角形测旗杆高度、构造全等三角形测池塘距离；用二次函数解决「篱笆总长固定，怎样围面积最大」的方案设计，并强调取值范围不能丢。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">91 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>统计图的选择与综合实践</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">九年级</span>
+          <span class="chip">进阶</span>
+        </div>
+        <h1>统计图的选择与综合实践</h1>
+        <p class="subtitle">选对图，读懂数据</p>
+        <p class="brief">同一组数据，选错统计图就看不出重点：比较每种有多少人要用条形图，看一周气温怎么变要用折线图，看各部分占多少要用扇形图，看连续数据怎么分布要用频数直方图。这一节先把四种图的适用场景和规矩讲清，再讲抽样与估计——总体、个体、样本、样本容量，样本要随机、要有代表性，用样本的比例估计总体。最后是两个综合实践：用相似或解直角三角形测旗杆高度、构造全等三角形测池塘距离；用二次函数解决「篱笆总长固定，怎样围面积最大」的方案设计，并强调取值范围不能丢。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:05</b></span>
+          <span>建议学习 <b>12 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">先看目的再选图</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>统计图的选择与综合实践 视频讲解</h2><span class="hint">3:05</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/tongjitu-xuanze.jpg">
+                <source src="assets/videos/tongjitu-xuanze.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/tongjitu-xuanze.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>四种图各自擅长</h3></div>
+  <p>条形图比较数量多少，横轴是类别、纵轴是数量；折线图表现变化趋势，适合按时间记录的数据。</p><p>扇形图表示各部分占总体的百分比，所有扇形加起来是整个圆；频数分布直方图表现连续数据分组后的分布，横轴是分组、纵轴是频数。</p><p class="formula-big">比多少、看变化、看占比、看分布</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>选图口诀与规矩</h3></div>
+  <p>比多少用条形，看变化用折线，看占比用扇形，看分布用直方图。</p><p>扇形图必须先知道总数，各部分百分比之和等于 1；条形图直条等宽、间隔相等；直方图小矩形的面积表示该组频数。</p><p class="formula-big">百分比 × 360° = 圆心角</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>抽样与估计</h3></div>
+  <p>总体是被考察的全体对象，个体是其中每一个，样本是抽取的一部分，样本容量是样本中个体的数目（不带单位）。</p><p>样本要随机抽取、要有代表性。用样本估计总体时比例不变：抽查 200 人近视率 30%，估计全校 1200 人中约有 360 人近视。</p><p class="formula-big">样本比例 ≈ 总体比例</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>综合实践：测量</h3></div>
+  <p>测旗杆高度：同一时刻物高与影长成比例，量出旗杆影长和参照物高度、影长即可；也可以站在某处测仰角，用解直角三角形求高。</p><p>测池塘两端距离：在岸上取一点构造全等三角形，把不可直接测量的距离转化为可直接测量的边。</p><p class="formula-big">物高 : 影长 = 物高 : 影长</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>综合实践：方案设计</h3></div>
+  <p>篱笆总长固定，围矩形菜地，怎样围面积最大？设一边为 x，另一边为 (L − 2x)/2，面积 S = x(L − 2x)/2。</p><p>把 S 写成二次函数，配方求顶点；同时写出 x 的取值范围（0 &lt; x &lt; L/2），顶点不在范围内时要取端点值。</p><p class="formula-big">S = x(L − 2x)/2</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例：由扇形图求人数</h3></div>
+  <p>某班 50 人，喜欢篮球的占 40%，扇形图中对应的圆心角是多少？人数是多少？</p><p>圆心角 = 40% × 360° = 144°；人数 = 50 × 40% = 20 人。</p><p class="formula-big">圆心角 = 百分比 × 360°</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>统计图的选择只看目的：比多少用条形图，看变化用折线图，看占比用扇形图，看分布用直方图。扇形图必须先有总数，各百分比之和为 1，百分比乘 360° 就是圆心角；条形图直条要等宽等距；直方图的横轴是分组、纵轴是频数。抽样要随机、有代表性，样本容量不带单位，用样本比例估计总体数量。综合实践分两类：测量类靠相似、全等或解直角三角形把不可测转化为可测；方案类靠设变量、列关系式、写取值范围、求最值。做题顺序永远是：先看目的选图或选方案，再用数据说话。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>不知道总数就用扇形图，百分比算不出来。</li><li>折线图连了不该连的类别数据：折线图只适合按时间或顺序变化的数据。</li><li>样本不随机、没有代表性，估计结果就不可靠。</li><li>方案题忘记写取值范围，顶点取不到还当成答案。</li><li>把样本容量带上单位，或把它与样本混淆。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">要表示各部分占总体的百分比，应选择？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>条形图</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>折线图</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>扇形图</span></button></div>
+    <div class="feedback" role="status" data-explain="扇形图用扇形面积（或圆心角）表示各部分占总体的百分比，最适合看占比。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">记录一周气温的变化趋势，应选择？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>折线图</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>扇形图</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>频数分布直方图</span></button></div>
+    <div class="feedback" role="status" data-explain="折线图按时间顺序描点连线，最能表现变化趋势，适合一周气温这类按时间记录的数据。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">抽查 200 名学生，近视率为 30%，估计全校 1200 名学生中近视人数约为？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>300 人</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>360 人</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>400 人</span></button></div>
+    <div class="feedback" role="status" data-explain="用样本比例估计总体：1200 × 30% = 360 人。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">频数分布直方图的横轴表示？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>类别</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>频数</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>数据分组</span></button></div>
+    <div class="feedback" role="status" data-explain="直方图的横轴是数据分组，纵轴是频数，每个小矩形的面积表示该组的频数。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-chigui-zuotu.html"><span class="dir">← 上一节</span><span class="title">尺规作图</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>能按目的选择条形图、折线图、扇形图或直方图</li><li>知道扇形图需要总数，各百分比之和为 1</li><li>分清总体、个体、样本、样本容量</li><li>会用样本比例估计总体数量</li><li>能设计测量方案并写清计算过程</li><li>会用二次函数求方案中的最值并注意取值范围</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
