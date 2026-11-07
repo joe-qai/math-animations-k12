@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三角形内角和与三边关系 · 三个角加起来 180°，三条边要凑得成 · 数益坊</title>
+<meta name="description" content="屋顶木架、自行车车架为什么都用三角形？因为三条边一定，形状就定了，推都推不动。这节课讲三角形的两条基本规律：一是内角和恒为 180°，可以用「过顶点作平行线」把它变成一个平角来证明；二是三边关系，任意两边之和大于第三边，任意两边之差小于第三边。最后用它们解决求第三边范围和等腰三角形分类两类常考题。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">60 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>三角形内角和与三边关系</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">七年级</span>
+          <span class="chip">进阶</span>
+          <span class="chip">带配音视频</span>
+        </div>
+        <h1>三角形内角和与三边关系</h1>
+        <p class="subtitle">三个角加起来 180°，三条边要凑得成</p>
+        <p class="brief">屋顶木架、自行车车架为什么都用三角形？因为三条边一定，形状就定了，推都推不动。这节课讲三角形的两条基本规律：一是内角和恒为 180°，可以用「过顶点作平行线」把它变成一个平角来证明；二是三边关系，任意两边之和大于第三边，任意两边之差小于第三边。最后用它们解决求第三边范围和等腰三角形分类两类常考题。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:18</b></span>
+          <span>建议学习 <b>14 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+          <span>章节 <b>7 段</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">内角和 = 180°</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>看视频：先有画面</h2><span class="hint">3:18</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/posters/sanjiaoxing.jpg">
+                <source src="assets/videos/sanjiaoxing.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/sanjiaoxing.mp4">点此下载视频</a>。
+              </video>
+            </div>
+            <div class="chapters" role="group" aria-label="视频章节"><button class="chapter" type="button" data-t="0.0"><span class="t">0:00</span>为什么到处都是三角形</button><button class="chapter" type="button" data-t="29.99"><span class="t">0:29</span>内角和为什么是 180°</button><button class="chapter" type="button" data-t="55.6"><span class="t">0:55</span>直角互余与外角定理</button><button class="chapter" type="button" data-t="82.42"><span class="t">1:22</span>三边关系：两点之间线段最短</button><button class="chapter" type="button" data-t="106.93"><span class="t">1:46</span>先看最短的两条</button><button class="chapter" type="button" data-t="137.7"><span class="t">2:17</span>已知两边，求第三边</button><button class="chapter" type="button" data-t="165.31"><span class="t">2:45</span>例题与三个易错点</button></div>
+          </div>
+          <p class="video-note">第 1 节用三角形和四边形对比，演示「推不动」与「一推就歪」；第 2 节过顶点 C 作 AB 的平行线，用内错角把 α、β 搬到 C 点，三个角拼成平角；第 3 节讲直角三角形的两锐角互余与外角定理；第 4 节用折线与直线段比长短推出三边关系；第 5 节逐行判断 3、4、5 与 1、2、4 等能否围成三角形；第 6 节给出求第三边范围与等腰三角形分类的方法。</p>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>三角形最稳定</h3></div>
+  <p>把三根木条钉成一个三角形，用手去推，推不动；把四根木条钉成一个四边形，一推就歪。原因是：只要三条边的长度确定了，三角形的形状和大小就唯一确定；四边形的四条边确定后，还可以压扁、拉长。</p><p>这就是三角形的稳定性，也是屋顶、桥梁、脚手架里到处是三角形的原因。</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>内角和等于 180°</h3></div>
+  <p>任意一个三角形，三个内角的和都是 180°，与它的大小、形状无关。</p><p>证明方法：过顶点 C 作一条平行于 AB 的直线，用量角器看不出来，用内错角看得很清楚——AC 是截线，∠A 与 C 点左侧的那个角是内错角，相等；BC 是截线，∠B 与 C 点右侧的那个角是内错角，相等。三个角正好拼成 C 点处的一个平角，所以 α + β + γ = 180°。</p><p>视频里第 2 节就是用这个方法：把 α、β 用平行线「搬」到顶点 C，与 γ 拼成一个平角。</p><p class="formula-big">∠A + ∠B + ∠C = 180°</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>两个常用推论</h3></div>
+  <p>推论一：直角三角形的两个锐角互余。因为直角三角形有一个角是 90°，剩下两个角的和就是 180° − 90° = 90°。</p><p>推论二：三角形的一个外角，等于与它不相邻的两个内角之和，并且大于任何一个与它不相邻的内角。注意外角与它相邻的那个内角是互补关系，加起来 180°。</p><p class="formula-big">直角三角形：∠B + ∠C = 90°</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>三边关系</h3></div>
+  <p>两点之间线段最短。从 A 到 B 走直线段最近，绕道走折线 A—M—B 一定更长，所以三角形任意两边之和大于第三边：a + b &gt; c。</p><p>把它变形，就得到另一边的不等式：c &gt; a − b，也就是任意两边之差小于第三边。判断三条线段能不能围成三角形，只需要把两条较短的加起来，看是否大于最长的那一条。</p><p>已知两边求第三边的范围：第三边大于两边之差、小于两边之和，两个端点都取不到。例如两边是 3 和 5，第三边 x 满足 2 &lt; x &lt; 8。</p><p class="formula-big">两边之差 &lt; 第三边 &lt; 两边之和</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>三角形内角和恒为 180°，证明的关键是过顶点作对边的平行线，用内错角把两个角搬到顶点，与第三个角拼成平角。推论有两条：直角三角形两锐角互余；三角形的外角等于不相邻两内角之和，且大于其中任何一个。三边关系来自「两点之间线段最短」：任意两边之和大于第三边，任意两边之差小于第三边。判断能否围成三角形，只需看两条较短边之和是否大于最长边；已知两边求第三边，用「差 &lt; 第三边 &lt; 和」；等腰三角形记得分两种情况并回头检验。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>把内角和记成 360°。360° 是四边形的内角和，三角形是 180°。</li><li>等腰三角形只算一种情况。已知两条边时要分「这条边是腰」和「这条边是底」两种，分别算完再检验。</li><li>算出答案就交卷，忘了用三边关系检验。3、3、7 这种组合算得出周长，但根本围不成三角形。</li><li>求第三边范围时把端点也算进去。2 &lt; x &lt; 8 不能写成 2 ≤ x ≤ 8，等于端点时会退化成一条线段。</li><li>以为外角和它相邻的内角相等。它们是互补，加起来 180°。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">任意一个三角形的内角和是多少度？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>90°</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>180°</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>360°</span></button></div>
+    <div class="feedback" role="status" data-explain="三角形内角和恒为 180°，与形状、大小无关。360° 是四边形的内角和。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">直角三角形中，两个锐角之间是什么关系？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>互余</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>互补</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>相等</span></button></div>
+    <div class="feedback" role="status" data-explain="有一个角是 90°，剩下两个角的和是 180° − 90° = 90°，所以两个锐角互余。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">三条线段长 1、2、4，能组成三角形吗？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>能组成</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>无法确定</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>不能组成</span></button></div>
+    <div class="feedback" role="status" data-explain="检查两条较短的边：1 + 2 = 3 &lt; 4，两边之和不大于第三边，所以围不成三角形，会断开。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">等腰三角形有两条边长分别是 3 和 7，它的周长是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>13</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>17</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>13 或 17</span></button></div>
+    <div class="feedback" role="status" data-explain="若腰是 3，则 3 + 3 = 6 &lt; 7，围不成三角形，舍去；若腰是 7，7 + 7 &gt; 3 成立，周长 = 7 + 7 + 3 = 17。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-xiangjiao-pingxing.html"><span class="dir">← 上一节</span><span class="title">相交线与平行线</span></a><a class="next" href="lesson-wanquan.html"><span class="dir">下一节 →</span><span class="title">完全平方公式</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>通过「作平行线」理解三角形内角和为 180° 的证明</li><li>知道直角三角形两锐角互余，理解外角定理</li><li>掌握三边关系：两边之和大于第三边、两边之差小于第三边</li><li>会用「取两条较短边求和」快速判断能否组成三角形</li><li>会由已知两边求第三边的取值范围</li><li>遇到等腰三角形会分两种情况讨论并回头检验</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

@@ -15,20 +15,26 @@ def P(x, y):
 
 def ang_arc(O, dA, dB, color=GOLD, radius=0.8, lab=None, lab_r=1.22,
             size=23, lab_color=None, width=2.6):
+    """以 O 为顶点、沿 dA、dB 两个方向的劣角弧（手动画，避免优角）。"""
     o = P(*O)
     ua = P(*dA)
     ua = ua / np.linalg.norm(ua)
     ub = P(*dB)
     ub = ub / np.linalg.norm(ub)
-    arc = Angle.from_three_points(o + ua, o, o + ub, radius=radius,
-                                  color=color, stroke_width=width)
+    a1 = float(np.arctan2(ua[1], ua[0]))
+    a2 = float(np.arctan2(ub[1], ub[0]))
+    d = (a2 - a1) % TAU
+    if d > PI:
+        start = a2
+        d = TAU - d
+    else:
+        start = a1
+    arc = Arc(radius=radius, start_angle=start, angle=d, arc_center=o,
+              color=color, stroke_width=width)
     grp = VGroup(arc)
     if lab:
-        d = ua + ub
-        if np.linalg.norm(d) < 1e-6:
-            d = ua
-        d = d / np.linalg.norm(d)
-        pos = o + d * lab_r
+        mid = start + d / 2
+        pos = o + np.array([np.cos(mid), np.sin(mid), 0.0]) * lab_r
         grp.add(txt(lab, size=size, color=lab_color or color)
                 .move_to([pos[0], pos[1], 0]))
     return grp
@@ -120,9 +126,9 @@ class SanjiaoxingScene(NarratedScene):
         self.play(FadeIn(pnote, shift=UP * 0.05), run_time=0.8)
 
         a2 = ang_arc(C, (-1, 0), (A[0] - C[0], A[1] - C[1]),
-                     color=BLUE, radius=0.86, lab="β", lab_r=1.15, lab_color=BLUE)
-        b2 = ang_arc(C, (1, 0), (B[0] - C[0], B[1] - C[1]),
                      color=GOLD, radius=0.86, lab="α", lab_r=1.15)
+        b2 = ang_arc(C, (1, 0), (B[0] - C[0], B[1] - C[1]),
+                     color=BLUE, radius=0.86, lab="β", lab_r=1.15, lab_color=BLUE)
         self.play(FadeIn(a2, scale=0.9), run_time=0.8)
         self.play(FadeIn(b2, scale=0.9), run_time=0.8)
 
@@ -150,26 +156,27 @@ class SanjiaoxingScene(NarratedScene):
     def scene_corollary(self):
         self.section(2, "直角互余与外角定理")
 
-        A, B, C = (-6.2, -1.5), (-3.4, -1.5), (-6.2, 0.9)
+        A, B, C = (-6.4, -1.0), (-3.6, -1.0), (-6.4, 1.0)
         tri = Polygon(P(*A), P(*B), P(*C), color=CHALK, stroke_width=3,
                       fill_color=CHALK, fill_opacity=0.05)
         self.play(Create(tri), run_time=1.1)
-        ra = right_angle(A, (1, 0), (0, 1), size=0.3, color=GREEN)
+        ra = right_angle(A, (1, 0), (0, 1), size=0.32, color=GREEN)
         self.play(Create(ra), run_time=0.6)
-        ar1 = ang_arc(B, (-1, 0), (C[0] - B[0], C[1] - B[1]), color=GOLD, radius=0.5)
-        ar2 = ang_arc(C, (0, -1), (B[0] - C[0], B[1] - C[1]), color=BLUE, radius=0.5)
+        ar1 = ang_arc(B, (-1, 0), (C[0] - B[0], C[1] - B[1]),
+                      color=GOLD, radius=0.5)
+        ar2 = ang_arc(C, (0, -1), (B[0] - C[0], B[1] - C[1]),
+                      color=BLUE, radius=0.5)
         self.play(FadeIn(ar1), FadeIn(ar2), run_time=0.8)
 
         t1 = VGroup(
-            txt("直角三角形", size=25, color=CHALK),
-            txt("两锐角互余", size=28, color=GREEN),
-            txt("∠B + ∠C = 90°", size=26, color=GOLD),
-        ).arrange(DOWN, buff=0.26).move_to([-4.85, -2.35, 0])
+            txt("直角三角形，两锐角互余", size=26, color=CHALK),
+            txt("∠B + ∠C = 90°", size=30, color=GOLD),
+        ).arrange(DOWN, buff=0.34).move_to([-4.9, -2.15, 0])
         for m in t1:
-            self.play(FadeIn(m, shift=UP * 0.05), run_time=0.7)
+            self.play(FadeIn(m, shift=UP * 0.05), run_time=0.8)
 
-        A2, B2, C2 = (0.6, -1.4), (3.4, -1.4), (2.0, 0.7)
-        D2 = (4.6, -1.4)
+        A2, B2, C2 = (1.3, -1.1), (3.9, -1.1), (2.6, 0.9)
+        D2 = (5.3, -1.1)
         tri2 = Polygon(P(*A2), P(*B2), P(*C2), color=CHALK, stroke_width=3,
                        fill_color=CHALK, fill_opacity=0.05)
         self.play(Create(tri2), run_time=1.0)
@@ -177,18 +184,18 @@ class SanjiaoxingScene(NarratedScene):
         self.play(Create(ext), run_time=0.8)
 
         ar3 = ang_arc(B2, (1, 0), (C2[0] - B2[0], C2[1] - B2[1]),
-                      color=ORANGE, radius=0.55, lab="外角", lab_r=1.05,
-                      size=21, lab_color=ORANGE)
+                      color=ORANGE, radius=0.62, lab="外角", lab_r=1.35,
+                      size=22, lab_color=ORANGE)
         self.play(FadeIn(ar3, scale=0.9), run_time=0.8)
 
         t2 = VGroup(
             txt("外角 = 不相邻两内角之和", size=26, color=ORANGE),
-            txt("外角 > 任何一个不相邻的内角", size=24, color=DIM),
-        ).arrange(DOWN, buff=0.3).move_to([3.4, 1.75, 0])
+            txt("外角 > 任何一个不相邻内角", size=23, color=DIM),
+        ).arrange(DOWN, buff=0.3).move_to([4.2, 2.0, 0])
         for m in t2:
             self.play(FadeIn(m, shift=UP * 0.05), run_time=0.8)
 
-        t3 = txt("外角与相邻内角互补", size=24, color=DIM).move_to([3.4, -2.35, 0])
+        t3 = txt("外角与相邻内角互补", size=25, color=DIM).move_to([4.2, -2.15, 0])
         self.play(FadeIn(t3, shift=UP * 0.05), run_time=0.8)
         self.wait(2.8)
         self.finish_section()
