@@ -70,7 +70,7 @@ class DaishuShiScene(NarratedScene):
             label_box("x + 5", size=28, color=CHALK),
             label_box("a² - 1", size=28, color=CHALK),
             label_box("m", size=28, color=CHALK),
-        ).arrange(RIGHT, buff=0.55).move_to([0, 1.25])
+        ).arrange(RIGHT, buff=0.55).move_to([0, 1.25, 0])
         for c in chips:
             self.play(FadeIn(c, shift=UP * 0.06), run_time=0.5)
         self.wait(0.4)
@@ -78,21 +78,21 @@ class DaishuShiScene(NarratedScene):
         one = txt("单独一个数或一个字母，也是代数式", size=27, color=GREEN).move_to([0, 0.35, 0])
         self.play(FadeIn(one, shift=UP * 0.05), run_time=0.8)
 
-        head2 = txt("书写四条规矩", size=29, color=GOLD).move_to([0, -0.55, 0])
-        self.play(FadeIn(head2, shift=UP * 0.05), run_time=0.7)
+        head2 = label_box("书写四条规矩", size=27, color=GOLD).move_to([0, -0.5, 0])
+        self.play(FadeIn(head2, scale=0.97), run_time=0.75)
 
         rules = VGroup(
-            txt("① 数字写在字母前面", size=27, color=CHALK),
-            txt("② 乘号可以省略", size=27, color=CHALK),
-            txt("③ 除法写成分数线", size=27, color=CHALK),
-            txt("④ 带分数化成假分数", size=27, color=CHALK),
-        ).arrange(DOWN, buff=0.26, aligned_edge=LEFT).move_to([-2.6, -1.55, 0])
+            VGroup(txt("① 数字写在字母前面", size=26, color=CHALK),
+                   txt("② 乘号可以省略", size=26, color=CHALK)).arrange(RIGHT, buff=1.7),
+            VGroup(txt("③ 除法写成分数线", size=26, color=CHALK),
+                   txt("④ 带分数化成假分数", size=26, color=CHALK)).arrange(RIGHT, buff=1.7),
+        ).arrange(DOWN, buff=0.38).move_to([0, -1.45, 0])
         for r in rules:
-            self.play(FadeIn(r, shift=RIGHT * 0.05), run_time=0.55)
+            self.play(FadeIn(r, shift=UP * 0.05), run_time=0.7)
 
-        tip = txt("写成 a ÷ b 不合规矩", size=25, color=RED).move_to([3.6, -1.55, 0])
-        self.play(FadeIn(tip, shift=LEFT * 0.05), run_time=0.7)
-        self.wait(2.4)
+        tip = txt("写成 a ÷ b，不合书写规矩", size=25, color=RED).move_to([0, -2.4, 0])
+        self.play(FadeIn(tip, shift=UP * 0.05), run_time=0.7)
+        self.wait(2.6)
         self.finish_section()
 
     # ---------------- 2. 单项式与次数 ---------------- 17.0
@@ -215,7 +215,7 @@ class DaishuShiScene(NarratedScene):
 
     # ---------------- 6. 例题 + 易错点 ---------------- 19.9
     def scene_ex(self):
-        self.section(6, "化简 3(x + 2) - 2(x - 1)")
+        self.section(6, "化简：先括号，再合并")
 
         prob = txt("3(x + 2) - 2(x - 1)", size=36, color=CHALK).move_to([0, 2.15, 0])
         self.play(FadeIn(prob, shift=UP * 0.05), run_time=0.85)

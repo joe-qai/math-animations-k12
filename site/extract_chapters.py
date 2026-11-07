@@ -65,6 +65,7 @@ CHAPTERS = {
     "sanjiaoxing-mianji": 7,
     "youli-shu": 7,
     "youli-yunsuan": 7,
+    "daishu-shi": 7,
     "yiyuan-yici-fangcheng": 7,
     "wanquan-pingfang": 7,
     "dengcha-shulie": 7,
