@@ -163,3 +163,11 @@ Desktop.ini
 # Misc
 .coze-logs
 .codegraph/
+
+# static site build artifacts
+media/
+video_build/audio/
+video_build/_frames/
+video_build/logs/
+audio_segments/
+*.tsbuildinfo

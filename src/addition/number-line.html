@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>数轴漫游 — 动画演示</title>
+  <style>
+    :root {
+      --bg: #0f1117; --card: #1a1d27; --accent: #6c5ce7;
+      --accent2: #00cec9; --text: #e8e8f0; --muted: #6b7280;
+      --warm: #fd79a8; --success: #00b894; --warn: #fdcb6e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'PingFang SC','Microsoft YaHei',sans-serif; min-height: 100vh; padding: 24px; }
+    a.back { color: var(--muted); text-decoration: none; font-size: 0.9rem; display: inline-block; margin-bottom: 20px; }
+    a.back:hover { color: var(--accent); }
+    h1 { font-size: 1.6rem; margin-bottom: 6px; }
+    .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 28px; }
+    .controls { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .controls label { color: var(--muted); font-size: 0.9rem; }
+    .controls select, .controls input {
+      background: var(--card); color: var(--text); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 6px 12px; font-size: 0.9rem;
+    }
+    .btn { padding: 8px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.9rem; transition: opacity 0.2s; }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-secondary { background: rgba(255,255,255,0.08); color: var(--text); }
+    .panel { background: var(--card); border-radius: 16px; padding: 32px; border: 1px solid rgba(255,255,255,0.06); }
+    canvas#numberLineCanvas { border-radius: 12px; width: 100%; display: block; }
+
+    /* Chinese description */
+    .desc-panel {
+      background: rgba(0,206,201,0.08); border: 1px solid rgba(0,206,201,0.25);
+      border-radius: 10px; padding: 14px 20px; margin-bottom: 20px;
+      color: var(--accent2); font-size: 0.9rem; line-height: 1.7;
+    }
+    .desc-panel strong { color: var(--warn); }
+
+    .explain { min-height: 56px; padding: 12px 20px; margin-top: 16px; background: rgba(0,206,201,0.08); border-radius: 10px; color: var(--accent2); font-size: 0.95rem; text-align: center; border: 1px solid rgba(0,206,201,0.2); line-height: 1.6; }
+
+    .step-log {
+      margin-top: 12px; padding: 12px 16px;
+      background: rgba(255,255,255,0.03); border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      max-height: 140px; overflow-y: auto;
+      font-size: 0.84rem; color: var(--muted); line-height: 1.8;
+    }
+    .step-log .step-entry { padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .step-log .step-entry:last-child { border-bottom: none; }
+    .step-log .step-num { color: var(--accent); font-weight: 600; margin-right: 6px; }
+
+    /* Preset buttons */
+    .presets { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .preset-btn {
+      padding: 5px 14px; border-radius: 20px;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted); cursor: pointer; font-size: 0.82rem; transition: all 0.2s;
+    }
+    .preset-btn:hover { border-color: var(--accent2); color: var(--text); }
+    .preset-btn.active { background: var(--accent2); color: #fff; border-color: var(--accent2); }
+  </style>
+</head>
+<body>
+  <a class="back" href="../index.html">← 返回首页</a>
+  <h1>↔ 数轴漫游</h1>
+  <p class="subtitle">加减法就是在数轴上前后移动。向右走是加，向左走是减。</p>
+
+  <div class="panel">
+    <div class="desc-panel">
+      <strong>什么是数轴？</strong>一条有方向的直线，原点(0)在中间，右边是正数，左边是负数。<br>
+      做加法就是<strong>向右跳</strong>，做减法就是<strong>向左跳</strong>。每一步的距离就是数字的大小。
+    </div>
+
+    <div class="presets">
+      <button class="preset-btn active" data-a="3" data-op="+" data-b="5">3 + 5</button>
+      <button class="preset-btn" data-a="5" data-op="+" data-b="-3">5 + (−3)</button>
+      <button class="preset-btn" data-a="2" data-op="−" data-b="7">2 − 7</button>
+      <button class="preset-btn" data-a="-2" data-op="+" data-b="5">−2 + 5</button>
+      <button class="preset-btn" data-a="-3" data-op="−" data-b="-4">−3 − (−4)</button>
+    </div>
+
+    <div class="controls">
+      <label>自定义算式：</label>
+      <input type="number" id="numA" value="3" min="-20" max="20" style="width:70px">
+      <select id="opSelect">
+        <option value="+">+</option>
+        <option value="-">−</option>
+      </select>
+      <input type="number" id="numB" value="5" min="-20" max="20" style="width:70px">
+      <button class="btn btn-primary" id="playBtn">▶ 播放</button>
+      <button class="btn btn-secondary" id="resetBtn">重置</button>
+    </div>
+
+    <canvas id="numberLineCanvas" height="200"></canvas>
+    <div class="explain" id="explain">选择算式，点击播放开始漫游</div>
+    <div class="step-log" id="stepLog">
+      <div class="step-entry">就绪：点击预设按钮或输入自定义算式，观察数轴上的移动</div>
+    </div>
+  </div>
+
+<script>
+const canvas = document.getElementById('numberLineCanvas');
+const ctx = canvas.getContext('2d');
+let animId = null;
+let currentFrom = 0, currentTo = 0;
+
+function resize() {
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * 2;
+  canvas.height = 400;
+  ctx.scale(2, 2);
+}
+resize();
+window.addEventListener('resize', () => { resize(); draw(); });
+
+function clear() { ctx.clearRect(0, 0, canvas.offsetWidth, 400); }
+
+function draw(state = {}) {
+  const W = canvas.offsetWidth, H = 200;
+  clear();
+
+  const cx = W / 2, cy = H / 2;
+  const scale = 32;
+
+  // Number line
+  ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(20, cy); ctx.lineTo(W - 20, cy);
+  ctx.stroke();
+
+  // Arrow heads
+  ctx.fillStyle = 'rgba(255,255,255,0.2)';
+  ctx.beginPath(); ctx.moveTo(W-20, cy); ctx.lineTo(W-30, cy-5); ctx.lineTo(W-30, cy+5); ctx.fill();
+  ctx.beginPath(); ctx.moveTo(20, cy); ctx.lineTo(30, cy-5); ctx.lineTo(30, cy+5); ctx.fill();
+
+  // Tick marks
+  const minVal = Math.floor((cx - 20) / scale) - 1;
+  const maxVal = Math.ceil((W - cx - 20) / scale) + 1;
+  for (let i = minVal; i <= maxVal; i++) {
+    const x = cx + i * scale;
+    const isZero = i === 0;
+    ctx.strokeStyle = isZero ? 'rgba(253,203,110,0.5)' : 'rgba(255,255,255,0.15)';
+    ctx.lineWidth = isZero ? 2.5 : 1;
+    ctx.beginPath(); ctx.moveTo(x, cy - 6); ctx.lineTo(x, cy + 6); ctx.stroke();
+    if (i !== 0) {
+      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      ctx.font = '11px Courier New';
+      ctx.textAlign = 'center';
+      ctx.fillText(i, x, cy + 22);
+    } else {
+      ctx.fillStyle = '#fdcb6e';
+      ctx.font = 'bold 12px Courier New';
+      ctx.textAlign = 'center';
+      ctx.fillText('0', x, cy + 22);
+    }
+  }
+
+  // Direction labels
+  ctx.fillStyle = 'rgba(255,255,255,0.25)';
+  ctx.font = '11px PingFang SC';
+  ctx.textAlign = 'center';
+  ctx.fillText('← 负方向（减）', cx - (W/2 - 40), cy - 30);
+  ctx.fillText('正方向（加）→', cx + (W/2 - 40), cy - 30);
+
+  // Path arc
+  if (state.from !== undefined && state.to !== undefined && state.from !== state.to) {
+    const x1 = cx + state.from * scale;
+    const x2 = cx + state.to * scale;
+    const midX = (x1 + x2) / 2;
+    const arcR = Math.abs(x2 - x1) / 2 + 30;
+    const direction = state.to > state.from; // true = right (add), false = left (sub)
+
+    // Colored path
+    ctx.strokeStyle = direction ? 'rgba(0,206,201,0.6)' : 'rgba(253,121,168,0.6)';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    // Draw semi-circle arc above the number line
+    ctx.arc(midX, cy, Math.abs(x2 - x1) / 2, Math.PI, 0, !direction);
+    ctx.stroke();
+
+    // Arrow head on arc
+    const arrowAngle = direction ? Math.PI * 0.95 : Math.PI * 0.05;
+    const ax = midX + (Math.abs(x2-x1)/2) * Math.cos(arrowAngle);
+    const ay = cy + (Math.abs(x2-x1)/2) * Math.sin(arrowAngle);
+    ctx.fillStyle = direction ? '#00cec9' : '#fd79a8';
+    ctx.beginPath();
+    const dirX = direction ? 1 : -1;
+    ctx.moveTo(ax + dirX * 10, ay);
+    ctx.lineTo(ax - dirX * 5, ay - 7);
+    ctx.lineTo(ax - dirX * 5, ay + 7);
+    ctx.fill();
+
+    // Step count label on arc
+    const steps = Math.abs(state.to - state.from);
+    ctx.fillStyle = direction ? '#00cec9' : '#fd79a8';
+    ctx.font = 'bold 12px Courier New';
+    ctx.textAlign = 'center';
+    ctx.fillText(`${steps} 步`, midX, cy - arcR + 4);
+  }
+
+  // Start dot
+  if (state.from !== undefined) {
+    const x = cx + state.from * scale;
+    ctx.beginPath(); ctx.arc(x, cy, 10, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(108,92,231,0.25)'; ctx.fill();
+    ctx.beginPath(); ctx.arc(x, cy, 6, 0, Math.PI*2);
+    ctx.fillStyle = '#6c5ce7'; ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 11px Courier New'; ctx.textAlign = 'center';
+    ctx.fillText(state.from, x, cy - 18);
+  }
+
+  // End dot
+  if (state.to !== undefined && state.to !== state.from) {
+    const x = cx + state.to * scale;
+    ctx.beginPath(); ctx.arc(x, cy, 10, 0, Math.PI*2);
+    ctx.fillStyle = state.landedColor ? 'rgba(0,184,148,0.25)' : 'rgba(0,206,201,0.25)'; ctx.fill();
+    ctx.beginPath(); ctx.arc(x, cy, 6, 0, Math.PI*2);
+    ctx.fillStyle = state.landedColor || '#00cec9'; ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.font = 'bold 11px Courier New'; ctx.textAlign = 'center';
+    ctx.fillText(state.to, x, cy - 18);
+  }
+}
+
+let animTimer = null;
+function playAnimation() {
+  if (animTimer) cancelAnimationFrame(animTimer);
+  const a = parseInt(document.getElementById('numA').value) || 0;
+  const op = document.getElementById('opSelect').value;
+  const b = parseInt(document.getElementById('numB').value) || 0;
+  const result = op === '+' ? a + b : a - b;
+  const explain = document.getElementById('explain');
+  const log = document.getElementById('stepLog');
+  log.innerHTML = '';
+
+  addLog(log, '开始', `算式：${a} ${op === '+' ? '+' : '−'} ${b} = ?`);
+  explain.innerHTML = `从 <strong>${a}</strong> 出发，${op === '+' ? '向右（正方向）' : '向左（负方向）'}移动 <strong>${Math.abs(b)}</strong> 步`;
+  draw({ from: a, to: a });
+
+  const start = performance.now();
+  const duration = Math.max(Math.abs(b) * 400 + 600, 1000);
+
+  function animate(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease in-out
+    const eased = progress < 0.5
+      ? 2 * progress * progress
+      : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+    const current = Math.round(a + (result - a) * eased);
+
+    if (progress < 1) {
+      const dir = result > a ? 'right' : 'left';
+      draw({ from: a, to: current, color: result > a ? '#00cec9' : '#fd79a8' });
+      explain.innerHTML = `当前位置：<strong>${current}</strong>，向${dir === 'right' ? '右' : '左'}移动中...`;
+      animTimer = requestAnimationFrame(animate);
+    } else {
+      draw({ from: a, to: result, color: '#00cec9', landedColor: '#00b894' });
+      const dirText = op === '+'
+        ? `向右走了 ${Math.abs(b)} 格，落在 ${result}`
+        : `向左走了 ${Math.abs(b)} 格，落在 ${result}`;
+      explain.innerHTML = `<strong>${a} ${op} ${b} = ${result}</strong><br>${dirText}<br>这就是加减法的本质——数轴上的移动`;
+      addLog(log, '到达', `${a} ${op === '+' ? '+' : '−'} ${b} = ${result}，动画完成`);
+    }
+  }
+  animTimer = requestAnimationFrame(animate);
+}
+
+function reset() {
+  if (animTimer) cancelAnimationFrame(animTimer);
+  draw();
+  document.getElementById('explain').textContent = '选择算式，点击播放开始漫游';
+  document.getElementById('stepLog').innerHTML = '<div class="step-entry">已重置，随时可以重新播放</div>';
+}
+
+function addLog(log, title, desc) {
+  const div = document.createElement('div');
+  div.className = 'step-entry';
+  div.innerHTML = `<span class="step-num">[${title}]</span>${desc}`;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+}
+
+document.getElementById('playBtn').addEventListener('click', playAnimation);
+document.getElementById('resetBtn').addEventListener('click', reset);
+
+// Preset buttons
+document.querySelectorAll('.preset-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const a = btn.dataset.a, op = btn.dataset.op, b = btn.dataset.b;
+    document.getElementById('numA').value = a;
+    document.getElementById('opSelect').value = op;
+    document.getElementById('numB').value = b;
+    reset();
+  });
+});
+
+draw();
+</script>
+</body>
+</html>

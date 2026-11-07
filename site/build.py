@@ -1,0 +1,722 @@
+# -*- coding: utf-8 -*-
+"""把 site/lessons.py 的内容渲染成纯静态 HTML 页面。
+
+用法：python site/build.py
+产物：index.html、lessons.html、labs.html、lesson-*.html（全部是静态文件）
+"""
+
+from __future__ import annotations
+
+import html
+import json
+import subprocess
+from pathlib import Path
+
+from lessons import LESSONS
+
+ROOT = Path(__file__).resolve().parent.parent
+VIDEO_DIR = ROOT / "assets" / "videos"
+
+STAGES = [
+    {
+        "id": "xiaoxue",
+        "name": "小学数学",
+        "en": "PRIMARY",
+        "color": "#c98d22",
+        "tagline": "先把数感和图形直觉长出来。乘法不是口诀，除法不是命令，面积公式也不是天上掉下来的。",
+        "grades": ["一年级 · 凑十法 / 认识图形 / 认识钟表 / 分类与整理", "二年级 · 连加连减 / 乘法与除法 / 角的认识 / 条形统计图 / 测量与时分秒", "三年级 · 多位数乘一位数 / 除数是一位数的除法 / 长方形和正方形的面积 / 分数的初步认识 / 小数的初步认识 / 平移、旋转与轴对称", "四年级 · 大数的认识与万以内加减法 / 线与角（平行与垂直） / 运算律 / 小数乘法 / 平行四边形和梯形", "五年级 · 三角形的面积"],
+    },
+    {
+        "id": "chuzhong",
+        "name": "初中数学",
+        "en": "JUNIOR",
+        "color": "#3f7cbe",
+        "tagline": "从算术走向代数。天平、面积图、方格纸，都是把抽象式子变回看得见的东西。",
+        "grades": ["七年级 · 一元一次方程", "八年级 · 完全平方公式", "八年级 · 勾股定理"],
+    },
+    {
+        "id": "gaozhong",
+        "name": "高中数学",
+        "en": "SENIOR",
+        "color": "#2f8877",
+        "tagline": "公式开始变长，但证明仍然可以很直观：把数列摆成阶梯，倒过来，就看见公式。",
+        "grades": ["高一 · 等差数列求和"],
+    },
+]
+
+STAGE_BY_ID = {s["id"]: s for s in STAGES}
+
+THUMB = {
+    "coushifa": "9 + 4 = 13",
+    "renshi-tuxing": "□ △ ○",
+    "renshi-zhongbiao": "3:00 / 3:30",
+    "fenlei-zhengli": "4 + 3 + 2 = 9",
+    "lianjia-lianjian": "45 - 20 + 12 = 37",
+    "jiao-renshi": "锐角 ＜ 直角 ＜ 钝角",
+    "tiaoxing-tongji": "直条越高，数量越多",
+    "celiang-shifenmiao": "1 米 = 100 厘米",
+    "duowei-cheng-yiwei": "满几十，向前一位进几",
+    "chufa-yiwei": "余数一定要比除数小",
+    "changfangxing-mianji": "面积 = 长 × 宽",
+    "fenshu-chubu": "必须平均分",
+    "xiaoshu-chubu": "加减先对齐小数点",
+    "pingyi-xuanzhuan": "平移是直着走",
+    "dashu-jianfa": "数位对齐，满十进一",
+    "xian-yujiao": "平行不相交",
+    "yun-suanlv": "先凑整，再计算",
+    "xiaoshu-cheng": "先按整数乘",
+    "pingxing-sibianxing": "两组对边平行",
+    "chengfa-yiyi": "3 × 4 = 12",
+    "chufa-yiyi": "12 ÷ 4 = 3",
+    "sanjiaoxing-mianji": "底 × 高 ÷ 2",
+    "yiyuan-yici-fangcheng": "2x + 3 = 11",
+    "wanquan-pingfang": "(a+b)²",
+    "dengcha-shulie": "首项 + 末项",
+    "gougu-dingli": "a² + b² = c²",
+}
+
+LABS = [
+    {
+        "no": "LAB 01",
+        "title": "数轴上的加法",
+        "desc": "在数轴上跳格子：加几就向右跳几格，负数就向左跳。进位与退位，都变成脚步。",
+        "href": "labs/number-line.html",
+        "for": "小学 · 加法",
+    },
+    {
+        "no": "LAB 02",
+        "title": "竖式加法",
+        "desc": "一位一位对齐，满十进一。把竖式的每一步拆开看，进位不再靠死记。",
+        "href": "labs/vertical.html",
+        "for": "小学 · 加法",
+    },
+    {
+        "no": "LAB 03",
+        "title": "面积拼图",
+        "desc": "拖一拖、剪一剪：平行四边形、三角形、梯形的面积公式，都能拼出来。",
+        "href": "labs/area.html",
+        "for": "小学 · 面积",
+    },
+    {
+        "no": "LAB 04",
+        "title": "乘法点阵",
+        "desc": "点阵转个方向，行列互换、总数不变。交换律不是规定，是数出来的。",
+        "href": "labs/multiplication.html",
+        "for": "小学 · 乘法",
+    },
+    {
+        "no": "LAB 05",
+        "title": "勾股定理拼图",
+        "desc": "调节两条直角边，把两个小正方形里的小方格，一格一格搬进斜边的大正方形。",
+        "href": "labs/pythagoras.html",
+        "for": "初中 · 勾股定理",
+    },
+]
+
+DIFFICULTY = {1: "基础", 2: "进阶", 3: "挑战"}
+
+
+# ---------------------------------------------------------------- 工具函数
+
+def esc(text: str) -> str:
+    return html.escape(str(text), quote=False)
+
+
+def video_seconds(lesson_id: str) -> int:
+    path = VIDEO_DIR / f"{lesson_id}.mp4"
+    if not path.exists():
+        return 0
+    out = subprocess.run(
+        ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+         "-of", "default=noprint_wrappers=1:nokey=1", str(path)],
+        capture_output=True, text=True,
+    )
+    try:
+        return int(round(float(out.stdout.strip())))
+    except ValueError:
+        return 0
+
+
+def mmss(seconds: float) -> str:
+    seconds = int(seconds)
+    return f"{seconds // 60}:{seconds % 60:02d}"
+
+
+def chapter_times(lesson_id: str, count: int) -> list[float] | None:
+    path = VIDEO_DIR / "chapters.json"
+    if not path.exists():
+        return None
+    data = json.loads(path.read_text(encoding="utf-8"))
+    points = data.get(lesson_id)
+    if not points or len(points) != count:
+        return None
+    return points
+
+
+def head(title: str, description: str, prefix: str = "") -> str:
+    return f"""<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(description)}">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="{prefix}assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>"""
+
+
+def header(prefix: str = "", current: str = "") -> str:
+    def cur(key: str) -> str:
+        return ' aria-current="page"' if current == key else ""
+
+    return f"""
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="{prefix}index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="{prefix}index.html"{cur('home')}>首页</a>
+      <a href="{prefix}lessons.html"{cur('lessons')}>全部课时</a>
+      <a href="{prefix}labs.html"{cur('labs')}>互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">{len(LESSONS)} 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>"""
+
+
+def footer(prefix: str = "") -> str:
+    return f"""
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="{prefix}index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="{prefix}lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="{prefix}lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="{prefix}lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="{prefix}labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="{prefix}index.html#how">学习方法</a></li>
+          <li><a href="{prefix}lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="{prefix}assets/js/site.js"></script>
+</body>
+</html>
+"""
+
+
+def lesson_card(lesson: dict, prefix: str = "") -> str:
+    stage = STAGE_BY_ID[lesson["stage"]]
+    seconds = video_seconds(lesson["id"])
+    tags = "".join(f'<span class="tag">{esc(t)}</span>' for t in lesson["tags"])
+    poster = VIDEO_DIR / "posters" / f"{lesson['id']}.jpg"
+    if poster.exists():
+        thumb = (
+            f'<img src="assets/videos/posters/{lesson["id"]}.jpg" alt="" decoding="async">'
+            '<span class="thumb-shade"></span>'
+        )
+    else:
+        thumb = f'<span class="thumb-fallback formula">{esc(THUMB[lesson["id"]])}</span>'
+    return f"""
+<article class="lesson-card reveal">
+  <a class="lesson-thumb" href="{prefix}{lesson['file']}" tabindex="-1" aria-hidden="true">
+    {thumb}
+    <span class="stage-badge">{esc(stage['name'])} · {esc(lesson['grade'])}</span>
+    <span class="play-badge"><i></i>{mmss(seconds)} 配音视频</span>
+  </a>
+  <div class="lesson-body">
+    <div class="meta-line"><span>{esc(stage['name'])}</span><span>/</span><span>{esc(lesson['grade'])}</span><span>/</span><span>约 {lesson['minutes']} 分钟</span></div>
+    <h3><a href="{prefix}{lesson['file']}">{esc(lesson['title'])}</a></h3>
+    <p>{esc(lesson['brief'])}</p>
+    <div class="tags">{tags}<span class="tag video">带配音</span></div>
+  </div>
+</article>"""
+
+
+def chapter_list(lesson: dict) -> str:
+    points = chapter_times(lesson["id"], len(lesson["chapters"]))
+    rows = []
+    for i, name in enumerate(lesson["chapters"]):
+        if points:
+            t = points[i]
+            rows.append(
+                f'<button class="chapter" type="button" data-t="{t}">'
+                f'<span class="t">{mmss(t)}</span>{esc(name)}</button>'
+            )
+        else:
+            rows.append(f'<span class="chapter"><span class="t">{i + 1:02d}</span>{esc(name)}</span>')
+    return '<div class="chapters" role="group" aria-label="视频章节">' + "".join(rows) + "</div>"
+
+
+def quiz(lesson: dict) -> str:
+    items = []
+    for i, q in enumerate(lesson["questions"]):
+        opts = []
+        for j, opt in enumerate(q["options"]):
+            key = "ABCD"[j]
+            opts.append(
+                f'<button class="option" type="button" data-i="{j}">'
+                f'<span class="key">{key}</span><span>{esc(opt)}</span></button>'
+            )
+        items.append(
+            f"""
+  <article class="q" data-answer="{q['answer']}">
+    <div class="q-head"><span class="q-index">{i + 1:02d}</span><p class="q-prompt">{esc(q['prompt'])}</p></div>
+    <div class="options">{''.join(opts)}</div>
+    <div class="feedback" role="status" data-explain="{html.escape(q['explanation'], quote=True)}"></div>
+  </article>"""
+        )
+
+    return f"""
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / {len(lesson['questions'])}</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>{''.join(items)}
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / {len(lesson['questions'])}</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>"""
+
+
+def knowledge_blocks(lesson: dict) -> str:
+    out = []
+    for block in lesson["knowledge"]:
+        kind = block["kind"]
+        label = {"concept": "概念", "formula": "公式", "example": "例题"}[kind]
+        cls = "know formula-block" if kind == "formula" else "know"
+        body = "".join(f"<p>{esc(p)}</p>" for p in block["body"])
+        formula = f'<p class="formula-big">{esc(block["formula"])}</p>' if block.get("formula") else ""
+        out.append(
+            f"""
+<article class="{cls}">
+  <div class="know-head"><span class="kind {kind}">{label}</span><h3>{esc(block['title'])}</h3></div>
+  {body}{formula}
+</article>"""
+        )
+    return "".join(out)
+
+
+def lab_link(lesson: dict) -> str | None:
+    mapping = {
+        "chengfa-yiyi": ("labs/multiplication.html", "乘法点阵实验室", "把点阵转 90 度，亲眼确认 3 × 4 = 4 × 3。"),
+        "sanjiaoxing-mianji": ("labs/area.html", "面积拼图实验室", "拖动图形，把两个三角形拼成平行四边形。"),
+        "gougu-dingli": ("labs/pythagoras.html", "勾股定理拼图", "调节直角边长度，看小方格如何搬进斜边正方形。"),
+    }
+    return mapping.get(lesson["id"])
+
+
+def build_home() -> str:
+    video_count = sum(1 for l in LESSONS if (VIDEO_DIR / f"{l['id']}.mp4").exists())
+    question_count = sum(len(l["questions"]) for l in LESSONS)
+    stage_cards = []
+    for stage in STAGES:
+        grades = "".join(f'<span class="grade-chip">{esc(g)}</span>' for g in stage["grades"])
+        stage_cards.append(
+            f"""
+<article class="stage-card reveal" style="--stage-color:{stage['color']}">
+  <div class="stage-top">
+    <h3>{esc(stage['name'])}</h3>
+    <span class="stage-en">{stage['en']}</span>
+  </div>
+  <p class="stage-desc">{esc(stage['tagline'])}</p>
+  <div class="grade-list">{grades}</div>
+  <a class="stage-more" href="lessons.html#{stage['id']}">进入{esc(stage['name'][:2])}课时</a>
+</article>"""
+        )
+
+    featured = "".join(lesson_card(l) for l in LESSONS)
+
+    hero_figure = """
+<figure class="hero-figure">
+  <svg viewBox="0 -40 620 580" role="img" aria-label="直角三角形三条边上各有一个正方形，两条直角边上的正方形面积之和等于斜边上的正方形面积">
+    <g class="chalk-line" stroke="#f4efe2" stroke-width="2.6">
+      <rect x="225" y="350" width="150" height="150" fill="#f2c14e" fill-opacity="0.16"/>
+      <rect x="25" y="150" width="200" height="200" fill="#82c8e8" fill-opacity="0.16"/>
+      <path d="M375 350 L225 150 L425 0 L575 200 Z" fill="#8fd9a8" fill-opacity="0.16"/>
+      <path d="M225 350 L375 350 L225 150 Z" fill="#f4efe2" fill-opacity="0.08"/>
+    </g>
+    <g class="chalk-line" stroke="#f2c14e" stroke-width="3.2">
+      <path d="M225 350 L375 350" class="draw"/>
+      <path d="M225 350 L225 150" class="draw"/>
+      <path d="M375 350 L225 150" class="draw"/>
+    </g>
+    <path d="M225 328 L247 328 L247 350" fill="none" stroke="rgba(244,239,226,.55)" stroke-width="2"/>
+    <text x="300" y="445" text-anchor="middle" fill="#f2c14e">a² = 9</text>
+    <text x="122" y="256" text-anchor="middle" fill="#82c8e8">b² = 16</text>
+    <text x="398" y="168" text-anchor="middle" fill="#8fd9a8" transform="rotate(-37 398 168)">c² = 25</text>
+  </svg>
+  <figcaption>3² + 4² = 5²　·　面积，是勾股定理最直白的证据</figcaption>
+</figure>"""
+
+    return (
+        head(
+            "数益坊 · K12 数学动画课",
+            "数益坊：用带配音的动画讲解 K12 数学公式与定理。从一年级的凑十法，到高中的数列求和，每节课都有文字精讲与练习。",
+        )
+        + header("", "home")
+        + f"""
+<main id="main">
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <span class="eyebrow">北师大版 · K12 数学</span>
+          <h1>把公式讲<em>明白</em><br>而不是背下来</h1>
+          <p class="lead">每节课都从一个生活问题开始：三排桌子、一袋苹果、一把靠墙的梯子。先看见，再理解，最后动手练——公式会自己长出来。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="lessons.html">开始学习 →</a>
+            <a class="btn btn-ghost" href="lesson-gougu.html">看一节示范</a>
+          </div>
+          <div class="hero-stats">
+            <div><b>{len(LESSONS)}</b><span>节动画课时</span></div>
+            <div><b>{video_count}</b><span>支配音视频</span></div>
+            <div><b>{question_count}</b><span>道随堂练习</span></div>
+          </div>
+        </div>
+        {hero_figure}
+      </div>
+    </section>
+
+    <section class="section" id="stages">
+      <div class="section-head">
+        <span class="num">01</span>
+        <h2>按学段进入</h2>
+        <p>从数感、图形到代数与数列，每个知识点都配一支能听懂的视频。</p>
+      </div>
+      <div class="stage-grid">{''.join(stage_cards)}</div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="section-head">
+        <span class="num">02</span>
+        <h2>一节课，三步走</h2>
+        <p>先看动画建立画面，再读文字理清逻辑，最后用练习暴露问题。</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <span class="step-num">STEP 01</span>
+          <h3>看 · 动画解说</h3>
+          <p>带中文配音的分步动画，一句解说配一屏画面。可以按章节跳转，看到不懂的地方随时暂停。</p>
+          <span class="step-tag">先给生活例子</span>
+        </div>
+        <div class="step reveal">
+          <span class="step-num">STEP 02</span>
+          <h3>学 · 文字精讲</h3>
+          <p>把动画里的画面翻译成定义、公式和推导。概念、公式、例题分块呈现，方便对照复习。</p>
+          <span class="step-tag">公式有来处</span>
+        </div>
+        <div class="step reveal">
+          <span class="step-num">STEP 03</span>
+          <h3>练 · 即时反馈</h3>
+          <p>四道随堂题，选完立刻判分并解释原因。做错不可怕，重要的是知道错在哪一步。</p>
+          <span class="step-tag">错题当场讲清</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="lessons">
+      <div class="section-head">
+        <span class="num">03</span>
+        <h2>精选课时</h2>
+        <p><a href="lessons.html" style="color:var(--amber-ink);font-weight:600">查看全部 {len(LESSONS)} 节 →</a></p>
+      </div>
+      <div class="lesson-grid">{featured}</div>
+    </section>
+
+    <section class="lab-strip reveal">
+      <div>
+        <h2>动手拖一拖，比看十遍更清楚</h2>
+        <p>互动实验室里有数轴跳格、竖式进位、面积拼图、乘法点阵和勾股定理拼图。全部是浏览器里直接运行的静态页面，不需要安装任何东西。</p>
+      </div>
+      <a class="btn btn-primary" href="labs.html">进入实验室 →</a>
+    </section>
+  </div>
+</main>
+"""
+        + footer()
+    )
+
+
+def build_catalog() -> str:
+    filters = [
+        ('all', '全部课时', len(LESSONS)),
+        ('xiaoxue', '小学数学', sum(1 for l in LESSONS if l['stage'] == 'xiaoxue')),
+        ('chuzhong', '初中数学', sum(1 for l in LESSONS if l['stage'] == 'chuzhong')),
+        ('gaozhong', '高中数学', sum(1 for l in LESSONS if l['stage'] == 'gaozhong')),
+    ]
+    filter_html = "".join(
+        f'<button class="filter{" is-active" if key == "all" else ""}" type="button" data-filter="{key}">{name} <span style="opacity:.6">{n}</span></button>'
+        for key, name, n in filters
+    )
+
+    groups = []
+    for stage in STAGES:
+        items = [l for l in LESSONS if l["stage"] == stage["id"]]
+        if not items:
+            continue
+        cards = "".join(lesson_card(l) for l in items)
+        groups.append(
+            f"""
+<section class="catalog-group" id="{stage['id']}" data-stage="{stage['id']}">
+  <div class="group-head">
+    <h2>{esc(stage['name'])}</h2>
+    <span class="count">{len(items)} 节</span>
+    <span class="line"></span>
+    <span class="count">{esc(stage['grades'][0]) if stage['grades'] else ''}</span>
+  </div>
+  <div class="lesson-grid">{cards}</div>
+</section>"""
+        )
+
+    return (
+        head("全部课时 · 数益坊", "数益坊全部课时：小学到高中，按学段与年级排列，每节课都配带中文配音的动画、文字精讲与随堂练习。")
+        + header("", "lessons")
+        + f"""
+<main id="main">
+  <div class="wrap">
+    <header class="catalog-head">
+      <h1>全部课时</h1>
+      <p>{len(LESSONS)} 节课时，{len(LESSONS)} 支带配音的动画。按学段筛选，或者从头顺着学——每一节都能独立看懂。</p>
+      <div class="filters" role="group" aria-label="按学段筛选">{filter_html}</div>
+    </header>
+    {''.join(groups)}
+  </div>
+</main>
+"""
+        + footer()
+    )
+
+
+def build_labs() -> str:
+    cards = []
+    for lab in LABS:
+        cards.append(
+            f"""
+<article class="lab-card reveal">
+  <span class="lab-no">{lab['no']} · {esc(lab['for'])}</span>
+  <h3>{esc(lab['title'])}</h3>
+  <p>{esc(lab['desc'])}</p>
+  <a class="lab-open" href="{lab['href']}">打开实验</a>
+</article>"""
+        )
+
+    return (
+        head("互动实验室 · 数益坊", "数益坊互动实验室：数轴加法、竖式加法、面积拼图、乘法点阵、勾股定理拼图，全部为浏览器内运行的静态页面。")
+        + header("", "labs")
+        + f"""
+<main id="main">
+  <div class="wrap">
+    <header class="catalog-head">
+      <h1>互动实验室</h1>
+      <p>视频负责把道理讲清楚，实验室负责让你亲手验证一遍。拖动、旋转、剪拼——数学不是只能看的。</p>
+    </header>
+    <section class="section">
+      <div class="lab-grid">{''.join(cards)}</div>
+      <div class="note-panel">
+        这些实验是独立的静态页面，直接用浏览器打开即可，支持触摸操作。画布在窄屏上可横向滑动查看，操作体验以电脑或平板为佳。建议先看完对应课时的视频，再回来动手。
+      </div>
+    </section>
+  </div>
+</main>
+"""
+        + footer()
+    )
+
+
+def build_lesson(lesson: dict, prev: dict | None, nxt: dict | None) -> str:
+    stage = STAGE_BY_ID[lesson["stage"]]
+    seconds = video_seconds(lesson["id"])
+    goals = "".join(f"<li>{esc(g)}</li>" for g in lesson["goals"])
+    pitfalls = "".join(f"<li>{esc(p)}</li>" for p in lesson["pitfalls"])
+    lab = lab_link(lesson)
+
+    lab_aside = ""
+    if lab:
+        href, title, desc = lab
+        lab_aside = f"""
+      <div class="aside-lab">
+        <h3>动手验证</h3>
+        <div class="al-title">{esc(title)}</div>
+        <p>{esc(desc)}</p>
+        <a href="{href}">打开实验 →</a>
+      </div>"""
+
+    pager = []
+    if prev:
+        pager.append(
+            f'<a href="{prev["file"]}"><span class="dir">← 上一节</span>'
+            f'<span class="title">{esc(prev["title"])}</span></a>'
+        )
+    if nxt:
+        pager.append(
+            f'<a class="next" href="{nxt["file"]}"><span class="dir">下一节 →</span>'
+            f'<span class="title">{esc(nxt["title"])}</span></a>'
+        )
+
+    toc = [
+        ("video", "视频讲解"),
+        ("knowledge", "知识精讲"),
+        ("pitfalls", "易错提醒"),
+        ("practice", "练习巩固"),
+    ]
+    toc_html = "".join(
+        f'<li><a href="#{anchor}"><span class="n">{i + 1:02d}</span>{name}</a></li>'
+        for i, (anchor, name) in enumerate(toc)
+    )
+
+    return (
+        head(
+            f"{lesson['title']} · {lesson['subtitle']} · 数益坊",
+            lesson["brief"],
+        )
+        + header("", "lessons")
+        + f"""
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">{esc(stage['name'])}</a><span class="sep">/</span>
+      <span>{esc(lesson['title'])}</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage {lesson['stage']}">{esc(stage['name'])}</span>
+          <span class="chip">{esc(lesson['grade'])}</span>
+          <span class="chip">{DIFFICULTY[lesson['difficulty']]}</span>
+          <span class="chip">带配音视频</span>
+        </div>
+        <h1>{esc(lesson['title'])}</h1>
+        <p class="subtitle">{esc(lesson['subtitle'])}</p>
+        <p class="brief">{esc(lesson['brief'])}</p>
+        <div class="lesson-meta">
+          <span>视频 <b>{mmss(seconds)}</b></span>
+          <span>建议学习 <b>{lesson['minutes']} 分钟</b></span>
+          <span>练习 <b>{len(lesson['questions'])} 题</b></span>
+          <span>章节 <b>{len(lesson['chapters'])} 段</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">{esc(lesson['keyformula'])}</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>看视频：先有画面</h2><span class="hint">{mmss(seconds)}</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/posters/{lesson['id']}.jpg">
+                <source src="{lesson['video']}" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="{lesson['video']}">点此下载视频</a>。
+              </video>
+            </div>
+            {chapter_list(lesson)}
+          </div>
+          <p class="video-note">{esc(lesson['videoNote'])}</p>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          {knowledge_blocks(lesson)}
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>{esc(lesson['summary'])}</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul>{pitfalls}</ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          {quiz(lesson)}
+        </section>
+
+        <nav class="pager" aria-label="课时翻页">{''.join(pager)}</nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc">{toc_html}</ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list">{goals}</ul>
+          </div>
+          {lab_aside}
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+"""
+        + footer()
+    )
+
+
+def main() -> None:
+    (ROOT / "index.html").write_text(build_home(), encoding="utf-8")
+    (ROOT / "lessons.html").write_text(build_catalog(), encoding="utf-8")
+    (ROOT / "labs.html").write_text(build_labs(), encoding="utf-8")
+
+    for i, lesson in enumerate(LESSONS):
+        prev = LESSONS[i - 1] if i > 0 else None
+        nxt = LESSONS[i + 1] if i + 1 < len(LESSONS) else None
+        (ROOT / lesson["file"]).write_text(build_lesson(lesson, prev, nxt), encoding="utf-8")
+        print(f"[OK] {lesson['file']}")
+
+    print(f"[DONE] {len(LESSONS) + 3} pages")
+
+
+if __name__ == "__main__":
+    main()

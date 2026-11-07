@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>勾股定理 — 面积拼图动画</title>
+  <style>
+    :root {
+      --bg: #0f1117; --card: #1a1d27; --accent: #6c5ce7;
+      --accent2: #00cec9; --text: #e8e8f0; --muted: #6b7280;
+      --warm: #fd79a8; --success: #00b894; --warn: #fdcb6e;
+      --a-color: #6c5ce7; --b-color: #00cec9; --c-color: #fd79a8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'PingFang SC','Microsoft YaHei',sans-serif; min-height: 100vh; padding: 24px; }
+    a.back { color: var(--muted); text-decoration: none; font-size: 0.9rem; display: inline-block; margin-bottom: 20px; }
+    a.back:hover { color: var(--accent); }
+    h1 { font-size: 1.6rem; margin-bottom: 6px; }
+    .subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 28px; }
+    .controls { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .controls label { color: var(--muted); font-size: 0.9rem; }
+    .controls select, .controls input {
+      background: var(--card); color: var(--text); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 6px 12px; font-size: 0.9rem;
+    }
+    .btn { padding: 8px 20px; border-radius: 8px; border: none; cursor: pointer; font-size: 0.9rem; transition: opacity 0.2s; }
+    .btn:hover { opacity: 0.85; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-secondary { background: rgba(255,255,255,0.08); color: var(--text); }
+    .panel { background: var(--card); border-radius: 16px; padding: 32px; border: 1px solid rgba(255,255,255,0.06); }
+    canvas { border-radius: 12px; display: block; margin: 0 auto; }
+    .explain { min-height: 56px; padding: 14px 20px; margin-top: 16px; background: rgba(253,121,168,0.08); border-radius: 10px; color: var(--warm); font-size: 0.95rem; text-align: center; border: 1px solid rgba(253,121,168,0.2); line-height: 1.6; }
+    .formula { font-size: 1.6rem; font-weight: 700; color: var(--warn); text-align: center; margin-top: 12px; font-family: 'Courier New', monospace; }
+    .stats { display: flex; justify-content: center; gap: 24px; margin-top: 16px; }
+    .stat { text-align: center; }
+    .stat-val { font-size: 1.5rem; font-weight: 700; font-family: 'Courier New', monospace; }
+    .stat-label { font-size: 0.8rem; color: var(--muted); }
+    .sa { color: var(--a-color); } .sb { color: var(--b-color); } .sc { color: var(--c-color); }
+
+    /* Chinese description badge */
+    .desc-badge {
+      display: inline-flex; align-items: flex-start; gap: 10px;
+      background: rgba(253,121,168,0.08); border: 1px solid rgba(253,121,168,0.25);
+      border-radius: 10px; padding: 12px 18px; margin-bottom: 20px;
+      font-size: 0.88rem; color: var(--warm); line-height: 1.7;
+    }
+    .desc-badge .badge-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+    .desc-badge strong { color: var(--warn); }
+
+    .step-log {
+      margin-top: 12px; padding: 12px 16px;
+      background: rgba(255,255,255,0.03); border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+      max-height: 160px; overflow-y: auto;
+      font-size: 0.84rem; color: var(--muted); line-height: 1.8;
+    }
+    .step-log .step-entry { padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .step-log .step-entry:last-child { border-bottom: none; }
+    .step-log .step-num { color: var(--accent); font-weight: 600; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <a class="back" href="../index.html">← 返回首页</a>
+  <h1>△ 勾股定理</h1>
+  <p class="subtitle">a² + b² = c² 不是符号游戏——是两个小正方形能刚好填满大正方形</p>
+
+  <div class="panel">
+    <div class="desc-badge">
+      <span class="badge-icon">🔺</span>
+      <div>
+        <strong>什么是勾股定理？</strong><br>
+        直角三角形中，两条直角边的平方和等于斜边的平方。<br>
+        这不是死记的公式，而是可以通过<strong>面积拼合</strong>来验证的几何事实：<br>
+        以两条直角边为边长的两个正方形，面积之和恰好等于以斜边为边长的正方形面积。
+      </div>
+    </div>
+
+    <div class="controls">
+      <label>选择三角形：</label>
+      <select id="triSelect">
+        <option value="3,4,5">3-4-5（最经典）</option>
+        <option value="5,12,13">5-12-13</option>
+        <option value="6,8,10">6-8-10（3-4-5 的 2 倍）</option>
+        <option value="8,15,17">8-15-17</option>
+        <option value="custom">自定义</option>
+      </select>
+      <input type="number" id="customA" placeholder="直角边 a" min="1" max="20" style="width:80px;display:none">
+      <input type="number" id="customB" placeholder="直角边 b" min="1" max="20" style="width:80px;display:none">
+      <button class="btn btn-primary" id="playBtn">▶ 播放证明</button>
+      <button class="btn btn-secondary" id="resetBtn">↺ 重置</button>
+    </div>
+
+    <canvas id="canvas" width="600" height="500"></canvas>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-val sa" id="statA">a² = 9</div><div class="stat-label">红色正方形（边长 a）</div></div>
+      <div class="stat"><div class="stat-val sb" id="statB">b² = 16</div><div class="stat-label">青色正方形（边长 b）</div></div>
+      <div class="stat"><div class="stat-val sc" id="statC">c² = 25</div><div class="stat-label">粉色正方形（边长 c）</div></div>
+    </div>
+
+    <div class="explain" id="explain">点击播放，观看三个正方形如何拼合证明 a²+b²=c²</div>
+    <div class="formula" id="formula"></div>
+    <div class="step-log" id="stepLog">
+      <div class="step-entry">就绪：选择三角形类型，点击播放观看证明过程</div>
+    </div>
+  </div>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let animId = null;
+let animProgress = 0;
+
+const SCALE = 18;
+const OFFSET_X = 100;
+const OFFSET_Y = 400;
+
+let triA = 3, triB = 4, triC = 5;
+
+function resize() {
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * 2;
+  canvas.height = 1000;
+  ctx.scale(2, 2);
+}
+resize();
+window.addEventListener('resize', () => { resize(); redraw(); });
+
+function clear() {
+  ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
+}
+
+function addLog(log, title, desc) {
+  const div = document.createElement('div');
+  div.className = 'step-entry';
+  div.innerHTML = `<span class="step-num">[${title}]</span>${desc}`;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+}
+
+function getCols(a, b, c) {
+  return {
+    a: Array.from({length: a*a}, (_,i) => ({x: i%a, y: Math.floor(i/a)})),
+    b: Array.from({length: b*b}, (_,i) => ({x: i%b, y: Math.floor(i/b)})),
+    c: Array.from({length: c*c}, (_,i) => ({x: i%c, y: Math.floor(i/c)}))
+  };
+}
+
+// Draw a grid of small squares
+function drawGrid(cells, origin, size, color, alpha, delayPerCell = 0) {
+  cells.forEach((cell, i) => {
+    const delay = i * delayPerCell;
+    if (delay > animProgress * 1000) return;
+    const localT = Math.min((animProgress * 1000 - delay) / 200, 1);
+    const ease = localT < 0.5 ? 2*localT*localT : 1 - Math.pow(-2*localT+2,2)/2;
+    const px = origin.x + cell.x * size;
+    const py = origin.y - cell.y * size;
+    ctx.fillStyle = color.replace('ALPHA', `${(0.2 + ease*0.4).toFixed(2)}`);
+    ctx.fillRect(px + 1, py - size + 1, size - 2, size - 2);
+    ctx.strokeStyle = color.replace('ALPHA', `${(0.3 + ease*0.3).toFixed(2)}`);
+    ctx.lineWidth = 0.5;
+    ctx.strokeRect(px + 1, py - size + 1, size - 2, size - 2);
+  });
+}
+
+function drawTriangle(V_right, V_top, V_far, alpha) {
+  ctx.strokeStyle = `rgba(255,255,255,${alpha})`;
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(V_right.x, V_right.y);
+  ctx.lineTo(V_top.x, V_top.y);
+  ctx.lineTo(V_far.x, V_far.y);
+  ctx.closePath();
+  ctx.stroke();
+
+  // Right angle marker
+  const s = 12;
+  ctx.strokeStyle = `rgba(255,255,255,${alpha*0.5})`;
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(V_right.x + s, V_right.y);
+  ctx.lineTo(V_right.x + s, V_right.y - s);
+  ctx.lineTo(V_right.x, V_right.y - s);
+  ctx.stroke();
+
+  // Side labels
+  ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+  ctx.font = 'bold 14px PingFang SC';
+  ctx.textAlign = 'center';
+  ctx.fillText(`a = ${triA}`, (V_right.x + V_far.x)/2, V_right.y + 26);
+  ctx.fillText(`b = ${triB}`, V_top.x - 26, (V_right.y + V_top.y)/2);
+  ctx.fillText(`c = ${triC}`, (V_top.x + V_far.x)/2 + 22, (V_top.y + V_far.y)/2 - 8);
+}
+
+function redraw() {
+  clear();
+  const t = Math.min(animProgress, 1);
+  const V_right = { x: OFFSET_X, y: OFFSET_Y };
+  const V_top = { x: OFFSET_X, y: OFFSET_Y - triB * SCALE };
+  const V_far = { x: OFFSET_X + triA * SCALE, y: OFFSET_Y };
+  const cols = getCols(triA, triB, triC);
+  const log = document.getElementById('stepLog');
+
+  // ========== PHASE 1: Draw triangle + three squares (0 - 0.35) ==========
+  if (t < 0.35) {
+    const pt = t / 0.35;
+    drawTriangle(V_right, V_top, V_far, pt);
+
+    // Square A (red, on bottom side a)
+    if (pt > 0.15) {
+      const ap = Math.min((pt - 0.15) / 0.2, 1);
+      const sqA_origin = { x: OFFSET_X, y: OFFSET_Y };
+      drawGrid(cols.a, sqA_origin, SCALE, 'rgba(108,92,231,ALPHA)', ap, 25);
+      if (ap > 0.8) {
+        ctx.fillStyle = '#6c5ce7';
+        ctx.font = 'bold 13px PingFang SC';
+        ctx.textAlign = 'center';
+        ctx.fillText(`a² = ${triA*triA}`, sqA_origin.x + triA*SCALE/2, sqA_origin.y + 22);
+      }
+    }
+
+    // Square B (cyan, on left side b)
+    if (pt > 0.25) {
+      const bp = Math.min((pt - 0.25) / 0.2, 1);
+      const sqB_origin = { x: OFFSET_X - triB * SCALE, y: OFFSET_Y - triB * SCALE };
+      drawGrid(cols.b, sqB_origin, SCALE, 'rgba(0,206,201,ALPHA)', bp, 25);
+      if (bp > 0.8) {
+        ctx.fillStyle = '#00cec9';
+        ctx.font = 'bold 13px PingFang SC';
+        ctx.textAlign = 'center';
+        ctx.fillText(`b² = ${triB*triB}`, sqB_origin.x + triB*SCALE/2, sqB_origin.y - triB*SCALE/2);
+      }
+    }
+
+    // Square C (pink, on hypotenuse) — dashed outline
+    if (pt > 0.3) {
+      const cp = (pt - 0.3) / 0.05;
+      const cOx = V_top.x;
+      const cOy = V_top.y;
+      ctx.save();
+      ctx.translate(cOx, cOy);
+      const angle = Math.atan2(V_far.y - V_top.y, V_far.x - V_top.x);
+      ctx.rotate(-angle);
+      ctx.strokeStyle = `rgba(253,121,168,${cp})`;
+      ctx.lineWidth = 2;
+      ctx.setLineDash([6,4]);
+      ctx.strokeRect(0, 0, triC*SCALE, triC*SCALE);
+      ctx.setLineDash([]);
+      ctx.restore();
+      if (cp >= 1) {
+        ctx.fillStyle = '#fd79a8';
+        ctx.font = 'bold 13px PingFang SC';
+        ctx.textAlign = 'center';
+        const cCx = cOx + triC*SCALE/2;
+        const cCy = cOy - triC*SCALE/2;
+        ctx.fillText(`c² = ${triC*triC}`, cCx, cCy);
+      }
+    }
+
+    document.getElementById('explain').innerHTML =
+      t < 0.2 ? '第一步：在直角三角形三条边上各画一个正方形' :
+      t < 0.3 ? '红色正方形面积 = a²，青色 = b²，粉色虚线 = c²' :
+      `三个正方形就位了。红色面积 ${triA*triA}，青色面积 ${triB*triB}，粉色面积 ${triC*triC}。它们之间有什么关系？`;
+    document.getElementById('formula').textContent = '';
+    if (pt > 0.9 && !log.innerHTML.includes('就位')) {
+      addLog(log, '就位', `三个正方形分别在三角形三条边上：a²=${triA*triA}，b²=${triB*triB}，c²=${triC*triC}`);
+    }
+  }
+
+  // ========== PHASE 2: Highlight relationship (0.35 - 0.55) ==========
+  else if (t < 0.55) {
+    const pt = (t - 0.35) / 0.2;
+    drawTriangle(V_right, V_top, V_far, 1);
+    const sqA_origin = { x: OFFSET_X, y: OFFSET_Y };
+    const sqB_origin = { x: OFFSET_X - triB * SCALE, y: OFFSET_Y - triB * SCALE };
+    drawGrid(cols.a, sqA_origin, SCALE, 'rgba(108,92,231,ALPHA)', 1, 0);
+    drawGrid(cols.b, sqB_origin, SCALE, 'rgba(0,206,201,ALPHA)', 1, 0);
+
+    // Pulse C square
+    const pulse = 0.5 + 0.5 * Math.sin(pt * Math.PI * 3);
+    const cOx = V_top.x, cOy = V_top.y;
+    ctx.save();
+    ctx.translate(cOx, cOy);
+    const angle = Math.atan2(V_far.y - V_top.y, V_far.x - V_top.x);
+    ctx.rotate(-angle);
+    ctx.strokeStyle = `rgba(253,121,168,${0.3 + pulse * 0.5})`;
+    ctx.lineWidth = 2.5;
+    ctx.setLineDash([6,4]);
+    ctx.strokeRect(0, 0, triC*SCALE, triC*SCALE);
+    ctx.setLineDash([]);
+    ctx.restore();
+
+    ctx.fillStyle = '#fdcb6e';
+    ctx.font = 'bold 14px Courier New';
+    ctx.textAlign = 'center';
+    ctx.fillText(`${triA*triA} + ${triB*triB} = ${triA*triA + triB*triB}  VS  ${triC*triC}  ？`, OFFSET_X + triA*SCALE/2, OFFSET_Y + 48);
+
+    document.getElementById('explain').innerHTML =
+      `<strong>a²(${triA*triA}) + b²(${triB*triB}) = ${triA*triA + triB*triB}</strong><br>` +
+      `与 <strong>c²(${triC*triC})</strong> 比较——它们相等吗？让我们通过拼合来验证。`;
+    document.getElementById('formula').textContent = '';
+    if (pt > 0.5 && !log.innerHTML.includes('比较')) {
+      addLog(log, '比较', `${triA*triA} + ${triB*triB} = ${triA*triA+triB*triB}，与 ${triC*triC} 对比，准备验证`);
+    }
+  }
+
+  // ========== PHASE 3: Rearrangement proof (0.55 - 1.0) ==========
+  else {
+    const pt = (t - 0.55) / 0.45;
+    clear();
+
+    // Draw triangle in corner
+    drawTriangle(V_right, V_top, V_far, 0.5);
+
+    // Target area: c² square on hypotenuse
+    const cOx = V_top.x;
+    const cOy = V_top.y;
+    ctx.save();
+    ctx.translate(cOx, cOy);
+    const angle = Math.atan2(V_far.y - V_top.y, V_far.x - V_top.x);
+    ctx.rotate(-angle);
+
+    // c² square outline
+    ctx.strokeStyle = 'rgba(253,121,168,0.3)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(0, 0, triC*SCALE, triC*SCALE);
+
+    // Fill a² portion (top-left corner of c² square) with red
+    const aEnd = Math.min(pt * 3, 1);
+    for (let i = 0; i < triA * triA; i++) {
+      const cellX = i % triA;
+      const cellY = Math.floor(i / triA);
+      const px = cellX * SCALE;
+      const py = (triC - 1 - cellY) * SCALE;
+      ctx.fillStyle = `rgba(108,92,231,${0.35 * aEnd})`;
+      ctx.fillRect(px + 1, py - SCALE + 1, SCALE - 2, SCALE - 2);
+    }
+
+    // Fill b² portion (remaining area) with cyan
+    const bStart = aEnd;
+    const bEnd = Math.min((pt * 3 - 1), 1);
+    for (let i = 0; i < triB * triB; i++) {
+      const cellX = i % triB;
+      const cellY = Math.floor(i / triB);
+      // Place in remaining space of c² square
+      const px = (triA + cellX) * SCALE;
+      const py = (triC - 1 - cellY) * SCALE;
+      if (px < triC * SCALE && py >= 0) {
+        const fillProgress = Math.max(0, Math.min((bEnd * triB * triB - i) / triB / triB + 0.01, 1));
+        ctx.fillStyle = `rgba(0,206,201,${0.35 * fillProgress})`;
+        ctx.fillRect(px + 1, py - SCALE + 1, SCALE - 2, SCALE - 2);
+      }
+    }
+
+    // Boundary line
+    if (aEnd > 0.3) {
+      ctx.strokeStyle = 'rgba(253,203,110,0.6)';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([4,4]);
+      ctx.beginPath();
+      ctx.moveTo(triA * SCALE, 0);
+      ctx.lineTo(triA * SCALE, triC * SCALE);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(triA * SCALE, 0);
+      ctx.lineTo(0, 0);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    ctx.restore();
+
+    // Final formula
+    if (pt > 0.85) {
+      const ft = (pt - 0.85) / 0.15;
+      ctx.fillStyle = `rgba(253,203,110,${ft})`;
+      ctx.font = 'bold 18px Courier New';
+      ctx.textAlign = 'center';
+      ctx.fillText(`${triA}² + ${triB}² = ${triC}²`, OFFSET_X + triA*SCALE/2, OFFSET_Y + 55);
+    }
+
+    document.getElementById('explain').innerHTML =
+      `将红色正方形（a²=${triA*triA}）和青色正方形（b²=${triB*triB}）的格子<br>` +
+      `重新排列，恰好填满粉色正方形（c²=${triC*triC}）的每一个格子！<br>` +
+      `<strong>面积守恒，完美拼合。</strong>`;
+    document.getElementById('formula').textContent = `a² + b² = c²`;
+    if (pt > 0.9 && !log.innerHTML.includes('证明')) {
+      addLog(log, '✓ 证明完成', `${triA}²(${triA*triA}) + ${triB}²(${triB*triB}) = ${triA*triA+triB*triB} = ${triC}²(${triC*triC})，勾股定理得证`);
+    }
+  }
+}
+
+function playAnim() {
+  if (animId) cancelAnimationFrame(animId);
+  animProgress = 0;
+  const start = performance.now();
+  document.getElementById('stepLog').innerHTML = '';
+  addLog(document.getElementById('stepLog'), '开始', `验证 ${triA}-${triB}-${triC} 三角形的勾股定理`);
+  function tick(now) {
+    animProgress = Math.min((now - start) / 5000, 1);
+    redraw();
+    if (animProgress < 1) animId = requestAnimationFrame(tick);
+  }
+  animId = requestAnimationFrame(tick);
+}
+
+function resetAnim() {
+  if (animId) cancelAnimationFrame(animId);
+  animProgress = 0;
+  redraw();
+  document.getElementById('explain').textContent = '点击播放，观看三个正方形如何拼合证明 a²+b²=c²';
+  document.getElementById('formula').textContent = '';
+  document.getElementById('stepLog').innerHTML = '<div class="step-entry">已重置，随时可以重新播放</div>';
+}
+
+function loadTriangle(vals) {
+  triA = vals[0]; triB = vals[1]; triC = vals[2];
+  document.getElementById('statA').textContent = `a² = ${triA*triA}`;
+  document.getElementById('statB').textContent = `b² = ${triB*triB}`;
+  document.getElementById('statC').textContent = `c² = ${triC*triC}`;
+  resetAnim();
+}
+
+document.getElementById('triSelect').addEventListener('change', (e) => {
+  if (e.target.value === 'custom') {
+    document.getElementById('customA').style.display = '';
+    document.getElementById('customB').style.display = '';
+  } else {
+    document.getElementById('customA').style.display = 'none';
+    document.getElementById('customB').style.display = 'none';
+    const [a,b,c] = e.target.value.split(',').map(Number);
+    loadTriangle([a,b,c]);
+  }
+});
+document.getElementById('customA').addEventListener('change', applyCustom);
+document.getElementById('customB').addEventListener('change', applyCustom);
+
+function applyCustom() {
+  const a = parseInt(document.getElementById('customA').value) || 3;
+  const b = parseInt(document.getElementById('customB').value) || 4;
+  const c = Math.round(Math.sqrt(a*a + b*b));
+  loadTriangle([a, b, c]);
+}
+
+document.getElementById('playBtn').addEventListener('click', playAnim);
+document.getElementById('resetBtn').addEventListener('click', resetAnim);
+
+loadTriangle([3, 4, 5]);
+</script>
+</body>
+</html>

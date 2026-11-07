@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>勾股定理 · a² + b² = c²，为什么一定成立 · 数益坊</title>
+<meta name="description" content="梯子靠墙的生活问题出发，把三条边上的正方形切成小方格，一格一格搬进斜边正方形——定理就这样被看见。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">26 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>勾股定理</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">八年级</span>
+          <span class="chip">挑战</span>
+          <span class="chip">带配音视频</span>
+        </div>
+        <h1>勾股定理</h1>
+        <p class="subtitle">a² + b² = c²，为什么一定成立</p>
+        <p class="brief">梯子靠墙的生活问题出发，把三条边上的正方形切成小方格，一格一格搬进斜边正方形——定理就这样被看见。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>1:26</b></span>
+          <span>建议学习 <b>12 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+          <span>章节 <b>9 段</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">a² + b² = c²</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>看视频：先有画面</h2><span class="hint">1:26</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/posters/gougu-dingli.jpg">
+                <source src="assets/videos/gougu-dingli.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/gougu-dingli.mp4">点此下载视频</a>。
+              </video>
+            </div>
+            <div class="chapters" role="group" aria-label="视频章节"><button class="chapter" type="button" data-t="0.0"><span class="t">0:00</span>梯子靠墙的生活问题</button><button class="chapter" type="button" data-t="11.1"><span class="t">0:11</span>抽象成直角三角形</button><button class="chapter" type="button" data-t="22.7"><span class="t">0:22</span>三条边上各画一个正方形</button><button class="chapter" type="button" data-t="35.9"><span class="t">0:35</span>9 + 16 = 25</button><button class="chapter" type="button" data-t="44.9"><span class="t">0:44</span>把正方形切成小方格</button><button class="chapter" type="button" data-t="53.3"><span class="t">0:53</span>一共 25 个小方格</button><button class="chapter" type="button" data-t="59.1"><span class="t">0:59</span>搬进斜边正方形</button><button class="chapter" type="button" data-t="67.7"><span class="t">1:07</span>面积之和相等</button><button class="chapter" type="button" data-t="75.5"><span class="t">1:15</span>a² + b² = c²</button></div>
+          </div>
+          <p class="video-note">这是本站第一支完整配音讲解视频，9 个章节、约 86 秒。建议配合下方「割补实验室」一起看。</p>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>从梯子靠墙说起</h3></div>
+  <p>一把梯子斜靠在墙上，梯子底端离墙 3 米，墙高 4 米。梯子有多长？</p><p>把地面、墙面和梯子看成一个直角三角形：两条直角边是 3 米和 4 米，斜边就是梯子的长度。</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>勾股定理</h3></div>
+  <p>在直角三角形中，两条直角边的平方和，等于斜边的平方。</p><p>这里 c 一定表示斜边，也就是直角对面的那条最长边。</p><p class="formula-big">a² + b² = c²</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>面积法：小方格搬家</h3></div>
+  <p>在两条直角边上各画一个正方形，面积分别是 9 和 16；在斜边上也画一个正方形。</p><p>把 9 个小方格和 16 个小方格切成边长 1 米的小块，一共 25 块，正好铺满斜边上的大正方形，一格不剩。</p><p>所以两条直角边上的正方形面积之和，等于斜边上的正方形面积。这就是定理的几何含义。</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>用它算长度</h3></div>
+  <p>直角边 3 和 4：c² = 9 + 16 = 25，所以 c = 5（米）。</p><p>已知斜边 13、一条直角边 5：另一条直角边 b² = 13² − 5² = 169 − 25 = 144，b = 12。</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>逆定理：判断直角三角形</h3></div>
+  <p>反过来也成立：如果三角形三边满足 a² + b² = c²，那么它一定是直角三角形，且 c 所对的角是直角。</p><p>例如 6、8、10：36 + 64 = 100，是直角三角形；而 2、3、4：4 + 9 = 13 ≠ 16，不是直角三角形。</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>勾股定理说的是面积关系：两条直角边上的正方形面积之和，等于斜边上的正方形面积。a² + b² = c²。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>勾股定理只适用于直角三角形，锐角三角形、钝角三角形都不成立。</li><li>c 必须是斜边。题目没有明说时，要先找最长边。</li><li>算面积时单位要平方，写「米」就错了。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">直角三角形的两条直角边分别是 3 和 4，斜边是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>5</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>7</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>25</span></button></div>
+    <div class="feedback" role="status" data-explain="c² = 3² + 4² = 9 + 16 = 25，所以 c = 5。注意最后要开平方。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">直角三角形斜边是 13，一条直角边是 5，另一条直角边是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>8</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>18</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>12</span></button></div>
+    <div class="feedback" role="status" data-explain="b² = 13² − 5² = 169 − 25 = 144，所以 b = 12。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">三边长为 2、3、4 的三角形，是直角三角形吗？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>不是</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>是</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>无法判断</span></button></div>
+    <div class="feedback" role="status" data-explain="2² + 3² = 4 + 9 = 13，而 4² = 16，13 ≠ 16，不满足勾股定理，所以不是直角三角形。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">在直角三角形中，a² + b² = c² 里的 c 表示什么？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>任意一条边</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>直角边</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>斜边，也就是最长边</span></button></div>
+    <div class="feedback" role="status" data-explain="c 必须是斜边，即直角所对的那条最长边。写错位置是最常见的失分点。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-dengcha.html"><span class="dir">← 上一节</span><span class="title">等差数列求和</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>说出勾股定理的适用条件</li><li>用面积法解释定理为什么成立</li><li>已知两边求第三边</li><li>分清直角边与斜边</li></ul>
+          </div>
+          
+      <div class="aside-lab">
+        <h3>动手验证</h3>
+        <div class="al-title">勾股定理拼图</div>
+        <p>调节直角边长度，看小方格如何搬进斜边正方形。</p>
+        <a href="labs/pythagoras.html">打开实验 →</a>
+      </div>
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

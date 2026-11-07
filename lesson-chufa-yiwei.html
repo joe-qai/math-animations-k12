@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>除数是一位数的除法 · 从高位除起，余数一定比除数小 · 数益坊</title>
+<meta name="description" content="48 块糖分给 4 个人，每人几块？48 ÷ 4 可以拆成 40 ÷ 4 + 8 ÷ 4 口算，也可以列竖式。除不尽时怎么写余数、怎么验算，这一节讲透。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">26 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">小学数学</a><span class="sep">/</span>
+      <span>除数是一位数的除法</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage xiaoxue">小学数学</span>
+          <span class="chip">三年级</span>
+          <span class="chip">进阶</span>
+          <span class="chip">带配音视频</span>
+        </div>
+        <h1>除数是一位数的除法</h1>
+        <p class="subtitle">从高位除起，余数一定比除数小</p>
+        <p class="brief">48 块糖分给 4 个人，每人几块？48 ÷ 4 可以拆成 40 ÷ 4 + 8 ÷ 4 口算，也可以列竖式。除不尽时怎么写余数、怎么验算，这一节讲透。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>1:34</b></span>
+          <span>建议学习 <b>9 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+          <span>章节 <b>7 段</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">余数一定要比除数小</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>看视频：先有画面</h2><span class="hint">1:34</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/posters/chufa-yiwei.jpg">
+                <source src="assets/videos/chufa-yiwei.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/chufa-yiwei.mp4">点此下载视频</a>。
+              </video>
+            </div>
+            <div class="chapters" role="group" aria-label="视频章节"><button class="chapter" type="button" data-t="0.0"><span class="t">0:00</span>48 块糖，平均分给 4 人</button><button class="chapter" type="button" data-t="14.37"><span class="t">0:14</span>口算：拆成 40 和 8</button><button class="chapter" type="button" data-t="27.47"><span class="t">0:27</span>竖式：从最高位除起</button><button class="chapter" type="button" data-t="41.69"><span class="t">0:41</span>有余数：53 ÷ 4</button><button class="chapter" type="button" data-t="56.24"><span class="t">0:56</span>验算：商 × 除数 + 余数</button><button class="chapter" type="button" data-t="69.58"><span class="t">1:09</span>不够除就商 0：480 ÷ 4</button><button class="chapter" type="button" data-t="83.19"><span class="t">1:23</span>除法三句话</button></div>
+          </div>
+          <p class="video-note">视频第 3 节算 53 ÷ 4，红色的数就是余数；第 5 节 480 ÷ 4 的商末尾那个 0 会单独圈出来——漏写它答案就从 120 变成 12。</p>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>口算：拆成整十数和个位数</h3></div>
+  <p>48 ÷ 4 表示把 48 平均分成 4 份，每份是多少。把 48 拆成 40 和 8，分别除以 4，再把商相加。</p><p>40 ÷ 4 = 10，8 ÷ 4 = 2，10 + 2 = 12。所以 48 ÷ 4 = 12。和乘法一样，拆开算更简单。</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>竖式：从最高位除起</h3></div>
+  <p>除法竖式的写法：被除数写在「厂」里，除数写在左边，商写在上面，并且要和被除数的那一位对齐。</p><p>计算时从最高位开始：十位 4 ÷ 4 = 1，商 1 写在十位上；1 × 4 = 4，写在 4 下面相减得 0；把个位 8 落下来，8 ÷ 4 = 2，商 2 写在个位上。所以商是 12。</p><p class="formula-big">48 ÷ 4 = 12</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>有余数除法：余数必须比除数小</h3></div>
+  <p>53 ÷ 4：十位 5 ÷ 4 商 1 余 1，把余下的 1 和落下来的 3 组成 13，13 ÷ 4 商 3 余 1。所以 53 ÷ 4 = 13 余 1。</p><p>余数一定要比除数小。如果算出余数等于或大于除数，说明商小了，要把商调大。</p><p class="formula-big">被除数 = 商 × 除数 + 余数</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>验算与商末尾的 0</h3></div>
+  <p>验算有余数的除法：13 × 4 = 52，52 + 1 = 53，和原来的被除数一样，说明算对了。</p><p>哪一位不够除就要商 0 占位。480 ÷ 4：百位 4 ÷ 4 = 1，十位 8 ÷ 4 = 2，个位 0 ÷ 4 = 0，商是 120。这个 0 漏写，商就变成 12，差了十倍。</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>除数是一位数的除法从最高位除起，商写在对齐的数位上；每次除完的余数必须比除数小；哪一位不够除就商 0 占位；算完用「商 × 除数 + 余数 = 被除数」验算。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>从个位开始除：除法要从最高位除起，商的数位才对得齐。</li><li>商写错位置：十位除得的商要写在十位上方，写到个位上方整个答案就错位了。</li><li>余数比除数大：算出余 5 而除数是 4，说明商小了，应该再加 1。</li><li>商末尾漏写 0：480 ÷ 4 写成 12，实际是 120，0 是占位的，不能省。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">计算 48 ÷ 4 时，商的十位应该写几？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>2</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>1</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>4</span></button></div>
+    <div class="feedback" role="status" data-explain="从最高位除起：十位的 4 ÷ 4 = 1，所以十位商 1，个位 8 ÷ 4 = 2，商是 12。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">53 ÷ 4 的商和余数分别是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>12 余 5</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>13 余 2</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>13 余 1</span></button></div>
+    <div class="feedback" role="status" data-explain="5 ÷ 4 商 1 余 1，落下 3 得 13，13 ÷ 4 商 3 余 1，所以商 13 余 1。余 5 比除数 4 大，是错的。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">验算 13 × 4 + 1，结果是多少？说明什么？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>53，说明 53 ÷ 4 = 13 余 1 正确</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>52，说明余数是 0</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>56，说明商算小了</span></button></div>
+    <div class="feedback" role="status" data-explain="13 × 4 = 52，52 + 1 = 53，正好等于被除数，说明商和余数都算对了。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">480 ÷ 4 的商是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>12</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>102</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>120</span></button></div>
+    <div class="feedback" role="status" data-explain="4 ÷ 4 = 1，8 ÷ 4 = 2，0 ÷ 4 = 0，商是 120。个位的 0 要写出来占位。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-duowei-cheng-yiwei.html"><span class="dir">← 上一节</span><span class="title">多位数乘一位数</span></a><a class="next" href="lesson-changfangxing-mianji.html"><span class="dir">下一节 →</span><span class="title">长方形和正方形的面积</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>会把两位数拆成整十数和个位数来口算除法</li><li>会列竖式，从最高位除起，商写在对齐的数位上</li><li>理解有余数除法：余数必须比除数小</li><li>会用「商 × 除数 + 余数 = 被除数」验算</li><li>知道哪一位不够除时要用 0 占位</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
