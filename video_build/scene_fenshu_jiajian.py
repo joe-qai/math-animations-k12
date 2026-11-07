@@ -232,26 +232,22 @@ class FenshuJiajianScene(NarratedScene):
         m2 = mixed("1", "1", "4", [0, 0, 0], 40, BLUE)
         eq = txt("=", size=40, color=DIM)
         m3 = mixed("3", "2", "4", [0, 0, 0], 40, CHALK)
-        row = VGroup(m1, plus, m2, eq, m3).arrange(RIGHT, buff=0.36).move_to([0, 1.95, 0])
+        row = VGroup(m1, plus, m2, eq, m3).arrange(RIGHT, buff=0.36).move_to([0, 2.2, 0])
         self.play(FadeIn(row), run_time=1.4)
 
-        br1 = Brace(m1[0], DOWN, buff=0.14, color=GOLD)
-        lab1 = txt("整数 2 + 1 = 3", size=23, color=GOLD).next_to(br1, DOWN, buff=0.08)
-        br2 = Brace(VGroup(m1[1], m2[1]), DOWN, buff=0.42, color=BLUE)
-        lab2 = txt("分数部分相加", size=23, color=BLUE).next_to(br2, DOWN, buff=0.08)
-        self.play(Create(br1), FadeIn(lab1), run_time=0.8)
-        self.play(Create(br2), FadeIn(lab2), run_time=0.8)
+        s1 = VGroup(
+            txt("整数部分：2 + 1 = 3", size=26, color=GOLD),
+            txt("分数部分：四分之一 + 四分之一 = 四分之二 = 二分之一", size=26, color=CHALK),
+        ).arrange(DOWN, buff=0.26).move_to([0, 0.75, 0])
+        self.play(FadeIn(s1[0], shift=UP * 0.05), run_time=0.8)
+        self.play(FadeIn(s1[1], shift=UP * 0.05), run_time=0.9)
 
-        s1 = txt("四分之一 + 四分之一 = 四分之二 = 二分之一", size=27, color=CHALK)
-        s1.move_to([0, -0.75, 0])
-        self.play(FadeIn(s1, shift=UP * 0.05), run_time=0.9)
-
-        res = mixed("3", "1", "2", [0, -1.95, 0], 52, GREEN)
+        res = mixed("3", "1", "2", [0, -1.35, 0], 54, GREEN)
         self.play(FadeIn(res, shift=UP * 0.06), run_time=1.0)
 
         note = txt("最后别忘了把分数部分约成最简", size=26, color=GOLD)
-        note.move_to([3.0, -1.95, 0])
-        self.play(FadeIn(note, shift=LEFT * 0.05), run_time=0.8)
+        note.move_to([0, -2.55, 0])
+        self.play(FadeIn(note, shift=UP * 0.06), run_time=0.8)
         self.wait(2.4)
         self.finish_section()
 

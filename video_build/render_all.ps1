@@ -34,6 +34,7 @@ $jobs = @(
     @{ File = "scene_xiaoshu_chu.py"; Scene = "XiaoshuChuScene"; Id = "xiaoshu-chu" },
     @{ File = "scene_yinshu.py";     Scene = "YinshuBeishuScene"; Id = "yinshu-beishu" },
     @{ File = "scene_fenshu_xingzhi.py"; Scene = "FenshuXingzhiScene"; Id = "fenshu-xingzhi" },
+    @{ File = "scene_fenshu_jiajian.py"; Scene = "FenshuJiajianScene"; Id = "fenshu-jiajian" },
     @{ File = "scene_chengfa.py";     Scene = "ChengfaScene";     Id = "chengfa-yiyi" },
     @{ File = "scene_chufa.py";       Scene = "ChufaScene";       Id = "chufa-yiyi" },
     @{ File = "scene_sanjiaoxing.py"; Scene = "SanjiaoxingScene"; Id = "sanjiaoxing-mianji" },
