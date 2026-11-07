@@ -257,11 +257,11 @@ class FenshuChengchuScene(NarratedScene):
     def scene_apply(self):
         self.section(5, "四分之三米，用去三分之二")
 
-        rope = Line([-5.2, 1.85, 0], [-1.6, 1.85, 0], color=CHALK, stroke_width=7)
+        rope = Line([-5.2, 1.85, 0], [-2.5, 1.85, 0], color=CHALK, stroke_width=7)
         self.play(Create(rope), run_time=1.0)
 
         marks = VGroup()
-        for i in range(1, 4):
+        for i in range(1, 3):
             x = -5.2 + i * 0.9
             marks.add(Line([x, 1.62, 0], [x, 2.08, 0], color=CHALK, stroke_width=2))
         self.play(LaggedStart(*[Create(m) for m in marks], lag_ratio=0.15), run_time=0.9)
