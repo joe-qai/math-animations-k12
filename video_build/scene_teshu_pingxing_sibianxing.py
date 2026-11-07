@@ -31,13 +31,15 @@ def vlabel(ch, pos, color=CHALK, size=26) -> Text:
     return t
 
 
-def corner_mark(corner, d1, d2, size=0.26, color=GOLD, width=2.2) -> VMobject:
+def corner_mark(corner, d1, d2, size=0.26, color=GOLD, width=2.2) -> VGroup:
     """在顶点处画直角小方框。d1、d2 是从顶点指向角内部的两个单位方向。"""
     p0 = np.array([float(corner[0]), float(corner[1]), 0.0])
     v1 = np.array([float(d1[0]), float(d1[1]), 0.0]) * size
     v2 = np.array([float(d2[0]), float(d2[1]), 0.0]) * size
-    return Polyline(p0 + v1, p0 + v1 + v2, p0 + v2,
-                    color=color, stroke_width=width)
+    return VGroup(
+        Line(p0 + v1, p0 + v1 + v2, color=color, stroke_width=width),
+        Line(p0 + v1 + v2, p0 + v2, color=color, stroke_width=width),
+    )
 
 
 class TeshuPingxingSibianxingScene(NarratedScene):
@@ -55,21 +57,21 @@ class TeshuPingxingSibianxingScene(NarratedScene):
     def scene_intro(self):
         self.section(0, "加一个条件，就变特殊")
 
-        head = txt("平行四边形　+　一个条件", size=28, color=CHALK).move_to([0, 2.6, 0])
+        head = txt("平行四边形　+　一个条件", size=27, color=CHALK).move_to([0, 2.72, 0])
         self.play(FadeIn(head, shift=UP * 0.05), run_time=0.95)
         self.wait(1.0)
 
         # 三个小图形
-        r = rect(-5.3, 0.15, 2.1, 1.25, GOLD)
-        rl = txt("矩形", size=26, color=GOLD).move_to([-4.25, 1.75, 0])
+        r = rect(-5.3, 0.1, 2.1, 1.35, GOLD)
+        rl = txt("矩形", size=25, color=GOLD).move_to([-4.25, 1.85, 0])
         self.play(Create(r), FadeIn(rl, shift=UP * 0.04), run_time=1.0)
 
-        m1 = quad((-1.05, 0.15), (0.15, 0.78), (-0.05, 2.18), (-1.25, 1.53), GREEN)
-        ml = txt("菱形", size=26, color=GREEN).move_to([-0.55, 2.5, 0])
+        m1 = quad((-1.5, 0.8), (-0.55, 1.45), (0.4, 0.8), (-0.55, 0.15), GREEN)
+        ml = txt("菱形", size=25, color=GREEN).move_to([-0.55, 1.85, 0])
         self.play(Create(m1), FadeIn(ml, shift=UP * 0.04), run_time=1.0)
 
-        s1 = rect(2.9, 0.15, 1.5, 1.5, BLUE)
-        sl = txt("正方形", size=26, color=BLUE).move_to([3.65, 1.95, 0])
+        s1 = rect(2.9, 0.05, 1.5, 1.5, BLUE)
+        sl = txt("正方形", size=25, color=BLUE).move_to([3.65, 1.85, 0])
         self.play(Create(s1), FadeIn(sl, shift=UP * 0.04), run_time=1.0)
         self.wait(1.0)
 
@@ -140,10 +142,12 @@ class TeshuPingxingSibianxingScene(NarratedScene):
     def scene_rect_rules(self):
         self.section(2, "矩形怎么判定")
 
-        small = rect(3.9, -0.5, 2.0, 1.3, CHALK, width=2.4)
+        small = rect(3.5, 0.0, 2.2, 1.4, CHALK, width=2.4)
         self.play(Create(small), run_time=0.95)
-        sm = corner_mark((3.9, -0.5), (1, 0), (0, 1), color=GOLD)
+        sm = corner_mark((3.5, 0.0), (1, 0), (0, 1), color=GOLD)
         self.play(Create(sm), run_time=0.7)
+        slot = txt("一个直角", size=22, color=DIM).move_to([4.6, -0.55, 0])
+        self.play(FadeIn(slot, shift=UP * 0.04), run_time=0.7)
         self.wait(0.8)
 
         rows = [
@@ -211,7 +215,7 @@ class TeshuPingxingSibianxingScene(NarratedScene):
             y -= 0.82
         self.wait(1.0)
 
-        f = txt("S = ½ · d₁ · d₂", size=30, color=GOLD).move_to([0, -2.35, 0])
+        f = txt("S = 对角线乘积的一半", size=29, color=GOLD).move_to([0, -2.35, 0])
         self.play(FadeIn(f, scale=0.97), run_time=1.0)
         self.wait(3.6)
         self.finish_section()
@@ -275,18 +279,18 @@ class TeshuPingxingSibianxingScene(NarratedScene):
             ("对角线相等、垂直、互相平分", GOLD),
             ("每条对角线平分一组对角", GOLD),
         ]
-        y = 2.0
+        y = 2.15
         for s, col in rows:
             t = txt(s, size=23, color=col).move_to([3.0, y, 0])
             self.play(FadeIn(t, shift=RIGHT * 0.04), run_time=0.75)
-            y -= 0.8
+            y -= 0.72
         self.wait(1.0)
 
         n1 = txt("判定：先证矩形，再证一组邻边相等", size=23, color=CHALK)
-        n1.move_to([3.0, -0.55, 0])
+        n1.move_to([3.0, -0.95, 0])
         self.play(FadeIn(n1, shift=UP * 0.04), run_time=0.9)
         n2 = txt("或者：先证菱形，再证一个角是直角", size=23, color=CHALK)
-        n2.move_to([3.0, -1.35, 0])
+        n2.move_to([3.0, -1.68, 0])
         self.play(FadeIn(n2, shift=UP * 0.04), run_time=0.9)
         self.wait(1.0)
 
@@ -308,9 +312,9 @@ class TeshuPingxingSibianxingScene(NarratedScene):
         cd = Circle(radius=1.5, color=GREEN, stroke_width=2.4).move_to([-3.0, -0.2, 0])
         self.play(Create(cr), Create(cd), run_time=1.5)
 
-        lr = txt("矩形", size=23, color=GOLD).move_to([-4.75, -0.2, 0])
-        ld = txt("菱形", size=23, color=GREEN).move_to([-2.25, -0.2, 0])
-        ls = txt("正方形", size=21, color=BLUE).move_to([-3.5, -0.2, 0])
+        lr = txt("矩形", size=21, color=GOLD).move_to([-5.2, -0.2, 0])
+        ld = txt("菱形", size=21, color=GREEN).move_to([-1.8, -0.2, 0])
+        ls = txt("正方形", size=20, color=BLUE).move_to([-3.5, -0.2, 0])
         self.play(FadeIn(lr), FadeIn(ld), run_time=1.0)
         self.play(FadeIn(ls, scale=0.9), run_time=0.8)
         self.wait(1.2)
