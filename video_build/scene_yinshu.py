@@ -146,13 +146,13 @@ class YinshuBeishuScene(NarratedScene):
         for r in rows:
             self.play(FadeIn(r, shift=RIGHT * 0.05), run_time=0.55)
 
-        dots = txt("…… 一直乘下去", size=30, color=DIM).move_to([-0.4, -1.0, 0])
+        dots = txt("…… 一直乘下去", size=29, color=DIM).move_to([-0.4, -0.55, 0])
         self.play(FadeIn(dots, shift=UP * 0.05), run_time=0.7)
 
         line = VGroup(
             txt("12 的倍数：12、24、36、48、60 ……", size=29, color=GOLD),
             txt("有无限多个，写不完", size=27, color=BLUE),
-        ).arrange(DOWN, buff=0.24).move_to([0, -1.75, 0])
+        ).arrange(DOWN, buff=0.26).move_to([0, -1.62, 0])
         self.play(FadeIn(line[0], shift=UP * 0.05), run_time=0.8)
         self.play(FadeIn(line[1], shift=UP * 0.05), run_time=0.8)
 
@@ -203,8 +203,8 @@ class YinshuBeishuScene(NarratedScene):
         for bad_s, note in items:
             bad = txt(bad_s, size=30, color=RED).move_to([-3.2, y, 0])
             n = txt(note, size=25, color=GREEN).move_to([3.2, y, 0])
-            cross = Line(bad.get_left() + [-0.1, -0.12, 0],
-                         bad.get_right() + [0.1, 0.14, 0],
+            cross = Line(bad.get_left() + [-0.1, -0.06, 0],
+                         bad.get_right() + [0.1, 0.2, 0],
                          color=RED, stroke_width=2.8)
             self.play(FadeIn(bad, shift=RIGHT * 0.05), run_time=0.6)
             self.play(Create(cross), FadeIn(n, shift=RIGHT * 0.05), run_time=0.7)

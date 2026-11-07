@@ -37,6 +37,7 @@ CHAPTERS = {
     "fushu-chubu": 7,
     "kenengxing": 7,
     "xiaoshu-chu": 7,
+    "yinshu-beishu": 7,
     "lianjia-lianjian": 7,
     "renshi-zhongbiao": 7,
     "fenlei-zhengli": 7,
