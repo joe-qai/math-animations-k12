@@ -48,7 +48,7 @@ class PingxingMianjiScene(NarratedScene):
         self.play(Create(h_line), run_time=0.8)
         self.play(Create(right), FadeIn(h_l, shift=RIGHT * 0.05), run_time=0.8)
 
-        slant_l = txt("斜边 5 米", size=24, color=DIM).move_to([-4.6, 0.35, 0])
+        slant_l = txt("斜边 5 米", size=24, color=DIM).move_to([-4.05, 0.5, 0])
         self.play(FadeIn(slant_l, shift=RIGHT * 0.05), run_time=0.8)
 
         q = VGroup(
@@ -73,9 +73,9 @@ class PingxingMianjiScene(NarratedScene):
         self.section(1, "先数方格试试")
 
         cell = 0.5
-        x0, y0 = -4.4, -1.2
+        x0, y0 = -4.6, -1.1
         grid = VGroup()
-        for c in range(7):
+        for c in range(9):
             for r in range(4):
                 grid.add(Rectangle(width=cell, height=cell, stroke_width=1.4,
                                    color=DIM, fill_opacity=0.0)
@@ -85,7 +85,7 @@ class PingxingMianjiScene(NarratedScene):
         A = [x0, y0, 0]
         B = [x0 + 6 * cell, y0, 0]
         D = [x0 + 3 * cell, y0 + 4 * cell, 0]
-        shape = para(A, B, D, GOLD, 0.12)
+        shape = para(A, B, D, GOLD, 0.0)
         self.play(Create(shape), run_time=1.4)
 
         rows = [
@@ -126,11 +126,11 @@ class PingxingMianjiScene(NarratedScene):
 
         self.play(tri.animate.shift(RIGHT * 4.2), run_time=2.0, rate_func=smooth)
 
-        rect = DashedLine([E[0], E[1], 0], [C[0], E[1], 0], color=GREEN,
-                          stroke_width=2.4, dash_length=0.16)
-        rect2 = DashedLine([E[0], E[1], 0], [E[0], D[1], 0], color=GREEN,
-                           stroke_width=2.4, dash_length=0.16)
-        self.play(Create(rect), Create(rect2), run_time=0.9)
+        self.play(FadeOut(shape), run_time=0.5)
+
+        rect = Rectangle(width=4.2, height=2.8, color=GREEN, stroke_width=3)
+        rect.move_to([-0.4, 0, 0])
+        self.play(Create(rect), run_time=0.9)
 
         lab = txt("拼成长方形，面积一点没变", size=28, color=GREEN).move_to([0, -2.4, 0])
         self.play(FadeIn(lab, shift=UP * 0.06), run_time=0.9)
@@ -143,7 +143,7 @@ class PingxingMianjiScene(NarratedScene):
 
         rect = Rectangle(width=3.6, height=2.4, color=GOLD, stroke_width=3,
                          fill_color=GOLD, fill_opacity=0.15)
-        rect.move_to([-3.6, 0.35, 0])
+        rect.move_to([-2.7, 0.35, 0])
         self.play(Create(rect), run_time=1.1)
 
         left_br = Brace(rect, LEFT, buff=0.16, color=GOLD)
@@ -158,7 +158,7 @@ class PingxingMianjiScene(NarratedScene):
             txt("长方形的宽 = 平行四边形的高", size=27, color=GOLD),
             txt("长 × 宽 = 底 × 高", size=29, color=CHALK),
             txt("所以两个图形的面积相等", size=27, color=GREEN),
-        ).arrange(DOWN, buff=0.26, aligned_edge=LEFT).move_to([2.6, 0.55, 0])
+        ).arrange(DOWN, buff=0.26, aligned_edge=LEFT).move_to([2.9, 0.55, 0])
         for e in eqs:
             self.play(FadeIn(e, shift=RIGHT * 0.05), run_time=0.6)
             self.wait(0.3)

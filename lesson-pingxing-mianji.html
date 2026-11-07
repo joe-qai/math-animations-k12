@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>平行四边形的面积 · 剪拼成长方形，底乘高求面积 · 数益坊</title>
+<meta name="description" content="一块平行四边形菜地，底 6 米、高 4 米、斜边 5 米，要买多少肥料得先算面积。它不像长方形那样方方正正，量长乘宽不行。这节课先数方格估一估，再沿着高剪下三角形平移到右边，把它变成学过的长方形，从而推出「底 × 高」这条公式，最后用例题和易错点收尾。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">36 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">小学数学</a><span class="sep">/</span>
+      <span>平行四边形的面积</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage xiaoxue">小学数学</span>
+          <span class="chip">五年级</span>
+          <span class="chip">进阶</span>
+          <span class="chip">带配音视频</span>
+        </div>
+        <h1>平行四边形的面积</h1>
+        <p class="subtitle">剪拼成长方形，底乘高求面积</p>
+        <p class="brief">一块平行四边形菜地，底 6 米、高 4 米、斜边 5 米，要买多少肥料得先算面积。它不像长方形那样方方正正，量长乘宽不行。这节课先数方格估一估，再沿着高剪下三角形平移到右边，把它变成学过的长方形，从而推出「底 × 高」这条公式，最后用例题和易错点收尾。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>2:00</b></span>
+          <span>建议学习 <b>11 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+          <span>章节 <b>7 段</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">底乘高，求面积</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>看视频：先有画面</h2><span class="hint">2:00</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/posters/pingxing-mianji.jpg">
+                <source src="assets/videos/pingxing-mianji.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/pingxing-mianji.mp4">点此下载视频</a>。
+              </video>
+            </div>
+            <div class="chapters" role="group" aria-label="视频章节"><button class="chapter" type="button" data-t="0.0"><span class="t">0:00</span>一块平行四边形菜地</button><button class="chapter" type="button" data-t="21.4"><span class="t">0:21</span>先数方格试试</button><button class="chapter" type="button" data-t="40.91"><span class="t">0:40</span>沿高剪开，平移到右边</button><button class="chapter" type="button" data-t="55.03"><span class="t">0:55</span>长就是底，宽就是高</button><button class="chapter" type="button" data-t="72.03"><span class="t">1:12</span>平行四边形的面积公式</button><button class="chapter" type="button" data-t="87.01"><span class="t">1:27</span>底 6 米，高 4 米，面积多少</button><button class="chapter" type="button" data-t="103.97"><span class="t">1:43</span>三个易错点</button></div>
+          </div>
+          <p class="video-note">第 2 节把平行四边形画在方格纸上，正好覆盖 24 格；第 3 节沿高剪开、把左边三角形平移到右边，拼成长方形，面积一眼看出没变。</p>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>数方格与剪拼</h3></div>
+  <p>把平行四边形放在方格纸上，底占 6 格、高占 4 格，整格 16 个，边上不满格的拼一拼凑成 8 个，一共 24 格，面积就是 24 平方厘米。</p><p>数格子太麻烦。沿着一条高把左边的三角形剪下来，平移到右边，正好补齐缺口，平行四边形就变成了长方形，面积一点没变。</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>面积公式</h3></div>
+  <p>拼成的长方形，长就是平行四边形的底，宽就是平行四边形的高。长方形面积 = 长 × 宽，所以平行四边形面积 = 底 × 高。</p><p>用字母表示：S = a × h。这里的底和高必须互相对应，高是这条底边上的高。</p><p class="formula-big">S = a × h</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例题与反求</h3></div>
+  <p>底 6 米、高 4 米，面积 = 6 × 4 = 24（平方米）。斜边 5 米是干扰条件，用不上。</p><p>反过来：求底用 a = S ÷ h，求高用 h = S ÷ a。例如面积 36 平方厘米、底 9 厘米，高就是 36 ÷ 9 = 4 厘米。</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>为什么要剪拼</h3></div>
+  <p>剪拼的过程叫转化：把没学过的图形，变成学过的图形。长方形面积会算了，平行四边形也就会算了。</p><p>以后学三角形、梯形面积，用的也是这个思路——先转化成会算的图形。</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>沿高剪开、平移到右边，平行四边形能拼成长方形，面积不变。长方形的长就是底，宽就是高，所以平行四边形面积 = 底 × 高，即 S = a × h。求底用 S ÷ h，求高用 S ÷ a。高必须垂直于对应的底，斜边不能当高，面积单位要带平方。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>把斜边当成高：高必须垂直于底，斜边不是高。</li><li>底和高不配对：高必须是这条底边上的高。</li><li>面积单位写成米：面积要用平方米、平方厘米。</li><li>求底时用面积乘高：应该用面积除以高。</li><li>以为剪拼后面积变小：剪拼只是移动位置，面积不变。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">平行四边形的面积公式是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>底 × 高</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>底 × 斜边</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>（底 + 高）× 2</span></button></div>
+    <div class="feedback" role="status" data-explain="剪拼成长方形后，长对应底、宽对应高，所以面积 = 底 × 高。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">一个平行四边形的底是 8 厘米，高是 5 厘米，它的面积是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>13 平方厘米</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>40 平方厘米</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>80 平方厘米</span></button></div>
+    <div class="feedback" role="status" data-explain="面积 = 底 × 高 = 8 × 5 = 40（平方厘米）。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">一个平行四边形的面积是 36 平方厘米，底是 9 厘米，高是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>27 厘米</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>8 厘米</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>4 厘米</span></button></div>
+    <div class="feedback" role="status" data-explain="求高用面积除以底：36 ÷ 9 = 4（厘米）。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">底 5 米、对应的高 6 米、斜边 7 米，这块平行四边形的面积是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>30 平方米</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>35 平方米</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>42 平方米</span></button></div>
+    <div class="feedback" role="status" data-explain="面积 = 底 × 高 = 5 × 6 = 30（平方米）。斜边 7 米是干扰条件。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-jianyi-fangcheng.html"><span class="dir">← 上一节</span><span class="title">简易方程</span></a><a class="next" href="lesson-sanjiaoxing.html"><span class="dir">下一节 →</span><span class="title">三角形的面积</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>知道可以用数方格的方法估算平行四边形的面积</li><li>理解沿高剪开、平移拼成长方形的转化过程</li><li>理解长方形的长对应底、宽对应高，面积相等</li><li>掌握平行四边形面积公式 S = a × h</li><li>会用面积除以底（或高）反求底或高</li><li>知道高必须垂直于对应的底，不能用斜边</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
