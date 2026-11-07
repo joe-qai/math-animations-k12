@@ -74,29 +74,26 @@ class JibenTuxingScene(NarratedScene):
         self.section(1, "三样图形的区别")
 
         heads = ["名称", "端点个数", "能否延伸", "记法"]
-        xs = [-6.2, -4.5, -2.0, 2.5]
-        for h, x in zip(heads, xs):
-            self.play(FadeIn(txt(h, size=27, color=GOLD).move_to([0, 0, 0]).shift(
-                RIGHT * (x + 0.5) + UP * 2.2), shift=UP * 0.05), run_time=0.45)
+        cols = [-5.5, -3.1, -0.3, 3.3]
+        for h, x in zip(heads, cols):
+            self.play(FadeIn(txt(h, size=27, color=GOLD).move_to([x, 1.95, 0]),
+                             shift=UP * 0.05), run_time=0.45)
 
         rows = [
             ("线段", "2 个", "不能延伸", "线段 AB", CHALK),
             ("射线", "1 个", "向一方延伸", "射线 OA", BLUE),
             ("直线", "0 个", "向两方延伸", "直线 AB", GREEN),
         ]
-        y = 1.45
+        y = 1.05
         for name, ends, extend, how, color in rows:
-            self.play(FadeIn(txt(name, size=29, color=color).move_to(
-                [0, 0, 0]).shift(RIGHT * (-5.7) + UP * y), shift=RIGHT * 0.05), run_time=0.45)
-            self.play(FadeIn(txt(ends, size=27, color=CHALK).move_to(
-                [0, 0, 0]).shift(RIGHT * (-3.6) + UP * y), shift=RIGHT * 0.05), run_time=0.45)
-            self.play(FadeIn(txt(extend, size=27, color=CHALK).move_to(
-                [0, 0, 0]).shift(RIGHT * (-0.9) + UP * y), shift=RIGHT * 0.05), run_time=0.45)
-            self.play(FadeIn(txt(how, size=27, color=DIM).move_to(
-                [0, 0, 0]).shift(RIGHT * 3.4 + UP * y), shift=RIGHT * 0.05), run_time=0.45)
+            line = VGroup()
+            for s, x, c, sz in ((name, cols[0], color, 29), (ends, cols[1], CHALK, 27),
+                                (extend, cols[2], CHALK, 27), (how, cols[3], DIM, 27)):
+                line.add(txt(s, size=sz, color=c).move_to([x, y, 0]))
+            self.play(FadeIn(line, shift=UP * 0.05), run_time=0.75)
             y -= 1.0
 
-        tip = txt("射线记法里，端点写在前面", size=27, color=GOLD).move_to([0, -2.15, 0])
+        tip = txt("射线记法里，端点写在前面", size=27, color=GOLD).move_to([0, -2.1, 0])
         self.play(FadeIn(tip, shift=UP * 0.05), run_time=0.8)
         self.wait(2.2)
         self.finish_section()
@@ -138,36 +135,36 @@ class JibenTuxingScene(NarratedScene):
     def scene_angle(self):
         self.section(3, "角：顶点与两条边")
 
-        apex = [-4.7, -0.25, 0]
-        oa = Line(apex, [-0.7, 1.75, 0], color=GOLD, stroke_width=3)
-        ob = Line(apex, [-0.7, -1.9, 0], color=BLUE, stroke_width=3)
+        apex = [-4.6, -0.1, 0]
+        oa = Line(apex, [-1.2, 1.85, 0], color=GOLD, stroke_width=3)
+        ob = Line(apex, [-1.2, -2.05, 0], color=BLUE, stroke_width=3)
         self.play(Create(oa), run_time=0.8)
         self.play(Create(ob), run_time=0.8)
 
-        arc = Angle(oa, ob, radius=0.85, color=GREEN, stroke_width=3)
+        arc = Angle(ob, oa, radius=0.8, color=GREEN, stroke_width=3)
         self.play(Create(arc), run_time=0.8)
 
         dot = Dot(apex, radius=0.09, color=CHALK)
         self.play(FadeIn(dot, scale=0.7), run_time=0.4)
-        lo = txt("顶点 O", size=26, color=CHALK).move_to([-4.9, -1.0, 0])
-        la = txt("边 OA", size=26, color=GOLD).move_to([-2.9, 1.15, 0])
-        lb = txt("边 OB", size=26, color=BLUE).move_to([-2.9, -1.35, 0])
+        lo = txt("O", size=27, color=CHALK).move_to([-5.25, -0.1, 0])
+        la = txt("边 OA", size=26, color=GOLD).move_to([-2.9, 1.55, 0])
+        lb = txt("边 OB", size=26, color=BLUE).move_to([-2.9, -1.75, 0])
         self.play(FadeIn(lo), FadeIn(la), FadeIn(lb), run_time=0.7)
 
-        head = label_box("两条有公共端点的射线", size=26, color=GOLD).move_to([3.5, 2.0, 0])
+        head = label_box("两条有公共端点的射线", size=26, color=GOLD).move_to([3.5, 2.05, 0])
         self.play(FadeIn(head, scale=0.97), run_time=0.75)
 
         rows = VGroup(
-            txt("公共端点叫顶点", size=26, color=CHALK),
-            txt("两条射线叫边", size=26, color=CHALK),
-        ).arrange(DOWN, buff=0.28, aligned_edge=LEFT).move_to([3.5, 0.95, 0])
+            txt("公共端点 O 叫顶点", size=26, color=CHALK),
+            txt("两条射线 OA、OB 叫边", size=26, color=CHALK),
+        ).arrange(DOWN, buff=0.28, aligned_edge=LEFT).move_to([3.5, 1.05, 0])
         for r in rows:
             self.play(FadeIn(r, shift=RIGHT * 0.05), run_time=0.6)
 
-        unit = label_box("1° = 60′，1′ = 60″", size=28, color=GOLD).move_to([3.5, -0.3, 0])
+        unit = label_box("1° = 60′，1′ = 60″", size=28, color=GOLD).move_to([3.5, -0.15, 0])
         self.play(FadeIn(unit, scale=0.97), run_time=0.75)
 
-        ex = txt("30.5° = 30°30′", size=26, color=BLUE).move_to([3.5, -1.25, 0])
+        ex = txt("30.5° = 30°30′", size=26, color=BLUE).move_to([3.5, -1.15, 0])
         self.play(FadeIn(ex, shift=UP * 0.05), run_time=0.65)
 
         note = txt("度分秒是六十进制，不是十进制", size=26, color=RED).move_to([0, -2.4, 0])
@@ -215,8 +212,8 @@ class JibenTuxingScene(NarratedScene):
         self.play(Create(oa), Create(ob), run_time=0.9)
         self.play(Create(oc), run_time=0.8)
 
-        a1 = Angle(oc, oa, radius=0.75, color=GOLD, stroke_width=2.6)
-        a2 = Angle(ob, oc, radius=0.75, color=GREEN, stroke_width=2.6)
+        a1 = Angle(oc, oa, radius=1.05, color=GOLD, stroke_width=3)
+        a2 = Angle(ob, oc, radius=1.05, color=GREEN, stroke_width=3)
         self.play(Create(a1), run_time=0.6)
         self.play(Create(a2), run_time=0.6)
 
