@@ -110,8 +110,8 @@ class ZhongkaoHanshuYingyongScene(NarratedScene):
 
         ax = mk_axes([-4, 4, 1], [-4, 4, 1], 4.2, 3.6, (-3.9, -0.2))
         self.play(Create(ax), run_time=0.9)
-        b1 = ax.plot(lambda x: 4 / x, x_range=[0.85, 4.2], color=GREEN, stroke_width=3.0)
-        b2 = ax.plot(lambda x: 4 / x, x_range=[-4.2, -0.85], color=GREEN, stroke_width=3.0)
+        b1 = ax.plot(lambda x: 4 / x, x_range=[1.15, 4.2], color=GREEN, stroke_width=3.0)
+        b2 = ax.plot(lambda x: 4 / x, x_range=[-4.2, -1.15], color=GREEN, stroke_width=3.0)
         self.play(Create(b1), Create(b2), run_time=1.3)
         self.wait(0.4)
 
@@ -186,28 +186,28 @@ class ZhongkaoHanshuYingyongScene(NarratedScene):
     def scene_maxmin(self):
         self.section(4, "最值：先看区间，再看顶点")
 
-        ax = mk_axes([-1, 6, 1], [-2, 5, 1], 5.2, 3.1, (-2.6, -0.3))
+        ax = mk_axes([-1, 6, 1], [-5, 6, 1], 5.2, 3.4, (-2.6, -0.3))
         self.play(Create(ax), run_time=0.9)
-        para = ax.plot(lambda x: -1 * (x - 1) ** 2 + 4, x_range=[-0.4, 2.6],
+        para = ax.plot(lambda x: (x - 1) ** 2 - 4, x_range=[-0.5, 2.45],
                        color=DIM, stroke_width=2.4)
         self.play(Create(para), run_time=1.1)
-        part = ax.plot(lambda x: -1 * (x - 1) ** 2 + 4, x_range=[2, 5.2],
+        part = ax.plot(lambda x: (x - 1) ** 2 - 4, x_range=[2, 4.2],
                        color=GOLD, stroke_width=3.4)
         self.play(Create(part), run_time=1.0)
-        vdot = Dot(ax.c2p(1, 4), radius=0.07, color=BLUE)
-        vline = DashedLine(ax.c2p(1, 0), ax.c2p(1, 4), color=BLUE, stroke_width=1.6,
+        vdot = Dot(ax.c2p(1, -4), radius=0.07, color=BLUE)
+        vline = DashedLine(ax.c2p(1, 0), ax.c2p(1, -4), color=BLUE, stroke_width=1.6,
                            dash_length=0.08)
         self.play(FadeIn(vdot), Create(vline), run_time=0.8)
-        self.play(FadeIn(txt("顶点 x = 1", size=19, color=BLUE).move_to([-3.9, 1.55, 0])),
+        self.play(FadeIn(txt("顶点 (1, −4)", size=19, color=BLUE).move_to([-3.7, -2.45, 0])),
                   run_time=0.5)
         self.wait(0.4)
 
         rows = [
-            ("配方：y = −(x − 1)² + 4", CHALK),
-            ("题目给的区间：[2, 5]", GOLD),
+            ("配方：y = (x − 1)² − 4", CHALK),
+            ("题目给的区间：[2, 4]", GOLD),
             ("顶点 x = 1 不在区间内", RED),
-            ("所以最大值在端点 x = 2 处", GREEN),
-            ("y(2) = 3", GREEN),
+            ("所以最小值在端点 x = 2 处", GREEN),
+            ("y(2) = −3", GREEN),
         ]
         y = 2.15
         for s, col in rows:
