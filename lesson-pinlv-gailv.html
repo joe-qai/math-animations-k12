@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>频率与概率 · 次数多了，偶然就露出规律 · 数益坊</title>
+<meta name="description" content="抛一次硬币，猜不准；抛一万次，正面就接近一半。这种「次数多了就稳定」的现象，是概率的入口。这一节从抛硬币讲起：先分清频数与频率，再讲频率的稳定性，然后用稳定的频率认识概率，最后用公式算等可能事件的概率。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">70 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>频率与概率</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">八年级</span>
+          <span class="chip">进阶</span>
+        </div>
+        <h1>频率与概率</h1>
+        <p class="subtitle">次数多了，偶然就露出规律</p>
+        <p class="brief">抛一次硬币，猜不准；抛一万次，正面就接近一半。这种「次数多了就稳定」的现象，是概率的入口。这一节从抛硬币讲起：先分清频数与频率，再讲频率的稳定性，然后用稳定的频率认识概率，最后用公式算等可能事件的概率。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:37</b></span>
+          <span>建议学习 <b>14 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">次数多，频率稳</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>频率与概率 视频讲解</h2><span class="hint">3:37</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/pinlv-gailv.jpg">
+                <source src="assets/videos/pinlv-gailv.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/pinlv-gailv.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>频数与频率</h3></div>
+  <p>做了 n 次试验，某个结果出现了 m 次，m 叫这个结果出现的频数；频数除以总次数，得到的比值 m/n 叫频率。</p><p>抛 20 次硬币，正面出现 9 次：频数是 9，频率是 9/20 = 0.45。频数是次数，频率是一个比值，两者不是一回事。</p><p class="formula-big">频率 = 频数 ÷ 总次数</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>频率的稳定性</h3></div>
+  <p>频率会随试验变化，但试验次数越多，频率就在某个固定数值附近摆动，而且摆动越来越小。这个性质叫频率的稳定性。</p><p>抛硬币次数足够多时，正面朝上的频率会稳定在 0.5 左右。</p><p class="formula-big">次数越多，摆动越小</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>概率</h3></div>
+  <p>概率是刻画一个随机事件发生可能性大小的数，记作 P(A)。任何事件的概率都在 0 到 1 之间。</p><p>必然事件的概率是 1，比如掷一枚普通骰子点数小于 7；不可能事件的概率是 0，比如点数等于 7。概率是固定的数，不是凭感觉猜的。</p><p class="formula-big">0 ≤ P ≤ 1</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>求概率的两种办法</h3></div>
+  <p>用频率估计概率：试验次数很大时，把频率当作概率的估计值。比如发芽率稳定在 0.9，就估计任取一颗发芽的概率约为 0.9。</p><p>等可能时用公式：P = 所求结果数 ÷ 所有等可能结果数。前提是每种结果出现的可能性相等，不相等就不能直接数个数。</p><p class="formula-big">P = 所求结果数 ÷ 等可能结果总数</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例题：摸球与骰子</h3></div>
+  <p>掷一枚均匀骰子：点数等于 1 的概率是 1/6；点数小于 3（即 1 或 2）的概率是 2/6 = 1/3。</p><p>袋中有 3 个红球、2 个白球，除颜色外都相同，任摸一个：共 5 个球、可能性相同，红球 3 个，所以摸到红球的概率是 3/5。</p><p class="formula-big">P(红球) = 3/5</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>做 n 次试验、某结果出现 m 次，m 是频数，m/n 是频率。频率会波动，但次数越多越稳定在某个常数附近，这叫频率的稳定性。这个稳定的数就是概率：概率刻画随机事件发生可能性的大小，满足 0 ≤ P ≤ 1，必然事件为 1、不可能事件为 0。求概率有两种办法：次数很大时用频率估计概率；结果等可能时用 P = 所求结果数 ÷ 所有等可能结果数。掷骰子点数等于 1 的概率是 1/6，点数小于 3 的概率是 2/6 = 1/3；3 红 2 白中摸到红球的概率是 3/5。频率会变、概率固定，次数太少时频率不能当概率。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>把频数当频率：频数是出现的次数，频率是频数与总次数的比值。</li><li>试验次数太少就把频率当作概率：次数少时频率波动很大，不能作为估计。</li><li>认为概率会随试验改变：频率会变，概率是固定的数。</li><li>用公式前不检查是否等可能：只有每种结果出现的可能性相等，才能用结果数之比。</li><li>把概率写成大于 1 或小于 0 的数：任何事件的概率都在 0 与 1 之间。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">抛一枚硬币 100 次，正面朝上 52 次，正面出现的频率是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>0.52</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>0.48</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>52</span></button></div>
+    <div class="feedback" role="status" data-explain="频率 = 频数 ÷ 总次数 = 52 ÷ 100 = 0.52。52 是频数，不是频率。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">关于频率与概率，下面说法正确的是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>概率会随试验次数变化</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>试验次数越多，频率越稳定在概率附近</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>频率和概率是同一个数</span></button></div>
+    <div class="feedback" role="status" data-explain="频率会随试验变化，概率是固定的数；试验次数越多，频率越稳定地接近概率，但两者不是同一个数。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">掷一枚均匀骰子，点数大于 4 的概率是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>1/6</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>1/2</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>1/3</span></button></div>
+    <div class="feedback" role="status" data-explain="大于 4 的点数是 5、6，共 2 种，六个面等可能，所以概率是 2/6 = 1/3。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">袋中有 2 个红球、3 个白球，除颜色外都相同，任摸一个摸到红球的概率是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>2/5</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>3/5</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>1/2</span></button></div>
+    <div class="feedback" role="status" data-explain="共 5 个球，每个球被摸到的可能性相同，红球有 2 个，所以概率是 2/5。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-hanshu-yici.html"><span class="dir">← 上一节</span><span class="title">函数概念与一次函数</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解频数与频率的区别：频数是次数，频率是比值</li><li>理解频率的稳定性：试验次数越多，频率越稳定在某个常数附近</li><li>知道概率是刻画随机事件可能性大小的数，满足 0 ≤ P ≤ 1</li><li>知道必然事件概率为 1、不可能事件概率为 0</li><li>会在试验次数很大时用频率估计概率</li><li>会判断结果是否等可能，并用公式求简单事件的概率</li><li>能区分频率与概率，知道次数太少时频率不能当概率</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

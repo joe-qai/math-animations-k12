@@ -135,7 +135,7 @@ class PinlvGailvScene(NarratedScene):
         self.play(LaggedStart(*[FadeIn(d) for d in dots], lag_ratio=0.12), run_time=2.4)
         self.wait(1.0)
 
-        n1 = txt("次数越多，摆动越小", size=27, color=CHALK).move_to([0, 3.05, 0])
+        n1 = txt("次数越多，摆动越小", size=27, color=CHALK).move_to([0, 2.78, 0])
         self.play(FadeIn(n1, shift=UP * 0.05), run_time=0.9)
         self.wait(0.8)
 
@@ -243,7 +243,7 @@ class PinlvGailvScene(NarratedScene):
         q1 = txt("点数是 1 的概率", size=26, color=CHALK).move_to([-3.2, 0.55, 0])
         self.play(FadeIn(q1, shift=UP * 0.04), run_time=0.8)
 
-        hi1 = faces[0][0].copy().set_stroke(GOLD, 4).set_fill(GOLD, 0.15)
+        hi1 = faces[0][0].copy().scale(1.1).set_stroke(GOLD, 4).set_fill(opacity=0)
         self.play(Create(hi1), run_time=0.6)
 
         p1 = txt("P =", size=28, color=GOLD).move_to([1.1, 0.55, 0])
@@ -254,7 +254,7 @@ class PinlvGailvScene(NarratedScene):
         q2 = txt("点数小于 3 的概率", size=26, color=CHALK).move_to([-3.2, -0.85, 0])
         self.play(FadeIn(q2, shift=UP * 0.04), run_time=0.8)
 
-        hi2 = faces[1][0].copy().set_stroke(GREEN, 4).set_fill(GREEN, 0.15)
+        hi2 = faces[1][0].copy().scale(1.1).set_stroke(GREEN, 4).set_fill(opacity=0)
         self.play(Create(hi2), run_time=0.6)
 
         p2 = txt("P =", size=28, color=GREEN).move_to([-0.2, -0.85, 0])
@@ -283,7 +283,7 @@ class PinlvGailvScene(NarratedScene):
         for i in range(5):
             col = RED if i < 3 else CHALK
             balls.add(Circle(radius=0.31, color=col, stroke_width=2.6,
-                             fill_color=col, fill_opacity=0.22)
+                             fill_color=col, fill_opacity=0.85 if i < 3 else 0.8)
                       .move_to([-2.4 + i * 0.82, 1.5, 0]))
         self.play(LaggedStart(*[FadeIn(b, shift=UP * 0.1) for b in balls], lag_ratio=0.12),
                   run_time=1.6)
