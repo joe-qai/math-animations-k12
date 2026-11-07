@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>圆的综合：组合图形面积 · 外方内圆、外圆内方、弓形一次讲清 · 数益坊</title>
+<meta name="description" content="边长 4 厘米的正方形里画一个最大的圆，四个角剩下的面积是多少？这类题看着复杂，其实只有两条路：整体减空白、分割求和。这节课把圆与正方形的关键关系、扇形减三角形的弓形讲透，再用两道例题走完整过程。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">50 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">小学数学</a><span class="sep">/</span>
+      <span>圆的综合：组合图形面积</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage xiaoxue">小学数学</span>
+          <span class="chip">小升初</span>
+          <span class="chip">挑战</span>
+          <span class="chip">带配音视频</span>
+        </div>
+        <h1>圆的综合：组合图形面积</h1>
+        <p class="subtitle">外方内圆、外圆内方、弓形一次讲清</p>
+        <p class="brief">边长 4 厘米的正方形里画一个最大的圆，四个角剩下的面积是多少？这类题看着复杂，其实只有两条路：整体减空白、分割求和。这节课把圆与正方形的关键关系、扇形减三角形的弓形讲透，再用两道例题走完整过程。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>1:57</b></span>
+          <span>建议学习 <b>11 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+          <span>章节 <b>7 段</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">整体减空白</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>看视频：先有画面</h2><span class="hint">1:57</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/posters/yuan-zonghe.jpg">
+                <source src="assets/videos/yuan-zonghe.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/yuan-zonghe.mp4">点此下载视频</a>。
+              </video>
+            </div>
+            <div class="chapters" role="group" aria-label="视频章节"><button class="chapter" type="button" data-t="0.0"><span class="t">0:00</span>正方形里画最大的圆</button><button class="chapter" type="button" data-t="16.33"><span class="t">0:16</span>组合图形有两条路</button><button class="chapter" type="button" data-t="33.32"><span class="t">0:33</span>圆和正方形的关键关系</button><button class="chapter" type="button" data-t="50.57"><span class="t">0:50</span>扇形减三角形，剩下弓形</button><button class="chapter" type="button" data-t="65.23"><span class="t">1:05</span>边长 4 厘米，阴影多少</button><button class="chapter" type="button" data-t="84.8"><span class="t">1:24</span>圆里画正方形，阴影多少</button><button class="chapter" type="button" data-t="102.92"><span class="t">1:42</span>三个易错点</button></div>
+          </div>
+          <p class="video-note">第 3 节并排画出「外方内圆」和「外圆内方」，标出直径与边长、对角线的对应关系；第 4 节用扇形与直角三角形叠出弓形；第 5、6 节分别算出 3.44 和 4.56 两块阴影。</p>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>两条思路</h3></div>
+  <p>整体减空白：先算大图形，再减掉不要的部分，外方内圆常用。分割求和：把图形切成几块能算的再加起来，弓形常用。</p><p>拿到题先看清楚：整体是什么，空白是什么，要求的阴影是哪一块。</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>两个关键关系</h3></div>
+  <p>正方形里画最大的圆：圆的直径 = 正方形的边长，半径 = 边长 ÷ 2。</p><p>圆里画最大的正方形：正方形的对角线 = 圆的直径，面积 = 对角线 × 对角线 ÷ 2。</p><p class="formula-big">直径 = 边长</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>外方内圆</h3></div>
+  <p>边长 4 厘米的正方形：面积 4 × 4 = 16。里面最大的圆半径 2，面积 3.14 × 2² = 12.56。</p><p>阴影 = 16 - 12.56 ≈ 3.44（平方厘米）。</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>外圆内方</h3></div>
+  <p>直径 4 厘米的圆，里面最大的正方形对角线也是 4：面积 4 × 4 ÷ 2 = 8。圆面积 3.14 × 2² = 12.56。</p><p>阴影 = 12.56 - 8 ≈ 4.56（平方厘米）。</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>组合图形面积只有两条路：整体减空白、分割求和。外方内圆时圆的直径等于正方形边长；外圆内方时正方形的对角线等于圆的直径，面积用对角线乘对角线除以二。弓形就用四分之一圆减直角三角形。算完检查：阴影应该比整体小，近似值要写约等于。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>半径和直径搞混，题目给直径却直接当半径代入。</li><li>半圆面积忘记除以 2，把半圆当整圆算。</li><li>π 取 3.14 算出近似值，却仍写等号。</li><li>外圆内方时，把正方形面积算成边长的平方，忘记要先求边长或用对角线公式。</li><li>阴影部分找错，把空白当成阴影。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">边长 6 厘米的正方形里画一个最大的圆，圆的面积是多少平方厘米？（π 取 3.14）</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>28.26</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>113.04</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>18.84</span></button></div>
+    <div class="feedback" role="status" data-explain="直径 = 边长 = 6，半径 = 3，面积 = 3.14 × 3² = 28.26（平方厘米）。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">边长 6 厘米的正方形里画一个最大的圆，四个角的阴影面积是多少平方厘米？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>3.44</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>7.74</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>9.42</span></button></div>
+    <div class="feedback" role="status" data-explain="正方形 36，圆 28.26，阴影 = 36 - 28.26 = 7.74（平方厘米）。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">圆的直径是 6 厘米，里面画一个最大的正方形，正方形面积是多少平方厘米？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>28.26</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>36</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>18</span></button></div>
+    <div class="feedback" role="status" data-explain="正方形的对角线 = 直径 = 6，面积 = 6 × 6 ÷ 2 = 18（平方厘米）。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">半径 4 厘米的半圆，面积是多少平方厘米？（π 取 3.14）</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>50.24</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>25.12</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>12.56</span></button></div>
+    <div class="feedback" role="status" data-explain="整圆 3.14 × 4² = 50.24，半圆再除以 2，等于 25.12（平方厘米）。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-fangcheng-yingyong.html"><span class="dir">← 上一节</span><span class="title">用方程解应用题</span></a><a class="next" href="lesson-fangcheng.html"><span class="dir">下一节 →</span><span class="title">一元一次方程</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>掌握组合图形面积的两条思路：整体减空白、分割求和</li><li>记住外方内圆时圆的直径等于正方形边长</li><li>记住外圆内方时正方形的对角线等于圆的直径</li><li>会算扇形面积与弓形面积（扇形减三角形）</li><li>会求外方内圆、外圆内方两种阴影面积</li><li>避开半径直径混淆、半圆忘除 2、近似值写等号三个错误</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

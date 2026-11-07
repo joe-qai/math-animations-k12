@@ -56,6 +56,7 @@ CHAPTERS = {
     "bili-yingyong": 7,
     "baifenshu-yingyong": 7,
     "fangcheng-yingyong": 7,
+    "yuan-zonghe": 7,
     "lianjia-lianjian": 7,
     "renshi-zhongbiao": 7,
     "fenlei-zhengli": 7,
