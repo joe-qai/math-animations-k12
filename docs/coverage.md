@@ -337,7 +337,7 @@
 | :--: | --- | :--: | --- |
 | S1-1 | 分数四则混合运算 | ✅ | `lesson-fenshu-hunhe.html` |
 | S1-2 | 比与比例的应用 | ✅ | `lesson-bili-yingyong.html` |
-| S1-3 | 百分数应用（折扣 / 利率 / 浓度） | ⬜ | — |
+| S1-3 | 百分数应用（折扣 / 利率 / 浓度） | ✅ | `lesson-baifenshu-yingyong.html` |
 | S1-4 | 用方程解应用题 | ⬜ | — |
 | S1-5 | 圆的综合（组合图形面积） | ⬜ | — |
 

@@ -87,6 +87,7 @@ THUMB = {
     "pingjun-shu": "平均数 = 总数÷份数",
     "fenshu-hunhe": "先乘除，后加减",
     "bili-yingyong": "总量 ÷ 总份数",
+    "baifenshu-yingyong": "原价 × 折扣",
     "chengfa-yiyi": "3 × 4 = 12",
     "chufa-yiyi": "12 ÷ 4 = 3",
     "sanjiaoxing-mianji": "底 × 高 ÷ 2",
