@@ -63,6 +63,7 @@ CHAPTERS = {
     "chengfa-yiyi": 7,
     "chufa-yiyi": 7,
     "sanjiaoxing-mianji": 7,
+    "youli-shu": 7,
     "yiyuan-yici-fangcheng": 7,
     "wanquan-pingfang": 7,
     "dengcha-shulie": 7,

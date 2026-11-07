@@ -32,7 +32,7 @@ STAGES = [
         "en": "JUNIOR",
         "color": "#3f7cbe",
         "tagline": "从算术走向代数。天平、面积图、方格纸，都是把抽象式子变回看得见的东西。",
-        "grades": ["七年级 · 一元一次方程", "八年级 · 完全平方公式", "八年级 · 勾股定理"],
+        "grades": ["七年级 · 有理数 / 一元一次方程", "八年级 · 完全平方公式", "八年级 · 勾股定理"],
     },
     {
         "id": "gaozhong",
@@ -93,6 +93,7 @@ THUMB = {
     "chengfa-yiyi": "3 × 4 = 12",
     "chufa-yiyi": "12 ÷ 4 = 3",
     "sanjiaoxing-mianji": "底 × 高 ÷ 2",
+    "youli-shu": "|-3| = 3",
     "yiyuan-yici-fangcheng": "2x + 3 = 11",
     "wanquan-pingfang": "(a+b)²",
     "dengcha-shulie": "首项 + 末项",
