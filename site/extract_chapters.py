@@ -82,6 +82,7 @@ CHAPTERS = {
     "wanquan-pingfang": 7,
     "dengcha-shulie": 7,
     "gougu-dingli": 9,
+    "quandeng": 7,
 }
 
 

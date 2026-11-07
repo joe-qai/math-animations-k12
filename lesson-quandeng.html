@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全等三角形 · 五种判定，一种写法 · 数益坊</title>
+<meta name="description" content="把两个三角形剪下来，能完全重合，就叫全等。判断全等不用把六个元素都比一遍：三条边、两边加夹角、两角加夹边，凑够三组就能定住形状和大小。这一节把 SSS、SAS、ASA、AAS、HL 摆清楚，专门讲明白 SSA 为什么不行，再给出规范的证明书写格式。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">66 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>全等三角形</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">八年级</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>全等三角形</h1>
+        <p class="subtitle">五种判定，一种写法</p>
+        <p class="brief">把两个三角形剪下来，能完全重合，就叫全等。判断全等不用把六个元素都比一遍：三条边、两边加夹角、两角加夹边，凑够三组就能定住形状和大小。这一节把 SSS、SAS、ASA、AAS、HL 摆清楚，专门讲明白 SSA 为什么不行，再给出规范的证明书写格式。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:56</b></span>
+          <span>建议学习 <b>16 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">对应边、对应角相等</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>全等三角形 视频讲解</h2><span class="hint">3:56</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/quandeng.jpg">
+                <source src="assets/videos/quandeng.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/quandeng.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>全等：能完全重合</h3></div>
+  <p>形状相同、大小也相同的两个三角形，叫全等三角形。把它们剪下来，一定可以完全重合。</p><p>记作 △ABC ≌ △DEF，读作「三角形 ABC 全等于三角形 DEF」。顶点必须按对应顺序写：A 对 D、B 对 E、C 对 F。顺序写错，后面的对应边、对应角就全对不上。</p><p class="formula-big">△ABC ≌ △DEF</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>五种判定</h3></div>
+  <p>SSS：三条边分别相等；SAS：两边和它们的夹角分别相等；ASA：两角和它们的夹边分别相等；AAS：两角和其中一角的对边分别相等；HL：两个直角三角形中，斜边和一条直角边分别相等。</p><p>按「边、角、边」的组合记：三边、两边夹一角、两角夹一边，都能把三角形定死。</p><p class="formula-big">SSS · SAS · ASA · AAS · HL</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>SSA 为什么不行</h3></div>
+  <p>两条边和其中一条边的对角分别相等（SSA），画出来可能得到两个不同的三角形，所以不能判定全等。</p><p>AAA 也不行：三个角相等只说明形状相同，大小可以差很多，比如一大一小两个等边三角形。</p><p class="formula-big">边边角（SSA）不成立</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>证明怎么写</h3></div>
+  <p>先凑够三组相等条件，再下结论。常见来源：公共边、公共角；对顶角；中点与角平分线；两直线平行带来的内错角、同位角；垂直带来的直角。</p><p>书写固定成三段：在 △ABC 和 △DEF 中 → 列出三组相等（括号里注明理由）→ 所以 △ABC ≌ △DEF（判定方法）。要用的对应边、对应角再补一句。</p><p class="formula-big">在 △… 和 △… 中 → 三组条件 → ≌（依据）</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例题：用 SSS 证角相等</h3></div>
+  <p>已知 AB = AD，BC = DC，求证 ∠B = ∠D。连接 AC，AC 是两个三角形的公共边。</p><p>在 △ABC 和 △ADC 中：AB = AD（已知），BC = DC（已知），AC = AC（公共边），所以 △ABC ≌ △ADC（SSS），所以 ∠B = ∠D（全等三角形的对应角相等）。</p><p class="formula-big">AB = AD，BC = DC，AC = AC → SSS</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>形状、大小都相同的两个三角形叫全等三角形，记作 △ABC ≌ △DEF，顶点要按对应顺序写。判定全等只要凑够三组条件：SSS、SAS、ASA、AAS，直角三角形还可以用 HL（斜边 + 一条直角边）。SSA 和 AAA 都不能判定全等。全等的性质是对应边相等、对应角相等。写证明时按「在 △… 和 △… 中 → 三组条件（注明理由）→ 所以 ≌（依据）」的格式，公共边、公共角、已知都要写清理由。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>把 SSA 当成 SAS：两边和其中一边的对角相等，可能画出两个不同的三角形。</li><li>写 ≌ 时顶点顺序不对应，例如把 △ABC ≌ △DEF 写成 △ABC ≌ △EDF。</li><li>只写结论不写依据，公共边、公共角、已知条件都没在括号里注明。</li><li>直角三角形里把「两条直角边相等」记成 HL——那是 SAS；HL 是斜边加一条直角边。</li><li>三个角分别相等（AAA）就判定全等，其实只能说明形状相同、大小不一定相同。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">下列条件中，不能判定两个三角形全等的是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>三边分别相等（SSS）</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>两边和它们的夹角分别相等（SAS）</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>两边和其中一边的对角分别相等（SSA）</span></button></div>
+    <div class="feedback" role="status" data-explain="SSA 画出图形时可能得到两个不同的三角形，所以不能作为判定依据。SSS 与 SAS 都能把三角形定死。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">已知 AB = DE，BC = EF，再添一个条件就能用 SAS 判定 △ABC ≌ △DEF，这个条件是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>∠A = ∠D</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>∠B = ∠E</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>∠C = ∠F</span></button></div>
+    <div class="feedback" role="status" data-explain="SAS 里的角必须是两条边的夹角。AB 与 BC 的夹角是 ∠B，所以需要 ∠B = ∠E。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">直角三角形全等的判定 HL 指的是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>斜边和一条直角边分别对应相等</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>两条直角边分别对应相等</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>斜边和一个锐角分别对应相等</span></button></div>
+    <div class="feedback" role="status" data-explain="HL 是斜边（Hypotenuse）加一条直角边（Leg），并且只对直角三角形有效。两条直角边相等其实是 SAS。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">用 ASA 判定 △ABC ≌ △DEF，已知 ∠B = ∠E，∠C = ∠F，还需要哪一个条件？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>AB = DE</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>BC = EF</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>AC = DF</span></button></div>
+    <div class="feedback" role="status" data-explain="ASA 里的边必须是两个角的夹边，∠B 与 ∠C 的公共边是 BC，所以需要 BC = EF。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-gougu.html"><span class="dir">← 上一节</span><span class="title">勾股定理</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解全等三角形的含义：能完全重合，对应边、对应角都相等</li><li>会正确书写 △ABC ≌ △DEF，顶点按对应顺序排列</li><li>掌握五种判定：SSS、SAS、ASA、AAS、HL</li><li>知道 SSA 与 AAA 不能判定全等，并能说明反例</li><li>会找公共边、公共角、对顶角、平行线等隐含条件</li><li>能按「在 △… 和 △… 中 → 条件 → ≌（依据）」的格式写证明</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
