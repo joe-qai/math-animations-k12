@@ -112,6 +112,7 @@ CHAPTERS = {
     "zhongkao-fangcheng-budengshi": 7,
     "zhongkao-hanshu-yingyong": 7,
     "zhongkao-sanjiaoxing-sibianxing": 7,
+    "zhongkao-yuan-sanjiao-hanshu": 7,
 }
 
 

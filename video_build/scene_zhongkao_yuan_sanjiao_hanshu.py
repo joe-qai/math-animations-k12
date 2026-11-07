@@ -88,7 +88,7 @@ class ZhongkaoYuanSanjiaoHanshuScene(NarratedScene):
         self.play(Create(chord), run_time=0.8)
         self.play(Create(diam), run_time=0.8)
         self.play(FadeIn(Dot(P(*M), radius=0.05, color=RED)),
-                  FadeIn(label_at("M", M, 0.2, -0.16, RED)), run_time=0.5)
+                  FadeIn(label_at("M", M, -0.36, -0.2, RED)), run_time=0.5)
         self.play(Create(RightAngle(chord, diam, length=0.2, color=RED)), run_time=0.6)
         self.play(FadeIn(label_at("A", A, -0.26, -0.12)),
                   FadeIn(label_at("B", B, 0.26, -0.12)), run_time=0.5)
@@ -141,8 +141,8 @@ class ZhongkaoYuanSanjiaoHanshuScene(NarratedScene):
         self.play(Create(r1), Create(r2), run_time=0.9)
         self.play(Create(RightAngle(l1, r1, length=0.2, color=RED)),
                   Create(RightAngle(l2, r2, length=0.2, color=RED)), run_time=0.7)
-        self.play(FadeIn(label_at("P", T1, 0.2, 0.16, GREEN)),
-                  FadeIn(label_at("E", T2, 0.2, -0.2, GREEN)), run_time=0.5)
+        self.play(FadeIn(label_at("P", T1, -0.3, 0.24, GREEN)),
+                  FadeIn(label_at("E", T2, -0.3, -0.24, GREEN)), run_time=0.5)
         self.wait(0.4)
 
         rows = [
@@ -250,13 +250,13 @@ class ZhongkaoYuanSanjiaoHanshuScene(NarratedScene):
             y -= 0.7
         self.wait(0.4)
 
-        spec = txt("sin30° = ½    cos45° = √2/2    tan60° = √3", size=20, color=ORANGE)
-        spec.move_to([0, -2.35, 0])
+        spec = txt("sin30° = ½    cos45° = √2/2    tan60° = √3", size=19, color=ORANGE)
+        spec.move_to([-1.55, -2.5, 0])
         self.play(FadeIn(spec, shift=UP * 0.04), run_time=0.85)
         self.wait(0.5)
 
         box = label_box("三个比，对应三个角", size=21, color=RED)
-        box.move_to([3.4, -2.05, 0])
+        box.move_to([3.55, -2.1, 0])
         self.play(FadeIn(box, scale=0.97), run_time=1.0)
         self.wait(6.0)
         self.finish_section()
@@ -276,7 +276,7 @@ class ZhongkaoYuanSanjiaoHanshuScene(NarratedScene):
         self.play(Create(Arc(radius=1.35, start_angle=0,
                              angle=40.0 * DEGREES, arc_center=P(*obs),
                              color=RED, stroke_width=2.4)), run_time=0.7)
-        self.play(FadeIn(txt("仰角 α", size=21, color=RED).move_to([-4.3, -1.35, 0])),
+        self.play(FadeIn(txt("仰角 α", size=20, color=RED).move_to([-3.45, -1.6, 0])),
                   FadeIn(Dot(P(*obs), radius=0.06, color=GOLD)), run_time=0.6)
         self.wait(0.4)
 
