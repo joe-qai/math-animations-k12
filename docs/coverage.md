@@ -440,7 +440,7 @@
 | Z1-3 | 函数及其应用 | C21–C23 | ✅ | `lesson-zhongkao-hanshu-yingyong.html` |
 | Z2-1 | 三角形与四边形 | C28 C33 C36 C37 | ✅ | `lesson-zhongkao-sanjiaoxing-sibianxing.html` |
 | Z2-2 | 圆与三角函数 | C34 C35 C39–C41 | ✅ | `lesson-zhongkao-yuan-sanjiao-hanshu.html` |
-| Z2-3 | 统计与概率 | C47–C49 | ⬜ | — |
+| Z2-3 | 统计与概率 | C47–C49 | ✅ | `lesson-zhongkao-tongji-gailv.html` |
 | Z2-4 | 压轴题拆解（几何综合） | C23 C33 C39 | ⬜ | — |
 
 ### 7.5 初升高衔接（H0，5 节）
