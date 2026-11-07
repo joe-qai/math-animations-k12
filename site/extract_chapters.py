@@ -91,6 +91,7 @@ CHAPTERS = {
     "eryuan-yici": 7,
     "yiyuan-budengshi": 7,
     "fanbili-hanshu": 7,
+    "pingxing-xingzhi": 7,
 }
 
 
