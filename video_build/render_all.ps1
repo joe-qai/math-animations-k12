@@ -74,7 +74,8 @@ $jobs = @(
     @{ File = "scene_wanquan.py";     Scene = "WanquanScene";     Id = "wanquan-pingfang" },
     @{ File = "scene_dengcha.py";     Scene = "DengchaScene";     Id = "dengcha-shulie" },
     @{ File = "scene_gougu_nidingli.py"; Scene = "GouguNidingliScene"; Id = "gougu-nidingli" },
-    @{ File = "scene_quandeng.py";     Scene = "QuandengScene";     Id = "quandeng" }
+    @{ File = "scene_quandeng.py";     Scene = "QuandengScene";     Id = "quandeng" },
+    @{ File = "scene_duicheng_dengyao.py"; Scene = "DuichengDengyaoScene"; Id = "duicheng-dengyao" }
 )
 
 foreach ($j in $jobs) {

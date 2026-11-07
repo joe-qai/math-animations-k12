@@ -42,7 +42,26 @@ def font_size_for(text: str) -> int:
 BREAKS = "：、，,；;· "
 
 
-def split_even(text: str, font: ImageFont.FreeTypeFont, max_w: int) -> list[str] | None:
+def tracked_len(s: str, font: ImageFont.FreeTypeFont, track: int) -> float:
+    if not s:
+        return 0.0
+    return font.getlength(s) + track * (len(s) - 1)
+
+
+def draw_tracked(draw: ImageDraw.ImageDraw, cx: float, y: float, s: str,
+                 font: ImageFont.FreeTypeFont, track: int, fill: int,
+                 stroke: int) -> None:
+    """逐字绘制，字与字之间留一点空隙，避免粗体汉字笔画粘连。"""
+    total = tracked_len(s, font, track)
+    x = cx - total / 2
+    for ch in s:
+        draw.text((x, y), ch, font=font, fill=fill, anchor="lm",
+                  stroke_width=stroke, stroke_fill=fill)
+        x += font.getlength(ch) + track
+
+
+def split_even(text: str, font: ImageFont.FreeTypeFont, max_w: int,
+               track: int = 0) -> list[str] | None:
     """两行尽量等长；优先在标点处断开。"""
     n = len(text)
     if n < 4:
@@ -50,7 +69,7 @@ def split_even(text: str, font: ImageFont.FreeTypeFont, max_w: int) -> list[str]
     best = None
     for i in range(1, n):
         head, tail = text[:i], text[i:]
-        if font.getlength(head) > max_w or font.getlength(tail) > max_w:
+        if tracked_len(head, font, track) > max_w or tracked_len(tail, font, track) > max_w:
             continue
         score = abs(i - n / 2)
         if text[i - 1] not in BREAKS:
@@ -63,17 +82,18 @@ def split_even(text: str, font: ImageFont.FreeTypeFont, max_w: int) -> list[str]
     return [text[:i].strip(), text[i:].strip()]
 
 
-def wrap(text: str, font: ImageFont.FreeTypeFont, max_w: int) -> list[str]:
-    if font.getlength(text) <= max_w:
+def wrap(text: str, font: ImageFont.FreeTypeFont, max_w: int,
+         track: int = 0) -> list[str]:
+    if tracked_len(text, font, track) <= max_w:
         return [text]
-    even = split_even(text, font, max_w)
+    even = split_even(text, font, max_w, track)
     if even:
         return even
     lines: list[str] = []
     cur = ""
     for ch in text:
         trial = cur + ch
-        if cur and font.getlength(trial) > max_w:
+        if cur and tracked_len(trial, font, track) > max_w:
             lines.append(cur)
             cur = ch
         else:
@@ -115,9 +135,10 @@ def build_cover(lesson: dict) -> bool:
     # 标题排版
     size = font_size_for(lesson["title"])
     font = ImageFont.truetype(str(FONT_PATH), size)
-    lines = wrap(lesson["title"], font, W - PAD * 2)
+    track = max(2, round(size * 0.06))
+    lines = wrap(lesson["title"], font, W - PAD * 2, track)
     line_h = round(size * 1.26)
-    stroke = max(2, round(size * 0.032))
+    stroke = max(1, round(size * 0.012))
     mid_y = H / 2
     first_y = mid_y + (0 - (len(lines) - 1) / 2) * line_h
 
@@ -125,8 +146,7 @@ def build_cover(lesson: dict) -> bool:
     draw = ImageDraw.Draw(mask)
     for i, line in enumerate(lines):
         y = first_y + i * line_h
-        draw.text((W / 2, y), line, font=font, fill=255, anchor="mm",
-                  stroke_width=stroke, stroke_fill=255)
+        draw_tracked(draw, W / 2, y, line, font, track, 255, stroke)
     mask = mask.filter(ImageFilter.GaussianBlur(1.1))
 
     cover = Image.composite(inside, bg, mask)
