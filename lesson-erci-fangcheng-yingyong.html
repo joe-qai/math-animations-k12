@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一元二次方程的应用 · 增长率、面积、利润与判别式 · 数益坊</title>
+<meta name="description" content="学会了解方程，还要会用方程解决真实问题。这一节把最常见的三类应用讲透：增长率问题（两年连乘，写成 (1+x)²）、几何面积问题（长比宽多几米，列 x(x+3)=40）、销售利润问题（总利润 = 每件利润 × 销量，降价后销量要加括号）。三类题解完都要回到题意检验，负根、不合理的根一律舍去。后半节把判别式用到含参数的题里：既要二次项系数不为零，又要 Δ 的符号符合要求；再用配方证明判别式总不小于零，说明方程总有实数根。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">80 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>一元二次方程的应用</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">九年级</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>一元二次方程的应用</h1>
+        <p class="subtitle">增长率、面积、利润与判别式</p>
+        <p class="brief">学会了解方程，还要会用方程解决真实问题。这一节把最常见的三类应用讲透：增长率问题（两年连乘，写成 (1+x)²）、几何面积问题（长比宽多几米，列 x(x+3)=40）、销售利润问题（总利润 = 每件利润 × 销量，降价后销量要加括号）。三类题解完都要回到题意检验，负根、不合理的根一律舍去。后半节把判别式用到含参数的题里：既要二次项系数不为零，又要 Δ 的符号符合要求；再用配方证明判别式总不小于零，说明方程总有实数根。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:51</b></span>
+          <span>建议学习 <b>13 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">先列等量关系再检验</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>一元二次方程的应用 视频讲解</h2><span class="hint">3:51</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/erci-fangcheng-yingyong.jpg">
+                <source src="assets/videos/erci-fangcheng-yingyong.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/erci-fangcheng-yingyong.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>增长率问题</h3></div>
+  <p>设年平均增长率为 x，原产量为 a，经过两年后的产量是 a(1 + x)²。注意是连乘两次，不是 x²。</p><p>例：产量从 100 万件增到 121 万件，得 100(1 + x)² = 121，即 (1 + x)² = 1.21，1 + x = ±1.1，x = 0.1 或 −2.1。增长率不能是 −210%，所以取 10%。</p><p class="formula-big">a(1 + x)² = b</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>面积问题</h3></div>
+  <p>先设宽为 x，再由「长比宽多 3 米」写出长为 x + 3，用「长 × 宽 = 面积」列方程。</p><p>例：x(x + 3) = 40，展开得 x² + 3x − 40 = 0，因式分解得 (x + 8)(x − 5) = 0，x = −8 或 5。宽度不能为负，取 x = 5，长就是 8 米。</p><p class="formula-big">x(x + 3) = 40</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>销售利润问题</h3></div>
+  <p>总利润 = 每件利润 × 销量。降价 x 元后，每件利润变成 40 − x，每天销量变成 20 + 2x，两者都要加括号。</p><p>例：(40 − x)(20 + 2x) = 1200，整理得 x² − 30x + 200 = 0，解得 x = 10 或 20。要让顾客更优惠，就取降 20 元。</p><p class="formula-big">总利润 = 每件利润 × 销量</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例：含参数的两个不相等实根</h3></div>
+  <p>关于 x 的方程 (m − 1)x² + 2x + 1 = 0 有两个不相等的实根，求 m 的取值范围。</p><p>两个条件缺一不可：① 是二次方程，m − 1 ≠ 0，即 m ≠ 1；② Δ = 4 − 4(m − 1) &gt; 0，解得 m &lt; 2。合起来 m &lt; 2 且 m ≠ 1。</p><p class="formula-big">m &lt; 2 且 m ≠ 1</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例：证明方程总有实数根</h3></div>
+  <p>证明 x² − (k + 2)x + 2k = 0 总有实数根。</p><p>Δ = (k + 2)² − 8k = k² − 4k + 4 = (k − 2)²。平方一定大于等于零，所以 Δ ≥ 0，方程总有实数根。这里配方比硬算更快。</p><p class="formula-big">Δ = (k − 2)² ≥ 0</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>列方程解应用题，第一步永远是找等量关系。增长率问题两年连乘，写成 a(1 + x)² = b，别忘了 (1 + x) 要平方；面积问题先设宽为 x，再按「长比宽多几米」写长，用长乘宽等于面积；销售利润问题记住总利润 = 每件利润 × 销量，降价后每件利润和销量都要加括号。判别式在含参数题里有两件事要同时做：二次项系数不为零，判别式的符号符合题目要求，缺一不可。证明题里把判别式配成完全平方，就能说明它恒不小于零。最后一步一定要回题检验，负根和不合理的根要舍去。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>增长率写成了 x²：两年增长是连乘两次，应写 (1 + x)²。</li><li>降价后销量忘了加括号：应写 20 + 2x，不能拆开乱乘。</li><li>含参数题只算判别式：二次项系数不为零这个条件最容易漏。</li><li>解出根不检验：人数、长度、增长率不合理的根必须舍去。</li><li>用判别式前没化成一般形式，a、b、c 取值全错。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">某厂产量从 100 万件增加到 121 万件，设年平均增长率为 x，则应列方程？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>100(1 + x)² = 121</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>100(1 + 2x) = 121</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>100 + x² = 121</span></button></div>
+    <div class="feedback" role="status" data-explain="一年后是 100(1 + x)，两年后要再乘一次，得 100(1 + x)² = 121，解出 x = 10%。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">长方形空地长比宽多 3 米，面积 40 平方米，则宽是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>8 米</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>5 米</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>4 米</span></button></div>
+    <div class="feedback" role="status" data-explain="设宽为 x，得 x(x + 3) = 40，即 (x + 8)(x − 5) = 0，x = −8 或 5；宽度不能为负，取 5 米，长是 8 米。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">关于 x 的方程 (m − 1)x² + 2x + 1 = 0 有两个不相等的实根，则 m 满足？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>m &lt; 2</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>m ≠ 1</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>m &lt; 2 且 m ≠ 1</span></button></div>
+    <div class="feedback" role="status" data-explain="既要保证是二次方程（m − 1 ≠ 0），又要判别式 4 − 4(m − 1) &gt; 0 得 m &lt; 2，两个条件合起来是 m &lt; 2 且 m ≠ 1。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">某商品每件利润 40 元，每天卖 20 件；每降价 1 元每天多卖 2 件。要使日利润达到 1200 元，且让顾客更优惠，应降价？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>10 元</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>20 元</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>30 元</span></button></div>
+    <div class="feedback" role="status" data-explain="列 (40 − x)(20 + 2x) = 1200，得 x² − 30x + 200 = 0，x = 10 或 20；要让顾客更优惠，取降 20 元。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-yiyuan-erci-fangcheng.html"><span class="dir">← 上一节</span><span class="title">一元二次方程</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>会列增长率方程，知道两年增长要写成 (1 + x)²</li><li>会用面积关系列方程，并舍去不符合题意的负根</li><li>记住总利润 = 每件利润 × 销量，会处理降价后销量增加</li><li>会把含参数题拆成「二次项系数不为零」和「判别式符号」两个条件</li><li>会用配方证明判别式恒不小于零，从而说明方程总有实数根</li><li>养成解完方程回题检验的习惯</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

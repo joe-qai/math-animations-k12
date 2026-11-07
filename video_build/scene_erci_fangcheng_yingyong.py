@@ -93,15 +93,15 @@ class ErciFangchengYingyongScene(NarratedScene):
             ("1 + x = ±1.1", CHALK),
             ("x = 0.1　或　x = −2.1（舍）", GREEN),
         ]
-        y = -0.55
+        y = -0.40
         for s, col in steps:
             t = txt(s, size=30, color=col).move_to([0, y, 0])
             self.play(FadeIn(t, shift=UP * 0.04), run_time=0.9)
-            y -= 0.85
+            y -= 0.80
         self.wait(0.8)
 
         note = txt("增长率要写成一加 x，连乘两次就是平方", size=23, color=RED)
-        note.move_to([0, -2.55, 0])
+        note.move_to([0, -2.75, 0])
         self.play(FadeIn(note, shift=UP * 0.04), run_time=0.95)
         self.wait(13.0)
         self.finish_section()
@@ -197,12 +197,12 @@ class ErciFangchengYingyongScene(NarratedScene):
         self.wait(1.0)
 
         box = label_box("m < 2 且 m ≠ 1", size=30, color=GREEN)
-        box.move_to([0, -2.15, 0])
+        box.move_to([0, -2.05, 0])
         self.play(FadeIn(box, scale=0.97), run_time=1.1)
         self.wait(0.8)
 
         warn = txt("两个条件缺一不可，m ≠ 1 最容易漏", size=22, color=RED)
-        warn.move_to([0, -2.75, 0])
+        warn.move_to([0, -2.88, 0])
         self.play(FadeIn(warn, shift=UP * 0.04), run_time=0.9)
         self.wait(11.5)
         self.finish_section()
