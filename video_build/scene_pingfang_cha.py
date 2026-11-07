@@ -56,8 +56,8 @@ class PingfangChaScene(NarratedScene):
     def scene_cut(self):
         self.section(0, "剪掉一个角，剩下 L 形")
 
-        a, b = 2.6, 0.95
-        ox, oy = -4.6, -1.3
+        a, b = 3.0, 1.05
+        ox, oy = -5.0, -1.55
         big = Square(side_length=a, stroke_color=CHALK, stroke_width=2.2,
                      fill_color=CHALK, fill_opacity=0.07)
         big.move_to([ox + a / 2, oy + a / 2, 0])
@@ -119,8 +119,8 @@ class PingfangChaScene(NarratedScene):
     def scene_puzzle(self):
         self.section(1, "剪一刀，拼成长方形")
 
-        a, b = 2.6, 0.95
-        ox, oy = -4.6, -1.3
+        a, b = 3.0, 1.05
+        ox, oy = -5.0, -1.35
         w1, h1 = a, a - b
 
         p1 = Rectangle(width=w1, height=h1, stroke_color=GOLD, stroke_width=2,
@@ -142,8 +142,8 @@ class PingfangChaScene(NarratedScene):
         self.play(Create(cut), run_time=0.6)
 
         self.play(p2.animate.rotate(-PI / 2).move_to([ox + a + b / 2, oy + h1 / 2, 0]),
+                  l2.animate.move_to([ox + a + b / 2, oy + h1 / 2, 0]),
                   run_time=1.8)
-        l2.move_to([ox + a + b / 2, oy + h1 / 2, 0])
         self.play(Indicate(p2, color=BLUE, scale_factor=1.03), run_time=0.8)
 
         self.play(FadeOut(cut, l1, l2), run_time=0.5)
@@ -189,9 +189,13 @@ class PingfangChaScene(NarratedScene):
         ).arrange(RIGHT, buff=0.2).move_to([0, 1.15, 0])
         self.play(FadeIn(r1, shift=UP * 0.05), run_time=1.0)
 
-        canc = Line([r1[3].get_left()[0] - 0.05, 1.04, 0],
-                    [r1[5].get_right()[0] + 0.05, 1.04, 0],
-                    color=RED, stroke_width=2.2)
+        canc = VGroup()
+        for idx in (3, 5):
+            item = r1[idx]
+            yy = item.get_center()[1] - 0.06
+            canc.add(Line([item.get_left()[0] - 0.05, yy, 0],
+                          [item.get_right()[0] + 0.05, yy, 0],
+                          color=RED, stroke_width=2.4))
         clab = txt("一减一加，抵消", size=24, color=RED).move_to([1.0, 0.62, 0])
         self.play(Create(canc), run_time=0.7)
         self.play(FadeIn(clab, shift=UP * 0.05), run_time=0.7)
@@ -277,7 +281,7 @@ class PingfangChaScene(NarratedScene):
         ).arrange(RIGHT, buff=0.2).move_to([0, -2.15, 0])
         self.play(FadeIn(r2, shift=UP * 0.05), run_time=0.9)
 
-        warn = txt("系数 2 也要平方，2² = 4", size=25, color=RED).move_to([3.9, -2.15, 0])
+        warn = txt("系数 2 也要平方：2² = 4", size=24, color=RED).move_to([3.65, -2.15, 0])
         self.play(FadeIn(warn, shift=LEFT * 0.05), run_time=0.7)
         self.wait(2.6)
         self.finish_section()
@@ -326,21 +330,21 @@ class PingfangChaScene(NarratedScene):
     def scene_ex(self):
         self.section(6, "例题与三个易错点")
 
-        q = txt("(−2x + y)(2x + y)", size=33, color=CHALK).move_to([0, 2.3, 0])
+        q = txt("(−2x + y)(2x + y)", size=33, color=CHALK).move_to([0, 2.35, 0])
         self.play(FadeIn(q, shift=UP * 0.05), run_time=0.9)
 
         s1 = VGroup(
             txt("第一项改写成", size=26, color=CHALK),
             txt("y − 2x", size=30, color=GOLD),
-        ).arrange(RIGHT, buff=0.2).move_to([0, 1.45, 0])
+        ).arrange(RIGHT, buff=0.2).move_to([0, 1.6, 0])
         self.play(FadeIn(s1, shift=UP * 0.05), run_time=0.9)
 
-        s2 = txt("= (y + 2x)(y − 2x)", size=31, color=CHALK).move_to([0, 0.65, 0])
+        s2 = txt("= (y + 2x)(y − 2x)", size=31, color=CHALK).move_to([0, 0.9, 0])
         self.play(FadeIn(s2, shift=UP * 0.05), run_time=0.9)
 
         s3 = VGroup(
             txt("相同的是 y，相反的是 2x", size=27, color=CHALK),
-        ).move_to([0, -0.1, 0])
+        ).move_to([0, 0.2, 0])
         self.play(FadeIn(s3, shift=UP * 0.05), run_time=0.8)
 
         res = VGroup(
@@ -348,7 +352,7 @@ class PingfangChaScene(NarratedScene):
             pw("y", "2", 34, GOLD),
             txt("−", size=30, color=DIM),
             pw("4x", "2", 34, BLUE),
-        ).arrange(RIGHT, buff=0.2).move_to([0, -0.95, 0])
+        ).arrange(RIGHT, buff=0.2).move_to([0, -0.55, 0])
         self.play(FadeIn(res, shift=UP * 0.05), run_time=1.0)
 
         items = [
@@ -356,7 +360,7 @@ class PingfangChaScene(NarratedScene):
             ("把 (a+b)(a+b) 当平方差", "要一加一减才算"),
             ("系数忘了平方", "(2a)² = 4a²"),
         ]
-        y = -1.75
+        y = -1.35
         for bad_s, good_s in items:
             bad = txt(bad_s, size=24, color=RED).move_to([-2.7, y, 0])
             good = txt(good_s, size=23, color=GREEN).move_to([3.5, y, 0])
@@ -366,7 +370,7 @@ class PingfangChaScene(NarratedScene):
             self.play(FadeIn(bad, shift=RIGHT * 0.05), run_time=0.5)
             self.play(Create(cross), run_time=0.35)
             self.play(FadeIn(good, shift=RIGHT * 0.05), run_time=0.5)
-            y -= 0.62
+            y -= 0.6
 
         self.wait(3.0)
         self.finish_section()
