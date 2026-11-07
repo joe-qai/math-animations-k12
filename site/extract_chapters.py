@@ -104,6 +104,8 @@ CHAPTERS = {
     "lieju-fa-gailv": 7,
     "ruijiao-sanjiao-hanshu": 7,
     "jie-zhijiao-sanjiaoxing": 7,
+    "fangcheng-budengshi-yingyong": 7,
+    "hanshu-fangcheng-tuxiang": 7,
 }
 
 

@@ -124,7 +124,7 @@ class HanshuFangchengTuxiangScene(NarratedScene):
         self.play(Create(up), run_time=0.9)
         dot = Dot(ax.c2p(1, 0), radius=0.07, color=RED)
         self.play(FadeIn(dot), run_time=0.5)
-        self.play(FadeIn(txt("1", size=19, color=RED).move_to([1.1, -0.82, 0])), run_time=0.4)
+        self.play(FadeIn(txt("1", size=19, color=RED).move_to(ax.c2p(1, 0) + DOWN * 0.45)), run_time=0.4)
         self.wait(0.6)
 
         rows = [
