@@ -33,10 +33,10 @@ def axes(cx: float, cy: float, w: float, h: float,
     return VGroup(ax, ay)
 
 
-def parabola(f, t0: float, t1: float, color=GOLD, width: float = 3.4,
-             samples: int = 60) -> ParametricFunction:
-    """按函数 f 画曲线，t 为自变量的屏幕坐标范围。"""
-    return ParametricFunction(lambda t: P(t, f(t)), t_range=[t0, t1, 0.02],
+def parabola(cx: float, cy: float, f, t0: float, t1: float,
+             color=GOLD, width: float = 3.4) -> ParametricFunction:
+    """以 (cx, cy) 为顶点画 y = f(t) 的曲线，t 为相对横坐标。"""
+    return ParametricFunction(lambda t: P(cx + t, cy + f(t)), t_range=[t0, t1, 0.02],
                               color=color, stroke_width=width)
 
 
@@ -92,26 +92,26 @@ class ErciHanshuScene(NarratedScene):
     def scene_basic(self):
         self.section(1, "最简单的 y = ax²")
 
-        ax = axes(-3.6, -0.85, 4.2, 4.0)
+        ax = axes(-3.6, 0.05, 4.2, 3.2)
         self.play(Create(ax), run_time=1.1)
 
-        curve = parabola(lambda t: -0.85 + 0.62 * t * t, -1.85, 1.85, GOLD, 3.6)
+        curve = parabola(-3.6, 0.05, lambda t: 0.40 * t * t, -1.9, 1.9, GOLD, 3.6)
         self.play(Create(curve), run_time=1.8)
-        dot = Dot(P(-3.6, -0.85), radius=0.075, color=GOLD)
+        dot = Dot(P(-3.6, 0.05), radius=0.075, color=GOLD)
         self.play(FadeIn(dot), run_time=0.5)
-        vp = txt("顶点在原点", size=22, color=GOLD).move_to([-1.55, -1.35, 0])
+        vp = txt("顶点在原点", size=22, color=GOLD).move_to([-2.35, -0.72, 0])
         self.play(FadeIn(vp, shift=RIGHT * 0.04), run_time=0.7)
         self.wait(0.8)
 
-        l1 = strip_label("关于 y 轴对称", GOLD).move_to([-3.6, 2.05, 0])
+        l1 = strip_label("关于 y 轴对称", GOLD).move_to([-3.6, 2.55, 0])
         self.play(FadeIn(l1, shift=UP * 0.04), run_time=0.8)
         self.wait(0.9)
 
         # 右侧：a 的正负
-        up = parabola(lambda t: 1.55 + 0.5 * t * t, -1.35, 1.35, GOLD, 3.0)
-        dn = parabola(lambda t: 1.55 - 0.5 * t * t, -1.35, 1.35, GREEN, 3.0)
-        t1 = txt("a > 0 开口向上", size=23, color=GOLD).move_to([3.9, 3.0, 0])
-        t2 = txt("a < 0 开口向下", size=23, color=GREEN).move_to([3.9, -0.55, 0])
+        up = parabola(3.9, 1.0, lambda t: 0.42 * t * t, -1.3, 1.3, GOLD, 3.0)
+        dn = parabola(3.9, -0.35, lambda t: -0.42 * t * t, -1.3, 1.3, GREEN, 3.0)
+        t1 = txt("a > 0 开口向上", size=23, color=GOLD).move_to([3.9, 2.15, 0])
+        t2 = txt("a < 0 开口向下", size=23, color=GREEN).move_to([3.9, -1.5, 0])
         self.play(Create(up), run_time=1.2)
         self.play(FadeIn(t1, shift=UP * 0.04), run_time=0.7)
         self.play(Create(dn), run_time=1.2)
@@ -119,18 +119,18 @@ class ErciHanshuScene(NarratedScene):
         self.wait(1.2)
 
         note = txt("|a| 越大，开口越小、越窄", size=24, color=CHALK)
-        note.move_to([2.9, -1.55, 0])
+        note.move_to([2.6, -2.05, 0])
         self.play(FadeIn(note, shift=UP * 0.04), run_time=0.95)
 
         box = label_box("开口看 a 的符号，宽窄看 a 的大小", size=22, color=GOLD)
-        box.move_to([0, -2.55, 0])
+        box.move_to([0, -2.75, 0])
         self.play(FadeIn(box, scale=0.97), run_time=1.0)
         self.wait(9.0)
         self.finish_section()
 
     # ---------------- 2. 平移与顶点式 ---------------- 26.0
     def scene_shift(self):
-        self.section(2, "平移：y = a(x − h)² + k")
+        self.section(2, "平移与顶点式")
 
         f = txt("y = a(x − h)² + k", size=46, color=GOLD).move_to([-0.4, 2.1, 0])
         self.play(FadeIn(f, scale=0.98), run_time=1.0)
@@ -150,9 +150,9 @@ class ErciHanshuScene(NarratedScene):
 
         # 基础抛物线 → 平移后的抛物线
         ax = axes(-3.4, -1.85, 3.6, 3.0)
-        base = parabola(lambda t: -1.85 + 0.30 * t * t, -1.5, 1.5, DIM, 2.6)
+        base = parabola(-3.4, -1.85, lambda t: 0.30 * t * t, -1.5, 1.5, DIM, 2.6)
         self.play(Create(ax), Create(base), run_time=1.4)
-        moved = parabola(lambda t: -1.25 + 0.30 * (t - 1.6) ** 2, 0.1, 3.1, GOLD, 3.2)
+        moved = parabola(-1.8, -1.25, lambda t: 0.30 * t * t, -1.3, 1.3, GOLD, 3.2)
         ar = Arrow(P(-3.0, -1.35), P(-1.75, -1.35), color=GOLD, stroke_width=2.4,
                    buff=0, max_tip_length_to_length_ratio=0.2)
         self.play(Create(moved), GrowArrow(ar), run_time=1.6)
@@ -191,17 +191,17 @@ class ErciHanshuScene(NarratedScene):
 
         # 一般式结论（两行，居中排列）
         l1 = txt("一般式 y = ax² + bx + c", size=25, color=CHALK)
-        l1.move_to([0, -1.35, 0])
+        l1.move_to([0, -1.15, 0])
 
         n1 = txt("−b", size=23, color=GOLD)
         d1 = txt("2a", size=23, color=GOLD)
         s1 = VGroup(txt("对称轴 x =", size=26, color=GOLD), frac(n1, d1))
-        s1.arrange(RIGHT, buff=0.16).move_to([0, -2.05, 0])
+        s1.arrange(RIGHT, buff=0.16).move_to([-2.55, -2.10, 0])
 
         n2 = txt("4ac − b²", size=21, color=GOLD)
         d2 = txt("4a", size=21, color=GOLD)
         s2 = VGroup(txt("顶点纵坐标 =", size=26, color=GOLD), frac(n2, d2))
-        s2.arrange(RIGHT, buff=0.16).move_to([0, -2.75, 0])
+        s2.arrange(RIGHT, buff=0.16).move_to([2.75, -2.10, 0])
 
         self.play(FadeIn(l1, shift=UP * 0.04), run_time=0.8)
         self.play(FadeIn(s1, scale=0.98), run_time=0.9)
@@ -214,7 +214,7 @@ class ErciHanshuScene(NarratedScene):
         self.section(4, "顶点就是最值")
 
         ax1 = axes(-4.2, -0.2, 3.6, 2.8)
-        up = parabola(lambda t: -1.05 + 0.45 * t * t, -1.75, 1.75, GOLD, 3.2)
+        up = parabola(-4.2, -1.05, lambda t: 0.45 * t * t, -1.75, 1.75, GOLD, 3.2)
         d1 = Dot(P(-4.2, -1.05), radius=0.075, color=GOLD)
         self.play(Create(ax1), run_time=0.9)
         self.play(Create(up), run_time=1.4)
@@ -226,21 +226,21 @@ class ErciHanshuScene(NarratedScene):
         self.play(FadeIn(t2, shift=UP * 0.04), run_time=0.75)
         self.wait(0.9)
 
-        ax2 = axes(3.6, -0.55, 3.6, 3.4)
-        dn = parabola(lambda t: 0.35 - 0.55 * t * t, -1.75, 1.75, GREEN, 3.2)
-        d2 = Dot(P(3.6, 0.35), radius=0.075, color=GREEN)
+        ax2 = axes(3.6, -0.2, 3.6, 2.8)
+        dn = parabola(3.6, 0.55, lambda t: -0.45 * t * t, -1.75, 1.75, GREEN, 3.2)
+        d2 = Dot(P(3.6, 0.55), radius=0.075, color=GREEN)
         self.play(Create(ax2), run_time=0.9)
         self.play(Create(dn), run_time=1.4)
         self.play(FadeIn(d2), run_time=0.45)
 
-        t3 = txt("a < 0：最高点", size=24, color=GREEN).move_to([3.6, 1.75, 0])
-        t4 = txt("有最大值", size=25, color=CHALK).move_to([3.6, -2.15, 0])
+        t3 = txt("a < 0：最高点", size=24, color=GREEN).move_to([3.6, 1.62, 0])
+        t4 = txt("有最大值", size=25, color=CHALK).move_to([3.6, -1.95, 0])
         self.play(FadeIn(t3, shift=UP * 0.04), run_time=0.75)
         self.play(FadeIn(t4, shift=UP * 0.04), run_time=0.75)
         self.wait(1.0)
 
         box = label_box("先看 a 的符号，再算顶点的纵坐标", size=23, color=GOLD)
-        box.move_to([0, -2.85, 0])
+        box.move_to([0, -2.68, 0])
         self.play(FadeIn(box, scale=0.97), run_time=1.05)
         self.wait(8.5)
         self.finish_section()
@@ -249,7 +249,7 @@ class ErciHanshuScene(NarratedScene):
     def scene_apply(self):
         self.section(5, "应用：篱笆围出最大面积")
 
-        head = txt("20 米篱笆靠墙围矩形", size=25, color=DIM).move_to([-4.4, 2.3, 0])
+        head = txt("20 米篱笆靠墙围矩形", size=25, color=DIM).move_to([-4.4, 2.6, 0])
         self.play(FadeIn(head, shift=UP * 0.04), run_time=0.9)
 
         wall = Line(P(-6.6, 1.5), P(-6.6, -1.5), color=DIM, stroke_width=8)

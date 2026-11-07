@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二次函数 · 开口、顶点与最值 · 数益坊</title>
+<meta name="description" content="喷泉的水柱、投篮的弧线、拱桥的桥洞，弯出来的都是抛物线。这一节从生活里的三条曲线讲起，给出二次函数 y = ax² + bx + c（a ≠ 0）的定义，再一步步拆开它的图像：先看最简单的 y = ax²，弄清开口方向由 a 的符号决定、宽窄由 |a| 决定；再看 y = a(x − h)² + k 的平移规律「左加右减、上加下减」，顶点就是 (h, k)；然后用配方法把一般式化成顶点式，得到对称轴 x = −b/(2a) 与顶点纵坐标；最后用顶点求最值，解决「篱笆围出最大面积」这类应用题。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">81 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>二次函数</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">九年级</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>二次函数</h1>
+        <p class="subtitle">开口、顶点与最值</p>
+        <p class="brief">喷泉的水柱、投篮的弧线、拱桥的桥洞，弯出来的都是抛物线。这一节从生活里的三条曲线讲起，给出二次函数 y = ax² + bx + c（a ≠ 0）的定义，再一步步拆开它的图像：先看最简单的 y = ax²，弄清开口方向由 a 的符号决定、宽窄由 |a| 决定；再看 y = a(x − h)² + k 的平移规律「左加右减、上加下减」，顶点就是 (h, k)；然后用配方法把一般式化成顶点式，得到对称轴 x = −b/(2a) 与顶点纵坐标；最后用顶点求最值，解决「篱笆围出最大面积」这类应用题。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>3:09</b></span>
+          <span>建议学习 <b>13 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">先看开口再找顶点</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>二次函数 视频讲解</h2><span class="hint">3:09</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/erci-hanshu.jpg">
+                <source src="assets/videos/erci-hanshu.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/erci-hanshu.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>二次函数的定义</h3></div>
+  <p>形如 y = ax² + bx + c（a、b、c 是常数，a ≠ 0）的函数叫二次函数，它的图像是一条抛物线。</p><p>a 不能等于零，否则最高次就不是 2，函数就变成一次函数了；b、c 可以等于零。</p><p class="formula-big">y = ax² + bx + c（a ≠ 0）</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>y = ax² 的图像</h3></div>
+  <p>y = ax² 的图像关于 y 轴对称，顶点在原点。a &gt; 0 开口向上，a &lt; 0 开口向下。</p><p>|a| 越大，开口越小、越窄；|a| 越小，开口越大、越平缓。</p><p class="formula-big">开口看 a 的符号</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>顶点式与平移</h3></div>
+  <p>y = a(x − h)² + k 的顶点是 (h, k)，对称轴是直线 x = h。</p><p>平移规律：左右「左加右减」，上下「上加下减」。例：y = (x − 2)² + 3 的顶点是 (2, 3)。</p><p class="formula-big">y = a(x − h)² + k</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>一般式的对称轴与顶点</h3></div>
+  <p>用配方法可以把一般式化成顶点式。例：y = x² − 4x + 5 = (x² − 4x + 4) + 1 = (x − 2)² + 1，顶点 (2, 1)，对称轴 x = 2。</p><p>推广到一般式：对称轴是 x = −b/(2a)，顶点的纵坐标是 (4ac − b²)/(4a)。</p><p class="formula-big">x = −b/(2a)</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>顶点就是最值</h3></div>
+  <p>a &gt; 0 时开口向上，顶点是最低点，函数有最小值；a &lt; 0 时开口向下，顶点是最高点，函数有最大值。</p><p>求最值分两步：先看 a 的符号判断是最大还是最小，再把顶点的纵坐标算出来。</p><p class="formula-big">a &gt; 0 有最小值</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例：篱笆围出最大面积</h3></div>
+  <p>用 20 米篱笆靠墙围一个矩形，设宽为 x 米，则长为 20 − 2x 米（靠墙的一边不用篱笆）。</p><p>面积 S = x(20 − 2x) = −2x² + 20x = −2(x − 5)² + 50。当 x = 5 时，面积最大，是 50 平方米。</p><p class="formula-big">S = −2(x − 5)² + 50</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>二次函数的一般式是 y = ax² + bx + c（a ≠ 0），图像是一条抛物线。y = ax² 关于 y 轴对称、顶点在原点，a &gt; 0 开口向上、a &lt; 0 开口向下，|a| 越大开口越窄。顶点式 y = a(x − h)² + k 的顶点是 (h, k)，对称轴是 x = h，平移遵循「左加右减、上加下减」。把一般式用配方法化成顶点式，就得到对称轴 x = −b/(2a) 和顶点纵坐标 (4ac − b²)/(4a)。a &gt; 0 时顶点是最低点，函数有最小值；a &lt; 0 时顶点是最高点，有最大值。遇到篱笆围面积、商品定价求利润这类问题，先列出二次函数，再化成顶点式，最值自然就出来了。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>a 忘了不等于 0，把二次函数当成一次函数。</li><li>对称轴写成 x = b/(2a)，漏掉负号。</li><li>平移方向记反：向右移是括号里减，不是加。</li><li>求最值时只看顶点，忘了实际问题的 x 有取值范围。</li><li>把顶点纵坐标当成最值本身，没先判断 a 的符号是最大还是最小。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">抛物线 y = −2x² 的开口方向是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>向上</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>向下</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>无法确定</span></button></div>
+    <div class="feedback" role="status" data-explain="a = −2 &lt; 0，开口向下；开口方向只看 a 的符号，与 |a| 的大小无关。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">抛物线 y = (x − 3)² + 1 的顶点坐标是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>(3, 1)</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>(−3, 1)</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>(3, −1)</span></button></div>
+    <div class="feedback" role="status" data-explain="顶点式中顶点是 (h, k)，这里 h = 3、k = 1，所以顶点是 (3, 1)，对称轴是 x = 3。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">抛物线 y = x² − 4x + 5 的对称轴是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>x = −2</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>x = 4</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>x = 2</span></button></div>
+    <div class="feedback" role="status" data-explain="配方得 y = (x − 2)² + 1，对称轴是 x = 2；也可用公式 x = −b/(2a) = 4/2 = 2。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">用 20 米篱笆靠墙围矩形，面积的最大值是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>40 m²</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>50 m²</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>100 m²</span></button></div>
+    <div class="feedback" role="status" data-explain="设宽为 x，S = x(20 − 2x) = −2(x − 5)² + 50，x = 5 时取最大值 50 m²，此时长 10 米、宽 5 米。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-erci-fangcheng-yingyong.html"><span class="dir">← 上一节</span><span class="title">一元二次方程的应用</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解二次函数的定义，知道 a ≠ 0 且最高次是 2</li><li>会画 y = ax² 的草图，说出开口方向、对称轴与顶点</li><li>知道 |a| 越大开口越窄，|a| 越小开口越宽</li><li>掌握顶点式 y = a(x − h)² + k 与平移规律</li><li>会用配方法把一般式化成顶点式</li><li>记住对称轴 x = −b/(2a) 与顶点纵坐标 (4ac − b²)/(4a)</li><li>会用顶点求最大值或最小值，并解决面积最大问题</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
