@@ -69,6 +69,7 @@ CHAPTERS = {
     "jiben-tuxing": 7,
     "shuju-shouji": 7,
     "mi-yunsuan": 7,
+    "zhengshi-chengfa": 7,
     "yiyuan-yici-fangcheng": 7,
     "wanquan-pingfang": 7,
     "dengcha-shulie": 7,
