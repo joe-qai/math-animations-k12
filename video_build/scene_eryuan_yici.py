@@ -78,24 +78,24 @@ class EryuanYiciScene(NarratedScene):
         self.play(FadeIn(box, scale=0.97), run_time=1.0)
         self.wait(0.8)
 
-        g1 = txt("x + y = 10", size=27, color=GREEN).move_to([-1.1, -0.45, 0])
-        g2 = txt("2x + y = 16", size=27, color=GREEN).move_to([-1.1, -1.15, 0])
-        br = Brace(Line(P(-2.9, -1.5), P(-2.9, -0.1)), direction=LEFT, color=GREEN, buff=0.1)
+        g1 = txt("x + y = 10", size=27, color=GREEN).move_to([-2.1, 0.15, 0])
+        g2 = txt("2x + y = 16", size=27, color=GREEN).move_to([-2.1, -0.55, 0])
+        br = Brace(Line(P(-3.85, -0.9), P(-3.85, 0.5)), direction=LEFT, color=GREEN, buff=0.1)
         self.play(FadeIn(g1, shift=UP * 0.04), run_time=0.7)
         self.play(FadeIn(g2, shift=UP * 0.04), run_time=0.7)
         self.play(Create(br), run_time=0.7)
-        self.wait(1.0)
+        self.wait(0.8)
 
         dt = txt("两个方程合在一起，就叫二元一次方程组", size=25, color=DIM)
-        dt.move_to([2.2, -0.8, 0])
+        dt.move_to([0, -1.55, 0])
         self.play(FadeIn(dt, shift=UP * 0.04), run_time=0.9)
         self.wait(1.2)
 
-        bad = txt("xy = 6", size=30, color=RED).move_to([-3.5, -2.35, 0])
+        bad = txt("xy = 6", size=30, color=RED).move_to([-3.5, -2.45, 0])
         self.play(FadeIn(bad, shift=UP * 0.04), run_time=0.7)
-        bl = txt("次数是二次，不是二元一次", size=24, color=RED).move_to([2.1, -2.35, 0])
+        bl = txt("次数是二次，不是二元一次", size=24, color=RED).move_to([2.4, -2.45, 0])
         self.play(FadeIn(bl, shift=UP * 0.04), run_time=0.8)
-        self.play(Create(Line([-4.55, -2.35, 0], [-2.45, -2.35, 0], color=RED, stroke_width=2.6)),
+        self.play(Create(Line([-4.55, -2.45, 0], [-2.45, -2.45, 0], color=RED, stroke_width=2.6)),
                   run_time=0.5)
         self.wait(2.8)
         self.finish_section()
@@ -242,8 +242,10 @@ class EryuanYiciScene(NarratedScene):
         ]
         y = 1.95
         for num, s in steps:
-            n = txt(num, size=24, color=GOLD).move_to([-5.75, y, 0])
-            t = txt(s, size=25, color=CHALK).move_to([-3.55, y, 0])
+            n = txt(num, size=24, color=GOLD).move_to([-6.0, y, 0])
+            t = txt(s, size=25, color=CHALK)
+            t.next_to(n, RIGHT, buff=0.28)
+            t.move_to([t.get_center()[0], n.get_center()[1], 0])
             self.play(FadeIn(n, shift=RIGHT * 0.05), run_time=0.45)
             self.play(FadeIn(t, shift=RIGHT * 0.05), run_time=0.6)
             y -= 0.78
