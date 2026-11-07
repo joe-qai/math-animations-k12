@@ -113,6 +113,7 @@ CHAPTERS = {
     "zhongkao-hanshu-yingyong": 7,
     "zhongkao-sanjiaoxing-sibianxing": 7,
     "zhongkao-yuan-sanjiao-hanshu": 7,
+    "zhongkao-tongji-gailv": 7,
 }
 
 
