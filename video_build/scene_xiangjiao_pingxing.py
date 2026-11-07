@@ -13,20 +13,21 @@ def P(x, y):
     return np.array([float(x), float(y), 0.0])
 
 
-def ang_arc(O, A, B, color=GOLD, radius=0.8, lab=None, lab_r=1.22,
+def ang_arc(O, dA, dB, color=GOLD, radius=0.8, lab=None, lab_r=1.22,
             size=23, lab_color=None, width=2.6):
-    """以 O 为顶点、OA 与 OB 为边的角弧，可带标签。"""
-    o, a, b = P(*O), P(*A), P(*B)
-    arc = Angle.from_three_points(a, o, b, radius=radius, color=color,
-                                  stroke_width=width)
+    """以 O 为顶点、沿 dA 与 dB 两个方向的角弧，可带标签。"""
+    o = P(*O)
+    ua = P(*dA)
+    ua = ua / np.linalg.norm(ua)
+    ub = P(*dB)
+    ub = ub / np.linalg.norm(ub)
+    arc = Angle.from_three_points(o + ua, o, o + ub, radius=radius,
+                                  color=color, stroke_width=width)
     grp = VGroup(arc)
     if lab:
-        va, vb = a - o, b - o
-        va = va / np.linalg.norm(va)
-        vb = vb / np.linalg.norm(vb)
-        d = va + vb
+        d = ua + ub
         if np.linalg.norm(d) < 1e-6:
-            d = va
+            d = ua
         d = d / np.linalg.norm(d)
         pos = o + d * lab_r
         grp.add(txt(lab, size=size, color=lab_color or color)
@@ -35,16 +36,15 @@ def ang_arc(O, A, B, color=GOLD, radius=0.8, lab=None, lab_r=1.22,
 
 
 def right_angle(vertex, u, v, size=0.32, color=GOLD):
-    """直角小方块。"""
+    """直角小方块，u、v 为从顶点出发的两个方向。"""
     o = P(*vertex)
-    uu = P(*u) - o
-    vv = P(*v) - o
+    uu = P(*u)
     uu = uu / np.linalg.norm(uu) * size
+    vv = P(*v)
     vv = vv / np.linalg.norm(vv) * size
     pts = [o + uu, o + uu + vv, o + vv]
-    m = VGroup(*[Line(pts[0], pts[1], color=color, stroke_width=2.2),
-                 Line(pts[1], pts[2], color=color, stroke_width=2.2)])
-    return m
+    return VGroup(*[Line(pts[0], pts[1], color=color, stroke_width=2.2),
+                    Line(pts[1], pts[2], color=color, stroke_width=2.2)])
 
 
 class XiangjiaoPingxingScene(NarratedScene):
@@ -99,9 +99,9 @@ class XiangjiaoPingxingScene(NarratedScene):
     def scene_angles(self):
         self.section(1, "邻补角与对顶角")
 
-        O = (-3.5, -0.55)
-        l1a, l1b = (-6.3, -0.55), (-0.7, -0.55)
-        l2a, l2b = (-5.5, 1.05), (-1.5, -2.15)
+        O = (-3.5, 0.35)
+        l1a, l1b = (-6.3, 0.35), (-0.7, 0.35)
+        l2a, l2b = (-4.45, 2.00), (-2.55, -1.30)
 
         L1 = Line(P(*l1a), P(*l1b), color=CHALK, stroke_width=3)
         self.play(Create(L1), run_time=1.1)
@@ -111,13 +111,13 @@ class XiangjiaoPingxingScene(NarratedScene):
 
         ur = (1.0, 0.0)
         ul = (-1.0, 0.0)
-        uu = (-0.76, 0.65)
-        ud = (0.76, -0.65)
+        uu = (-0.5, 0.87)
+        ud = (0.5, -0.87)
 
-        a1 = ang_arc(O, ul, uu, color=GOLD, lab="∠1", lab_r=1.12)
-        a2 = ang_arc(O, uu, ur, color=BLUE, lab="∠2", lab_r=1.12, lab_color=BLUE)
-        a3 = ang_arc(O, ur, ud, color=GREEN, lab="∠3", lab_r=1.12, lab_color=GREEN)
-        a4 = ang_arc(O, ud, ul, color=ORANGE, lab="∠4", lab_r=1.12, lab_color=ORANGE)
+        a1 = ang_arc(O, ul, uu, color=GOLD, radius=0.78, lab="∠1", lab_r=1.16)
+        a2 = ang_arc(O, uu, ur, color=BLUE, radius=0.78, lab="∠2", lab_r=1.16, lab_color=BLUE)
+        a3 = ang_arc(O, ur, ud, color=GREEN, radius=0.78, lab="∠3", lab_r=1.16, lab_color=GREEN)
+        a4 = ang_arc(O, ud, ul, color=ORANGE, radius=0.78, lab="∠4", lab_r=1.16, lab_color=ORANGE)
         for g in (a1, a2, a3, a4):
             self.play(FadeIn(g, scale=0.9), run_time=0.75)
 
@@ -210,52 +210,43 @@ class XiangjiaoPingxingScene(NarratedScene):
         self.play(FadeIn(Dot(P(*Pp), radius=0.06, color=RED)),
                   FadeIn(Dot(P(*Qq), radius=0.06, color=RED)), run_time=0.7)
 
-        ul, ur, dl, dr = (-1, 0), (1, 0), (-0.92, 0.38), (0.92, -0.38)
-        angs = [
-            (Pp, ul, dl, "1", GOLD, 8), (Pp, dr, ur, "2", BLUE, 8),
-            (Pp, ur, ul, "3", GREEN, 8), (Pp, dl, dr, "4", ORANGE, 8),
-        ]
-        # 手工放置 1-4 与 5-8，避免弧方向判断出错
         def lab_at(v, dx, dy, s, color):
             return txt(s, size=23, color=color).move_to([v[0] + dx, v[1] + dy, 0])
 
-        g1 = ang_arc(Pp, (px - 1.0, y1), (px - 0.5, y1 + 0.45), color=GOLD, radius=0.55)
-        g2 = ang_arc(Pp, (px + 1.0, y1), (px + 0.5, y1 + 0.45), color=BLUE, radius=0.55)
-        g3 = ang_arc(Pp, (px + 1.0, y1), (px + 0.5, y1 - 0.45), color=GREEN, radius=0.55)
-        g4 = ang_arc(Pp, (px - 1.0, y1), (px - 0.5, y1 - 0.45), color=ORANGE, radius=0.55)
-        g5 = ang_arc(Qq, (qx - 1.0, y2), (qx - 0.5, y2 + 0.45), color=GOLD, radius=0.55)
-        g6 = ang_arc(Qq, (qx + 1.0, y2), (qx + 0.5, y2 + 0.45), color=BLUE, radius=0.55)
-        g7 = ang_arc(Qq, (qx + 1.0, y2), (qx + 0.5, y2 - 0.45), color=GREEN, radius=0.55)
-        g8 = ang_arc(Qq, (qx - 1.0, y2), (qx - 0.5, y2 - 0.45), color=ORANGE, radius=0.55)
         nums = VGroup(
             lab_at(Pp, -0.78, 0.42, "1", GOLD), lab_at(Pp, 0.78, 0.42, "2", BLUE),
             lab_at(Pp, 0.78, -0.42, "3", GREEN), lab_at(Pp, -0.78, -0.42, "4", ORANGE),
             lab_at(Qq, -0.78, 0.42, "5", GOLD), lab_at(Qq, 0.78, 0.42, "6", BLUE),
             lab_at(Qq, 0.78, -0.42, "7", GREEN), lab_at(Qq, -0.78, -0.42, "8", ORANGE),
         )
-        self.play(LaggedStart(*[FadeIn(g, scale=0.85) for g in
-                                (g1, g2, g3, g4, g5, g6, g7, g8)], lag_ratio=0.08),
+        self.play(LaggedStart(*[FadeIn(n, scale=0.8) for n in nums], lag_ratio=0.08),
                   run_time=2.4)
-        self.play(LaggedStart(*[FadeIn(n, scale=0.8) for n in nums], lag_ratio=0.06),
-                  run_time=1.8)
+
+        # 三条平行线方向：右上 (1,1) 与左下 (-1,-1)；两条被截线方向为左右
+        tu, td = (1.0, 1.0), (-1.0, -1.0)
+        hi = {}
+        hi["F"] = (ang_arc(Pp, (-1, 0), tu, color=GOLD, radius=0.46, width=4.4),
+                   ang_arc(Qq, (-1, 0), tu, color=GOLD, radius=0.46, width=4.4))
+        hi["Z"] = (ang_arc(Pp, (-1, 0), td, color=BLUE, radius=0.46, width=4.4),
+                   ang_arc(Qq, (1, 0), tu, color=BLUE, radius=0.46, width=4.4))
+        hi["U"] = (ang_arc(Pp, (-1, 0), td, color=ORANGE, radius=0.46, width=4.4),
+                   ang_arc(Qq, (-1, 0), tu, color=ORANGE, radius=0.46, width=4.4))
 
         rows = VGroup(
             VGroup(txt("同位角", size=26, color=GOLD), txt("∠1 与 ∠5（F 形）", size=25, color=CHALK)),
             VGroup(txt("内错角", size=26, color=BLUE), txt("∠4 与 ∠6（Z 形）", size=25, color=CHALK)),
             VGroup(txt("同旁内角", size=26, color=ORANGE), txt("∠4 与 ∠5（U 形）", size=25, color=CHALK)),
         )
+        keys = ["F", "Z", "U"]
+        prev = None
         for i, r in enumerate(rows):
             r.arrange(RIGHT, buff=0.35).move_to([3.65, 1.5 - i * 1.15, 0])
             self.play(FadeIn(r, shift=RIGHT * 0.05), run_time=0.8)
-            if i == 0:
-                self.play(g1.animate.set_stroke(width=4.6), g5.animate.set_stroke(width=4.6),
-                          run_time=0.5)
-            elif i == 1:
-                self.play(g4.animate.set_stroke(width=4.6), g6.animate.set_stroke(width=4.6),
-                          run_time=0.5)
-            else:
-                self.play(g4.animate.set_stroke(width=4.6), g5.animate.set_stroke(width=4.6),
-                          run_time=0.5)
+            if prev is not None:
+                self.play(FadeOut(prev), run_time=0.45)
+            cur = VGroup(hi[keys[i]][0], hi[keys[i]][1])
+            self.play(Create(cur), run_time=0.8)
+            prev = cur
 
         note = txt("记住形状，比背定义快", size=25, color=DIM).move_to([3.65, -2.35, 0])
         self.play(FadeIn(note, shift=UP * 0.05), run_time=0.8)
@@ -281,7 +272,7 @@ class XiangjiaoPingxingScene(NarratedScene):
         y = 1.25
         for cond, res, col in items:
             left = label_box(cond, size=28, color=col)
-            arrow = txt("⟹", size=30, color=DIM)
+            arrow = txt("→", size=30, color=DIM)
             right = txt(res, size=28, color=GREEN)
             row = VGroup(left, arrow, right).arrange(RIGHT, buff=0.4)
             row.move_to([0, y, 0])
@@ -315,7 +306,7 @@ class XiangjiaoPingxingScene(NarratedScene):
         y = 1.25
         for cond, res, col in items:
             left = txt(cond, size=28, color=GOLD)
-            arrow = txt("⟹", size=30, color=DIM)
+            arrow = txt("→", size=30, color=DIM)
             right = label_box(res, size=27, color=col)
             row = VGroup(left, arrow, right).arrange(RIGHT, buff=0.4)
             row.move_to([0, y, 0])
@@ -324,7 +315,7 @@ class XiangjiaoPingxingScene(NarratedScene):
             self.play(FadeIn(right, scale=0.97), run_time=0.7)
             y -= 1.15
 
-        box = label_box("判定：角 ⟹ 平行　性质：平行 ⟹ 角", size=27, color=CHALK)
+        box = label_box("判定：角 → 平行　性质：平行 → 角", size=27, color=CHALK)
         box.move_to([0, -2.35, 0])
         self.play(FadeIn(box, scale=0.97), run_time=1.1)
         self.wait(3.2)
