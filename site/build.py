@@ -43,7 +43,7 @@ STAGES = [
         "en": "SENIOR",
         "color": "#2f8877",
         "tagline": "公式开始变长，但证明仍然可以很直观：把数列摆成阶梯，倒过来，就看见公式。",
-        "grades": ["高一 · 等差数列求和"],
+        "grades": ["初升高衔接 · 因式分解强化", "高一 · 等差数列求和"],
     },
 ]
 
@@ -144,6 +144,7 @@ THUMB = {
     "zhongkao-yuan-sanjiao-hanshu": "ℓ = nπr / 180",
     "zhongkao-tongji-gailv": "P = m / n",
     "zhongkao-yazhou-jieti": "先拿稳的，再冲难的",
+    "h0-yinshi-fenjie": "提公因式，十字相乘",
     "yiyuan-yici-fangcheng": "2x + 3 = 11",
     "wanquan-pingfang": "(a+b)²",
     "dengcha-shulie": "首项 + 末项",
