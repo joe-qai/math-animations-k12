@@ -35,7 +35,7 @@ STAGES = [
                      "九年级 · 函数与方程、不等式", "九年级 · 尺规作图", "九年级 · 统计图选择",
                      "中考专题 · 数与式", "中考专题 · 方程与不等式", "中考专题 · 函数及其应用",
                      "中考专题 · 三角形与四边形", "中考专题 · 圆与三角函数",
-                     "中考专题 · 统计与概率"],
+                     "中考专题 · 统计与概率", "中考专题 · 压轴题拆解"],
     },
     {
         "id": "gaozhong",
@@ -143,6 +143,7 @@ THUMB = {
     "zhongkao-sanjiaoxing-sibianxing": "△ABC ≌ △DEF",
     "zhongkao-yuan-sanjiao-hanshu": "ℓ = nπr / 180",
     "zhongkao-tongji-gailv": "P = m / n",
+    "zhongkao-yazhou-jieti": "先拿稳的，再冲难的",
     "yiyuan-yici-fangcheng": "2x + 3 = 11",
     "wanquan-pingfang": "(a+b)²",
     "dengcha-shulie": "首项 + 末项",

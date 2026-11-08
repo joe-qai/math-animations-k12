@@ -81,17 +81,16 @@ class ZhongkaoYazhouJietiScene(NarratedScene):
                   FadeIn(label_at("中点", D, -0.05, -0.42, GOLD, 19)), run_time=0.6)
         self.play(Create(Line(P(*A), P(*D), color=GOLD, stroke_width=2.2)), run_time=0.7)
 
-        # 角平分线
-        bis = Line(P(*A), P(-4.45, -1.05), color=GREEN, stroke_width=2.0)
+        # 角平分线，终点落在 BC 上
+        bis = Line(P(*A), P(-4.45, -1.46), color=GREEN, stroke_width=2.0)
         self.play(Create(bis), run_time=0.7)
         self.play(Create(angle_mark(A[0], A[1], 0.62, -74, 20, GREEN)),
-                  FadeIn(label_at("角平分", A, 0.9, -0.55, GREEN, 19)), run_time=0.6)
+                  FadeIn(label_at("角平分", A, 0.85, -0.6, GREEN, 19)), run_time=0.6)
 
-        # 平行箭头
-        par = Line(P(-5.75, 0.35), P(-3.55, 0.35), color=BLUE, stroke_width=2.0)
+        # 平行：截线两端落在三角形两边上
+        par = Line(P(-5.6, 0.35), P(-4.21, 0.35), color=BLUE, stroke_width=2.0)
         self.play(Create(par), run_time=0.6)
-        self.play(Create(angle_mark(-5.3, 0.35, 0.3, -125, 55, BLUE)),
-                  FadeIn(label_at("平行", -4.9, 0.6, BLUE, 19)), run_time=0.6)
+        self.play(FadeIn(label_at("平行", (-3.92, 0.35), 0.0, 0.0, BLUE, 19)), run_time=0.6)
         self.wait(0.4)
 
         # 两条分支
@@ -116,37 +115,40 @@ class ZhongkaoYazhouJietiScene(NarratedScene):
     def scene_models(self):
         self.section(2, "模型一：一线三等角与手拉手")
 
-        # 一线三等角
-        line = Line(P(-6.15, 1.05), P(-1.35, 1.05), color=DIM, stroke_width=2.2)
+        # 一线三等角：B、C、D 在直线上，A、E 在同侧
+        line = Line(P(-6.35, 1.6), P(-1.35, 1.6), color=DIM, stroke_width=2.2)
         self.play(Create(line), run_time=0.7)
-        Bp = (-5.35, 1.05)
-        Cp = (-3.75, 1.05)
-        Dp = (-2.15, 1.05)
-        tri1 = Polygon(P(*Bp), P(*Cp), P(-4.65, 2.45), color=GOLD, stroke_width=2.4)
-        tri2 = Polygon(P(*Cp), P(*Dp), P(-2.9, 2.45), color=GREEN, stroke_width=2.4)
+        Bp = (-5.9, 1.6)
+        Cp = (-3.9, 1.6)
+        Dp = (-1.9, 1.6)
+        Ap = (-5.2, 2.62)
+        Ep = (-2.65, 2.62)
+        tri1 = Polygon(P(*Bp), P(*Cp), P(*Ap), color=GOLD, stroke_width=2.4)
+        tri2 = Polygon(P(*Cp), P(*Dp), P(*Ep), color=GREEN, stroke_width=2.4)
         self.play(Create(tri1), run_time=0.8)
         self.play(Create(tri2), run_time=0.8)
-        for pt, col, d in [(Bp, GOLD, (0.05, 0.34)), (Cp, GOLD, (0.0, 0.36)),
-                           (Dp, GREEN, (0.05, 0.34))]:
-            self.play(Create(angle_mark(pt[0], pt[1], 0.4, 58, 52, col)), run_time=0.35)
+        # ∠ABC、∠ACE、∠CDE 三处等角
+        self.play(Create(angle_mark(Bp[0], Bp[1], 0.45, 0, 56.3, GOLD)), run_time=0.4)
+        self.play(Create(angle_mark(Cp[0], Cp[1], 0.5, 40.0, 101.1, GREEN)), run_time=0.4)
+        self.play(Create(angle_mark(Dp[0], Dp[1], 0.45, 125.5, 54.5, GREEN)), run_time=0.4)
         self.wait(0.4)
 
-        # 手拉手
-        O = (-4.15, -0.45)
-        A = (-5.35, 1.0)
-        B = (-4.95, -1.35)
-        C = (-2.55, 0.55)
-        D = (-2.05, -1.35)
-        t_a = Polygon(P(*O), P(*A), P(*C), color=BLUE, stroke_width=2.2)
-        t_b = Polygon(P(*O), P(*B), P(*D), color=ORANGE, stroke_width=2.2)
+        # 手拉手：两个等腰三角形共顶点 O，顶角相等
+        O = (-4.35, -0.55)
+        A = (-5.15, 0.84)
+        B = (-5.74, -1.35)
+        C = (-2.96, 0.25)
+        D = (-3.55, -1.94)
+        t_a = Polygon(P(*O), P(*A), P(*B), color=BLUE, stroke_width=2.2)
+        t_b = Polygon(P(*O), P(*C), P(*D), color=ORANGE, stroke_width=2.2)
         self.play(Create(t_a), run_time=0.7)
         self.play(Create(t_b), run_time=0.7)
         ac = Line(P(*A), P(*C), color=GREEN, stroke_width=2.8)
         bd = Line(P(*B), P(*D), color=GREEN, stroke_width=2.8)
         self.play(Create(ac), Create(bd), run_time=0.9)
-        self.play(Create(angle_mark(O[0], O[1], 0.55, 52, 58, BLUE)),
-                  FadeIn(label_at("α", O, -0.55, 0.15, BLUE, 20)), run_time=0.5)
-        self.play(FadeIn(txt("AC = BD", size=20, color=GREEN).move_to([-3.1, -2.05, 0])),
+        self.play(Create(angle_mark(O[0], O[1], 0.5, 120, 90, GOLD)),
+                  Create(angle_mark(O[0], O[1], 0.5, -60, 90, GOLD)), run_time=0.6)
+        self.play(FadeIn(txt("AC = BD", size=20, color=GREEN).move_to([-4.35, -2.5, 0])),
                   run_time=0.6)
         self.wait(0.4)
 
@@ -175,35 +177,38 @@ class ZhongkaoYazhouJietiScene(NarratedScene):
     def scene_half(self):
         self.section(3, "模型二：半角模型，旋转造全等")
 
-        A = (-5.55, 2.05)
-        B = (-5.55, -1.55)
-        C = (-2.05, -1.55)
-        D = (-2.05, 2.05)
+        A = (-4.55, 2.05)
+        B = (-1.05, 2.05)
+        C = (-1.05, -1.45)
+        D = (-4.55, -1.45)
         sq = Polygon(P(*A), P(*B), P(*C), P(*D), color=CHALK, stroke_width=2.6)
         self.play(Create(sq), run_time=1.0)
-        for pt, nm, dx, dy in [(A, "A", -0.3, 0.22), (B, "B", -0.3, -0.2),
-                               (C, "C", 0.26, -0.2), (D, "D", 0.28, 0.2)]:
+        for pt, nm, dx, dy in [(A, "A", -0.3, 0.24), (B, "B", 0.3, 0.24),
+                               (C, "C", 0.3, -0.22), (D, "D", -0.3, -0.22)]:
             self.play(FadeIn(label_at(nm, pt, dx, dy)), run_time=0.25)
 
-        # 从 A 出发的正方形内部 45°
-        p1 = (-3.9, -1.55)
-        p2 = (-2.05, 0.55)
-        self.play(Create(Line(P(*A), P(*p1), color=GOLD, stroke_width=2.4)), run_time=0.7)
-        self.play(Create(Line(P(*A), P(*p2), color=GOLD, stroke_width=2.4)), run_time=0.7)
-        self.play(Create(angle_mark(A[0], A[1], 0.95, -80, 45, RED)), run_time=0.6)
-        self.play(FadeIn(txt("45°", size=20, color=RED).move_to([-4.55, 0.55, 0])), run_time=0.5)
+        # 从 A 出发的 45°：E 在 BC 上，F 在 CD 上，∠EAF = 45°
+        E = (-1.05, 0.42)
+        F = (-3.28, -1.45)
+        Ep = (-6.18, -1.45)
+        self.play(Create(Line(P(*A), P(*E), color=GOLD, stroke_width=2.4)), run_time=0.7)
+        self.play(Create(Line(P(*A), P(*F), color=GOLD, stroke_width=2.4)), run_time=0.7)
+        self.play(Create(angle_mark(A[0], A[1], 1.05, -70.1, 45.1, RED)), run_time=0.6)
+        self.play(FadeIn(txt("45°", size=20, color=RED).move_to([-3.42, 1.3, 0])), run_time=0.5)
+        self.play(FadeIn(label_at("E", E, 0.28, 0.0)), FadeIn(label_at("F", F, 0.0, -0.34)),
+                  run_time=0.4)
 
-        # 旋转示意：把左下的小三角形转到 AD 边
-        lower = Polygon(P(*A), P(*B), P(*p1), color=BLUE, stroke_width=2.0)
-        lower.set_fill(BLUE, opacity=0.14)
+        # 旋转：把 △ABE 绕 A 顺时针转 90°，B → D，E → E′
+        lower = Polygon(P(*A), P(*B), P(*E), color=BLUE, stroke_width=2.0)
+        lower.set_fill(BLUE, opacity=0.16)
         self.play(FadeIn(lower), run_time=0.7)
-        arrow = Arc(radius=1.6, start_angle=200 * DEGREES, angle=70 * DEGREES,
-                    arc_center=P(*A), color=ORANGE, stroke_width=2.2)
-        self.play(Create(arrow), run_time=0.8)
-        rotated = Polygon(P(*A), P(*D), P(-3.9, 2.05), color=ORANGE, stroke_width=2.0)
-        rotated.set_fill(ORANGE, opacity=0.12)
-        self.play(FadeIn(rotated), run_time=0.8)
-        self.play(FadeIn(txt("旋转后三点共线", size=19, color=ORANGE).move_to([-3.7, -2.15, 0])),
+        rotated = Polygon(P(*A), P(*D), P(*Ep), color=ORANGE, stroke_width=2.0)
+        rotated.set_fill(ORANGE, opacity=0.14)
+        self.play(FadeIn(rotated), run_time=1.0)
+        self.play(FadeIn(txt("旋转 90°", size=19, color=ORANGE).move_to([-5.9, 1.55, 0])),
+                  run_time=0.8)
+        self.play(FadeIn(label_at("E′", Ep, -0.05, -0.36, ORANGE)), run_time=0.4)
+        self.play(FadeIn(txt("E′、F、C 三点共线", size=19, color=ORANGE).move_to([-3.4, -2.3, 0])),
                   run_time=0.6)
         self.wait(0.4)
 
@@ -285,18 +290,18 @@ class ZhongkaoYazhouJietiScene(NarratedScene):
             axis_config={"color": DIM, "stroke_width": 2.0,
                          "include_numbers": False, "tip_length": 0.15},
         )
-        ax.move_to(P(-3.9, -0.15))
+        ax.move_to(P(-3.6, -0.15))
         self.play(Create(ax), run_time=0.9)
 
-        curve = ax.plot(lambda x: -(x - 2) ** 2 + 4, x_range=[0, 4.2],
+        curve = ax.plot(lambda x: -(x - 2) ** 2 + 4, x_range=[0, 4],
                         color=GOLD, stroke_width=2.8)
         self.play(Create(curve), run_time=1.2)
         self.play(FadeIn(Dot(ax.c2p(2, 4), radius=0.07, color=RED)), run_time=0.5)
         self.play(Create(DashedLine(ax.c2p(2, 0), ax.c2p(2, 4), color=RED,
                                     stroke_width=1.6, dash_length=0.08)), run_time=0.6)
-        self.play(FadeIn(txt("顶点 (2, 4)", size=19, color=RED).move_to([-2.0, 2.55, 0])),
+        self.play(FadeIn(txt("顶点 (2, 4)", size=19, color=RED).move_to([-2.45, 1.0, 0])),
                   run_time=0.5)
-        self.play(FadeIn(txt("0 ≤ x ≤ 4", size=19, color=GREEN).move_to([-4.55, -1.85, 0])),
+        self.play(FadeIn(txt("0 ≤ x ≤ 4", size=19, color=GREEN).move_to([-4.3, -2.2, 0])),
                   run_time=0.5)
         self.wait(0.4)
 
