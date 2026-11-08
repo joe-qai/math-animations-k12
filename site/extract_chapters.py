@@ -117,6 +117,7 @@ CHAPTERS = {
     "zhongkao-yazhou-jieti": 7,
     "h0-yinshi-fenjie": 7,
     "h0-erci-hanshu-gen": 7,
+    "tuiwei-jianfa": 7,
 }
 
 
