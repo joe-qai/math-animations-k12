@@ -11,6 +11,7 @@ New-Item -ItemType Directory -Force -Path "..\assets\videos" | Out-Null
 $jobs = @(
     @{ File = "scene_coushi.py";      Scene = "CoushiScene";      Id = "coushifa" },
     @{ File = "scene_tuiwei_jianfa.py"; Scene = "TuiweiJianfaScene"; Id = "tuiwei-jianfa" },
+    @{ File = "scene_bai_yinei_jiajian.py"; Scene = "BaiYineiJiajianScene"; Id = "bai-yinei-jiajian" },
     @{ File = "scene_renshi.py";      Scene = "RenshiScene";      Id = "renshi-tuxing" },
     @{ File = "scene_fenlei.py";      Scene = "FenleiScene";      Id = "fenlei-zhengli" },
     @{ File = "scene_zhongbiao.py";   Scene = "ZhongbiaoScene";   Id = "renshi-zhongbiao" },
