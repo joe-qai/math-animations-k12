@@ -168,7 +168,7 @@ class H0ErciHanshuGenScene(NarratedScene):
         self.play(FadeIn(txt("k", size=20, color=BLUE).move_to(ax.c2p(k, -2.0))), run_time=0.4)
         self.play(FadeIn(Dot(ax.c2p(k, k * k - 4 * k + 3), radius=0.07, color=BLUE)),
                   run_time=0.45)
-        self.play(FadeIn(txt("f(k) > 0", size=18, color=BLUE).move_to(P(-1.15, -0.5))),
+        self.play(FadeIn(txt("f(k) > 0", size=18, color=BLUE).move_to(P(-4.55, 0.62))),
                   run_time=0.5)
         for xv in (1, 3):
             self.play(FadeIn(Dot(ax.c2p(xv, 0), radius=0.06, color=GREEN)), run_time=0.35)
@@ -269,7 +269,7 @@ class H0ErciHanshuGenScene(NarratedScene):
             ("① Δ ≥ 0：有实根", GOLD),
             ("② m < 对称轴 < n", GREEN),
             ("③ f(m) > 0 且 f(n) > 0", BLUE),
-            ("只有一根在区间：f(m)·f(n) < 0", ORANGE),
+            ("只有一根：f(m)·f(n) < 0", ORANGE),
         ]
         y = 1.95
         for s, col in rows:

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二次函数图像与根的分布 · 先算 Δ、再看对称轴、最后看端点 · 数益坊</title>
+<meta name="description" content="初中看二次函数，主要看开口、对称轴和顶点，会画图、会求最值就够了。到了高中，题目问的常常不是图长什么样，而是方程的两根落在哪里：都在某个数的右边，分布在某个数的两边，或者落在某个区间里——这就是根的分布。这一节把工具理清：图像三要素（开口由 a 的正负决定、对称轴 x = −b/(2a)、顶点把对称轴代回函数）；判别式 Δ = b² − 4ac 决定交点个数；三个模型——两根都大于 k 要同时满足 Δ &gt; 0、对称轴在 k 右边、f(k) &gt; 0；k 夹在两根之间只需 f(k) &lt; 0；根落在区间内要 Δ ≥ 0、对称轴在区间内、两端点函数值都为正，只有一根在区间内则用 f(m)·f(n) &lt; 0。最后三个提醒：条件靠画图验证、端点能否取到单独算、别忘判别式。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">100 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">高中数学</a><span class="sep">/</span>
+      <span>二次函数图像与根的分布</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage gaozhong">高中数学</span>
+          <span class="chip">初升高衔接</span>
+          <span class="chip">进阶</span>
+        </div>
+        <h1>二次函数图像与根的分布</h1>
+        <p class="subtitle">先算 Δ、再看对称轴、最后看端点</p>
+        <p class="brief">初中看二次函数，主要看开口、对称轴和顶点，会画图、会求最值就够了。到了高中，题目问的常常不是图长什么样，而是方程的两根落在哪里：都在某个数的右边，分布在某个数的两边，或者落在某个区间里——这就是根的分布。这一节把工具理清：图像三要素（开口由 a 的正负决定、对称轴 x = −b/(2a)、顶点把对称轴代回函数）；判别式 Δ = b² − 4ac 决定交点个数；三个模型——两根都大于 k 要同时满足 Δ &gt; 0、对称轴在 k 右边、f(k) &gt; 0；k 夹在两根之间只需 f(k) &lt; 0；根落在区间内要 Δ ≥ 0、对称轴在区间内、两端点函数值都为正，只有一根在区间内则用 f(m)·f(n) &lt; 0。最后三个提醒：条件靠画图验证、端点能否取到单独算、别忘判别式。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>2:58</b></span>
+          <span>建议学习 <b>12 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">先Δ，再看端点</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>二次函数图像与根的分布 视频讲解</h2><span class="hint">2:58</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/h0-erci-hanshu-gen.jpg">
+                <source src="assets/videos/h0-erci-hanshu-gen.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/h0-erci-hanshu-gen.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>图像三要素</h3></div>
+  <p>开口方向由二次项系数 a 的正负决定：a &gt; 0 向上，a &lt; 0 向下。对称轴是 x = −b/(2a)，把对称轴代回函数就得到顶点坐标。这三样定了，抛物线的形状和位置就定了大半。</p><p>抛物线与 x 轴的交点横坐标，就是对应方程的两个根。所以讨论根的分布，本质上是在讨论这条抛物线与横轴交在哪里。</p><p class="formula-big">x = −b/(2a)</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>判别式决定交点个数</h3></div>
+  <p>Δ = b² − 4ac。Δ &gt; 0 时有两个交点，Δ = 0 时有一个交点（重根），Δ &lt; 0 时没有交点。</p><p>讨论根的位置之前先算 Δ，它决定了根「有没有」；后面的条件才决定根「在哪」。没有交点时，谈位置是没有意义的。</p><p class="formula-big">Δ = b² − 4ac</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>两根都大于 k</h3></div>
+  <p>当 a &gt; 0 时，两根都大于 k 需要同时满足三个条件：Δ &gt; 0、对称轴 −b/(2a) &gt; k、f(k) &gt; 0。</p><p>画图就能看明白：对称轴要在 k 的右边，图像在 k 处还得在横轴上方，再加上确实有两个交点。三条缺一不可。</p><p class="formula-big">Δ &gt; 0，轴 &gt; k，f(k) &gt; 0</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>k 夹在两根之间</h3></div>
+  <p>如果 k 夹在两根之间，只需要一个条件：f(k) &lt; 0。因为图像在 k 处落到横轴下方，必然一个交点在左、一个在右。</p><p>这种情况下不用再看 Δ：f(k) &lt; 0 本身就保证了有两个交点。反过来，若要求两根在 k 的两侧，写 f(k) &lt; 0 就够了。</p><p class="formula-big">f(k) &lt; 0 ⇔ 一根在左、一根在右</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>根落在区间内</h3></div>
+  <p>两根都在区间 (m, n) 内，需要：Δ ≥ 0、对称轴在 m 与 n 之间、f(m) &gt; 0 且 f(n) &gt; 0。</p><p>如果只有一根在区间内，用 f(m)·f(n) &lt; 0 判断；端点处要单独检验是否能取到，因为「大于」和「大于等于」差一个点。</p><p class="formula-big">Δ ≥ 0，m &lt; 轴 &lt; n，f(m)、f(n) &gt; 0</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例：端点要单独算</h3></div>
+  <p>判断 f(x) = x² − 4x + 3 的两根是否都在区间 (0.5, 3.5) 内：Δ = 4 &gt; 0，对称轴 x = 2 在区间内，f(0.5) = 1.25 &gt; 0，f(3.5) = 1.25 &gt; 0，四个条件都满足，两根 1 与 3 确实都在区间内。</p><p>如果把区间改成 (1, 3)，两个端点恰好是根，此时「在区间内」不成立，但「在闭区间内」成立。这种差别必须单独说明。</p><p class="formula-big">端点取不取，单独检验</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>根的分布就是把「根在哪」翻译成图像上的条件。先把图像三要素摆出来：开口看 a 的正负，对称轴 x = −b/(2a)，顶点把对称轴代回函数。再看判别式 Δ = b² − 4ac 决定有没有交点。三个模型要记牢：两根都大于 k，要 Δ &gt; 0、对称轴在 k 右边、f(k) &gt; 0 三条同时成立；k 夹在两根之间，只需 f(k) &lt; 0，一句话搞定；两根都在区间 (m, n) 内，要 Δ ≥ 0、对称轴在区间内、两端点函数值都为正，只有一根在区间内则用 f(m)·f(n) &lt; 0。最后三个提醒：条件靠画图验证、端点能否取到单独算、别忘判别式。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>只算 Δ 就下结论，忘了根的位置还要看对称轴和端点。</li><li>两根都大于 k 时漏掉 f(k) &gt; 0，画出图才发现不对。</li><li>k 夹在两根之间还去检查 Δ，多写一步反而容易错。</li><li>区间根忘记检验端点，把开区间当成闭区间。</li><li>背结论不画图，a &lt; 0 时条件符号写反。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">方程 x² − 4x + 3 = 0 的两个根是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>1 和 3</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>−1 和 −3</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>2 和 3</span></button></div>
+    <div class="feedback" role="status" data-explain="因式分解得 (x − 1)(x − 3) = 0，所以两根是 1 和 3；也可以先用判别式确认有两个不等实根。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">关于 x 的方程有两个不相等的实数根，需要满足？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>Δ &lt; 0</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>Δ = 0</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>Δ &gt; 0</span></button></div>
+    <div class="feedback" role="status" data-explain="判别式 Δ = b² − 4ac：Δ &gt; 0 有两个不等实根，Δ = 0 有两个相等实根，Δ &lt; 0 没有实根。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">若 f(x) = ax² + bx + c（a &gt; 0）满足 f(k) &lt; 0，则 k 与两根的关系是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>k 比两根都大</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>k 夹在两根之间</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>k 比两根都小</span></button></div>
+    <div class="feedback" role="status" data-explain="图像在 k 处落到横轴下方，说明抛物线与横轴的交点一个在 k 左边、一个在 k 右边，即 k 夹在两根之间。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">要求两根都在区间 (m, n) 内，除了 Δ ≥ 0、f(m) &gt; 0、f(n) &gt; 0，还需要？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>对称轴在 m 与 n 之间</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>顶点在 x 轴上</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>f(0) &gt; 0</span></button></div>
+    <div class="feedback" role="status" data-explain="对称轴必须落在区间内，否则两个根会跑到区间外；顶点在 x 轴上意味着重根，f(0) 与区间无关。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-h0-yinshi-fenjie.html"><span class="dir">← 上一节</span><span class="title">因式分解强化</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>会用开口、对称轴、顶点确定抛物线的形状和位置</li><li>会用判别式判断方程根的个数</li><li>会列出两根都大于 k 的三个条件</li><li>会用 f(k) &lt; 0 判断 k 夹在两根之间</li><li>会列出根落在区间内的条件，并处理只有一根在区间内的情形</li><li>知道端点能否取到要单独检验</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
