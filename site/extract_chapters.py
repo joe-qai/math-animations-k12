@@ -120,6 +120,7 @@ CHAPTERS = {
     "tuiwei-jianfa": 7,
     "bai-yinei-jiajian": 7,
     "liangwei-cheng-liangwei": 7,
+    "chufa-liangwei": 7,
 }
 
 
