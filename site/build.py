@@ -49,6 +49,7 @@ THUMB = {
     "coushifa": "9 + 4 = 13",
     "tuiwei-jianfa": "13 − 9 = 4",
     "bai-yinei-jiajian": "36 + 27 = 63",
+    "liangwei-cheng-liangwei": "23 × 14 = 322",
     "renshi-tuxing": "□ △ ○",
     "renshi-zhongbiao": "3:00 / 3:30",
     "fenlei-zhengli": "4 + 3 + 2 = 9",

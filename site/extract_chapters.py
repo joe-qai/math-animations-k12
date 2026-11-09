@@ -119,6 +119,7 @@ CHAPTERS = {
     "h0-erci-hanshu-gen": 7,
     "tuiwei-jianfa": 7,
     "bai-yinei-jiajian": 7,
+    "liangwei-cheng-liangwei": 7,
 }
 
 
