@@ -52,6 +52,7 @@ THUMB = {
     "liangwei-cheng-liangwei": "23 × 14 = 322",
     "chufa-liangwei": "84 ÷ 21 = 4",
     "jieti-celue": "鸡 3 只，兔 5 只",
+    "sanjiaoxing-neijiaohe": "内角和 180°",
     "renshi-tuxing": "□ △ ○",
     "renshi-zhongbiao": "3:00 / 3:30",
     "fenlei-zhengli": "4 + 3 + 2 = 9",

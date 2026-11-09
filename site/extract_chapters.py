@@ -121,6 +121,8 @@ CHAPTERS = {
     "bai-yinei-jiajian": 7,
     "liangwei-cheng-liangwei": 7,
     "chufa-liangwei": 7,
+    "jieti-celue": 7,
+    "sanjiaoxing-neijiaohe": 7,
 }
 
 
