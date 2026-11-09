@@ -23,7 +23,7 @@ STAGES = [
         "en": "PRIMARY",
         "color": "#c98d22",
         "tagline": "先把数感和图形直觉长出来。乘法不是口诀，除法不是命令，面积公式也不是天上掉下来的。",
-        "grades": ["一年级 · 凑十法 / 认识图形 / 认识钟表 / 分类与整理", "二年级 · 连加连减 / 乘法与除法 / 角的认识 / 条形统计图 / 测量与时分秒", "三年级 · 多位数乘一位数 / 除数是一位数的除法 / 长方形和正方形的面积 / 分数的初步认识 / 小数的初步认识 / 平移、旋转与轴对称", "四年级 · 大数的认识与万以内加减法 / 线与角（平行与垂直） / 运算律 / 小数乘法 / 平行四边形和梯形 / 用字母表示数 / 生活中的负数 / 可能性 / 平均数", "五年级 · 小数除法 / 因数与倍数 / 分数的意义与性质 / 分数加减法 / 分数乘除法 / 简易方程 / 平行四边形的面积 / 梯形的面积 / 长方体的体积 / 三角形的面积", "六年级 · 圆的周长 / 圆的面积 / 百分数 / 比 / 正比例与反比例 / 扇形统计图", "小升初 · 分数四则混合运算 / 比与比例的应用 / 百分数应用 / 方程解应用题 / 圆的综合"],
+        "grades": ["一年级", "二年级", "三年级", "四年级", "五年级", "六年级", "小升初"],
     },
     {
         "id": "chuzhong",
@@ -31,11 +31,7 @@ STAGES = [
         "en": "JUNIOR",
         "color": "#3f7cbe",
         "tagline": "从算术走向代数。天平、面积图、方格纸，都是把抽象式子变回看得见的东西。",
-        "grades": ["七年级 · 有理数 / 有理数的运算 / 代数式与整式加减 / 一元一次方程 / 基本图形 / 数据收集与整理 / 幂的运算 / 整式的乘法 / 平方差公式 / 相交线与平行线 / 三角形内角和与三边关系 / 平均数、中位数、众数", "八年级 · 实数 / 因式分解 / 分式 / 分式方程", "八年级 · 完全平方公式", "八年级 · 勾股定理", "八年级 · 全等三角形", "八年级 · 勾股定理的逆定理", "八年级 · 轴对称与等腰三角形", "八年级 · 函数概念与一次函数", "八年级 · 频率与概率", "八年级 · 二次根式", "八年级 · 二元一次方程组", "八年级 · 一元一次不等式（组）", "八年级 · 反比例函数", "八年级 · 平行四边形", "八年级 · 特殊平行四边形", "八年级 · 相似三角形", "八年级 · 视图与投影", "九年级 · 一元二次方程", "九年级 · 一元二次方程的应用", "九年级 · 二次函数", "九年级 · 圆的基本性质", "九年级 · 直线与圆的位置关系", "九年级 · 圆中的计算", "九年级 · 列举法求概率", "九年级 · 锐角三角函数", "九年级 · 解直角三角形", "九年级 · 方程与不等式应用",
-                     "九年级 · 函数与方程、不等式", "九年级 · 尺规作图", "九年级 · 统计图选择",
-                     "中考专题 · 数与式", "中考专题 · 方程与不等式", "中考专题 · 函数及其应用",
-                     "中考专题 · 三角形与四边形", "中考专题 · 圆与三角函数",
-                     "中考专题 · 统计与概率", "中考专题 · 压轴题拆解"],
+        "grades": ["七年级", "八年级", "九年级", "中考专题"],
     },
     {
         "id": "gaozhong",
@@ -43,7 +39,7 @@ STAGES = [
         "en": "SENIOR",
         "color": "#2f8877",
         "tagline": "公式开始变长，但证明仍然可以很直观：把数列摆成阶梯，倒过来，就看见公式。",
-        "grades": ["初升高衔接 · 因式分解强化", "高一 · 等差数列求和"],
+        "grades": ["初升高衔接", "高一"],
     },
 ]
 
@@ -399,8 +395,17 @@ def build_home() -> str:
     video_count = sum(1 for l in LESSONS if (VIDEO_DIR / f"{l['id']}.mp4").exists())
     question_count = sum(len(l["questions"]) for l in LESSONS)
     stage_cards = []
+    grade_counts: dict[tuple[str, str], int] = {}
+    for l in LESSONS:
+        key = (l["stage"], l["grade"])
+        grade_counts[key] = grade_counts.get(key, 0) + 1
     for stage in STAGES:
-        grades = "".join(f'<span class="grade-chip">{esc(g)}</span>' for g in stage["grades"])
+        chips = [
+            f'<span class="grade-chip">{esc(g)} · <em>{grade_counts[(stage["id"], g)]} 节</em></span>'
+            for g in stage["grades"]
+            if grade_counts.get((stage["id"], g))
+        ]
+        grades = "".join(chips)
         stage_cards.append(
             f"""
 <article class="stage-card reveal" style="--stage-color:{stage['color']}">
@@ -552,7 +557,7 @@ def build_catalog() -> str:
     <h2>{esc(stage['name'])}</h2>
     <span class="count">{len(items)} 节</span>
     <span class="line"></span>
-    <span class="count">{esc(stage['grades'][0]) if stage['grades'] else ''}</span>
+    <span class="count">{len({l['grade'] for l in items})} 个年级</span>
   </div>
   <div class="lesson-grid">{cards}</div>
 </section>"""

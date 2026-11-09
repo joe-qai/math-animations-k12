@@ -469,6 +469,12 @@ p { margin: 0; }
   padding: 3px 9px;
   background: var(--paper);
 }
+.grade-chip em {
+  font-style: normal;
+  margin-left: 2px;
+  opacity: 0.66;
+  font-variant-numeric: tabular-nums;
+}
 .stage-card .stage-more {
   display: inline-flex;
   align-items: center;
