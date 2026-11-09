@@ -126,6 +126,19 @@ CHAPTERS = {
     "changfangti-zhankaitu": 7,
     "biaomianji": 7,
     "zhexian-tongjitu": 7,
+    "gujisuan": 7,
+    "tansuo-guilv": 7,
+    "weizhi-shunxu": 7,
+    "renminbi-renshi": 7,
+    "dapei-tuili": 7,
+    "shuju-diaocha": 7,
+    "queding-weizhi": 7,
+    "zhijiao-sanjiaoxing": 7,
+    "fangcha": 7,
+    "kexue-jishufa": 7,
+    "daishushi-qiuzhi": 7,
+    "weisi": 7,
+    "tixing-tuxing": 7,
 }
 
 

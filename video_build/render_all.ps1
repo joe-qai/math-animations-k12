@@ -112,7 +112,20 @@ $jobs = @(
     @{ File = "scene_liangwei_cheng_liangwei.py"; Scene = "LiangweiChengLiangweiScene"; Id = "liangwei-cheng-liangwei" },
     @{ File = "scene_chufa_liangwei.py"; Scene = "ChufaLiangweiScene"; Id = "chufa-liangwei" },
     @{ File = "scene_jieti_celue.py"; Scene = "JietiCelueScene"; Id = "jieti-celue" },
-    @{ File = "scene_sanjiaoxing_neijiaohe.py"; Scene = "SanjiaoxingNeijiaoheScene"; Id = "sanjiaoxing-neijiaohe" }
+    @{ File = "scene_sanjiaoxing_neijiaohe.py"; Scene = "SanjiaoxingNeijiaoheScene"; Id = "sanjiaoxing-neijiaohe" },
+    @{ File = "scene_gujisuan.py"; Scene = "GujisuanScene"; Id = "gujisuan" },
+    @{ File = "scene_tansuo_guilv.py"; Scene = "TansuoGuilvScene"; Id = "tansuo-guilv" },
+    @{ File = "scene_weizhi_shunxu.py"; Scene = "WeizhiShunxuScene"; Id = "weizhi-shunxu" },
+    @{ File = "scene_renminbi_renshi.py"; Scene = "RenminbiRenshiScene"; Id = "renminbi-renshi" },
+    @{ File = "scene_dapei_tuili.py"; Scene = "DapeiTuiliScene"; Id = "dapei-tuili" },
+    @{ File = "scene_shuju_diaocha.py"; Scene = "ShujuDiaochaScene"; Id = "shuju-diaocha" },
+    @{ File = "scene_queding_weizhi.py"; Scene = "QuedingWeizhiScene"; Id = "queding-weizhi" },
+    @{ File = "scene_zhijiao_sanjiaoxing.py"; Scene = "ZhijiaoSanjiaoxingScene"; Id = "zhijiao-sanjiaoxing" },
+    @{ File = "scene_fangcha.py"; Scene = "FangchaScene"; Id = "fangcha" },
+    @{ File = "scene_kexue_jishufa.py"; Scene = "KexueJishufaScene"; Id = "kexue-jishufa" },
+    @{ File = "scene_daishushi_qiuzhi.py"; Scene = "DaishushiQiuzhiScene"; Id = "daishushi-qiuzhi" },
+    @{ File = "scene_weisi.py"; Scene = "WeisiScene"; Id = "weisi" },
+    @{ File = "scene_tixing_tuxing.py"; Scene = "TixingTuxingScene"; Id = "tixing-tuxing" }
 )
 
 foreach ($j in $jobs) {

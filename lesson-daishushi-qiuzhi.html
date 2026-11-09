@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>代数式求值 · 先代入，再计算 · 数益坊</title>
+<meta name="description" content="知道 a = 3、b = −2，求 2a + b 的值，就是把字母换成数再算。代入时要注意两件事：负数要加括号，乘号不能省——2a 要写成 2 × 3。所以原式变成 2 × 3 + (−2) = 6 − 2 = 4。有些题不用分别求出每个字母，把一整个式子看成整体更方便：已知 x + y = 5，2x + 2y = 2(x + y) = 10。还要分清 a² 和 2a：a = 3 时，a² = 9，2a = 6。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">122 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">初中数学</a><span class="sep">/</span>
+      <span>代数式求值</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage chuzhong">初中数学</span>
+          <span class="chip">七年级</span>
+          <span class="chip">基础</span>
+        </div>
+        <h1>代数式求值</h1>
+        <p class="subtitle">先代入，再计算</p>
+        <p class="brief">知道 a = 3、b = −2，求 2a + b 的值，就是把字母换成数再算。代入时要注意两件事：负数要加括号，乘号不能省——2a 要写成 2 × 3。所以原式变成 2 × 3 + (−2) = 6 − 2 = 4。有些题不用分别求出每个字母，把一整个式子看成整体更方便：已知 x + y = 5，2x + 2y = 2(x + y) = 10。还要分清 a² 和 2a：a = 3 时，a² = 9，2a = 6。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>0:57</b></span>
+          <span>建议学习 <b>6 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">先代入，再计算</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>代数式求值 视频讲解</h2><span class="hint">0:57</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/daishushi-qiuzhi.jpg">
+                <source src="assets/videos/daishushi-qiuzhi.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/daishushi-qiuzhi.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>什么是求值</h3></div>
+  <p>用数值代替代数式里的字母，算出的结果叫代数式的值。</p><p>同一个代数式，字母取不同的值，结果也不同。</p><p>所以求值时，字母的值必须由题目给出。</p><p class="formula-big">字母换成数 → 按顺序算</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>代入 2a + b</h3></div>
+  <p>已知 a = 3，b = −2，求 2a + b。</p><p>把 a 换成 3、b 换成 −2：2 × 3 + (−2)。</p><p>先算乘法：6 + (−2) = 4。</p><p>所以当 a = 3、b = −2 时，2a + b 的值是 4。</p><p class="formula-big">2 × 3 + (−2) = 4</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>两个常见的代入错误</h3></div>
+  <p>负数要加括号：写成 (−2)，避免和减号混在一起。</p><p>乘号不能省：2a 代入时要写成 2 × a，不能直接拼成 23。</p><p>分数、平方也要看清位置，先算括号和乘方，再算乘除，最后算加减。</p><p class="formula-big">负数加括号，乘号不省</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>整体代入更快</h3></div>
+  <p>已知 x + y = 5，求 2x + 2y。</p><p>不用分别求 x 和 y，先提公因数：2x + 2y = 2(x + y)。</p><p>把 x + y 看成整体代入：2 × 5 = 10。</p><p>整体代入能省掉很多步骤。</p><p class="formula-big">2x + 2y = 2(x + y) = 10</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>a² 和 2a 的区别</h3></div>
+  <p>a² 表示 a × a，是 a 自己乘自己。</p><p>2a 表示 2 × a，是 2 乘 a。</p><p>a = 3 时，a² = 9，2a = 6，两者不相等。</p><p>只有 a = 2 或 a = 0 时，它们才碰巧相等。</p><p class="formula-big">a² = a × a　2a = 2 × a</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>代数式求值就是把字母换成数，再按运算顺序算。a = 3、b = −2 时，2a + b = 2 × 3 + (−2) = 4。代入要注意两点：负数加括号，乘号不能省。遇到 x + y = 5 求 2x + 2y，可以整体代入得 10。还要分清 a² 是 a 乘 a，2a 是 2 乘 a：a = 3 时分别是 9 和 6。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>把 2a 直接写成 23：乘号省略了，代入时必须补上。</li><li>负数不加括号：−2 代入后与前面的减号混在一起，容易算错。</li><li>把 a² 算成 2a：a = 3 时 a² 是 9，不是 6。</li><li>运算顺序颠倒：先算加减后算乘除，结果就错了。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">当 a = 3、b = −2 时，2a + b 的值是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>4</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>−4</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>8</span></button></div>
+    <div class="feedback" role="status" data-explain="2 × 3 + (−2) = 6 − 2 = 4。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">代入负数时，正确的做法是什么？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>直接写 −2</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>给负数加括号</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>把负号去掉</span></button></div>
+    <div class="feedback" role="status" data-explain="负数要加括号写成 (−2)，避免和减号混在一起算错。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">已知 x + y = 5，那么 2x + 2y 等于多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>10</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>7</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>25</span></button></div>
+    <div class="feedback" role="status" data-explain="2x + 2y = 2(x + y) = 2 × 5 = 10，整体代入即可。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">当 a = 3 时，a² 与 2a 的值分别是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>都是 6</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>9 和 6</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>6 和 9</span></button></div>
+    <div class="feedback" role="status" data-explain="a² = 3 × 3 = 9，2a = 2 × 3 = 6，两者不相等。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-kexue-jishufa.html"><span class="dir">← 上一节</span><span class="title">科学记数法</span></a><a class="next" href="lesson-weisi.html"><span class="dir">下一节 →</span><span class="title">图形的位似</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解代数式求值就是把字母换成数</li><li>掌握代入时负数加括号、乘号不省</li><li>会按运算顺序计算代数式的值</li><li>会用整体代入简化计算</li><li>能区分 a² 与 2a</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
