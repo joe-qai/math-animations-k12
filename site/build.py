@@ -388,6 +388,8 @@ def lesson_card(lesson: dict, prefix: str = "") -> str:
         badge = f'<span class="play-badge"><i></i>{mmss(seconds)}</span>'
     else:
         badge = '<span class="play-badge text-only">图文精讲</span>'
+    # 超过 11 个字的标题在窄卡片上会放不下，单独加类名按卡片宽度缩放字号
+    title_cls = ' class="long"' if len(lesson["title"]) >= 12 else ""
     return f"""
 <article class="lesson-card reveal" data-search="{html.escape(search_text, quote=True)}">
   <a class="lesson-hit" href="{prefix}{lesson['file']}" aria-label="{esc(lesson['title'])} · {esc(stage['name'])}{esc(lesson['grade'])}"></a>
@@ -398,7 +400,7 @@ def lesson_card(lesson: dict, prefix: str = "") -> str:
   </div>
   <div class="lesson-body">
     <div class="meta-line"><span>{esc(stage['name'])}</span><span>/</span><span>{esc(lesson['grade'])}</span><span>/</span><span>约 {lesson['minutes']} 分钟</span></div>
-    <h3>{esc(lesson['title'])}</h3>
+    <h3{title_cls}>{esc(lesson['title'])}</h3>
     <div class="tags">{tags}</div>
   </div>
 </article>"""

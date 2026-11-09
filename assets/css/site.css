@@ -524,6 +524,8 @@ p { margin: 0; }
   border-radius: var(--radius);
   overflow: hidden;
   transition: transform 0.22s, box-shadow 0.22s;
+  /* 以卡片宽度为参照缩放标题字号，保证标题始终单行 */
+  container-type: inline-size;
 }
 .lesson-hit {
   position: absolute;
@@ -606,8 +608,6 @@ p { margin: 0; }
   flex-direction: column;
   gap: 9px;
   flex: 1;
-  /* 预留两行标题的高度，让单行标题的卡片与两行标题的卡片等高 */
-  min-height: 168px;
 }
 .lesson-body .meta-line {
   display: flex;
@@ -619,13 +619,14 @@ p { margin: 0; }
   letter-spacing: 0.04em;
 }
 .lesson-body h3 {
-  font-size: 20.5px;
-  line-height: 1.45;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  font-size: 20px;
+  line-height: 29px;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
+/* 长标题按卡片宽度缩放，始终单行，卡片高度自然一致 */
+.lesson-body h3.long { font-size: min(20px, calc((100cqw - 44px) * 0.0625)); }
 .lesson-card:hover .lesson-body h3 { color: var(--board-3); }
 .lesson-body .tags { display: flex; gap: 6px; flex-wrap: nowrap; margin-top: 0; padding-top: 2px; overflow: hidden; }
 .tag {
@@ -1545,8 +1546,9 @@ p { margin: 0; }
   .step,
   .lesson-card { border-radius: 12px; }
   .lesson-card { box-shadow: 0 12px 28px -24px rgba(34, 49, 45, 0.6); }
-  .lesson-body { padding: 16px 16px 16px; gap: 7px; min-height: 149px; }
-  .lesson-body h3 { font-size: 18.5px; }
+  .lesson-body { padding: 16px 16px 16px; gap: 7px; }
+  .lesson-body h3 { font-size: 18.5px; line-height: 27px; }
+  .lesson-body h3.long { font-size: min(18.5px, calc((100cqw - 32px) * 0.063)); }
   .lesson-body .meta-line { font-size: 11px; gap: 6px; }
   .lesson-body .tags { gap: 5px; padding-top: 6px; }
   .tag { border-radius: 999px; padding: 2px 9px; }
@@ -1588,7 +1590,6 @@ p { margin: 0; }
 
   /* 首屏卡片：去掉与封面角标重复的信息，避免矮屏被卡片高度撑长 */
   .home-featured .lesson-card .tags { display: none; }
-  .home-featured .lesson-card .lesson-body { min-height: 0; }
   .stage-desc {
     display: -webkit-box;
     -webkit-line-clamp: 2;
