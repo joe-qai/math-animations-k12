@@ -322,7 +322,6 @@ def lesson_card(lesson: dict, prefix: str = "") -> str:
   <div class="lesson-body">
     <div class="meta-line"><span>{esc(stage['name'])}</span><span>/</span><span>{esc(lesson['grade'])}</span><span>/</span><span>约 {lesson['minutes']} 分钟</span></div>
     <h3><a href="{prefix}{lesson['file']}">{esc(lesson['title'])}</a></h3>
-    <p>{esc(lesson['brief'])}</p>
     <div class="tags">{tags}</div>
   </div>
 </article>"""
@@ -395,17 +394,9 @@ def build_home() -> str:
     video_count = sum(1 for l in LESSONS if (VIDEO_DIR / f"{l['id']}.mp4").exists())
     question_count = sum(len(l["questions"]) for l in LESSONS)
     stage_cards = []
-    grade_counts: dict[tuple[str, str], int] = {}
-    for l in LESSONS:
-        key = (l["stage"], l["grade"])
-        grade_counts[key] = grade_counts.get(key, 0) + 1
     for stage in STAGES:
-        chips = [
-            f'<span class="grade-chip">{esc(g)} · <em>{grade_counts[(stage["id"], g)]} 节</em></span>'
-            for g in stage["grades"]
-            if grade_counts.get((stage["id"], g))
-        ]
-        grades = "".join(chips)
+        stage_lessons = [l for l in LESSONS if l["stage"] == stage["id"]]
+        grade_count = len({l["grade"] for l in stage_lessons})
         stage_cards.append(
             f"""
 <article class="stage-card reveal" style="--stage-color:{stage['color']}">
@@ -414,7 +405,7 @@ def build_home() -> str:
     <span class="stage-en">{stage['en']}</span>
   </div>
   <p class="stage-desc">{esc(stage['tagline'])}</p>
-  <div class="grade-list">{grades}</div>
+  <p class="stage-meta">{grade_count} 个年级 · {len(stage_lessons)} 节课</p>
   <a class="stage-more" href="lessons.html#{stage['id']}">进入{esc(stage['name'][:2])}课时</a>
 </article>"""
         )
