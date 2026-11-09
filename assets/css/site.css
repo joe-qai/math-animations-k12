@@ -1441,10 +1441,15 @@ p { margin: 0; }
   .catalog-group .lesson-grid::-webkit-scrollbar { display: none; }
 
   .stage-grid,
+  .steps,
   .home-featured,
   .catalog-group .lesson-grid {
+    margin-left: -18px;
     margin-right: -18px;
+    padding-left: 18px;
     padding-right: 18px;
+    scroll-padding-left: 18px;
+    scroll-padding-right: 18px;
   }
 
   .stage-grid > *,
@@ -1504,11 +1509,38 @@ p { margin: 0; }
     transform: none;
     transition: none;
   }
+
+  /* 全出血：底色与深色区块铺满屏幕，不留白边 */
+  html { background-color: var(--paper); }
+  body { min-height: 100vh; min-height: 100dvh; }
+  .hero {
+    margin: 0 -18px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .lab-strip {
+    margin: 30px -18px 0;
+    border-radius: 0;
+  }
+
+  /* 卡片细节：更圆的角、更轻的阴影、更克制的信息层级 */
+  .stage-card,
+  .step,
+  .lesson-card { border-radius: 12px; }
+  .lesson-card { box-shadow: 0 12px 28px -24px rgba(34, 49, 45, 0.6); }
+  .lesson-body { padding: 16px 16px 16px; gap: 7px; }
+  .lesson-body h3 { font-size: 18.5px; }
+  .lesson-body .meta-line { font-size: 11px; gap: 6px; }
+  .lesson-body .tags { gap: 5px; padding-top: 6px; }
+  .tag { border-radius: 999px; padding: 2px 9px; }
+  .stage-badge,
+  .play-badge { border-radius: 999px; }
+  .stage-badge { backdrop-filter: blur(4px); }
 }
 
 /* 屏幕较矮的手机（如 375×667、360×640）再压一档，保证纵向不超过 3 屏 */
 @media (max-width: 640px) and (max-height: 720px) {
-  .hero { margin-top: 10px; }
+  .hero { margin-top: 0; }
   .hero-inner { padding: 18px 18px 16px; }
   .hero h1 { font-size: 24px; margin-top: 8px; }
   .hero p.lead { margin-top: 8px; font-size: 13px; line-height: 1.62; }
