@@ -74,7 +74,8 @@ def remux(path: Path) -> tuple[bool, str]:
             text=True,
         )
         if proc.returncode != 0 or not tmp.exists() or tmp.stat().st_size == 0:
-            return False, (proc.stderr or "ffmpeg failed").strip().splitlines()[-1][:160]
+            detail = (proc.stderr or "ffmpeg failed").strip().splitlines()
+            return False, (detail[-1] if detail else "ffmpeg failed")[:160]
         if not is_faststart(tmp):
             return False, "still not faststart"
         tmp.replace(path)
@@ -90,9 +91,11 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true", help="只检查，不修改文件")
     parser.add_argument("--workers", type=int, default=2, help="并行处理数（默认 2）")
+    parser.add_argument("--dir", default=str(VIDEO_DIR), help="视频目录（默认 assets/videos）")
+    parser.add_argument("--strict", action="store_true", help="有文件失败时返回非 0 退出码")
     args = parser.parse_args()
 
-    videos = sorted(VIDEO_DIR.glob("*.mp4"))
+    videos = sorted(Path(args.dir).glob("*.mp4"))
     if not videos:
         print("没有找到 mp4")
         return 0
@@ -118,7 +121,7 @@ def main() -> int:
                 print(f"  FAIL {path.name}: {msg}")
 
     print(f"完成：remux {ok}，跳过 {skipped}，失败 {fail}")
-    return 0 if fail == 0 else 1
+    return 0 if (fail == 0 or not args.strict) else 1
 
 
 if __name__ == "__main__":
