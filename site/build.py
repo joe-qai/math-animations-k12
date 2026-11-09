@@ -365,6 +365,17 @@ def lesson_card(lesson: dict, prefix: str = "") -> str:
     stage = STAGE_BY_ID[lesson["stage"]]
     seconds = video_seconds(lesson["id"])
     tags = "".join(f'<span class="tag">{esc(t)}</span>' for t in lesson["tags"])
+    search_text = " ".join(
+        [
+            lesson["title"],
+            lesson.get("subtitle", ""),
+            stage["name"],
+            lesson["grade"],
+            " ".join(lesson["tags"]),
+            lesson["keyformula"],
+            " ".join(k["title"] for k in lesson["knowledge"]),
+        ]
+    ).lower()
     poster = VIDEO_DIR / "posters" / f"{lesson['id']}.jpg"
     if poster.exists():
         thumb = (
@@ -378,7 +389,7 @@ def lesson_card(lesson: dict, prefix: str = "") -> str:
     else:
         badge = '<span class="play-badge text-only">图文精讲</span>'
     return f"""
-<article class="lesson-card reveal">
+<article class="lesson-card reveal" data-search="{html.escape(search_text, quote=True)}">
   <a class="lesson-thumb" href="{prefix}{lesson['file']}" tabindex="-1" aria-hidden="true">
     {thumb}
     <span class="stage-badge">{esc(stage['name'])} · {esc(lesson['grade'])}</span>
@@ -475,7 +486,13 @@ def build_home() -> str:
 </article>"""
         )
 
-    featured = "".join(lesson_card(l) for l in LESSONS)
+    featured_ids = [
+        "coushifa", "changfangxing-mianji", "yuan-mianji",
+        "youli-shu", "gougu-dingli", "erci-hanshu",
+        "jihe-yunsuan", "dengcha-shulie", "daoshu-gainian",
+    ]
+    by_id = {l["id"]: l for l in LESSONS}
+    featured = "".join(lesson_card(by_id[i]) for i in featured_ids if i in by_id)
 
     hero_figure = """
 <figure class="hero-figure">
@@ -518,6 +535,10 @@ def build_home() -> str:
             <a class="btn btn-primary" href="lessons.html">开始学习 →</a>
             <a class="btn btn-ghost" href="lesson-gougu.html">看一节示范</a>
           </div>
+          <form class="hero-search" action="lessons.html" method="get" role="search">
+            <input type="search" name="q" placeholder="搜课时或知识点，如「勾股」「通分」" aria-label="搜索课时">
+            <button type="submit">搜索</button>
+          </form>
           <div class="hero-stats">
             <div><b>{len(LESSONS)}</b><span>节数学课时</span></div>
             <div><b>{video_count}</b><span>支讲解视频</span></div>
@@ -569,9 +590,9 @@ def build_home() -> str:
       <div class="section-head">
         <span class="num">03</span>
         <h2>精选课时</h2>
-        <p><a href="lessons.html" style="color:var(--amber-ink);font-weight:600">查看全部 {len(LESSONS)} 节 →</a></p>
+        <p>每学段精选 3 节 · <a href="lessons.html" style="color:var(--amber-ink);font-weight:600">查看全部 {len(LESSONS)} 节 →</a></p>
       </div>
-      <div class="lesson-grid">{featured}</div>
+      <div class="lesson-grid home-featured">{featured}</div>
     </section>
 
     <section class="lab-strip reveal">
@@ -614,8 +635,9 @@ def build_catalog() -> str:
     <span class="count">{len(items)} 节</span>
     <span class="line"></span>
     <span class="count">{len({l['grade'] for l in items})} 个年级</span>
+    <span class="rail-hint" aria-hidden="true">左右滑动 →</span>
   </div>
-  <div class="lesson-grid">{cards}</div>
+  <div class="lesson-grid lesson-rail">{cards}</div>
 </section>"""
         )
 
@@ -627,10 +649,22 @@ def build_catalog() -> str:
   <div class="wrap">
     <header class="catalog-head">
       <h1>全部课时</h1>
-      <p>{len(LESSONS)} 节课时，{len(LESSONS)} 支动画短片。按学段筛选，或者从头顺着学——每一节都能独立看懂。</p>
-      <div class="filters" role="group" aria-label="按学段筛选">{filter_html}</div>
+      <p>{len(LESSONS)} 节课时，按学段分组。手机上每个学段是一排卡片，左右滑动即可切换；搜索框输入关键字会跨三个学段检索全部课时。</p>
+      <div class="catalog-tools">
+        <label class="search-box">
+          <span class="search-ico" aria-hidden="true">⌕</span>
+          <input id="lesson-search" type="search" placeholder="搜索全部课时、知识点或年级" autocomplete="off" aria-label="搜索全部课时">
+          <button class="search-clear" type="button" data-search-clear hidden aria-label="清除搜索">×</button>
+        </label>
+        <div class="filters" role="group" aria-label="按学段筛选">{filter_html}</div>
+      </div>
+      <p class="search-status" data-search-status role="status" aria-live="polite"></p>
     </header>
     {''.join(groups)}
+    <div class="search-empty" data-search-empty hidden>
+      <b>没有找到相关课时</b>
+      <p>换个关键词试试，或点「全部课时」查看全部内容。</p>
+    </div>
   </div>
 </main>
 """
