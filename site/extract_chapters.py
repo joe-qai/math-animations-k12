@@ -125,6 +125,7 @@ CHAPTERS = {
     "sanjiaoxing-neijiaohe": 7,
     "changfangti-zhankaitu": 7,
     "biaomianji": 7,
+    "zhexian-tongjitu": 7,
 }
 
 

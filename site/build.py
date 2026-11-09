@@ -55,6 +55,7 @@ THUMB = {
     "sanjiaoxing-neijiaohe": "内角和 180°",
     "changfangti-zhankaitu": "6 面 12 棱 8 顶点",
     "biaomianji": "三组面相加再乘 2",
+    "zhexian-tongjitu": "点看数量，线看变化",
     "renshi-tuxing": "□ △ ○",
     "renshi-zhongbiao": "3:00 / 3:30",
     "fenlei-zhengli": "4 + 3 + 2 = 9",
