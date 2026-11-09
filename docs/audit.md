@@ -9,12 +9,12 @@
 
 | 学段 | 课时 | 有视频 | 图文课 | 例题≥2 | 仅 1 例题 | 无例题 | 有变式 | 无变式 | 练习 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 小学 | 62 | 62 | 0 | 28 | 34 | 0 | 62 | 0 | 248 |
-| 初中 | 57 | 57 | 0 | 35 | 22 | 0 | 57 | 0 | 228 |
+| 小学 | 62 | 62 | 0 | 62 | 0 | 0 | 62 | 0 | 248 |
+| 初中 | 57 | 57 | 0 | 57 | 0 | 0 | 57 | 0 | 228 |
 | 高中 | 44 | 18 | 26 | 44 | 0 | 0 | 44 | 0 | 176 |
-| **合计** | **163** | **137** | **26** | **107** | **56** | **0** | **163** | **0** | **652** |
+| **合计** | **163** | **137** | **26** | **163** | **0** | **0** | **163** | **0** | **652** |
 
-结论：163 节全部具备「至少 1 个例题 + 3 条变式 + 4 道带解析练习 + 易错提醒」；高中 44 节全部达到「2 个例题 + 3 条变式」（26 节图文课另有完整文字精讲）。
+结论：163 节全部具备「2 个例题 + 3 条变式 + 4 道带解析练习 + 易错提醒」；高中 26 节图文课另有完整文字精讲。
 
 ## 二、高中逐节清单
 
@@ -72,66 +72,10 @@
 - 无
 
 
-### 3.2 仅 1 个例题（可继续加第 2 个）
+### 3.2 仅 1 个例题
 
-共 56 节：小学 34、初中 22、高中 0。
+- 无（163 节均达到 2 个例题）
 
-- xiaoxue / 凑十法 `coushifa`
-- xiaoxue / 分类与整理 `fenlei-zhengli`
-- xiaoxue / 乘法的意义 `chengfa-yiyi`
-- xiaoxue / 角的认识 `jiao-renshi`
-- xiaoxue / 测量与时分秒 `celiang-shifenmiao`
-- xiaoxue / 多位数乘一位数 `duowei-cheng-yiwei`
-- xiaoxue / 除数是一位数的除法 `chufa-yiwei`
-- xiaoxue / 分数的初步认识 `fenshu-chubu`
-- xiaoxue / 平移、旋转与轴对称 `pingyi-xuanzhuan`
-- xiaoxue / 运算律：怎么算更快 `yun-suanlv`
-- xiaoxue / 小数乘法 `xiaoshu-cheng`
-- xiaoxue / 平行四边形和梯形 `pingxing-sibianxing`
-- xiaoxue / 用字母表示数 `zimu-biaoshi`
-- xiaoxue / 生活中的负数 `fushu-chubu`
-- xiaoxue / 可能性 `kenengxing`
-- xiaoxue / 小数除法 `xiaoshu-chu`
-- xiaoxue / 因数与倍数 `yinshu-beishu`
-- xiaoxue / 分数的意义与性质 `fenshu-xingzhi`
-- xiaoxue / 分数加减法 `fenshu-jiajian`
-- xiaoxue / 分数乘除法 `fenshu-chengchu`
-- xiaoxue / 平行四边形的面积 `pingxing-mianji`
-- xiaoxue / 长方体的体积 `changfangti-tiji`
-- xiaoxue / 三角形的面积 `sanjiaoxing-mianji`
-- xiaoxue / 圆的周长 `yuan-zhouchang`
-- xiaoxue / 比 `bi`
-- xiaoxue / 正比例与反比例 `zhengfan-bili`
-- xiaoxue / 扇形统计图 `shanxing-tongjitu`
-- xiaoxue / 平均数 `pingjun-shu`
-- xiaoxue / 比与比例的应用 `bili-yingyong`
-- xiaoxue / 百分数应用：折扣、利率、浓度 `baifenshu-yingyong`
-- chuzhong / 有理数的运算 `youli-yunsuan`
-- chuzhong / 一元一次方程 `yiyuan-yici-fangcheng`
-- chuzhong / 完全平方公式 `wanquan-pingfang`
-- chuzhong / 因式分解 `yinshi`
-- chuzhong / 勾股定理 `gougu-dingli`
-- chuzhong / 全等三角形 `quandeng`
-- chuzhong / 勾股定理的逆定理 `gougu-nidingli`
-- chuzhong / 轴对称与等腰三角形 `duicheng-dengyao`
-- chuzhong / 函数概念与一次函数 `hanshu-yici`
-- chuzhong / 频率与概率 `pinlv-gailv`
-- chuzhong / 二次根式 `erci-genshi`
-- chuzhong / 特殊平行四边形 `teshu-pingxing-sibianxing`
-- chuzhong / 视图与投影 `shitu-touying`
-- chuzhong / 一元二次方程 `yiyuan-erci-fangcheng`
-- chuzhong / 二次函数 `erci-hanshu`
-- chuzhong / 直线与圆的位置关系 `zhixian-yuan-weizhi`
-- chuzhong / 圆中的计算 `yuan-zhong-jisuan`
-- chuzhong / 锐角三角函数 `ruijiao-sanjiao-hanshu`
-- chuzhong / 方程与不等式（中考专题） `zhongkao-fangcheng-budengshi`
-- chuzhong / 统计与概率（中考专题） `zhongkao-tongji-gailv`
-- xiaoxue / 退位减法 `tuiwei-jianfa`
-- xiaoxue / 两位数乘两位数 `liangwei-cheng-liangwei`
-- xiaoxue / 长方体的展开图 `changfangti-zhankaitu`
-- xiaoxue / 位置与顺序 `weizhi-shunxu`
-- chuzhong / 直角三角形的性质 `zhijiao-sanjiaoxing`
-- chuzhong / 图形的位似 `weisi`
 
 ### 3.3 无变式（缺举一反三）
 
