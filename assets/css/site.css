@@ -576,6 +576,10 @@ p { margin: 0; }
   border-top: 4.5px solid transparent;
   border-bottom: 4.5px solid transparent;
 }
+.lesson-thumb .play-badge.text-only {
+  color: var(--amber, #f2c14e);
+  border-color: rgba(242, 193, 78, 0.45);
+}
 .lesson-thumb .stage-badge {
   position: absolute;
   right: 12px;
@@ -910,6 +914,14 @@ p { margin: 0; }
 .pitfall-card ul { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
 .pitfall-card li { font-size: 15px; color: #4b3a35; line-height: 1.85; }
 .pitfall-card li::marker { color: var(--red-ink); }
+
+/* Variation hints */
+.variation-card {
+  border-color: rgba(201, 141, 34, 0.28);
+  background: rgba(242, 193, 78, 0.07);
+}
+.variation-card h3 { color: var(--amber-ink); }
+.variation-card li::marker { color: var(--amber-ink); }
 
 /* Diagnosis / summary */
 .summary-card {

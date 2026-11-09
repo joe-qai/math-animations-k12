@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>随机事件与概率 · 互斥相加，独立相乘 · 数益坊</title>
+<meta name="description" content="概率是事件发生可能性的度量。古典概型数「有利结果数 ÷ 总结果数」，前提是每个结果等可能。互斥事件不能同时发生，概率相加；独立事件互不影响，概率相乘。这两个词看起来近，用法完全不同。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">163 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">高中数学</a><span class="sep">/</span>
+      <span>随机事件与概率</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage gaozhong">高中数学</span>
+          <span class="chip">高二</span>
+          <span class="chip">进阶</span>
+        </div>
+        <h1>随机事件与概率</h1>
+        <p class="subtitle">互斥相加，独立相乘</p>
+        <p class="brief">概率是事件发生可能性的度量。古典概型数「有利结果数 ÷ 总结果数」，前提是每个结果等可能。互斥事件不能同时发生，概率相加；独立事件互不影响，概率相乘。这两个词看起来近，用法完全不同。</p>
+        <div class="lesson-meta">
+          <span>图文精讲 <b>5 节</b></span><span>建议学习 <b>9 分钟</b></span><span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">互斥相加，独立相乘</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">01</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>古典概型</h3></div>
+  <p>一次试验的所有可能结果只有有限个，且每个结果出现的可能性相等，叫古典概型。</p><p>事件 A 的概率 P(A) = A 包含的结果数 / 总结果数。</p><p>数结果时要不重不漏，必要时用列表或树状图。</p><p>古典概型的核心是「等可能」，结果不等可能时不能直接数个数。</p><p class="formula-big">P(A) = m / n</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>互斥与对立</h3></div>
+  <p>互斥事件：不能同时发生，A∩B = ∅。</p><p>若 A、B 互斥，则 P(A∪B) = P(A) + P(B)。</p><p>对立事件：必有一个发生，且不能同时发生，P(A) + P(Ā) = 1。</p><p>对立一定互斥，互斥不一定对立。</p><p class="formula-big">P(A∪B) = P(A) + P(B)</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>独立事件</h3></div>
+  <p>若 A 的发生不影响 B 发生的概率，则 A、B 相互独立。</p><p>独立事件的乘法公式：P(AB) = P(A)P(B)。</p><p>独立重复试验中，事件恰好发生 k 次的概率用二项分布计算。</p><p>互斥讲「不能同时发生」，独立讲「互不影响」，两者不能混为一谈。</p><p class="formula-big">P(AB) = P(A)P(B)</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 1：掷骰子</h3></div>
+  <p>掷一枚均匀骰子，求掷出偶数的概率。</p><p>样本空间共 6 个等可能结果：1 到 6。</p><p>偶数有 2、4、6，共 3 个。</p><p>所以 P = 3/6 = 1/2。</p><p class="formula-big">P = 1/2</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 2：至少一次</h3></div>
+  <p>掷两枚均匀硬币，求至少出现一次正面的概率。</p><p>直接分类要算「一正一反」和「两正」，容易漏。</p><p>用对立事件：两次都是反面，概率为 1/4。</p><p>所以至少一次正面 = 1 − 1/4 = 3/4。</p><p class="formula-big">P = 3/4</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>古典概型数结果；互斥概率相加，独立概率相乘；至少问题用对立。</p>
+          </div>
+        </section>
+        <section class="block" id="variations">
+          <div class="block-head"><span class="num">02</span><h2>变式提醒</h2><span class="hint">换个条件，再走一遍</span></div>
+          <div class="pitfall-card variation-card">
+            <h3>同一道题，换三种问法</h3>
+            <ul><li>把「至少一次正面」改成「恰好一次正面」，直接数结果，不用间接法。</li><li>把「两枚硬币」改成「三次投篮」，独立重复用二项分布。</li><li>把「互斥」改成「独立」，条件从不能同时发生变成概率可乘。</li></ul>
+          </div>
+        </section>
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这几个坑，考试里最常见</h3>
+            <ul><li>互斥与独立混淆：互斥是不同时发生，独立是互不影响。</li><li>古典概型要求结果等可能，不能只数个数。</li><li>有放回与无放回的概率不同，读题要看清。</li><li>「至少」问题直接分类容易漏，优先用对立事件。</li></ul>
+          </div>
+        </section>
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">掷一枚均匀骰子，掷出偶数的概率是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>1/6</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>1/3</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>1/2</span></button></div>
+    <div class="feedback" role="status" data-explain="偶数有 2、4、6 三个，共 6 个等可能结果，所以是 3/6 = 1/2。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">若 A、B 互斥，则 P(A∪B) 等于？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>P(A)P(B)</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>P(A) + P(B)</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>1</span></button></div>
+    <div class="feedback" role="status" data-explain="互斥事件不能同时发生，概率直接相加。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">若 A、B 相互独立，则 P(AB) 等于？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>P(A)P(B)</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>P(A) + P(B)</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>0</span></button></div>
+    <div class="feedback" role="status" data-explain="独立事件的乘法公式：同时发生的概率等于各自概率之积。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">事件 A 与其对立事件 Ā 的概率之和等于？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>0</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>1/2</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>1</span></button></div>
+    <div class="feedback" role="status" data-explain="对立事件必有一个发生，所以 P(A) + P(Ā) = 1。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-erxiangshi.html"><span class="dir">← 上一节</span><span class="title">二项式定理</span></a><a class="next" href="lesson-suiji-bianliang.html"><span class="dir">下一节 →</span><span class="title">离散型随机变量及其分布</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#knowledge"><span class="n">01</span>知识精讲</a></li><li><a href="#variations"><span class="n">02</span>变式提醒</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解随机事件与样本空间</li><li>掌握古典概型概率公式</li><li>会判断互斥事件与对立事件</li><li>会判断独立事件并用乘法公式</li><li>会用间接法求至少至多问题</li></ul>
+          </div>
+          
+          <p class="aside-note">本课为图文精讲，页面可离线使用。所有内容为教学演示，题目解析按高中常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

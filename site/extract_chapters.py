@@ -149,6 +149,11 @@ CHAPTERS = {
     "mihanshu": 7,
     "hanshu-lingdian": 7,
     "hanshu-moxing": 7,
+    "zhishu-hanshu": 7,
+    "duishu-hanshu": 7,
+    "sanjiao-dingyi": 7,
+    "sanjiao-tuxiang": 7,
+    "sanjiao-hengbian": 7,
 }
 
 

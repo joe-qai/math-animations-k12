@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>计数原理 · 分类相加，分步相乘 · 数益坊</title>
+<meta name="description" content="数数也有章法：一件事有几类互不重叠的办法，就把各类数量相加；一件事要分几步完成，就把每步的数量相乘。判断「分类」还是「分步」，只看能不能「任选其一完成」还是「每步都做才能完成」。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">163 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">高中数学</a><span class="sep">/</span>
+      <span>计数原理</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage gaozhong">高中数学</span>
+          <span class="chip">高二</span>
+          <span class="chip">进阶</span>
+        </div>
+        <h1>计数原理</h1>
+        <p class="subtitle">分类相加，分步相乘</p>
+        <p class="brief">数数也有章法：一件事有几类互不重叠的办法，就把各类数量相加；一件事要分几步完成，就把每步的数量相乘。判断「分类」还是「分步」，只看能不能「任选其一完成」还是「每步都做才能完成」。</p>
+        <div class="lesson-meta">
+          <span>图文精讲 <b>5 节</b></span><span>建议学习 <b>8 分钟</b></span><span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">分类相加，分步相乘</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">01</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>分类加法</h3></div>
+  <p>完成一件事有 n 类办法，第 1 类有 m₁ 种，第 2 类有 m₂ 种，……，第 n 类有 mₙ 种。</p><p>各类办法互不重叠，任选一类都能独立完成这件事。</p><p>总方法数 N = m₁ + m₂ + … + mₙ。</p><p>分类的关键是不重不漏：每一类都要能完成，且只属于一类。</p><p class="formula-big">N = m₁ + m₂ + … + mₙ</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>分步乘法</h3></div>
+  <p>完成一件事需要 n 个步骤，第 1 步有 m₁ 种，第 2 步有 m₂ 种，……。</p><p>每一步都完成，这件事才算完成，缺一不可。</p><p>总方法数 N = m₁ × m₂ × … × mₙ。</p><p>分步的关键是步骤完整，且每步的选择数不受前面结果影响或已正确计入。</p><p class="formula-big">N = m₁ × m₂ × … × mₙ</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 1：路线问题</h3></div>
+  <p>从甲地到乙地有 3 条路，从乙地到丙地有 2 条路，从甲地直达丙地有 1 条路。</p><p>经过乙地：分两步，3 × 2 = 6 种。</p><p>直达丙地：1 种。</p><p>两类互不重叠，所以共 6 + 1 = 7 种。</p><p class="formula-big">3 × 2 + 1 = 7</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 2：搭配问题</h3></div>
+  <p>有 3 件上衣和 2 条裤子，要配成一套，有多少种搭配？</p><p>选上衣是第 1 步，有 3 种；选裤子是第 2 步，有 2 种。</p><p>两步都完成才算一套，所以用乘法：3 × 2 = 6。</p><p>若再加上 2 双鞋，就是 3 × 2 × 2 = 12 种。</p><p class="formula-big">3 × 2 = 6</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>分类还是分步</h3></div>
+  <p>问「有几种办法完成」且各类可独立完成，用加法。</p><p>问「完成一件事的全过程」且必须逐步进行，用乘法。</p><p>复杂问题常常先分类、再在每一类里分步，即「先加后乘」。</p><p>含「至少」「至多」的问题，常用间接法：总数减去对立情况。</p><p class="formula-big">先分类，再分步</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>能独立完成的几类办法相加；必须逐步完成的过程相乘；复杂问题先分类再分步。</p>
+          </div>
+        </section>
+        <section class="block" id="variations">
+          <div class="block-head"><span class="num">02</span><h2>变式提醒</h2><span class="hint">换个条件，再走一遍</span></div>
+          <div class="pitfall-card variation-card">
+            <h3>同一道题，换三种问法</h3>
+            <ul><li>把「直达 1 条」改成「直达 0 条」，只剩分步乘法。</li><li>把「搭配」改成「至少选一件」，用总数减去一件都不选的情况。</li><li>把「3 件上衣 2 条裤子」改成「颜色不能相同」，每步可选数要相应减少。</li></ul>
+          </div>
+        </section>
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这几个坑，考试里最常见</h3>
+            <ul><li>分类时出现重叠，同一方法被算两次。</li><li>分步时漏掉某一步，或把不需要的步骤也算进去。</li><li>把「有序」当成「无序」，或反过来。</li><li>「至少」问题直接分类容易漏，间接法更稳。</li></ul>
+          </div>
+        </section>
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">完成一件事有几类互不重叠的办法，求总数用？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>加法</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>乘法</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>除法</span></button></div>
+    <div class="feedback" role="status" data-explain="分类计数原理：各类办法数相加。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">完成一件事必须经过几个步骤，求总数用？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>加法</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>减法</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>乘法</span></button></div>
+    <div class="feedback" role="status" data-explain="分步计数原理：各步方法数相乘。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">3 件上衣、2 条裤子，配成一套有几种？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>5</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>6</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>3</span></button></div>
+    <div class="feedback" role="status" data-explain="选上衣 3 种，选裤子 2 种，分步相乘得 6。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">从 3 个红球、2 个白球中任取 1 个，有几种取法？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>5</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>6</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>3</span></button></div>
+    <div class="feedback" role="status" data-explain="取红球或取白球是两类互斥办法，3 + 2 = 5。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-daoshu-yingyong.html"><span class="dir">← 上一节</span><span class="title">导数的应用</span></a><a class="next" href="lesson-pailie-zuhe.html"><span class="dir">下一节 →</span><span class="title">排列与组合</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#knowledge"><span class="n">01</span>知识精讲</a></li><li><a href="#variations"><span class="n">02</span>变式提醒</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解分类加法计数原理</li><li>理解分步乘法计数原理</li><li>会区分分类与分步</li><li>会处理有限制条件的计数问题</li><li>会检查是否有重复或遗漏</li></ul>
+          </div>
+          
+          <p class="aside-note">本课为图文精讲，页面可离线使用。所有内容为教学演示，题目解析按高中常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

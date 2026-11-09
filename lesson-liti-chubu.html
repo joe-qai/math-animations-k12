@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>立体几何初步 · 线面平行，线线平行 · 数益坊</title>
+<meta name="description" content="立体几何先建立「点、线、面」的位置关系：线在面内、线面相交、线面平行；线线平行、相交、异面。判断平行与垂直，靠的是判定定理和性质定理，而不是看图感觉。把文字定理翻译成「已知什么、推出什么」，证明就有了骨架。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">163 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">高中数学</a><span class="sep">/</span>
+      <span>立体几何初步</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage gaozhong">高中数学</span>
+          <span class="chip">高一</span>
+          <span class="chip">进阶</span>
+        </div>
+        <h1>立体几何初步</h1>
+        <p class="subtitle">线面平行，线线平行</p>
+        <p class="brief">立体几何先建立「点、线、面」的位置关系：线在面内、线面相交、线面平行；线线平行、相交、异面。判断平行与垂直，靠的是判定定理和性质定理，而不是看图感觉。把文字定理翻译成「已知什么、推出什么」，证明就有了骨架。</p>
+        <div class="lesson-meta">
+          <span>图文精讲 <b>5 节</b></span><span>建议学习 <b>10 分钟</b></span><span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">线面平行，线线平行</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">01</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>空间中的位置关系</h3></div>
+  <p>两条直线的位置关系有三种：平行、相交、异面。异面直线是不同在任何一个平面内的两条直线。</p><p>直线与平面的位置关系：直线在平面内、直线与平面相交、直线与平面平行。</p><p>两个平面的位置关系：平行、相交。</p><p>判断位置关系时，要先看清「线是否在面内」，这是很多定理的前提。</p><p class="formula-big">平行 · 相交 · 异面</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>平行的判定与性质</h3></div>
+  <p>线面平行判定：平面外一条直线与平面内一条直线平行，则该直线与平面平行。</p><p>线面平行性质：一条直线与一个平面平行，过这条直线的平面与已知平面相交，则交线与该直线平行。</p><p>面面平行判定：一个平面内的两条相交直线分别与另一个平面平行，则两个平面平行。</p><p>面面平行性质：两个平行平面被第三个平面所截，交线平行。</p><p class="formula-big">线线平行 → 线面平行</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>垂直的判定与性质</h3></div>
+  <p>线面垂直判定：一条直线与平面内两条相交直线都垂直，则这条直线与平面垂直。</p><p>线面垂直性质：垂直于同一个平面的两条直线平行。</p><p>面面垂直判定：一个平面过另一个平面的一条垂线，则两个平面垂直。</p><p>面面垂直性质：两个平面垂直，一个平面内垂直于交线的直线垂直于另一个平面。</p><p class="formula-big">两条相交直线 → 线面垂直</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 1：线面平行的证明</h3></div>
+  <p>在正方体 ABCD-A₁B₁C₁D₁ 中，证明 AB ∥ 平面 A₁B₁C₁D₁。</p><p>因为 AB ∥ A₁B₁，且 A₁B₁ 在平面 A₁B₁C₁D₁ 内。</p><p>又 AB 不在平面 A₁B₁C₁D₁ 内。</p><p>由线面平行判定定理，AB ∥ 平面 A₁B₁C₁D₁。</p><p class="formula-big">AB ∥ A₁B₁ ⇒ AB ∥ 面</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 2：异面直线所成角</h3></div>
+  <p>在正方体中，求 AB 与 B₁C 所成的角。</p><p>把 B₁C 平移，使它与 AB 相交：因为 AB ∥ A₁B₁，所以可以把问题转化为 A₁B₁ 与 B₁C 的夹角。</p><p>三角形 A₁B₁C 中，A₁B₁ = B₁C = A₁C，都是面对角线，所以是等边三角形。</p><p>因此夹角为 60°。求异面直线夹角的关键，是平移到同一点。</p><p class="formula-big">平移 → 相交 → 解三角形</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>平行靠「线线 → 线面 → 面面」，垂直靠「两条相交直线」；异面夹角先平移到同一点。</p>
+          </div>
+        </section>
+        <section class="block" id="variations">
+          <div class="block-head"><span class="num">02</span><h2>变式提醒</h2><span class="hint">换个条件，再走一遍</span></div>
+          <div class="pitfall-card variation-card">
+            <h3>同一道题，换三种问法</h3>
+            <ul><li>把「证明线面平行」改成「证明面面平行」，先在每个平面内找两条相交直线。</li><li>把「求异面直线夹角」改成「证明两条直线异面」，用反证法：若共面则推出矛盾。</li><li>把「线面垂直」改成「面面垂直」，先证线面垂直，再用判定定理。</li></ul>
+          </div>
+        </section>
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这几个坑，考试里最常见</h3>
+            <ul><li>用线面平行判定时，忘记说明直线不在平面内。</li><li>异面直线不是「不平行的直线」，它们还必须不共面。</li><li>线面垂直判定要求平面内两条直线相交，两条平行直线不够。</li><li>证明中把「性质定理」和「判定定理」用反，推出方向会颠倒。</li></ul>
+          </div>
+        </section>
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">平面外一条直线与平面内一条直线平行，能否推出线面平行？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>能</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>不能</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>还要加上垂直条件</span></button></div>
+    <div class="feedback" role="status" data-explain="这正是线面平行的判定定理，前提是直线在平面外。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">空间中两条直线的位置关系不包括？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>平行</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>相交</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>重合且平行</span></button></div>
+    <div class="feedback" role="status" data-explain="空间中两条直线只有平行、相交、异面三种关系；重合属于同一条直线。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">在正方体中，与棱 AB 异面的棱有几条？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>2</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>4</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>3</span></button></div>
+    <div class="feedback" role="status" data-explain="正方体每条棱有 4 条棱与它异面，例如 CC₁、DD₁、B₁C₁、A₁D₁。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">线面垂直的判定定理要求平面内两条直线？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>相交</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>平行</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>任意</span></button></div>
+    <div class="feedback" role="status" data-explain="必须是平面内两条相交直线都与已知直线垂直，才能推出线面垂直。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-fushu.html"><span class="dir">← 上一节</span><span class="title">复数</span></a><a class="next" href="lesson-kongjian-xiangliang.html"><span class="dir">下一节 →</span><span class="title">空间向量与立体几何</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#knowledge"><span class="n">01</span>知识精讲</a></li><li><a href="#variations"><span class="n">02</span>变式提醒</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解空间中点、线、面的位置关系</li><li>掌握线面平行、面面平行的判定与性质</li><li>掌握线面垂直、面面垂直的判定与性质</li><li>会判断异面直线并求异面直线所成角</li><li>会用定理书写简单的证明过程</li></ul>
+          </div>
+          
+          <p class="aside-note">本课为图文精讲，页面可离线使用。所有内容为教学演示，题目解析按高中常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

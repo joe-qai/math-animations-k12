@@ -177,6 +177,37 @@ THUMB = {
     "mihanshu": "y = xᵅ",
     "hanshu-lingdian": "f(x) = 0",
     "hanshu-moxing": "先建模，再求解",
+    "zhishu-hanshu": "同底相乘，指数相加",
+    "duishu-hanshu": "对数就是问指数",
+    "sanjiao-dingyi": "一全正，二正弦",
+    "sanjiao-tuxiang": "五点作图，周期 2π",
+    "sanjiao-hengbian": "余弦相反，正弦相同",
+    "xiangliang-yunsuan": "首尾相接，指向终点",
+    "xiangliang-shuliangji": "数量积 = 模乘余弦",
+    "jie-sanjiaoxing": "边比对边，角用余弦",
+    "fushu": "实部虚部，i² = −1",
+    "liti-chubu": "线面平行，线线平行",
+    "kongjian-xiangliang": "法向量定线面角",
+    "zhixian-fangcheng": "点斜式定直线",
+    "yuan-fangcheng": "圆心定位置，半径定大小",
+    "sanshitu": "长对正，高平齐",
+    "tuoyuan": "到两定点距离和为 2a",
+    "shuangquxian": "到两定点距离差为 2a",
+    "paowuxian": "到焦点与准线等距",
+    "zhixian-yuanzhuiquxian": "联立、韦达、判别式",
+    "zhuiquxian-zonghe": "设点联立，韦达代入",
+    "shulie-gainian": "通项看 aₙ，和看 Sₙ",
+    "dengbi-shulie": "后项比前项等于 q",
+    "shulie-qiuhe": "错位相减，裂项相消",
+    "daoshu-gainian": "导数就是瞬时变化率",
+    "daoshu-yingyong": "导数定单调与极值",
+    "jishu-yuanli": "分类相加，分步相乘",
+    "pailie-zuhe": "有序排列，无序组合",
+    "erxiangshi": "二项展开看通项",
+    "suiji-shijian-gailv": "互斥相加，独立相乘",
+    "suiji-bianliang": "分布列概率和为一",
+    "chouyang-guji": "样本估计总体",
+    "huigui-duli": "回归看相关，检验看 χ²",
 }
 
 LABS = [
@@ -342,12 +373,16 @@ def lesson_card(lesson: dict, prefix: str = "") -> str:
         )
     else:
         thumb = f'<span class="thumb-fallback formula">{esc(THUMB[lesson["id"]])}</span>'
+    if seconds:
+        badge = f'<span class="play-badge"><i></i>{mmss(seconds)}</span>'
+    else:
+        badge = '<span class="play-badge text-only">图文精讲</span>'
     return f"""
 <article class="lesson-card reveal">
   <a class="lesson-thumb" href="{prefix}{lesson['file']}" tabindex="-1" aria-hidden="true">
     {thumb}
     <span class="stage-badge">{esc(stage['name'])} · {esc(lesson['grade'])}</span>
-    <span class="play-badge"><i></i>{mmss(seconds)}</span>
+    {badge}
   </a>
   <div class="lesson-body">
     <div class="meta-line"><span>{esc(stage['name'])}</span><span>/</span><span>{esc(lesson['grade'])}</span><span>/</span><span>约 {lesson['minutes']} 分钟</span></div>
@@ -467,7 +502,7 @@ def build_home() -> str:
     return (
         head(
             "数益坊 · K12 数学动画课",
-            "数益坊：用动画讲解 K12 数学公式与定理。从一年级的凑十法，到高中的数列求和，每节课都有文字精讲与练习。",
+            "数益坊：用动画与图文精讲拆解 K12 数学公式与定理。从一年级的凑十法，到高中的数列求和，每节课都有文字精讲与练习。",
         )
         + header("", "home")
         + f"""
@@ -478,13 +513,13 @@ def build_home() -> str:
         <div>
           <span class="eyebrow">北师大版 · K12 数学</span>
           <h1>把公式讲<em>明白</em><br>而不是背下来</h1>
-          <p class="lead">每节课都从一个生活问题开始：三排桌子、一袋苹果、一把靠墙的梯子。先看见，再理解，最后动手练——公式会自己长出来。</p>
+          <p class="lead">大多数课从一个生活问题开始：三排桌子、一袋苹果、一把靠墙的梯子。先看见，再理解，最后动手练——公式会自己长出来。</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="lessons.html">开始学习 →</a>
             <a class="btn btn-ghost" href="lesson-gougu.html">看一节示范</a>
           </div>
           <div class="hero-stats">
-            <div><b>{len(LESSONS)}</b><span>节动画课时</span></div>
+            <div><b>{len(LESSONS)}</b><span>节数学课时</span></div>
             <div><b>{video_count}</b><span>支讲解视频</span></div>
             <div><b>{question_count}</b><span>道随堂练习</span></div>
           </div>
@@ -497,7 +532,7 @@ def build_home() -> str:
       <div class="section-head">
         <span class="num">01</span>
         <h2>按学段进入</h2>
-        <p>从数感、图形到代数与数列，每个知识点都配一支能听懂的视频。</p>
+        <p>从数感、图形到代数与数列，能配动画的配动画，其余用图文精讲把推导和例题讲透。</p>
       </div>
       <div class="stage-grid">{''.join(stage_cards)}</div>
     </section>
@@ -506,19 +541,19 @@ def build_home() -> str:
       <div class="section-head">
         <span class="num">02</span>
         <h2>一节课，三步走</h2>
-        <p>先看动画建立画面，再读文字理清逻辑，最后用练习暴露问题。</p>
+        <p>先看动画或例题建立画面，再读文字理清逻辑，最后用练习暴露问题。</p>
       </div>
       <div class="steps">
         <div class="step reveal">
           <span class="step-num">STEP 01</span>
-          <h3>看 · 动画解说</h3>
-          <p>带中文配音的分步动画，一句解说配一屏画面。看到不懂的地方，随时暂停、回看。</p>
-          <span class="step-tag">先给生活例子</span>
+          <h3>看 · 动画 / 例题</h3>
+          <p>能配动画的课时，用分步动画建立画面；图文课时直接从例题拆解入手，一步一步跟着算。</p>
+          <span class="step-tag">先给具体例子</span>
         </div>
         <div class="step reveal">
           <span class="step-num">STEP 02</span>
           <h3>学 · 文字精讲</h3>
-          <p>把动画里的画面翻译成定义、公式和推导。概念、公式、例题分块呈现，方便对照复习。</p>
+          <p>把画面里的过程翻译成定义、公式和推导。概念、公式、例题分块呈现，方便对照复习。</p>
           <span class="step-tag">公式有来处</span>
         </div>
         <div class="step reveal">
@@ -642,8 +677,10 @@ def build_labs() -> str:
 def build_lesson(lesson: dict, prev: dict | None, nxt: dict | None) -> str:
     stage = STAGE_BY_ID[lesson["stage"]]
     seconds = video_seconds(lesson["id"])
+    has_vid = seconds > 0
     goals = "".join(f"<li>{esc(g)}</li>" for g in lesson["goals"])
     pitfalls = "".join(f"<li>{esc(p)}</li>" for p in lesson["pitfalls"])
+    variations = lesson.get("variations") or []
     lab = lab_link(lesson)
 
     lab_aside = ""
@@ -669,16 +706,83 @@ def build_lesson(lesson: dict, prev: dict | None, nxt: dict | None) -> str:
             f'<span class="title">{esc(nxt["title"])}</span></a>'
         )
 
-    toc = [
-        ("video", "视频讲解"),
-        ("knowledge", "知识精讲"),
-        ("pitfalls", "易错提醒"),
-        ("practice", "练习巩固"),
-    ]
+    toc = []
+    if has_vid:
+        toc.append(("video", "视频讲解"))
+    toc.append(("knowledge", "知识精讲"))
+    if variations:
+        toc.append(("variations", "变式提醒"))
+    toc.append(("pitfalls", "易错提醒"))
+    toc.append(("practice", "练习巩固"))
     toc_html = "".join(
         f'<li><a href="#{anchor}"><span class="n">{i + 1:02d}</span>{name}</a></li>'
         for i, (anchor, name) in enumerate(toc)
     )
+
+    sections = []
+    if has_vid:
+        sections.append((
+            "video", f"{lesson['title']} 视频讲解", mmss(seconds),
+            f"""<div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/{lesson['id']}.jpg">
+                <source src="{lesson['video']}" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="{lesson['video']}">点此下载视频</a>。
+              </video>
+            </div>
+          </div>""",
+        ))
+    sections.append((
+        "knowledge", "知识精讲", "概念 · 公式 · 例题",
+        knowledge_blocks(lesson) + f"""
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>{esc(lesson['summary'])}</p>
+          </div>""",
+    ))
+    if variations:
+        vs = "".join(f"<li>{esc(v)}</li>" for v in variations)
+        sections.append((
+            "variations", "变式提醒", "换个条件，再走一遍",
+            f"""<div class="pitfall-card variation-card">
+            <h3>同一道题，换三种问法</h3>
+            <ul>{vs}</ul>
+          </div>""",
+        ))
+    sections.append((
+        "pitfalls", "易错提醒", "先避开，再提速",
+        f"""<div class="pitfall-card">
+            <h3>这几个坑，考试里最常见</h3>
+            <ul>{pitfalls}</ul>
+          </div>""",
+    ))
+    sections.append((
+        "practice", "练习巩固", "选完立刻判分",
+        quiz(lesson),
+    ))
+    sections_html = "".join(
+        f"""
+        <section class="block" id="{anchor}">
+          <div class="block-head"><span class="num">{i + 1:02d}</span><h2>{esc(title)}</h2><span class="hint">{esc(hint)}</span></div>
+          {body}
+        </section>"""
+        for i, (anchor, title, hint, body) in enumerate(sections)
+    )
+
+    if has_vid:
+        meta_html = (
+            f"<span>视频 <b>{mmss(seconds)}</b></span>"
+            f"<span>建议学习 <b>{lesson['minutes']} 分钟</b></span>"
+            f"<span>练习 <b>{len(lesson['questions'])} 题</b></span>"
+        )
+        aside_note = "视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。"
+    else:
+        meta_html = (
+            f"<span>图文精讲 <b>{len(lesson['knowledge'])} 节</b></span>"
+            f"<span>建议学习 <b>{lesson['minutes']} 分钟</b></span>"
+            f"<span>练习 <b>{len(lesson['questions'])} 题</b></span>"
+        )
+        aside_note = "本课为图文精讲，页面可离线使用。所有内容为教学演示，题目解析按高中常规解法编写。"
 
     return (
         head(
@@ -706,9 +810,7 @@ def build_lesson(lesson: dict, prev: dict | None, nxt: dict | None) -> str:
         <p class="subtitle">{esc(lesson['subtitle'])}</p>
         <p class="brief">{esc(lesson['brief'])}</p>
         <div class="lesson-meta">
-          <span>视频 <b>{mmss(seconds)}</b></span>
-          <span>建议学习 <b>{lesson['minutes']} 分钟</b></span>
-          <span>练习 <b>{len(lesson['questions'])} 题</b></span>
+          {meta_html}
         </div>
       </div>
       <aside class="keyformula">
@@ -718,40 +820,7 @@ def build_lesson(lesson: dict, prev: dict | None, nxt: dict | None) -> str:
     </header>
 
     <div class="lesson-layout">
-      <div class="lesson-main">
-        <section class="block" id="video">
-          <div class="block-head"><span class="num">01</span><h2>{esc(lesson['title'])} 视频讲解</h2><span class="hint">{mmss(seconds)}</span></div>
-          <div class="video-card">
-            <div class="video-wrap">
-              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/{lesson['id']}.jpg">
-                <source src="{lesson['video']}" type="video/mp4">
-                你的浏览器不支持视频播放，<a href="{lesson['video']}">点此下载视频</a>。
-              </video>
-            </div>
-          </div>
-        </section>
-
-        <section class="block" id="knowledge">
-          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
-          {knowledge_blocks(lesson)}
-          <div class="summary-card">
-            <div class="label">一句话记住</div>
-            <p>{esc(lesson['summary'])}</p>
-          </div>
-        </section>
-
-        <section class="block" id="pitfalls">
-          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
-          <div class="pitfall-card">
-            <h3>这三个坑，考试里最常见</h3>
-            <ul>{pitfalls}</ul>
-          </div>
-        </section>
-
-        <section class="block" id="practice">
-          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
-          {quiz(lesson)}
-        </section>
+      <div class="lesson-main">{sections_html}
 
         <nav class="pager" aria-label="课时翻页">{''.join(pager)}</nav>
       </div>
@@ -767,7 +836,7 @@ def build_lesson(lesson: dict, prev: dict | None, nxt: dict | None) -> str:
             <ul class="goal-list">{goals}</ul>
           </div>
           {lab_aside}
-          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+          <p class="aside-note">{aside_note}</p>
         </div>
       </aside>
     </div>

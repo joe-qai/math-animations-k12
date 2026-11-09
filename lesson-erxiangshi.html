@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>二项式定理 · 二项展开看通项 · 数益坊</title>
+<meta name="description" content="二项式定理给出 (a+b)ⁿ 的完整展开：共有 n+1 项，每一项的系数是组合数 C(n,k)，a 的指数从 n 降到 0，b 的指数从 0 升到 n。求特定项、常数项、系数和，都从通项公式出发。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">163 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">高中数学</a><span class="sep">/</span>
+      <span>二项式定理</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage gaozhong">高中数学</span>
+          <span class="chip">高二</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>二项式定理</h1>
+        <p class="subtitle">二项展开看通项</p>
+        <p class="brief">二项式定理给出 (a+b)ⁿ 的完整展开：共有 n+1 项，每一项的系数是组合数 C(n,k)，a 的指数从 n 降到 0，b 的指数从 0 升到 n。求特定项、常数项、系数和，都从通项公式出发。</p>
+        <div class="lesson-meta">
+          <span>图文精讲 <b>5 节</b></span><span>建议学习 <b>10 分钟</b></span><span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">二项展开看通项</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">01</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>二项式定理</h3></div>
+  <p>(a+b)ⁿ = C(n,0)aⁿ + C(n,1)aⁿ⁻¹b + … + C(n,n)bⁿ。</p><p>展开式共有 n+1 项，a 的指数从 n 递减到 0，b 的指数从 0 递增到 n。</p><p>每一项中 a 与 b 的指数之和都等于 n。</p><p>二项式系数是 C(n,k)，与 a、b 的具体取值无关。</p><p class="formula-big">(a+b)ⁿ = Σ C(n,k)aⁿ⁻ᵏbᵏ</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>通项公式</h3></div>
+  <p>第 k+1 项 T(k+1) = C(n,k) aⁿ⁻ᵏ bᵏ，注意下标从 0 开始。</p><p>求指定次数的项，先设通项，再令指数等于目标值，解出 k。</p><p>求常数项，令所有含变量的指数之和为 0。</p><p>求出 k 后要检查是否为 0 到 n 的整数，否则该项不存在。</p><p class="formula-big">T(k+1) = C(n,k)aⁿ⁻ᵏbᵏ</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 1：求指定项系数</h3></div>
+  <p>求 (x + 2)⁵ 展开式中 x³ 的系数。</p><p>通项 T(k+1) = C(5,k) x⁵⁻ᵏ 2ᵏ。</p><p>令 5 − k = 3，得 k = 2。</p><p>系数为 C(5,2) × 2² = 10 × 4 = 40。</p><p class="formula-big">系数 = 40</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>系数和</h3></div>
+  <p>令 a = b = 1，得各项系数之和为 2ⁿ。</p><p>令 a = 1、b = −1，得奇数项系数和减偶数项系数和。</p><p>求「所有项系数和」时，把变量全部换成 1。</p><p>注意区分「二项式系数和」2ⁿ 与「项的系数和」，后者要把常数因子算进去。</p><p class="formula-big">系数和 = f(1)</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 2：赋值法</h3></div>
+  <p>求 (2x + 1)⁵ 展开式各项系数之和。</p><p>把 x 换成 1，得 (2×1 + 1)⁵ = 3⁵ = 243。</p><p>若求二项式系数之和，则是 2⁵ = 32。</p><p>两个结果不同，因为项的系数还包含 2ᵏ 因子。</p><p class="formula-big">3⁵ = 243</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>展开 n+1 项，通项 C(n,k)aⁿ⁻ᵏbᵏ；求项看指数，求和令 x=1。</p>
+          </div>
+        </section>
+        <section class="block" id="variations">
+          <div class="block-head"><span class="num">02</span><h2>变式提醒</h2><span class="hint">换个条件，再走一遍</span></div>
+          <div class="pitfall-card variation-card">
+            <h3>同一道题，换三种问法</h3>
+            <ul><li>把「求 x³ 的系数」改成「求常数项」，令变量指数为 0。</li><li>把「(x+2)⁵」改成「(2x−1)⁵」，注意负号与常数因子的幂。</li><li>把「系数和」改成「奇数项系数和」，用 f(1) 与 f(−1) 联立。</li></ul>
+          </div>
+        </section>
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这几个坑，考试里最常见</h3>
+            <ul><li>通项下标从 0 开始，T(k+1) 对应 b 的指数 k，容易错一位。</li><li>二项式系数 C(n,k) 与项的系数不是一回事，后者含常数因子。</li><li>求常数项时忘记把常数因子的幂算进去。</li><li>赋值法只能求整体和，求某一项仍需通项。</li></ul>
+          </div>
+        </section>
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">二项展开式中，每一项的二项式系数是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>C(n,k)</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>A(n,k)</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>nᵏ</span></button></div>
+    <div class="feedback" role="status" data-explain="二项式系数就是组合数 C(n,k)，与 a、b 的取值无关。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">通项 T(k+1) 中 b 的指数是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>n − k</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>k</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>n</span></button></div>
+    <div class="feedback" role="status" data-explain="通项为 C(n,k)aⁿ⁻ᵏbᵏ，b 的指数是 k。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">(x + 1)³ 展开后是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>x³ + 3x² + 3x + 1</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>x³ + 1</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>x³ + 3x + 1</span></button></div>
+    <div class="feedback" role="status" data-explain="按二项式定理展开，系数依次为 1、3、3、1。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">求 (2x+1)⁵ 各项系数之和，应令 x 等于？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>−1</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>0</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>1</span></button></div>
+    <div class="feedback" role="status" data-explain="令 x = 1，得到 (2+1)⁵ = 243，即各项系数之和。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-pailie-zuhe.html"><span class="dir">← 上一节</span><span class="title">排列与组合</span></a><a class="next" href="lesson-suiji-shijian-gailv.html"><span class="dir">下一节 →</span><span class="title">随机事件与概率</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#knowledge"><span class="n">01</span>知识精讲</a></li><li><a href="#variations"><span class="n">02</span>变式提醒</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>掌握二项式定理的展开式</li><li>会写通项并求指定项</li><li>会求常数项与有理项</li><li>会区分二项式系数与项的系数</li><li>会用赋值法求系数和</li></ul>
+          </div>
+          
+          <p class="aside-note">本课为图文精讲，页面可离线使用。所有内容为教学演示，题目解析按高中常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

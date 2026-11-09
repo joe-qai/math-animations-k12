@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>圆锥曲线综合 · 设点、联立、韦达、代入 · 数益坊</title>
+<meta name="description" content="圆锥曲线综合题看起来千变万化，骨架却稳定：设点或设线，联立得到二次方程，用韦达定理把条件翻译成关于参数的方程，最后解参数并检验范围。定点、定值、最值、面积，都是这套骨架的不同外壳。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">163 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">高中数学</a><span class="sep">/</span>
+      <span>圆锥曲线综合</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage gaozhong">高中数学</span>
+          <span class="chip">高三</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>圆锥曲线综合</h1>
+        <p class="subtitle">设点、联立、韦达、代入</p>
+        <p class="brief">圆锥曲线综合题看起来千变万化，骨架却稳定：设点或设线，联立得到二次方程，用韦达定理把条件翻译成关于参数的方程，最后解参数并检验范围。定点、定值、最值、面积，都是这套骨架的不同外壳。</p>
+        <div class="lesson-meta">
+          <span>图文精讲 <b>5 节</b></span><span>建议学习 <b>12 分钟</b></span><span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">设点联立，韦达代入</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">01</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>通法骨架</h3></div>
+  <p>第一步：设点或设线，明确哪些量是参数。</p><p>第二步：联立方程，得到一元二次方程，写出 Δ &gt; 0 的范围。</p><p>第三步：用韦达定理写出两根之和与两根之积。</p><p>第四步：把题目条件翻译成含参数的等式，解出参数并检验。</p><p class="formula-big">设 → 联 → 韦 → 代</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>常见条件翻译</h3></div>
+  <p>以 AB 为直径的圆过原点：OA·OB = 0，即 x₁x₂ + y₁y₂ = 0。</p><p>两点关于某直线对称：垂直加中点两个条件。</p><p>面积为定值：用 1/2 × 底 × 高，底取弦长。</p><p>定点问题：把直线方程整理成关于参数的一次式，令参数系数与常数项同时为零。</p><p class="formula-big">OA·OB = 0</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 1：定值问题</h3></div>
+  <p>椭圆 x²/4 + y² = 1，直线 l 与椭圆交于 A、B，且 OA⊥OB，求证原点 O 到 l 的距离为定值。</p><p>设 l：y = kx + m，联立得 (1+4k²)x² + 8kmx + 4m² − 4 = 0。</p><p>由 OA·OB = 0 得 x₁x₂ + y₁y₂ = 0，代入韦达定理化简。</p><p>可得 5m² = 4(1+k²)，于是 d = |m|/√(1+k²) = 2/√5，为定值。</p><p class="formula-big">d = 2/√5</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>最值与范围</h3></div>
+  <p>求最值先把目标量表示成一个变量的函数，再确定定义域。</p><p>常见目标：弦长、面积、向量点积、斜率之和。</p><p>定义域来自 Δ &gt; 0、参数的实际意义、图形位置限制。</p><p>求出最值后要回头检查取等条件是否在定义域内。</p><p class="formula-big">先表示，再定域，后求最值</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 2：面积最值</h3></div>
+  <p>直线 y = x + m 与椭圆 x²/2 + y² = 1 交于 A、B，求三角形 OAB 面积的最大值。</p><p>联立得 3x² + 4mx + 2m² − 2 = 0，Δ &gt; 0 给出 m² &lt; 3。</p><p>弦长 |AB| = √2 |x₁ − x₂|，原点到的距离 d = |m|/√2。</p><p>面积 S = 1/2 |AB| d，化简后关于 m² 求最值，在 m² = 3/2 时取到。</p><p class="formula-big">S = 1/2 |AB| · d</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>设点联立、韦达代入；先写 Δ 定范围，再把条件翻译成等式，最后检验取舍。</p>
+          </div>
+        </section>
+        <section class="block" id="variations">
+          <div class="block-head"><span class="num">02</span><h2>变式提醒</h2><span class="hint">换个条件，再走一遍</span></div>
+          <div class="pitfall-card variation-card">
+            <h3>同一道题，换三种问法</h3>
+            <ul><li>把「证明定值」改成「求定值」，先猜后证，用特殊位置算出候选值。</li><li>把「面积最大」改成「面积等于某值」，得到关于参数的方程，注意多解取舍。</li><li>把「OA⊥OB」改成「∠AOB = 60°」，用点积与模长联立。</li></ul>
+          </div>
+        </section>
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这几个坑，考试里最常见</h3>
+            <ul><li>只写韦达定理不写 Δ &gt; 0，参数范围会漏。</li><li>几何条件翻译错，例如把 OA⊥OB 写成 x₁x₂ − y₁y₂ = 0。</li><li>斜率不存在的情况没有单独讨论，定点问题可能漏解。</li><li>求出参数后不检验是否满足 Δ &gt; 0 与图形位置。</li></ul>
+          </div>
+        </section>
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">圆锥曲线定点问题最常用的思路是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>直接代入</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>设点联立，用韦达定理</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>求导</span></button></div>
+    <div class="feedback" role="status" data-explain="定点问题通常设线联立，用韦达定理把条件化为参数恒等式。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">已知弦中点求斜率，应优先使用？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>点差法</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>判别式</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>配方法</span></button></div>
+    <div class="feedback" role="status" data-explain="点差法利用两端点坐标差，直接得到中点与斜率的关系。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">求参数范围时，除了题目条件还要考虑？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>求导</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>解不等式</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>赋值</span></button></div>
+    <div class="feedback" role="status" data-explain="参数范围最终要落到不等式，常由 Δ &gt; 0 与图形位置给出。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">用弦长公式求面积，除了弦长还需要？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>斜率</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>判别式</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>点到直线的距离</span></button></div>
+    <div class="feedback" role="status" data-explain="面积 = 1/2 × 弦长 × 对应的高，高通常是点到直线的距离。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-zhixian-yuanzhuiquxian.html"><span class="dir">← 上一节</span><span class="title">直线与圆锥曲线</span></a><a class="next" href="lesson-shulie-gainian.html"><span class="dir">下一节 →</span><span class="title">数列的概念与通项</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#knowledge"><span class="n">01</span>知识精讲</a></li><li><a href="#variations"><span class="n">02</span>变式提醒</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>掌握圆锥曲线综合题的通法</li><li>会把几何条件翻译成代数式子</li><li>会处理定点与定值问题</li><li>会求面积与最值</li><li>会检验参数范围与特殊情况</li></ul>
+          </div>
+          
+          <p class="aside-note">本课为图文精讲，页面可离线使用。所有内容为教学演示，题目解析按高中常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

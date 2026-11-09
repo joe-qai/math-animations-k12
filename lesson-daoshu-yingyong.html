@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>导数的应用 · 导数定单调与极值 · 数益坊</title>
+<meta name="description" content="导数的符号决定函数的增减：f' &gt; 0 递增，f' &lt; 0 递减。f' = 0 只是极值点的候选，还要看导数是否变号。闭区间上的最值，要把极值与两端点函数值一起比较；恒成立问题则转化为最值问题。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">163 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">高中数学</a><span class="sep">/</span>
+      <span>导数的应用</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage gaozhong">高中数学</span>
+          <span class="chip">高三</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>导数的应用</h1>
+        <p class="subtitle">导数定单调与极值</p>
+        <p class="brief">导数的符号决定函数的增减：f' &gt; 0 递增，f' &lt; 0 递减。f' = 0 只是极值点的候选，还要看导数是否变号。闭区间上的最值，要把极值与两端点函数值一起比较；恒成立问题则转化为最值问题。</p>
+        <div class="lesson-meta">
+          <span>图文精讲 <b>5 节</b></span><span>建议学习 <b>10 分钟</b></span><span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">导数定单调与极值</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">01</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>单调性</h3></div>
+  <p>在区间 I 上，若 f'(x) &gt; 0，则 f(x) 在 I 上单调递增；若 f'(x) &lt; 0，则单调递减。</p><p>求单调区间先求定义域，再解 f'(x) &gt; 0 与 f'(x) &lt; 0。</p><p>单调区间之间用「和」或逗号连接，不能用并集符号。</p><p>含参数时，先求导，再对参数分类讨论导数的符号。</p><p class="formula-big">f' &gt; 0 ⇒ 递增</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>极值</h3></div>
+  <p>f'(x₀) = 0 只是极值点的必要条件，还要看 f' 在 x₀ 两侧是否变号。</p><p>f' 由正变负，x₀ 是极大值点；由负变正，x₀ 是极小值点。</p><p>极值是局部概念，极大值不一定大于极小值。</p><p>列表法是判断极值的稳妥办法：按零点分段，标出每段导数的符号。</p><p class="formula-big">f' 变号 ⇒ 极值</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 1：求单调区间与极值</h3></div>
+  <p>已知 f(x) = x³ − 3x，求单调区间与极值。</p><p>f'(x) = 3x² − 3 = 3(x−1)(x+1)，零点为 −1 和 1。</p><p>f' &gt; 0 得 x &lt; −1 或 x &gt; 1，f' &lt; 0 得 −1 &lt; x &lt; 1。</p><p>所以在 (−∞,−1) 和 (1,+∞) 递增，在 (−1,1) 递减；极大值 f(−1) = 2，极小值 f(1) = −2。</p><p class="formula-big">极大值 2，极小值 −2</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>闭区间最值</h3></div>
+  <p>求闭区间 [a, b] 上的最值：先求区间内的极值点，再算这些点与端点 a、b 的函数值。</p><p>比较所有候选值，最大的是最大值，最小的是最小值。</p><p>极值不一定是最值，端点常常被忽略。</p><p>若函数在区间上单调，最值直接在端点取到。</p><p class="formula-big">比较极值与端点</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 2：恒成立</h3></div>
+  <p>若对任意 x &gt; 0，不等式 x² − ax + 1 ≥ 0 恒成立，求 a 的取值范围。</p><p>分离参数：a ≤ x + 1/x 对 x &gt; 0 恒成立。</p><p>由基本不等式 x + 1/x ≥ 2，当 x = 1 时取等。</p><p>所以 a ≤ 2。</p><p class="formula-big">a ≤ 2</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>导数符号定增减，变号才是极值；闭区间最值连端点一起比；恒成立转最值。</p>
+          </div>
+        </section>
+        <section class="block" id="variations">
+          <div class="block-head"><span class="num">02</span><h2>变式提醒</h2><span class="hint">换个条件，再走一遍</span></div>
+          <div class="pitfall-card variation-card">
+            <h3>同一道题，换三种问法</h3>
+            <ul><li>把「求单调区间」改成「已知单调性求参数」，转化为 f' ≥ 0 或 f' ≤ 0 恒成立。</li><li>把「闭区间最值」改成「开区间最值」，注意端点是否取得到。</li><li>把「恒成立」改成「存在解」，不等号方向与最值类型要相应调整。</li></ul>
+          </div>
+        </section>
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这几个坑，考试里最常见</h3>
+            <ul><li>f'(x₀) = 0 不一定是极值点，例如 y = x³ 在 0 处。</li><li>求闭区间最值只比极值，漏掉端点。</li><li>忘记先求定义域，单调区间可能写错。</li><li>含参数时不做分类讨论，直接默认导数的符号。</li></ul>
+          </div>
+        </section>
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">在某个区间上 f'(x) &lt; 0，则函数在该区间？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>递增</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>常数</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>递减</span></button></div>
+    <div class="feedback" role="status" data-explain="导数为负表示函数值随 x 增大而减小，即单调递减。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">x₀ 成为极值点的关键条件是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>f'(x₀) = 0 的点</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>f' 在 x₀ 两侧变号</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>区间端点</span></button></div>
+    <div class="feedback" role="status" data-explain="f&#x27;(x₀) = 0 只是候选，必须导数变号才产生极值。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">求闭区间上的最值，应比较？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>极值与端点函数值</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>只比极值</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>只比端点</span></button></div>
+    <div class="feedback" role="status" data-explain="闭区间最值可能在极值点或端点取到，必须全部比较。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">f(x) = x² 在 [−1, 2] 上的最大值是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>1</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>4</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>0</span></button></div>
+    <div class="feedback" role="status" data-explain="端点函数值 f(−1)=1、f(2)=4，极小值 f(0)=0，最大值为 4。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-daoshu-gainian.html"><span class="dir">← 上一节</span><span class="title">导数的概念与运算</span></a><a class="next" href="lesson-jishu-yuanli.html"><span class="dir">下一节 →</span><span class="title">计数原理</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#knowledge"><span class="n">01</span>知识精讲</a></li><li><a href="#variations"><span class="n">02</span>变式提醒</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>会用导数判断函数的单调性</li><li>会求函数的极值点与极值</li><li>会求闭区间上的最大值与最小值</li><li>会处理含参数的单调性讨论</li><li>会把恒成立问题转化为最值问题</li></ul>
+          </div>
+          
+          <p class="aside-note">本课为图文精讲，页面可离线使用。所有内容为教学演示，题目解析按高中常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
