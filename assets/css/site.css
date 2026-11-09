@@ -516,6 +516,7 @@ p { margin: 0; }
 }
 
 .lesson-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: var(--card);
@@ -523,6 +524,12 @@ p { margin: 0; }
   border-radius: var(--radius);
   overflow: hidden;
   transition: transform 0.22s, box-shadow 0.22s;
+}
+.lesson-hit {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
 }
 .lesson-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 
@@ -610,8 +617,8 @@ p { margin: 0; }
   letter-spacing: 0.04em;
 }
 .lesson-body h3 { font-size: 20.5px; line-height: 1.45; }
-.lesson-body h3 a:hover { color: var(--board-3); }
-.lesson-body .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; }
+.lesson-card:hover .lesson-body h3 { color: var(--board-3); }
+.lesson-body .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 0; padding-top: 2px; }
 .tag {
   font-size: 11.5px;
   color: var(--muted);
@@ -1527,6 +1534,8 @@ p { margin: 0; }
   .stage-card,
   .step,
   .lesson-card { border-radius: 12px; }
+  .home-featured,
+  .catalog-group .lesson-grid { align-items: flex-start; }
   .lesson-card { box-shadow: 0 12px 28px -24px rgba(34, 49, 45, 0.6); }
   .lesson-body { padding: 16px 16px 16px; gap: 7px; }
   .lesson-body h3 { font-size: 18.5px; }

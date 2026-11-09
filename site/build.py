@@ -390,14 +390,15 @@ def lesson_card(lesson: dict, prefix: str = "") -> str:
         badge = '<span class="play-badge text-only">图文精讲</span>'
     return f"""
 <article class="lesson-card reveal" data-search="{html.escape(search_text, quote=True)}">
-  <a class="lesson-thumb" href="{prefix}{lesson['file']}" tabindex="-1" aria-hidden="true">
+  <a class="lesson-hit" href="{prefix}{lesson['file']}" aria-label="{esc(lesson['title'])} · {esc(stage['name'])}{esc(lesson['grade'])}"></a>
+  <div class="lesson-thumb" aria-hidden="true">
     {thumb}
     <span class="stage-badge">{esc(stage['name'])} · {esc(lesson['grade'])}</span>
     {badge}
-  </a>
+  </div>
   <div class="lesson-body">
     <div class="meta-line"><span>{esc(stage['name'])}</span><span>/</span><span>{esc(lesson['grade'])}</span><span>/</span><span>约 {lesson['minutes']} 分钟</span></div>
-    <h3><a href="{prefix}{lesson['file']}">{esc(lesson['title'])}</a></h3>
+    <h3>{esc(lesson['title'])}</h3>
     <div class="tags">{tags}</div>
   </div>
 </article>"""
