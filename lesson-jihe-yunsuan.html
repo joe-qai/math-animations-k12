@@ -93,20 +93,35 @@
   <div class="know-head"><span class="kind concept">概念</span><h3>补集：全集中剩下的</h3></div>
   <p>先确定一个全集 U，再取其中不属于 A 的元素，组成 A 的补集，记作 ∁ᵤA。</p><p>求补集之前，一定要先看清全集是什么，全集变了补集就变了。</p><p>在数轴上，补集就是 A 盖住之外的那几段。</p><p class="formula-big">∁ᵤA = {x | x ∈ U 且 x ∉ A}</p>
 </article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 1：数轴上的交与并</h3></div>
+  <p>已知 A = {x | −1 ≤ x &lt; 3}，B = {x | x ≥ 2}，求 A ∩ B 与 A ∪ B。</p><p>先把两个集合画到同一条数轴上：A 从 −1 到 3（3 不取），B 从 2 向右。</p><p>交集找「两边都盖住」的部分：从 2 到 3，2 取到、3 不取，所以 A ∩ B = [2, 3)。</p><p>并集找「至少被一个盖住」的部分：从 −1 一直到正无穷，所以 A ∪ B = [−1, +∞)。</p><p class="formula-big">A ∩ B = [2, 3)，A ∪ B = [−1, +∞)</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 2：先并再补，还是先补再交</h3></div>
+  <p>全集 U = {1, 2, 3, 4, 5}，A = {1, 3, 5}，B = {2, 3}，求 ∁U(A ∪ B)。</p><p>先算并集：A ∪ B = {1, 2, 3, 5}，重复的 3 只写一次。</p><p>再在全集里去掉这些元素：U 中只剩 4，所以 ∁U(A ∪ B) = {4}。</p><p>也可以先分别求补集：∁UA = {2, 4}，∁UB = {1, 4, 5}，两者取交集仍是 {4}，这就是德摩根律。</p><p class="formula-big">∁U(A ∪ B) = {4}</p>
+</article>
           <div class="summary-card">
             <div class="label">一句话记住</div>
             <p>把确定的对象装进一个筐就是集合，筐里的对象叫元素，a ∈ A 表示 a 属于 A。两边都有的元素组成交集 A ∩ B，有一边就算的组成并集 A ∪ B，全集里去掉 A 剩下的就是补集 ∁ᵤA。集合的元素确定、互异、无序，空集是任何集合的子集。做题先看清每个集合装了什么，再动符号：交集取共同，并集取全部。</p>
           </div>
         </section>
+        <section class="block" id="variations">
+          <div class="block-head"><span class="num">03</span><h2>变式提醒</h2><span class="hint">换个条件，再走一遍</span></div>
+          <div class="pitfall-card variation-card">
+            <h3>同一道题，换三种问法</h3>
+            <ul><li>把列举法换成描述法，先看清元素满足什么共同特征，再写 {x | …}。</li><li>求补集前先确认全集 U；全集变了，同一个集合的补集也会变。</li><li>连续数集先画数轴，实心点表示取到、空心点表示取不到。</li></ul>
+          </div>
+        </section>
         <section class="block" id="pitfalls">
-          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="block-head"><span class="num">04</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
           <div class="pitfall-card">
             <h3>这几个坑，考试里最常见</h3>
             <ul><li>漏掉空集：空集是任何集合的子集，讨论子集时最容易漏。</li><li>元素互异：{1, 1, 2} 只有两个元素，不是三个。</li><li>符号记反：∩ 是「都」，∪ 是「或」，用「∩ 像桥，两边都要」来记。</li><li>没定全集就求补集：全集不同，同一个集合的补集也不同。</li></ul>
           </div>
         </section>
         <section class="block" id="practice">
-          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          <div class="block-head"><span class="num">05</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
           
 <section class="quiz" data-quiz>
   <div class="quiz-top">
@@ -151,7 +166,7 @@
         <div class="aside-inner">
           <div class="aside-card">
             <h3>本页目录</h3>
-            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#variations"><span class="n">03</span>变式提醒</a></li><li><a href="#pitfalls"><span class="n">04</span>易错提醒</a></li><li><a href="#practice"><span class="n">05</span>练习巩固</a></li></ul>
           </div>
           <div class="aside-card">
             <h3>学完能做到</h3>

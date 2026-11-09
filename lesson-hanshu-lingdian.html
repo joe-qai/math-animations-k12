@@ -93,20 +93,31 @@
   <div class="know-head"><span class="kind concept">概念</span><h3>零点与不等式</h3></div>
   <p>函数的零点把定义域分成几段，在每一段里函数值的符号通常不变。</p><p>所以解 f(x) &gt; 0 或 f(x) &lt; 0，先求零点，再判断各段的符号。</p><p>这就是「穿根法」的依据：零点处穿过去，符号就翻一次。</p><p>重根处不穿过去，符号不变，这是最容易出错的地方。</p><p class="formula-big">先求零点，再定符号</p>
 </article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 2：存在定理加单调性，才能数个数</h3></div>
+  <p>判断 f(x) = x³ + x − 1 在 (0, 1) 内零点的个数。</p><p>先看存在性：f(0) = −1 &lt; 0，f(1) = 1 &gt; 0，图像连续，所以 (0, 1) 内至少有一个零点。</p><p>再看唯一性：x³ 与 x 在 R 上都递增，所以 f(x) 在 R 上单调递增，图像最多穿过 x 轴一次。</p><p>存在且最多一个，所以 (0, 1) 内恰有一个零点。存在定理只管「有」，个数要靠单调性补。</p><p class="formula-big">f(0)f(1) &lt; 0 且 f(x) 单调递增</p>
+</article>
           <div class="summary-card">
             <div class="label">一句话记住</div>
             <p>函数的零点就是方程 f(x) = 0 的实根，也是图像与 x 轴交点的横坐标，它是一个数。零点存在定理：f 在 [a, b] 上连续且 f(a) · f(b) &lt; 0，则 (a, b) 内至少有一个零点；加上单调性才能保证唯一。求零点个数可以转化为两个图像的交点个数，近似解用二分法，解不等式则先求零点再判断各段符号。</p>
           </div>
         </section>
+        <section class="block" id="variations">
+          <div class="block-head"><span class="num">03</span><h2>变式提醒</h2><span class="hint">换个条件，再走一遍</span></div>
+          <div class="pitfall-card variation-card">
+            <h3>同一道题，换三种问法</h3>
+            <ul><li>判断零点所在区间，算区间两端函数值，异号就说明至少有一个零点。</li><li>判断零点个数，先看单调性，再结合端点函数值。</li><li>把 f(x) = g(x) 的根改写成 h(x) = f(x) − g(x) 的零点，再套存在定理。</li></ul>
+          </div>
+        </section>
         <section class="block" id="pitfalls">
-          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="block-head"><span class="num">04</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
           <div class="pitfall-card">
             <h3>这几个坑，考试里最常见</h3>
             <ul><li>零点不是点：答案写 x = 3，不能写成 (3, 0)。</li><li>定理只保证存在，不能直接说「有且只有一个」。</li><li>图像不连续时定理不成立，用之前先确认连续性。</li><li>两端同号也可能有零点，比如两个零点都在区间内。</li></ul>
           </div>
         </section>
         <section class="block" id="practice">
-          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          <div class="block-head"><span class="num">05</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
           
 <section class="quiz" data-quiz>
   <div class="quiz-top">
@@ -151,7 +162,7 @@
         <div class="aside-inner">
           <div class="aside-card">
             <h3>本页目录</h3>
-            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#variations"><span class="n">03</span>变式提醒</a></li><li><a href="#pitfalls"><span class="n">04</span>易错提醒</a></li><li><a href="#practice"><span class="n">05</span>练习巩固</a></li></ul>
           </div>
           <div class="aside-card">
             <h3>学完能做到</h3>

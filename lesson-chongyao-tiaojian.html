@@ -93,20 +93,35 @@
   <div class="know-head"><span class="kind formula">公式</span><h3>用集合看范围</h3></div>
   <p>把 p、q 各自对应的范围看成集合 P、Q。</p><p>若 P ⊆ Q，则 p ⇒ q：小范围能推出大范围。</p><p>若 P 是 Q 的真子集，p 就是 q 的充分不必要条件。</p><p>x &gt; 2 能推出 x &gt; 1，反过来不行，所以「x &gt; 2」是充分不必要条件。</p><p class="formula-big">P ⊆ Q ⇔ p ⇒ q</p>
 </article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 1：正推一次，反推一次</h3></div>
+  <p>判断「x &gt; 2」是「x &gt; 1」的什么条件。</p><p>先看 p ⇒ q：x &gt; 2 的数一定也大于 1，所以 p 能推出 q。</p><p>再看 q ⇒ p：x = 1.5 大于 1 却不大于 2，说明 q 推不出 p。</p><p>能推出的是充分，推不出的是不必要，所以「x &gt; 2」是「x &gt; 1」的充分不必要条件。</p><p class="formula-big">x &gt; 2 ⇒ x &gt; 1，但 x &gt; 1 ⇏ x &gt; 2</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>例 2：反例怎么举</h3></div>
+  <p>判断「x = 1」是「x² = 1」的什么条件。</p><p>x = 1 代入一定得到 x² = 1，所以充分；但 x = −1 也满足 x² = 1，所以不必要。</p><p>再判断「x &gt; 0」是「x² &gt; 0」的什么条件：正推成立，反推时 x = −1 满足 x² &gt; 0 却不满足 x &gt; 0，仍是充分不必要。</p><p>判断时不要凭感觉，固定做两件事：正推一次、反推一次；反推举不出反例，才叫必要。</p><p class="formula-big">x = 1 ⇒ x² = 1；x² = 1 ⇏ x = 1</p>
+</article>
           <div class="summary-card">
             <div class="label">一句话记住</div>
             <p>「若 p 则 q」为真记作 p ⇒ q，此时 p 是 q 的充分条件、q 是 p 的必要条件。两个方向都成立才是充要条件。判断时化成范围最稳：小范围能推出大范围，大范围推不出小范围；小范围是充分条件，大范围是必要条件。</p>
           </div>
         </section>
+        <section class="block" id="variations">
+          <div class="block-head"><span class="num">03</span><h2>变式提醒</h2><span class="hint">换个条件，再走一遍</span></div>
+          <div class="pitfall-card variation-card">
+            <h3>同一道题，换三种问法</h3>
+            <ul><li>判断「q 是 p 的什么条件」，把箭头方向反过来再判断一次。</li><li>带参数的题先把两个范围都解出来，再用「小范围推大范围」比包含关系。</li><li>出现「≥」与「&gt;」时，单独检查端点能不能取到。</li></ul>
+          </div>
+        </section>
         <section class="block" id="pitfalls">
-          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="block-head"><span class="num">04</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
           <div class="pitfall-card">
             <h3>这几个坑，考试里最常见</h3>
             <ul><li>充分与必要说反：p ⇒ q 里 p 充分、q 必要，方向只有一个。</li><li>把小范围写成必要条件：小范围是大范围的充分条件。</li><li>只证一个方向就说是充要条件：必须两个方向都成立。</li><li>忽略边界：x &gt; 1 与 x ≥ 1 只差一个点，却不是同一个范围。</li></ul>
           </div>
         </section>
         <section class="block" id="practice">
-          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          <div class="block-head"><span class="num">05</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
           
 <section class="quiz" data-quiz>
   <div class="quiz-top">
@@ -151,7 +166,7 @@
         <div class="aside-inner">
           <div class="aside-card">
             <h3>本页目录</h3>
-            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#variations"><span class="n">03</span>变式提醒</a></li><li><a href="#pitfalls"><span class="n">04</span>易错提醒</a></li><li><a href="#practice"><span class="n">05</span>练习巩固</a></li></ul>
           </div>
           <div class="aside-card">
             <h3>学完能做到</h3>
