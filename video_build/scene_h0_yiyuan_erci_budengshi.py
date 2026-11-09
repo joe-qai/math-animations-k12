@@ -80,10 +80,8 @@ class H0YiyuanErciBudengshiScene(NarratedScene):
                         color=GOLD, stroke_width=2.8)
         self.play(Create(curve), run_time=1.2)
 
-        for xv, lb, dx in ((1, "x₁ = 1", -0.42), (3, "x₂ = 3", 0.42)):
+        for xv in (1, 3):
             self.play(FadeIn(Dot(ax.c2p(xv, 0), radius=0.07, color=GOLD)), run_time=0.4)
-            self.play(FadeIn(txt(lb, size=18, color=GOLD).move_to(ax.c2p(xv + dx, -0.42))),
-                      run_time=0.45)
 
         a1 = Arrow(ax.c2p(1, 0), ax.c2p(0.44, 0), color=GREEN, stroke_width=5,
                    buff=0, max_tip_length_to_length_ratio=0.28)
@@ -133,7 +131,7 @@ class H0YiyuanErciBudengshiScene(NarratedScene):
                   run_time=0.7)
         self.play(Create(Line(P(-1.6, 0.15), P(1.6, 0.15), color=RED, stroke_width=7)),
                   run_time=0.6)
-        self.play(FadeIn(txt("x < 1 或 x > 3", size=19, color=GREEN).move_to(P(-3.55, -0.62))),
+        self.play(FadeIn(txt("x < 1", size=19, color=GREEN).move_to(P(-3.55, -0.62))),
                   FadeIn(txt("1 < x < 3", size=19, color=RED).move_to(P(0, -0.62))),
                   FadeIn(txt("x > 3", size=19, color=GREEN).move_to(P(3.55, -0.62))),
                   run_time=0.7)
