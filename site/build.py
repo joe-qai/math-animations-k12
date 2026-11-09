@@ -53,6 +53,7 @@ THUMB = {
     "chufa-liangwei": "84 ÷ 21 = 4",
     "jieti-celue": "鸡 3 只，兔 5 只",
     "sanjiaoxing-neijiaohe": "内角和 180°",
+    "changfangti-zhankaitu": "6 面 12 棱 8 顶点",
     "renshi-tuxing": "□ △ ○",
     "renshi-zhongbiao": "3:00 / 3:30",
     "fenlei-zhengli": "4 + 3 + 2 = 9",

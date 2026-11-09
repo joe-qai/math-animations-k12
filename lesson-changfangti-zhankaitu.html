@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>长方体的展开图 · 沿棱剪开摊平，看懂六个面的相对关系 · 数益坊</title>
+<meta name="description" content="长方体有 6 个面、12 条棱、8 个顶点。沿棱剪开摊平，就得到展开图。剪的时候相对的面不能剪断，最后要连成一整张。展开图里相对的面完全相同：上下面一样大，前后面一样大，左右面一样大。最常见的形状是「一四一」：中间一排 4 个面，上下各贴 1 个面。还有「二三一」「二二二」「三三」，不管怎么排，六个面都要能折回原来的盒子。正方体六个面都是正方形，展开图一共有 11 种。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">107 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">小学数学</a><span class="sep">/</span>
+      <span>长方体的展开图</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage xiaoxue">小学数学</span>
+          <span class="chip">五年级</span>
+          <span class="chip">进阶</span>
+        </div>
+        <h1>长方体的展开图</h1>
+        <p class="subtitle">沿棱剪开摊平，看懂六个面的相对关系</p>
+        <p class="brief">长方体有 6 个面、12 条棱、8 个顶点。沿棱剪开摊平，就得到展开图。剪的时候相对的面不能剪断，最后要连成一整张。展开图里相对的面完全相同：上下面一样大，前后面一样大，左右面一样大。最常见的形状是「一四一」：中间一排 4 个面，上下各贴 1 个面。还有「二三一」「二二二」「三三」，不管怎么排，六个面都要能折回原来的盒子。正方体六个面都是正方形，展开图一共有 11 种。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>1:16</b></span>
+          <span>建议学习 <b>7 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">6 面 12 棱 8 顶点</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>长方体的展开图 视频讲解</h2><span class="hint">1:16</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/changfangti-zhankaitu.jpg">
+                <source src="assets/videos/changfangti-zhankaitu.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/changfangti-zhankaitu.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>长方体的基本特征</h3></div>
+  <p>长方体有 6 个面，一般都是长方形（特殊情况有两个相对的面是正方形）。</p><p>它有 12 条棱，相对的 4 条棱长度相等；还有 8 个顶点。</p><p>从一个顶点出发的三条棱，分别叫长、宽、高。</p><p class="formula-big">6 个面、12 条棱、8 个顶点</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>展开图：沿棱剪开摊平</h3></div>
+  <p>沿着棱把纸盒剪开、摊平，得到的平面图形就是它的展开图。</p><p>剪的时候相对的面不能剪断，否则盒子会散成六片，最后必须连成一整张。</p><p>展开图里，相对的面完全相同；折回去时，它们正好面对面。</p><p class="formula-big">相对的面完全相同</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>最常见的「一四一」</h3></div>
+  <p>中间一排 4 个面，正好围盒子的一圈；上下各贴 1 个面，做盒子的顶和底。</p><p>4 + 1 + 1 = 6，六个面一个不少。</p><p>同样是一四一，上下两个面贴的位置可以不同，所以能画出很多种。</p><p class="formula-big">中间 4 个 + 上下各 1 个</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>还有二三一、二二二、三三</h3></div>
+  <p>按每一排面的个数分类，常见的有：一四一、二三一、二二二、三三。</p><p>判断能不能折成盒子，不看排法好不好看，只看六个面能不能两两对上、折回原盒。</p><p>有些图形虽然也是 6 个正方形，但折起来会重叠或缺口，那就不是合格的展开图。</p><p class="formula-big">六个面必须能折回原盒</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>正方体展开图共 11 种</h3></div>
+  <p>正方体是特殊的长方体，六个面都是完全相同的正方形。</p><p>它的展开图一共有 11 种，比长方体更规整，也常拿来出题。</p><p>记住特征：6 个面、12 条棱、8 个顶点；相对的面完全相同，相对的棱长度相等。</p><p class="formula-big">正方体展开图 11 种</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>长方体有 6 个面、12 条棱、8 个顶点。沿棱剪开摊平得到展开图，相对的面完全相同。最常见的展开图是「一四一」：中间 4 个面，上下各 1 个面；还有二三一、二二二、三三等类型，判断标准是能不能折回原盒。正方体六个面都是正方形，展开图一共有 11 种。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>把棱数记成 8：8 是顶点数，棱有 12 条，面有 6 个。</li><li>剪开展开图时剪断了相对面：这样盒子会散成六片，必须保留连接处。</li><li>把任意 6 个正方形都当成展开图：有的排法折起来会重叠，不能围成盒子。</li><li>混淆正方体和长方体：正方体是特殊的长方体，六个面都是正方形，展开图共 11 种。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">长方体有几个面、几条棱、几个顶点？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>6 个面、12 条棱、8 个顶点</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>6 个面、8 条棱、12 个顶点</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>4 个面、8 条棱、6 个顶点</span></button></div>
+    <div class="feedback" role="status" data-explain="长方体有 6 个面、12 条棱、8 个顶点，这是它的基本特征。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">沿棱剪开长方体纸盒摊平，相对的两个面有什么关系？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>大小不同</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>完全相同</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>形状相同但大小不同</span></button></div>
+    <div class="feedback" role="status" data-explain="长方体相对的面完全相同，摊平后可以清楚地看到它们一样大。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">「一四一」展开图指的是什么？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>中间一排 4 个面，上下各 1 个面</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>四排，每排 1 个面</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>展开图里一共只有 4 个面</span></button></div>
+    <div class="feedback" role="status" data-explain="一四一就是中间一排 4 个面，上下各贴 1 个面，4 + 1 + 1 = 6 个面。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">正方体的展开图一共有多少种？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>6 种</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>11 种</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>12 种</span></button></div>
+    <div class="feedback" role="status" data-explain="正方体六个面都是正方形，它的展开图共有 11 种。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-sanjiaoxing-neijiaohe.html"><span class="dir">← 上一节</span><span class="title">三角形的认识</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>知道长方体有 6 个面、12 条棱、8 个顶点</li><li>理解展开图是沿棱剪开摊平得到的图形</li><li>知道相对的面完全相同、相对的棱长度相等</li><li>认识「一四一」等常见展开图类型</li><li>知道正方体展开图共有 11 种</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

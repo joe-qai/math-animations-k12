@@ -123,6 +123,7 @@ CHAPTERS = {
     "chufa-liangwei": 7,
     "jieti-celue": 7,
     "sanjiaoxing-neijiaohe": 7,
+    "changfangti-zhankaitu": 7,
 }
 
 
