@@ -139,6 +139,11 @@ CHAPTERS = {
     "daishushi-qiuzhi": 7,
     "weisi": 7,
     "tixing-tuxing": 7,
+    "jihe-yunsuan": 7,
+    "chongyao-tiaojian": 7,
+    "liangci-mingti": 7,
+    "budengshi-xingzhi": 7,
+    "jiben-budengshi": 7,
 }
 
 

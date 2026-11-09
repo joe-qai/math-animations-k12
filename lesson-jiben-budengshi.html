@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>基本不等式 · 和定积最大，积定和最小 · 数益坊</title>
+<meta name="description" content="周长固定的一块矩形菜地，长和宽怎么取面积最大？答案是围成正方形。这背后就是基本不等式：a、b 都是正数时，a + b ≥ 2√(ab)，当且仅当 a = b 时取等号。它有两个常用说法：和一定时，积有最大值；积一定时，和有最小值。用的时候记住六个字——一正、二定、三相等：先确认都是正数，再凑出定值，最后检查能不能取到等号。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">127 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">高中数学</a><span class="sep">/</span>
+      <span>基本不等式</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage gaozhong">高中数学</span>
+          <span class="chip">高一</span>
+          <span class="chip">挑战</span>
+        </div>
+        <h1>基本不等式</h1>
+        <p class="subtitle">和定积最大，积定和最小</p>
+        <p class="brief">周长固定的一块矩形菜地，长和宽怎么取面积最大？答案是围成正方形。这背后就是基本不等式：a、b 都是正数时，a + b ≥ 2√(ab)，当且仅当 a = b 时取等号。它有两个常用说法：和一定时，积有最大值；积一定时，和有最小值。用的时候记住六个字——一正、二定、三相等：先确认都是正数，再凑出定值，最后检查能不能取到等号。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>1:26</b></span>
+          <span>建议学习 <b>8 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">a + b ≥ 2√ab</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>基本不等式 视频讲解</h2><span class="hint">1:26</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/jiben-budengshi.jpg">
+                <source src="assets/videos/jiben-budengshi.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/jiben-budengshi.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>从平方非负推出来</h3></div>
+  <p>对任意正数 a、b，都有 (√a − √b)² ≥ 0。</p><p>展开得 a − 2√(ab) + b ≥ 0，移项就是 a + b ≥ 2√(ab)。</p><p>所以这条不等式不是背来的，是平方非负的直接结果。</p><p class="formula-big">(√a − √b)² ≥ 0</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>基本不等式</h3></div>
+  <p>当 a &gt; 0、b &gt; 0 时，a + b ≥ 2√(ab)。</p><p>两边除以 2：(a + b)/2 ≥ √(ab)，即算术平均数不小于几何平均数。</p><p>当且仅当 a = b 时，等号成立。</p><p class="formula-big">a + b ≥ 2√(ab)</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>几何意义</h3></div>
+  <p>把 a、b 看成两条线段，√(ab) 是它们的比例中项。</p><p>不等式说明：两段之和，总不小于它们比例中项的两倍。</p><p>等号成立时两段一样长，画面最「正」。</p><p class="formula-big">两段相等时最短</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>和定，积最大</h3></div>
+  <p>已知 a + b = 10，求 ab 的最大值。</p><p>由 a + b ≥ 2√(ab) 得 10 ≥ 2√(ab)，所以 √(ab) ≤ 5，ab ≤ 25。</p><p>当 a = b = 5 时取到 25。</p><p>周长固定的矩形，围成正方形时面积最大。</p><p class="formula-big">a + b = 10 ⇒ ab ≤ 25</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>积定，和最小</h3></div>
+  <p>已知 ab = 16，a、b &gt; 0，求 a + b 的最小值。</p><p>a + b ≥ 2√(ab) = 2 × 4 = 8。</p><p>当 a = b = 4 时取到 8。</p><p>用之前先检查：是不是都是正数、定值有没有凑出来、等号能不能取到。</p><p class="formula-big">ab = 16 ⇒ a + b ≥ 8</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>基本不等式 a + b ≥ 2√(ab) 来自 (√a − √b)² ≥ 0，条件是两个数都为正，当且仅当 a = b 时取等号。它有两句话：和一定时积有最大值，积一定时和有最小值。使用口诀是一正、二定、三相等，三步都满足才敢写最值。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>不检查正数就用：基本不等式要求 a、b 都是正数。</li><li>等号取不到还写最值：等号条件不成立，结论就不成立。</li><li>把方向记反：写成 a + b ≤ 2√(ab) 就完全错了。</li><li>没凑出定值：和或积不是常数，算出的只是不等式，不是最值。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">a &gt; 0，b &gt; 0，a + b = 12，ab 的最大值是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>24</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>36</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>72</span></button></div>
+    <div class="feedback" role="status" data-explain="12 ≥ 2√(ab) ⇒ √(ab) ≤ 6 ⇒ ab ≤ 36，当 a = b = 6 时取到。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">a &gt; 0，b &gt; 0，ab = 9，a + b 的最小值是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>6</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>9</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>3</span></button></div>
+    <div class="feedback" role="status" data-explain="a + b ≥ 2√9 = 6，当 a = b = 3 时取到最小值 6。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">基本不等式取等号的条件是什么？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>a + b = 0</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>ab = 1</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>a = b</span></button></div>
+    <div class="feedback" role="status" data-explain="当且仅当 a = b 时，a + b = 2√(ab)，等号成立。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">a &gt; 0 时，a + 4/a 的最小值是多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>2</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>4</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>5</span></button></div>
+    <div class="feedback" role="status" data-explain="a + 4/a ≥ 2√(a × 4/a) = 2 × 2 = 4，当 a = 2 时取到。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-budengshi-xingzhi.html"><span class="dir">← 上一节</span><span class="title">不等式的性质</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解基本不等式的来源</li><li>记住 a + b ≥ 2√(ab) 及等号成立条件</li><li>知道「和定积最大、积定和最小」</li><li>会用一正二定三相等检查解法</li><li>能求简单的最值问题</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

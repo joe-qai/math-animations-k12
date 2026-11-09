@@ -125,7 +125,12 @@ $jobs = @(
     @{ File = "scene_kexue_jishufa.py"; Scene = "KexueJishufaScene"; Id = "kexue-jishufa" },
     @{ File = "scene_daishushi_qiuzhi.py"; Scene = "DaishushiQiuzhiScene"; Id = "daishushi-qiuzhi" },
     @{ File = "scene_weisi.py"; Scene = "WeisiScene"; Id = "weisi" },
-    @{ File = "scene_tixing_tuxing.py"; Scene = "TixingTuxingScene"; Id = "tixing-tuxing" }
+    @{ File = "scene_tixing_tuxing.py"; Scene = "TixingTuxingScene"; Id = "tixing-tuxing" },
+    @{ File = "scene_jihe_yunsuan.py"; Scene = "JiheYunsuanScene"; Id = "jihe-yunsuan" },
+    @{ File = "scene_chongyao_tiaojian.py"; Scene = "ChongyaoTiaojianScene"; Id = "chongyao-tiaojian" },
+    @{ File = "scene_liangci_mingti.py"; Scene = "LiangciMingtiScene"; Id = "liangci-mingti" },
+    @{ File = "scene_budengshi_xingzhi.py"; Scene = "BudengshiXingzhiScene"; Id = "budengshi-xingzhi" },
+    @{ File = "scene_jiben_budengshi.py"; Scene = "JibenBudengshiScene"; Id = "jiben-budengshi" }
 )
 
 foreach ($j in $jobs) {

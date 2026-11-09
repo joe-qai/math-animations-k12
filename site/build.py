@@ -167,6 +167,11 @@ THUMB = {
     "wanquan-pingfang": "(a+b)²",
     "dengcha-shulie": "首项 + 末项",
     "gougu-dingli": "a² + b² = c²",
+    "jihe-yunsuan": "∩ 共同 ∪ 全部",
+    "chongyao-tiaojian": "小范围推大范围",
+    "liangci-mingti": "全称 ↔ 存在",
+    "budengshi-xingzhi": "乘负要变号",
+    "jiben-budengshi": "a + b ≥ 2√ab",
 }
 
 LABS = [
