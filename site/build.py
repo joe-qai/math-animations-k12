@@ -7,6 +7,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import html
 import subprocess
 from pathlib import Path
@@ -15,6 +16,19 @@ from lessons import LESSONS
 
 ROOT = Path(__file__).resolve().parent.parent
 VIDEO_DIR = ROOT / "assets" / "videos"
+
+
+def _asset_version() -> str:
+    """按 CSS/JS 内容生成版本号，避免浏览器缓存住旧样式。"""
+    digest = hashlib.md5()
+    for rel in ("assets/css/site.css", "assets/js/site.js"):
+        path = ROOT / rel
+        if path.exists():
+            digest.update(path.read_bytes())
+    return digest.hexdigest()[:8]
+
+
+ASSET_VER = _asset_version()
 
 STAGES = [
     {
@@ -287,7 +301,7 @@ def head(title: str, description: str, prefix: str = "") -> str:
 <meta name="description" content="{esc(description)}">
 <meta name="theme-color" content="#163a35">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="{prefix}assets/css/site.css">
+<link rel="stylesheet" href="{prefix}assets/css/site.css?v={ASSET_VER}">
 <script>document.documentElement.classList.add('js-reveal');</script>
 </head>
 <body>"""
@@ -355,16 +369,17 @@ def footer(prefix: str = "") -> str:
     </div>
   </div>
 </footer>
-<script src="{prefix}assets/js/site.js"></script>
+<script src="{prefix}assets/js/site.js?v={ASSET_VER}"></script>
 </body>
 </html>
 """
 
 
-def lesson_card(lesson: dict, prefix: str = "") -> str:
+def lesson_card(lesson: dict, prefix: str = "", eager: bool = False) -> str:
     stage = STAGE_BY_ID[lesson["stage"]]
     seconds = video_seconds(lesson["id"])
     tags = "".join(f'<span class="tag">{esc(t)}</span>' for t in lesson["tags"][:3])
+    img_loading = ' loading="eager" fetchpriority="high"' if eager else ' loading="lazy"'
     search_text = " ".join(
         [
             lesson["title"],
@@ -379,7 +394,7 @@ def lesson_card(lesson: dict, prefix: str = "") -> str:
     poster = VIDEO_DIR / "posters" / f"{lesson['id']}.jpg"
     if poster.exists():
         thumb = (
-            f'<img src="assets/videos/covers/{lesson["id"]}.jpg" alt="" decoding="async">'
+            f'<img src="assets/videos/covers/{lesson["id"]}.jpg" alt="" decoding="async"{img_loading}>'
             '<span class="thumb-shade"></span>'
         )
     else:
@@ -495,7 +510,9 @@ def build_home() -> str:
         "jihe-yunsuan", "dengcha-shulie", "daoshu-gainian",
     ]
     by_id = {l["id"]: l for l in LESSONS}
-    featured = "".join(lesson_card(by_id[i]) for i in featured_ids if i in by_id)
+    featured = "".join(
+        lesson_card(by_id[i], eager=(n < 3)) for n, i in enumerate(featured_ids) if i in by_id
+    )
 
     hero_figure = """
 <figure class="hero-figure">
@@ -750,7 +767,7 @@ def build_lesson(lesson: dict, prev: dict | None, nxt: dict | None) -> str:
             "video", f"{lesson['title']} 视频讲解", mmss(seconds),
             f"""<div class="video-card">
             <div class="video-wrap">
-              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/{lesson['id']}.jpg">
+              <video data-lesson-video controls preload="none" playsinline poster="assets/videos/covers/{lesson['id']}.jpg">
                 <source src="{lesson['video']}" type="video/mp4">
                 你的浏览器不支持视频播放，<a href="{lesson['video']}">点此下载视频</a>。
               </video>

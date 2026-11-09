@@ -16,7 +16,7 @@ def check_links() -> None:
             url = match.group(1)
             if url.startswith(("http", "data:", "#", "mailto:")):
                 continue
-            target = (page.parent / url.split("#")[0]).resolve()
+            target = (page.parent / url.split("#")[0].split("?")[0]).resolve()
             if not target.exists():
                 bad.append((page.relative_to(ROOT).as_posix(), url))
     print(f"[LINKS] broken={len(bad)}")

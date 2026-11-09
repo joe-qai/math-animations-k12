@@ -48,6 +48,21 @@
   var video = document.querySelector('[data-lesson-video]');
   var chapters = Array.prototype.slice.call(document.querySelectorAll('.chapter[data-t]'));
 
+  /* preload="none"：页面打开时不拉视频，用户有播放意图（悬停/触摸/聚焦）时再取元数据 */
+  if (video && video.getAttribute('preload') === 'none') {
+    var warmVideo = function () {
+      if (video.preload !== 'none') return;
+      video.preload = 'metadata';
+      try {
+        video.load();
+      } catch (err) {}
+    };
+    var videoCard = video.closest('.video-card') || video;
+    ['pointerenter', 'touchstart', 'focusin'].forEach(function (evt) {
+      videoCard.addEventListener(evt, warmVideo, { once: true, passive: true });
+    });
+  }
+
   if (video && chapters.length) {
     var chapterTimes = chapters.map(function (el) { return parseFloat(el.dataset.t); });
 

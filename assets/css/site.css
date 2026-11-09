@@ -538,6 +538,8 @@ p { margin: 0; }
 .lesson-thumb {
   position: relative;
   aspect-ratio: 16 / 9;
+  flex: 1 1 auto;
+  min-height: 0;
   background: var(--board);
   background-image:
     linear-gradient(135deg, rgba(244, 239, 226, 0.06), transparent 60%),
@@ -607,7 +609,7 @@ p { margin: 0; }
   display: flex;
   flex-direction: column;
   gap: 9px;
-  flex: 1;
+  flex: 0 0 auto;
 }
 .lesson-body .meta-line {
   display: flex;
@@ -627,6 +629,10 @@ p { margin: 0; }
 }
 /* 长标题按卡片宽度缩放，始终单行，卡片高度自然一致 */
 .lesson-body h3.long { font-size: min(20px, calc((100cqw - 44px) * 0.0625)); }
+/* 老内核不支持容器查询：给一个固定字号兜底，避免回退到 20px 撑破单行 */
+@supports not (container-type: inline-size) {
+  .lesson-body h3.long { font-size: 17px; }
+}
 .lesson-card:hover .lesson-body h3 { color: var(--board-3); }
 .lesson-body .tags { display: flex; gap: 6px; flex-wrap: nowrap; margin-top: 0; padding-top: 2px; overflow: hidden; }
 .tag {
@@ -1546,9 +1552,12 @@ p { margin: 0; }
   .step,
   .lesson-card { border-radius: 12px; }
   .lesson-card { box-shadow: 0 12px 28px -24px rgba(34, 49, 45, 0.6); }
-  .lesson-body { padding: 16px 16px 16px; gap: 7px; }
+  .lesson-body { padding: 16px 16px 15px; gap: 7px; }
   .lesson-body h3 { font-size: 18.5px; line-height: 27px; }
   .lesson-body h3.long { font-size: min(18.5px, calc((100cqw - 32px) * 0.063)); }
+  @supports not (container-type: inline-size) {
+    .lesson-body h3.long { font-size: 15px; }
+  }
   .lesson-body .meta-line { font-size: 11px; gap: 6px; }
   .lesson-body .tags { gap: 5px; padding-top: 6px; }
   .tag { border-radius: 999px; padding: 2px 9px; }
