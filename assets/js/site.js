@@ -194,39 +194,23 @@
     }, 1600);
   }
 
-  /* ---------------- 课时筛选与关键字搜索 ---------------- */
-  var filters = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'));
+  /* ---------------- 课时关键字搜索（全局，不分学段） ---------------- */
   var groups = Array.prototype.slice.call(document.querySelectorAll('.catalog-group'));
   var searchInput = document.getElementById('lesson-search');
   var clearBtn = document.querySelector('[data-search-clear]');
   var statusEl = document.querySelector('[data-search-status]');
   var emptyEl = document.querySelector('[data-search-empty]');
-  var activeStage = 'all';
 
   function normalize(value) {
     return (value || '').toLowerCase().replace(/\s+/g, ' ').trim();
   }
 
-  function setActiveStage(key) {
-    activeStage = key;
-    filters.forEach(function (b) {
-      var on = b.dataset.filter === key;
-      b.classList.toggle('is-active', on);
-      b.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-  }
-
-  /* 关键字搜索是全局的：只看关键字，不受当前学段筛选影响 */
   function applyFilter() {
     var query = searchInput ? normalize(searchInput.value) : '';
     var tokens = query ? query.split(' ') : [];
-    var stageFilter = query ? 'all' : activeStage;
     var total = 0;
 
-    if (query && activeStage !== 'all') setActiveStage('all');
-
     groups.forEach(function (group) {
-      var stageOk = stageFilter === 'all' || group.dataset.stage === stageFilter;
       var rail = group.querySelector('.lesson-grid');
       var cards = rail ? Array.prototype.slice.call(rail.querySelectorAll('.lesson-card')) : [];
       var shown = 0;
@@ -237,19 +221,17 @@
         for (var i = 0; i < tokens.length; i += 1) {
           if (haystack.indexOf(tokens[i]) === -1) { hit = false; break; }
         }
-        var visible = stageOk && hit;
-        card.hidden = !visible;
-        if (visible) shown += 1;
+        card.hidden = !hit;
+        if (hit) shown += 1;
       });
 
-      var filtering = tokens.length > 0 || activeStage !== 'all';
-      group.hidden = filtering && !(stageOk && shown > 0);
+      group.hidden = tokens.length > 0 && shown === 0;
       total += shown;
       if (rail) rail.scrollLeft = 0;
     });
 
     if (statusEl) {
-      statusEl.textContent = (query || activeStage !== 'all') ? '找到 ' + total + ' 节课' : '';
+      statusEl.textContent = query ? '找到 ' + total + ' 节课' : '';
     }
     if (emptyEl) emptyEl.hidden = total !== 0;
     if (clearBtn) clearBtn.hidden = !query;
@@ -278,14 +260,6 @@
         searchInput.focus();
       });
     }
-
-    filters.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        if (searchInput && searchInput.value) searchInput.value = '';
-        setActiveStage(btn.dataset.filter);
-        applyFilter();
-      });
-    });
 
     applyFilter();
   }

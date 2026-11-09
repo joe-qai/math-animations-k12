@@ -364,7 +364,7 @@ def footer(prefix: str = "") -> str:
 def lesson_card(lesson: dict, prefix: str = "") -> str:
     stage = STAGE_BY_ID[lesson["stage"]]
     seconds = video_seconds(lesson["id"])
-    tags = "".join(f'<span class="tag">{esc(t)}</span>' for t in lesson["tags"])
+    tags = "".join(f'<span class="tag">{esc(t)}</span>' for t in lesson["tags"][:3])
     search_text = " ".join(
         [
             lesson["title"],
@@ -611,17 +611,6 @@ def build_home() -> str:
 
 
 def build_catalog() -> str:
-    filters = [
-        ('all', '全部课时', len(LESSONS)),
-        ('xiaoxue', '小学数学', sum(1 for l in LESSONS if l['stage'] == 'xiaoxue')),
-        ('chuzhong', '初中数学', sum(1 for l in LESSONS if l['stage'] == 'chuzhong')),
-        ('gaozhong', '高中数学', sum(1 for l in LESSONS if l['stage'] == 'gaozhong')),
-    ]
-    filter_html = "".join(
-        f'<button class="filter{" is-active" if key == "all" else ""}" type="button" data-filter="{key}">{name} <span style="opacity:.6">{n}</span></button>'
-        for key, name, n in filters
-    )
-
     groups = []
     for stage in STAGES:
         items = [l for l in LESSONS if l["stage"] == stage["id"]]
@@ -650,21 +639,20 @@ def build_catalog() -> str:
   <div class="wrap">
     <header class="catalog-head">
       <h1>全部课时</h1>
-      <p>{len(LESSONS)} 节课时，按学段分组。手机上每个学段是一排卡片，左右滑动即可切换；搜索框输入关键字会跨三个学段检索全部课时。</p>
+      <p>{len(LESSONS)} 节课时，按学段分组。手机上每个学段是一排卡片，左右滑动即可切换；搜索框直接检索全部课时，不区分学段。</p>
       <div class="catalog-tools">
         <label class="search-box">
           <span class="search-ico" aria-hidden="true">⌕</span>
           <input id="lesson-search" type="search" placeholder="搜索全部课时、知识点或年级" autocomplete="off" aria-label="搜索全部课时">
           <button class="search-clear" type="button" data-search-clear hidden aria-label="清除搜索">×</button>
         </label>
-        <div class="filters" role="group" aria-label="按学段筛选">{filter_html}</div>
       </div>
       <p class="search-status" data-search-status role="status" aria-live="polite"></p>
     </header>
     {''.join(groups)}
     <div class="search-empty" data-search-empty hidden>
       <b>没有找到相关课时</b>
-      <p>换个关键词试试，或点「全部课时」查看全部内容。</p>
+      <p>换个关键词试试，或清空搜索查看全部课时。</p>
     </div>
   </div>
 </main>
