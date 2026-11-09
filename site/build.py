@@ -172,6 +172,11 @@ THUMB = {
     "liangci-mingti": "全称 ↔ 存在",
     "budengshi-xingzhi": "乘负要变号",
     "jiben-budengshi": "a + b ≥ 2√ab",
+    "hanshu-gainian": "y = f(x)",
+    "hanshu-xingzhi": "奇原点，偶 y 轴",
+    "mihanshu": "y = xᵅ",
+    "hanshu-lingdian": "f(x) = 0",
+    "hanshu-moxing": "先建模，再求解",
 }
 
 LABS = [

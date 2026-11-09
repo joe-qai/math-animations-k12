@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>单调性、奇偶性与周期性 · 奇原点，偶 y 轴 · 数益坊</title>
+<meta name="description" content="看图像先看三件事：从左往右是在上升还是下降，这就是单调性；关于原点还是关于 y 轴对称，这就是奇偶性；隔一段距离图形又重复，这就是周期性。单调性必须说清在哪个区间，奇偶性必须先看定义域是否关于原点对称，周期性则要找到那个最小的重复间隔。">
+<meta name="theme-color" content="#163a35">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%23163a35'/%3E%3Ctext x='32' y='45' font-size='38' text-anchor='middle' fill='%23f2c14e' font-family='serif'%3E%E6%95%B0%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>document.documentElement.classList.add('js-reveal');</script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">数</span>
+      <span>数益坊<small>K12 数学 · 动画课</small></span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="index.html">首页</a>
+      <a href="lessons.html" aria-current="page">全部课时</a>
+      <a href="labs.html">互动实验室</a>
+    </nav>
+    <div class="nav-side">
+      <span class="pill">132 节课时</span>
+      <span>北师大版</span>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="面包屑">
+      <a href="index.html">首页</a><span class="sep">/</span>
+      <a href="lessons.html">高中数学</a><span class="sep">/</span>
+      <span>单调性、奇偶性与周期性</span>
+    </nav>
+
+    <header class="lesson-hero">
+      <div>
+        <div class="chip-row">
+          <span class="chip stage gaozhong">高中数学</span>
+          <span class="chip">高一</span>
+          <span class="chip">进阶</span>
+        </div>
+        <h1>单调性、奇偶性与周期性</h1>
+        <p class="subtitle">奇原点，偶 y 轴</p>
+        <p class="brief">看图像先看三件事：从左往右是在上升还是下降，这就是单调性；关于原点还是关于 y 轴对称，这就是奇偶性；隔一段距离图形又重复，这就是周期性。单调性必须说清在哪个区间，奇偶性必须先看定义域是否关于原点对称，周期性则要找到那个最小的重复间隔。</p>
+        <div class="lesson-meta">
+          <span>视频 <b>1:30</b></span>
+          <span>建议学习 <b>9 分钟</b></span>
+          <span>练习 <b>4 题</b></span>
+        </div>
+      </div>
+      <aside class="keyformula">
+        <div class="kf-label">核心公式</div>
+        <div class="kf-body">奇原点，偶 y 轴</div>
+      </aside>
+    </header>
+
+    <div class="lesson-layout">
+      <div class="lesson-main">
+        <section class="block" id="video">
+          <div class="block-head"><span class="num">01</span><h2>单调性、奇偶性与周期性 视频讲解</h2><span class="hint">1:30</span></div>
+          <div class="video-card">
+            <div class="video-wrap">
+              <video data-lesson-video controls preload="metadata" playsinline poster="assets/videos/covers/hanshu-xingzhi.jpg">
+                <source src="assets/videos/hanshu-xingzhi.mp4" type="video/mp4">
+                你的浏览器不支持视频播放，<a href="assets/videos/hanshu-xingzhi.mp4">点此下载视频</a>。
+              </video>
+            </div>
+          </div>
+        </section>
+
+        <section class="block" id="knowledge">
+          <div class="block-head"><span class="num">02</span><h2>知识精讲</h2><span class="hint">概念 · 公式 · 例题</span></div>
+          
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>单调性</h3></div>
+  <p>在区间 D 上，任取 x₁ &lt; x₂，如果都有 f(x₁) &lt; f(x₂)，就说 f 在 D 上单调递增。</p><p>反过来，如果都有 f(x₁) &gt; f(x₂)，就说 f 在 D 上单调递减。</p><p>图像上，递增就是从左往右上升，递减就是从右往左上升。</p><p>单调性一定是对某个区间说的，不能笼统说「在整个定义域上单调」。</p><p class="formula-big">x₁ &lt; x₂ ⇒ f(x₁) &lt; f(x₂)</p>
+</article>
+<article class="know formula-block">
+  <div class="know-head"><span class="kind formula">公式</span><h3>判断单调性的方法</h3></div>
+  <p>定义法：设 x₁ &lt; x₂，作差 f(x₁) − f(x₂)，判断符号。</p><p>图像法：看曲线在区间上是上升还是下降。</p><p>复合函数：内外两层同增或同减则整体递增，一增一减则整体递减，即同增异减。</p><p>常见函数直接记：一次函数看斜率，二次函数看对称轴，反比例函数分两支看。</p><p class="formula-big">同增异减</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>奇偶性</h3></div>
+  <p>先要求定义域关于原点对称，否则既不是奇函数也不是偶函数。</p><p>若对定义域内任意 x，都有 f(−x) = −f(x)，就是奇函数，图像关于原点对称。</p><p>若都有 f(−x) = f(x)，就是偶函数，图像关于 y 轴对称。</p><p>奇函数若在 x = 0 处有定义，则一定有 f(0) = 0。</p><p class="formula-big">f(−x) = ±f(x)</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind example">例题</span><h3>判断奇偶性的三步</h3></div>
+  <p>第一步：求定义域，看它是否关于原点对称，不对称就直接下结论。</p><p>第二步：计算 f(−x)，把 −x 代进去化简。</p><p>第三步：与 f(x) 比较，等于 f(x) 是偶函数，等于 −f(x) 是奇函数，都不是就非奇非偶。</p><p>以 f(x) = x³ 为例：定义域是 R，f(−x) = −x³ = −f(x)，所以是奇函数。</p><p class="formula-big">先定义域，再算 f(−x)</p>
+</article>
+<article class="know">
+  <div class="know-head"><span class="kind concept">概念</span><h3>周期性</h3></div>
+  <p>若存在非零常数 T，使得对定义域内任意 x 都有 f(x + T) = f(x)，就说 f 是周期函数，T 是它的一个周期。</p><p>所有周期中最小的正数叫最小正周期，平时说的周期一般指它。</p><p>周期函数图像每隔 T 就重复一次，只要研究一个周期内的图像就够了。</p><p>常函数是周期函数，但没有最小正周期，所以「有周期」不等于「有最小正周期」。</p><p class="formula-big">f(x + T) = f(x)</p>
+</article>
+          <div class="summary-card">
+            <div class="label">一句话记住</div>
+            <p>单调性看区间：任取 x₁ &lt; x₂，函数值同向变化就是增，反向就是减，证明用作差法。奇偶性先看定义域是否关于原点对称，再看 f(−x) 与 f(x) 的关系：等于 −f(x) 是奇函数、图像关于原点，等于 f(x) 是偶函数、图像关于 y 轴。周期性是存在非零常数 T 使 f(x + T) = f(x)，注意并非所有周期函数都有最小正周期。</p>
+          </div>
+        </section>
+
+        <section class="block" id="pitfalls">
+          <div class="block-head"><span class="num">03</span><h2>易错提醒</h2><span class="hint">先避开，再提速</span></div>
+          <div class="pitfall-card">
+            <h3>这三个坑，考试里最常见</h3>
+            <ul><li>单调性不写区间：必须说明在哪个区间上递增或递减。</li><li>忘记先看定义域：定义域不关于原点对称，直接就是非奇非偶。</li><li>算 f(−x) 时只改一处符号，要把所有 x 都换成 −x 再化简。</li><li>以为周期函数一定有最小正周期，常函数就是反例。</li></ul>
+          </div>
+        </section>
+
+        <section class="block" id="practice">
+          <div class="block-head"><span class="num">04</span><h2>练习巩固</h2><span class="hint">选完立刻判分</span></div>
+          
+<section class="quiz" data-quiz>
+  <div class="quiz-top">
+    <span class="progress-text" data-progress>已完成 0 / 4</span>
+    <div class="quiz-bar"><span data-bar></span></div>
+    <span class="quiz-score" data-score>得分 0</span>
+  </div>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">01</span><p class="q-prompt">函数 f(x) = x² 在哪个区间上单调递增？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>(0, +∞)</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>(−∞, 0)</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>R</span></button></div>
+    <div class="feedback" role="status" data-explain="x² 的图像开口向上、对称轴是 y 轴，在 (0, +∞) 上从左往右上升。"></div>
+  </article>
+  <article class="q" data-answer="1">
+    <div class="q-head"><span class="q-index">02</span><p class="q-prompt">函数 f(x) = x³ 是什么函数？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>偶函数</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>奇函数</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>非奇非偶函数</span></button></div>
+    <div class="feedback" role="status" data-explain="定义域是 R，f(−x) = (−x)³ = −x³ = −f(x)，图像关于原点对称，是奇函数。"></div>
+  </article>
+  <article class="q" data-answer="2">
+    <div class="q-head"><span class="q-index">03</span><p class="q-prompt">下列函数中是偶函数的是？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>y = x³</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>y = x + 1</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>y = x² + 1</span></button></div>
+    <div class="feedback" role="status" data-explain="y = x² + 1 满足 f(−x) = (−x)² + 1 = f(x)，图像关于 y 轴对称。"></div>
+  </article>
+  <article class="q" data-answer="0">
+    <div class="q-head"><span class="q-index">04</span><p class="q-prompt">若 f(x) 是周期函数，周期为 4，且 f(1) = 3，那么 f(9) 等于多少？</p></div>
+    <div class="options"><button class="option" type="button" data-i="0"><span class="key">A</span><span>3</span></button><button class="option" type="button" data-i="1"><span class="key">B</span><span>9</span></button><button class="option" type="button" data-i="2"><span class="key">C</span><span>−3</span></button></div>
+    <div class="feedback" role="status" data-explain="9 = 1 + 2 × 4，减去两个周期后与 f(1) 相同，所以 f(9) = 3。"></div>
+  </article>
+  <div class="quiz-result" data-result>
+    <div>
+      <div class="score-big" data-result-score>0 / 4</div>
+      <p data-result-text></p>
+    </div>
+    <button class="btn" type="button" data-reset>再做一次</button>
+  </div>
+</section>
+        </section>
+
+        <nav class="pager" aria-label="课时翻页"><a href="lesson-hanshu-gainian.html"><span class="dir">← 上一节</span><span class="title">函数的概念与表示</span></a><a class="next" href="lesson-mihanshu.html"><span class="dir">下一节 →</span><span class="title">幂函数</span></a></nav>
+      </div>
+
+      <aside class="lesson-aside">
+        <div class="aside-inner">
+          <div class="aside-card">
+            <h3>本页目录</h3>
+            <ul class="toc"><li><a href="#video"><span class="n">01</span>视频讲解</a></li><li><a href="#knowledge"><span class="n">02</span>知识精讲</a></li><li><a href="#pitfalls"><span class="n">03</span>易错提醒</a></li><li><a href="#practice"><span class="n">04</span>练习巩固</a></li></ul>
+          </div>
+          <div class="aside-card">
+            <h3>学完能做到</h3>
+            <ul class="goal-list"><li>理解增函数、减函数的定义，会用定义证明单调性</li><li>理解奇函数、偶函数的定义与图像特征</li><li>会判断一个函数的奇偶性</li><li>理解周期函数的定义与最小正周期</li><li>会用图像快速判断这三条性质</li></ul>
+          </div>
+          
+          <p class="aside-note">视频与页面都可以离线使用。所有内容为教学演示，题目解析按小学、初中、高中的常规解法编写。</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">数</span>
+          <span>数益坊<small>K12 数学 · 动画课</small></span>
+        </a>
+        <p>每节课四件事：生活例子、动画看懂、文字精讲、练习巩固。公式先被看见，再被记住。</p>
+      </div>
+      <div>
+        <h4>课程</h4>
+        <ul>
+          <li><a href="lessons.html#xiaoxue">小学数学</a></li>
+          <li><a href="lessons.html#chuzhong">初中数学</a></li>
+          <li><a href="lessons.html#gaozhong">高中数学</a></li>
+          <li><a href="labs.html">互动实验室</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>关于</h4>
+        <ul>
+          <li><a href="index.html#how">学习方法</a></li>
+          <li><a href="lesson-gougu.html">示范课时 · 勾股定理</a></li>
+          <li>纯静态站点，无账号与追踪</li>
+          <li>动画 Manim · 配音 edge-tts</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© 数益坊 · 北师大版</span>
+      <span>Static HTML · No runtime</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
