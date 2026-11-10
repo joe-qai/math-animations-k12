@@ -55,6 +55,8 @@ logs/
 
 # 视频文件
 *.mp4
+# 课时成片需要随站点发布，单独放行（其他位置仍忽略）
+!assets/videos/*.mp4
 *.avi
 *.mov
 *.wmv
