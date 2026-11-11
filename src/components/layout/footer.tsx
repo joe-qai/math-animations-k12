@@ -36,11 +36,21 @@ export function SiteFooter() {
             </ul>
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-foreground">学习方法</h4>
-            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li>先读概念，理解算理</li>
-              <li>例题演算，动手验证</li>
-              <li>练习自测，即时纠错</li>
+            <h4 className="text-sm font-semibold text-foreground">数学游戏</h4>
+            <ul className="mt-3 space-y-2">
+              {[
+                { label: '口算消消乐', href: '/games/arithmetic-match' },
+                { label: '猜数迷', href: '/games/number-guess' },
+                { label: '跳格子', href: '/games/hopscotch' },
+                { label: '数独', href: '/games/sudoku' },
+                { label: '华容道', href: '/games/huarongdao' },
+              ].map(g => (
+                <li key={g.label}>
+                  <Link href={g.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                    {g.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

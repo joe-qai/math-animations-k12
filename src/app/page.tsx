@@ -40,6 +40,13 @@ export default function Home() {
               选择学段开始
             </Link>
             <Link
+              href="/games"
+              className="inline-flex items-center gap-2 rounded-lg border border-border/70 bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-sm transition-colors hover:border-primary/40"
+            >
+              <Gamepad2 className="h-4 w-4" />
+              去玩游戏
+            </Link>
+            <Link
               href="#featured"
               className="inline-flex items-center gap-2 rounded-lg border border-border/70 bg-card px-5 py-3 text-sm font-semibold text-foreground shadow-sm transition-colors hover:border-primary/40"
             >
