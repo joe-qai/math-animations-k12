@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { BookOpen, CheckCircle2, Lightbulb, PenLine, ThumbsUp } from 'lucide-react';
+import { BookOpen, CheckCircle2, Lightbulb, PenLine, ThumbsUp, Gamepad2, ArrowRight } from 'lucide-react';
 import { stages, lessons } from '@/lib/data';
 import { LessonCard } from '@/components/lesson-card';
 
@@ -157,6 +157,48 @@ export default function Home() {
           {featured.map((l) => (
             <LessonCard key={l.id} lesson={l} />
           ))}
+        </div>
+      </section>
+
+      {/* 数学游戏 */}
+      <section className="border-y border-border/70 bg-card/50">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-foreground">数学游戏</h2>
+              <p className="mt-2 text-sm text-muted-foreground">
+                在玩中学——口算消消乐、猜数迷、跳格子、数独、华容道
+              </p>
+            </div>
+            <Link
+              href="/games"
+              className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+            >
+              全部游戏
+              <Gamepad2 className="h-4 w-4" />
+            </Link>
+          </div>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { slug: 'arithmetic-match', emoji: '🎯', title: '口算消消乐', sub: '匹配算式与答案' },
+              { slug: 'number-guess', emoji: '🔢', title: '猜数迷', sub: '牛 cow 逻辑推理' },
+              { slug: 'hopscotch', emoji: '🦘', title: '跳格子', sub: '按序踩数字' },
+              { slug: 'sudoku', emoji: '🧩', title: '数独', sub: '三档难度挑战' },
+            ].map(g => (
+              <Link
+                key={g.slug}
+                href={`/games/${g.slug}`}
+                className="group flex items-center gap-4 rounded-xl border border-border/70 bg-card p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
+              >
+                <span className="text-3xl">{g.emoji}</span>
+                <div>
+                  <p className="font-semibold text-foreground group-hover:text-primary transition-colors">{g.title}</p>
+                  <p className="text-xs text-muted-foreground">{g.sub}</p>
+                </div>
+                <ArrowRight className="ml-auto h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </div>

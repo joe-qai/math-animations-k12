@@ -8,7 +8,7 @@ import { DemoPlayer } from './demo-player';
 
 function BalanceScene({ step }: { step: number }) {
   // step 0: 2x+3 = 11 ; step1: 减3 ; step2: 2x=8 ; step3: 除以2 ; step4: x=4
-  const leftBars = step >= 2 ? 2 : 2; // x 个数恒为 2
+  const leftBars = 2; // x 个数恒为 2
   const leftOnes = step >= 1 ? 0 : 3; // +3 在 step0 保留，step1 移除
   const rightOnes = step >= 1 ? 8 : 11; // 右侧方块数
 

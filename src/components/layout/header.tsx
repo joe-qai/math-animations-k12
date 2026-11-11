@@ -26,9 +26,15 @@ export function Header() {
               {s.name}
             </Link>
           ))}
+          <Link
+            href="/games"
+            className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          >
+            数学游戏
+          </Link>
         </nav>
         <Link
-          href="/"
+          href="/games"
           className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
         >
           开始学习

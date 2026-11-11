@@ -832,6 +832,13 @@ export const lessons: Lesson[] = [
         id: 'ge-s5',
         prompt: '等差数列中，a₁ + a₁₀ = a₄ + a₇ 是否成立？',
         options: ['成立', '不成立', '仅当 d = 0 时成立', '无法判断'],
+        answer: 1,
+        explanation: '逐项列出：a₁=10, a₂=7, a₃=4, a₄=1, a₅=-2。a₄=1 仍为正，a₅=-2 第一个为负数，所以从第 5 项开始变负。',
+      },
+      {
+        id: 'ge-s5',
+        prompt: '等差数列中，a₁ + a₁₀ = a₄ + a₇ 是否成立？',
+        options: ['成立', '不成立', '仅当 d = 0 时成立', '无法判断'],
         answer: 0,
         explanation: 'a₁ + a₁₀ = 2a₁ + 9d，a₄ + a₇ = (a₁+3d) + (a₁+6d) = 2a₁ + 9d，两边相等，恒成立。',
       },
@@ -839,9 +846,7 @@ export const lessons: Lesson[] = [
         id: 'ge-s6',
         prompt: '等差数列 {aₙ} 满足 a₁ = 10，d = -3，从第几项开始变为负数？',
         options: ['第 4 项', '第 5 项', '第 3 项', '第 6 项'],
-        answer: 0,
-        explanation: '逐项列出：a₁=10, a₂=7, a₃=4, a₄=1, a₅=-2。a₄=1 仍为正，a₅=-2 第一个为负数，所以从第 5 项开始变负。',
-      },
+        answer: 1,
     ],
   },
   // 补充更多年级练习专题
@@ -983,7 +988,7 @@ export const lessons: Lesson[] = [
       {
         id: 'cy-r6',
         prompt: '(-2) × 3 + (-5) = ？',
-        options: ['-11', '-1', '1', '-11'],
+        options: ['-11', '-1', '1', '-7'],
         answer: 0,
         explanation: '先乘后加：(-2)×3 = -6，-6 + (-5) = -11。',
       },

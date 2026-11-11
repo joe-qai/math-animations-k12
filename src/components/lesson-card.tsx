@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Clock, Gauge } from 'lucide-react';
+import { ArrowRight, Clock, Gauge } from 'lucide-react';
 import type { Lesson } from '@/lib/data';
 
 const difficultyLabel = ['', '基础', '进阶', '挑战'];
@@ -32,10 +32,7 @@ export function LessonCard({ lesson }: { lesson: Lesson }) {
         </span>
         <span className="inline-flex items-center gap-1 font-medium text-primary">
           开始学习
-          <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="M5 12h14" />
-            <path d="m12 5 7 7-7 7" />
-          </svg>
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
       </div>
     </Link>
