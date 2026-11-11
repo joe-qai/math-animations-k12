@@ -81,6 +81,8 @@ function setDigits(n) {
   document.querySelectorAll('.diff-btn').forEach(b => b.classList.toggle('active', parseInt(b.dataset.d) === n));
 }
 
+function shuffle(a) { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
 function genSecret(n) {
   // 首位1-9，其余从剩余数字中取，保证不重复且无前导零
   const pool = [1,2,3,4,5,6,7,8,9];
