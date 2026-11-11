@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数独 · 数益坊</title>
+<link rel="stylesheet" href="../assets/css/site.css?v=ec61a5ce">
+<style>
+.game-wrap { max-width:520px; margin:0 auto; padding:24px 0; }
+.info-bar { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-size:13px; color:var(--muted); flex-wrap:wrap; gap:6px; }
+.sudoku-board { display:grid; grid-template-columns:repeat(9,1fr); gap:1px; background:var(--line); border:2px solid var(--board-3); border-radius:6px; overflow:hidden; margin-bottom:16px; }
+.cell { aspect-ratio:1; display:flex; align-items:center; justify-content:center; font-size:clamp(14px,4vw,22px); font-weight:600; cursor:pointer; transition:background .1s; background:var(--card); position:relative; }
+.cell.fixed { color:var(--ink); font-weight:800; cursor:default; }
+.cell.editable { color:var(--board-3); }
+.cell.editable:hover { background:var(--paper-2); }
+.cell.selected { background:#d4edda !important; }
+.cell.related { background:var(--paper-2); }
+.cell.error { background:#fdecea; color:#a5432f; }
+.thick-right { border-right:2px solid var(--board-3); }
+.thick-bottom { border-bottom:2px solid var(--board-3); }
+.numpad { display:flex; gap:6px; justify-content:center; flex-wrap:wrap; }
+.num-btn { width:40px;height:40px;border-radius:6px;border:1.5px solid var(--line);background:var(--card);font-size:16px;font-weight:700;cursor:pointer;color:var(--ink);transition:all .12s; }
+.num-btn:hover { border-color:var(--board-3);background:var(--paper-2); }
+.num-btn:disabled { opacity:.3;cursor:default; }
+.panel { text-align:center; padding:28px 16px; }
+.diff-btns { display:flex;gap:10px;justify-content:center;margin:16px 0;flex-wrap:wrap; }
+.diff-btn {padding:10px 18px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);font-size:14px;font-weight:600;cursor:pointer;color:var(--ink);}
+.diff-btn.active {border-color:var(--board-3);background:var(--board-3);color:#fff;}
+.btn {padding:10px 20px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);font-size:14px;font-weight:600;cursor:pointer;color:var(--ink);}
+.btn-primary {background:var(--board);color:var(--chalk);border-color:var(--board);}
+.btn-primary:hover{background:var(--board-2);}
+.win-icon{font-size:56px;margin-bottom:12px;}
+.empty-cell{background:transparent;}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="../index.html"><span class="brand-mark">数</span><span>数益坊<small>K12 数学 · 动画课</small></span></a><nav class="nav-links"><a href="../index.html">首页</a><a href="index.html" aria-current="page">数学游戏</a></nav></div></header>
+<main id="main"><div class="wrap game-wrap">
+  <a href="index.html" style="color:var(--muted);font-size:13px;text-decoration:none;">← 返回游戏列表</a>
+  <h1 style="margin:12px 0 4px;font-size:28px;">🧩 数独</h1>
+  <p style="color:var(--muted);margin:0 0 16px;">在空格中填入 1~9，使每行、每列、每个 3×3 宫格均不重复。</p>
+
+  <div id="startPanel" class="panel">
+    <p style="color:var(--muted);font-size:13px;margin-bottom:8px;">选择难度：</p>
+    <div class="diff-btns">
+      <button class="diff-btn active" data-d="easy" onclick="setDiff('easy')">简单</button>
+      <button class="diff-btn" data-d="medium" onclick="setDiff('medium')">中等</button>
+      <button class="diff-btn" data-d="hard" onclick="setDiff('hard')">困难</button>
+    </div>
+    <button class="btn btn-primary" onclick="startGame()">开始游戏</button>
+  </div>
+
+  <div id="gamePanel" style="display:none;">
+    <div class="info-bar"><span id="diffLabel">简单</span><span>错误 <strong id="mistakeCnt">0</strong> 次</span></div>
+    <div class="sudoku-board" id="board"></div>
+    <div class="numpad" id="numpad"></div>
+    <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:10px;">点击格子后用数字键 1~9 或点击下方按钮填入</p>
+  </div>
+
+  <div id="winPanel" style="display:none;" class="panel">
+    <div class="win-icon">🏆</div>
+    <h2 style="margin:0 0 8px;">恭喜通关！</h2>
+    <p style="color:var(--muted);" id="winMsg"></p>
+    <button class="btn btn-primary" onclick="startGame()" style="margin-top:16px;">再来一局</button>
+  </div>
+</div></main>
+<footer class="site-footer"><div class="wrap"><div class="footer-base"><span>© 数益坊 · 数独</span></div></div></footer>
+
+<script>
+const REMOVE={easy:30,medium:40,hard:50};
+let diff='easy', puzzle=[], board=[], fixed=[], selected=null, won=false, mistakes=0;
+
+function setDiff(d){diff=d;document.querySelectorAll('.diff-btn').forEach(b=>b.classList.toggle('active',b.dataset.d===d));}
+
+function fullBoard(){
+  const b=Array.from({length:9},()=>Array(9).fill(0));
+  function valid(b,r,c,n){for(let i=0;i<9;i++){if(b[r][i]===n||b[i][c]===n)return false;}const br=Math.floor(r/3)*3,bc=Math.floor(c/3)*3;for(let rr=br;rr<br+3;rr++)for(let cc=bc;cc<bc+3;cc++)if(b[rr][cc]===n)return false;return true;}
+  function solve(b){for(let r=0;r<9;r++)for(let c=0;c<9;c++){if(b[r][c]!==0)continue;const nums=shuffle([1,2,3,4,5,6,7,8,9]);for(const n of nums){if(valid(b,r,c,n)){b[r][c]=n;if(solve(b))return true;b[r][c]=0;}}return false;}solve(b);return b;}
+  return solve(Array.from({length:9},()=>Array(9).fill(0)));
+}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function startGame(){
+  const sol=fullBoard();
+  const p=sol.map(r=>[...r]);
+  fixed=Array.from({length:9},()=>Array(9).fill(true));
+  let rem=REMOVE[diff], tries=0;
+  while(rem>0&&tries<200){const r=Math.floor(Math.random()*9),c=Math.floor(Math.random()*9);if(p[r][c]!==0){p[r][c]=0;fixed[r][c]=false;rem--;}}
+  puzzle=p;board=p.map(r=>[...r]);selected=null;won=false;mistakes=0;
+  document.getElementById('startPanel').style.display='none';
+  document.getElementById('gamePanel').style.display='block';
+  document.getElementById('winPanel').style.display='none';
+  document.getElementById('diffLabel').textContent={easy:'简单',medium:'中等',hard:'困难'}[diff];
+  document.getElementById('mistakeCnt').textContent=0;
+  renderBoard();
+  buildNumpad();
+}
+
+function renderBoard(){
+  const g=document.getElementById('board');g.innerHTML='';
+  for(let r=0;r<9;r++)for(let c=0;c<9;c++){
+    const cell=document.createElement('div');cell.className='cell';
+    const isFixed=fixed[r][c], isSel=selected&&selected[0]===r&&selected[1]===c;
+    const isRel=selected&&(selected[0]===r||selected[1]===c||(Math.floor(selected[0]/3)===Math.floor(r/3)&&Math.floor(selected[1]/3)===Math.floor(c/3)));
+    const isErr=board[r][c]!==0&&!fixed[r][c]&&board[r][c]!==puzzle[r][c];
+    if(isFixed)cell.classList.add('fixed');else{cell.classList.add('editable');cell.addEventListener('click',()=>selectCell(r,c));}
+    if(isSel)cell.classList.add('selected');else if(isRel)cell.style.background='var(--paper-2)';
+    if(isErr)cell.classList.add('error');
+    if(c===2||c===5)cell.classList.add('thick-right');
+    if(r===2||r===5)cell.classList.add('thick-bottom');
+    cell.textContent=board[r][c]||'';g.appendChild(cell);
+  }
+}
+
+function selectCell(r,c){if(fixed[r][c])return;selected=[r,c];renderBoard();}
+
+function enterNum(n){
+  if(won||!selected)return;
+  const[r,c]=selected;
+  if(fixed[r][c])return;
+  board[r][c]=n;
+  if(n!==puzzle[r][c]){mistakes++;document.getElementById('mistakeCnt').textContent=mistakes;}
+  else if(board.every(row=>row.every(v=>v!==0)))won=true;
+  renderBoard();
+  if(won) setTimeout(()=>{
+    document.getElementById('gamePanel').style.display='none';
+    document.getElementById('winPanel').style.display='block';
+    document.getElementById('winMsg').textContent='错误 '+mistakes+' 次';
+  },200);
+}
+
+function handleKey(e){
+  if(won||!selected)return;
+  const n=parseInt(e.key);
+  if(n>=1&&n<=9)enterNum(n);
+}
+document.addEventListener('keydown',handleKey);
+
+function buildNumpad(){
+  const el=document.getElementById('numpad');el.innerHTML='';
+  for(let n=1;n<=9;n++){
+    const btn=document.createElement('button');
+    btn.className='num-btn';btn.textContent=n;
+    btn.onclick=()=>enterNum(n);
+    el.appendChild(btn);
+  }
+}
+</script>
+</body>
+</html>

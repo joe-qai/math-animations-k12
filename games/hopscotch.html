@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跳格子 · 数益坊</title>
+<link rel="stylesheet" href="../assets/css/site.css?v=ec61a5ce">
+<style>
+.game-wrap { max-width:620px; margin:0 auto; padding:24px 0; }
+.status-bar { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-size:14px; color:var(--muted); flex-wrap:wrap; gap:8px; }
+.grid-container { display:flex; justify-content:center; margin-top:12px; }
+.grid { display:grid; grid-template-columns:repeat(10,1fr); gap:2px; width:min(100%, 500px); aspect-ratio:1; background:var(--line-soft); border:2px solid var(--line); border-radius:8px; overflow:hidden; }
+.cell { background:var(--card); display:flex; align-items:center; justify-content:center; font-size:clamp(10px,2.5vw,14px); font-weight:700; position:relative; user-select:none; }
+.tile { background:var(--board-3); color:#fff; border-radius:4px; }
+.tile.target { background:var(--chalk); color:var(--ink); box-shadow:0 0 0 2px var(--board); }
+.player { background:var(--red-ink,#cc4433)!important; color:#fff!important; border-radius:50%!important; width:80%!important; height:80%!important; }
+.ctrl-hint { text-align:center; color:var(--muted); font-size:12px; margin-top:12px; }
+.panel { text-align:center; padding:32px 16px; }
+.btn-group { display:flex; gap:10px; justify-content:center; margin:16px 0; flex-wrap:wrap; }
+.btn { padding:10px 20px; border-radius:8px; border:1.5px solid var(--line); background:var(--card); font-size:14px; font-weight:600; cursor:pointer; color:var(--ink); }
+.btn.active { border-color:var(--board-3); background:var(--board-3); color:#fff; }
+.btn-primary { background:var(--board); color:var(--chalk); border-color:var(--board); }
+.btn-primary:hover { background:var(--board-2); }
+.win-icon { font-size:64px; margin-bottom:12px; }
+.controls-mobile { display:flex; justify-content:center; gap:8px; margin-top:12px; }
+.ctrl-btn { width:48px;height:48px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink); }
+.ctrl-btn:active { background:var(--paper-2); }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="../index.html"><span class="brand-mark">数</span><span>数益坊<small>K12 数学 · 动画课</small></span></a><nav class="nav-links"><a href="../index.html">首页</a><a href="index.html" aria-current="page">数学游戏</a></nav></div></header>
+<main id="main"><div class="wrap game-wrap">
+  <a href="index.html" style="color:var(--muted);font-size:13px;text-decoration:none;">← 返回游戏列表</a>
+  <h1 style="margin:12px 0 4px;font-size:28px;">🦘 跳格子</h1>
+  <p style="color:var(--muted);margin:0 0 16px;">用方向键（或下方按钮）移动，按顺序踩完所有带数字的格子！</p>
+
+  <div id="startPanel" class="panel">
+    <p style="color:var(--muted);margin-bottom:16px;">选择关卡难度：</p>
+    <div class="btn-group">
+      <button class="btn active" data-lv="1" onclick="pickLevel(1)">第 1 关</button>
+      <button class="btn" data-lv="2" onclick="pickLevel(2)">第 2 关</button>
+      <button class="btn" data-lv="3" onclick="pickLevel(3)">第 3 关</button>
+    </div>
+    <button class="btn btn-primary" onclick="startGame()">开始挑战</button>
+  </div>
+
+  <div id="gamePanel" style="display:none;">
+    <div class="status-bar">
+      <span>目标：踩到数字 <strong style="color:var(--ink);" id="targetNum">1</strong></span>
+      <span>得分 <strong id="scoreVal">0</strong> · 步数 <strong id="movesVal">0</strong> · 时间 <strong id="timerVal">30</strong>s</span>
+    </div>
+    <div class="grid-container"><div class="grid" id="grid"></div></div>
+    <div class="controls-mobile">
+      <button class="ctrl-btn" onclick="move(0,-1)">↑</button>
+    </div>
+    <div class="controls-mobile">
+      <button class="ctrl-btn" onclick="move(-1,0)">←</button>
+      <button class="ctrl-btn" onclick="move(0,1)">↓</button>
+      <button class="ctrl-btn" onclick="move(1,0)">→</button>
+    </div>
+    <p class="ctrl-hint">用键盘 ↑ ↓ ← → 或上方按钮移动</p>
+  </div>
+
+  <div id="endPanel" style="display:none;" class="panel">
+    <div class="win-icon" id="endIcon">🎉</div>
+    <h2 style="margin:0 0 8px;" id="endTitle">闯关成功！</h2>
+    <p style="color:var(--muted);" id="endStats"></p>
+    <button class="btn btn-primary" onclick="startGame()" style="margin-top:16px;">再玩一次</button>
+  </div>
+</div></main>
+<footer class="site-footer"><div class="wrap"><div class="footer-base"><span>© 数益坊 · 跳格子</span></div></div></footer>
+
+<script>
+const GRID=10, TIME=30;
+let level=1, player={}, tiles=[], target=1, score=0, moves=0, timer=TIME, interval=null, playing=false;
+
+function pickLevel(l){level=l;document.querySelectorAll('[data-lv]').forEach(b=>b.classList.toggle('active',parseInt(b.dataset.lv)===l));}
+
+function generateTiles(count){
+  const ts=[];
+  for(let i=0;i<count;i++){
+    let x,y; do{x=Math.floor(Math.random()*GRID);y=Math.floor(Math.random()*GRID);}while(ts.some(t=>t.x===x&&t.y===y));
+    ts.push({x,y,v:i+1});
+  }
+  return ts;
+}
+
+function startGame(){
+  const count=5+level*2;
+  tiles=generateTiles(count);
+  player={x:tiles[0].x,y:tiles[0].y};
+  target=1;score=0;moves=0;timer=TIME;playing=true;
+  document.getElementById('startPanel').style.display='none';
+  document.getElementById('endPanel').style.display='none';
+  document.getElementById('gamePanel').style.display='block';
+  document.getElementById('targetNum').textContent=target;
+  document.getElementById('scoreVal').textContent=0;
+  document.getElementById('movesVal').textContent=0;
+  document.getElementById('timerVal').textContent=TIME;
+  clearInterval(interval);
+  interval=setInterval(()=>{
+    if(!playing)return;
+    timer--;document.getElementById('timerVal').textContent=timer;
+    if(timer<=0){playing=false;clearInterval(interval);showEnd(false);}
+  },1000);
+  renderGrid();
+}
+
+function renderGrid(){
+  const g=document.getElementById('grid');
+  g.innerHTML='';
+  for(let y=0;y<GRID;y++)for(let x=0;x<GRID;x++){
+    const cell=document.createElement('div');cell.className='cell';
+    const tile=tiles.find(t=>t.x===x&&t.y===y);
+    const isPlayer=x===player.x&&y===player.y;
+    if(tile){
+      if(isPlayer){cell.classList.add('player');cell.textContent='●';}
+      else{cell.innerHTML=`<span class="tile${tile.v===target?' target':''}">${tile.v}</span>`;}
+    }else{cell.innerHTML=isPlayer?'<span class="player">●</span>':'';}
+    g.appendChild(cell);
+  }
+}
+
+function move(dx,dy){
+  if(!playing)return;
+  const nx=player.x+dx, ny=player.y+dy;
+  if(nx<0||ny<0||nx>=GRID||ny>=GRID)return;
+  player.x=nx;player.y=ny;moves++;
+  document.getElementById('movesVal').textContent=moves;
+  const tile=tiles.find(t=>t.x===nx&&t.y===ny);
+  if(tile&&tile.v===target){
+    score+=tile.v*10;document.getElementById('scoreVal').textContent=score;
+    target++;
+    if(target>tiles.length){playing=false;clearInterval(interval);showEnd(true);}
+    else document.getElementById('targetNum').textContent=target;
+  }
+  renderGrid();
+}
+
+function showEnd(won){
+  document.getElementById('gamePanel').style.display='none';
+  document.getElementById('endPanel').style.display='block';
+  document.getElementById('endIcon').textContent=won?'🎉':'⏰';
+  document.getElementById('endTitle').textContent=won?'闯关成功！':'时间到！';
+  document.getElementById('endStats').textContent=won?`得了 ${score} 分，用了 ${moves} 步`:`得分 ${score}，走了 ${moves} 步`;
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowUp')move(0,-1);else if(e.key==='ArrowDown')move(0,1);
+  else if(e.key==='ArrowLeft')move(-1,0);else if(e.key==='ArrowRight')move(1,0);
+});
+</script>
+</body>
+</html>

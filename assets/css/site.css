@@ -1655,3 +1655,12 @@ p { margin: 0; }
 @media (max-width: 380px) {
   .lesson-card .tags .tag:nth-child(3) { display: none; }
 }
+
+/* 数学游戏卡片 */
+.game-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px; margin-top:20px; }
+.game-card-inner { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:20px; text-decoration:none; color:inherit; display:block; transition:transform .18s,box-shadow .18s; }
+.game-card-inner:hover { transform:translateY(-3px); box-shadow:var(--shadow-md); }
+.game-icon { font-size:36px; margin-bottom:10px; }
+.game-card-inner h3 { margin:0 0 6px; font-size:17px; font-weight:700; color:var(--ink); }
+.game-card-inner p { margin:0; font-size:13px; color:var(--muted); line-height:1.5; }
+@media(max-width:640px){.game-grid{grid-template-columns:repeat(2,1fr);}}

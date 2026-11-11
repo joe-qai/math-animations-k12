@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>数学华容道 · 数益坊</title>
+<link rel="stylesheet" href="../assets/css/site.css?v=ec61a5ce">
+<style>
+.game-wrap { max-width:480px; margin:0 auto; padding:24px 0; }
+.board-wrap { display:flex;justify-content:center;margin:16px 0; }
+.board { display:grid;position:relative;background:var(--line-soft);border:2px solid var(--board-3);border-radius:6px;overflow:hidden;user-select:none;touch-action:none; }
+.exit-marker { height:4px;background:repeating-linear-gradient(90deg,var(--board-3) 0,var(--board-3) 8px,transparent 8px,transparent 16px);margin-top:-2px;border-radius:0 0 4px 4px; }
+.cell-bg { background:var(--card); }
+.block { position:absolute;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;cursor:grab;transition:box-shadow .15s; }
+.block.red { background:#e8813a;color:#fff;border:2px solid #c46a28; }
+.block.blue { background:#82c8e8;color:#fff;border:2px solid #5fb8db; }
+.block-green { background:#8fd9a8;color:#fff;border:2px solid #6fc494; }
+.block-yellow { background:#f7d98a;color:#5a3e00;border:2px solid #e8c560; }
+.block.dragging { box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:10;cursor:grabbing; }
+.info { display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:14px;color:var(--muted); }
+.btn-group { display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap; }
+.btn { padding:8px 16px;border-radius:6px;border:1.5px solid var(--line);background:var(--card);font-size:13px;font-weight:600;cursor:pointer;color:var(--ink); }
+.btn:hover { border-color:var(--board-3); }
+.btn-primary { background:var(--board);color:var(--chalk);border-color:var(--board); }
+.start-panel,.win-panel { text-align:center;padding:28px 16px; }
+.level-btn { display:block;width:100%;text-align:left;padding:12px 16px;border-radius:8px;border:1.5px solid var(--line);background:var(--card);margin-bottom:8px;cursor:pointer;font-size:14px;font-weight:600;color:var(--ink);transition:all .15s; }
+.level-btn:hover { border-color:var(--board-3);background:var(--paper-2); }
+.win-icon { font-size:56px;margin-bottom:12px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header"><div class="wrap nav"><a class="brand" href="../index.html"><span class="brand-mark">数</span><span>数益坊<small>K12 数学 · 动画课</small></span></a><nav class="nav-links"><a href="../index.html">首页</a><a href="index.html" aria-current="page">数学游戏</a></nav></div></header>
+<main id="main"><div class="wrap game-wrap">
+  <a href="index.html" style="color:var(--muted);font-size:13px;text-decoration:none;">← 返回游戏列表</a>
+  <h1 style="margin:12px 0 4px;font-size:28px;">🏯 数学华容道</h1>
+  <p style="color:var(--muted);margin:0 0 12px;">拖动方块，把红色大方块从底部出口移出去！</p>
+
+  <div id="startPanel" class="start-panel">
+    <p style="color:var(--muted);font-size:13px;margin-bottom:12px;">选择关卡：</p>
+    <button class="level-btn" onclick="startLevel(0)">横刀立马（入门）</button>
+    <button class="level-btn" onclick="startLevel(1)">兵临城下（进阶）</button>
+    <button class="level-btn" onclick="startLevel(2)">隔岸观火（挑战）</button>
+  </div>
+
+  <div id="gamePanel" style="display:none;">
+    <div class="info"><span>步数：<strong id="moveCnt">0</strong></span><span id="levelName"></span></div>
+    <div class="board-wrap"><div><div class="board" id="board"></div><div class="exit-marker"></div></div></div>
+    <div class="btn-group"><button class="btn" onclick="resetLevel()">重置</button><a href="index.html" class="btn">返回游戏</a></div>
+  </div>
+
+  <div id="winPanel" style="display:none;" class="win-panel">
+    <div class="win-icon">🎊</div>
+    <h2 style="margin:0 0 8px;">成功逃脱！</h2>
+    <p style="color:var(--muted);">共移动 <strong id="finalMoves"></strong> 步</p>
+    <div class="btn-group" style="margin-top:16px;">
+      <button class="btn" onclick="prevLevel()" id="prevBtn">上一关</button>
+      <button class="btn btn-primary" onclick="resetLevel()">重玩本关</button>
+      <button class="btn" onclick="nextLevel()" id="nextBtn">下一关</button>
+    </div>
+  </div>
+</div></main>
+<footer class="site-footer"><div class="wrap"><div class="footer-base"><span>© 数益坊 · 华容道</span></div></div></footer>
+
+<script>
+const COLS=5,ROWS=6,CELL=60;
+const LEVELS=[
+  {name:'横刀立马',blocks:[
+    {id:'A',type:'big',x:2,y:0},{id:'B1',type:'vert',x:0,y:0},{id:'B2',type:'vert',x:4,y:0},
+    {id:'C1',type:'horz',x:0,y:2},{id:'C2',type:'horz',x:3,y:2},
+    {id:'D1',type:'square',x:2,y:3},{id:'D2',type:'square',x:3,y:3},
+    {id:'B3',type:'vert',x:0,y:3},{id:'B4',type:'vert',x:4,y:3}]},
+  {name:'兵临城下',blocks:[
+    {id:'A',type:'big',x:2,y:0},{id:'B1',type:'vert',x:0,y:0},{id:'B2',type:'vert',x:4,y:0},
+    {id:'C1',type:'horz',x:0,y:2},{id:'C2',type:'horz',x:3,y:2},
+    {id:'D1',type:'square',x:1,y:2},{id:'D2',type:'square',x:2,y:3},
+    {id:'B3',type:'vert',x:0,y:3},{id:'B4',type:'vert',x:4,y:3}]},
+  {name:'隔岸观火',blocks:[
+    {id:'A',type:'big',x:2,y:0},{id:'B1',type:'vert',x:0,y:0},{id:'B2',type:'vert',x:4,y:0},
+    {id:'C1',type:'horz',x:0,y:2},{id:'C2',type:'horz',x:3,y:2},
+    {id:'D1',type:'square',x:1,y:2},{id:'D2',type:'square',x:2,y:3},
+    {id:'B3',type:'vert',x:0,y:3},{id:'B4',type:'vert',x:4,y:3}]}
+];
+const TYPE_SIZE={big:[2,2],vert:[1,2],horz:[2,1],square:[1,1]};
+const TYPE_COLOR={big:'red',vert:'blue',horz:'green',square:'yellow'};
+let blocks=[],moves=0,curLevel=0,won=false;
+
+function getBlockRect(bl){const s=TYPE_SIZE[bl.type];return{x:bl.x,y:bl.y,w:s[0],h:s[1]};}
+function rectsOverlap(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;}
+
+function canMove(bl,dx,dy){
+  const nb={...bl,x:bl.x+dx,y:bl.y+dy};
+  const nr=getBlockRect(nb);
+  if(nr.x<0||nr.y<0||nr.x+nr.w>COLS||nr.y+nr.h>ROWS)return false;
+  return !blocks.filter(b=>b.id!==bl.id).some(o=>rectsOverlap(nr,getTypeRect(getBlockRect(o))));
+}
+function getTypeRect(br){return{x:br.x,y:br.y,w:br.w,h:br.h};}
+function blocksCollide(nr,ob){return nr.x<ob.x+ob.w&&nr.x+nr.w>ob.x&&nr.y<ob.y+ob.h&&nr.y+nr.h>ob.y;}
+
+function startLevel(i){
+  curLevel=i;
+  blocks=LEVELS[i].blocks.map(b=>({...b}));
+  moves=0;won=false;
+  document.getElementById('startPanel').style.display='none';
+  document.getElementById('gamePanel').style.display='block';
+  document.getElementById('winPanel').style.display='none';
+  document.getElementById('moveCnt').textContent=0;
+  document.getElementById('levelName').textContent=LEVELS[i].name;
+  renderBoard();
+}
+
+function resetLevel(){startLevel(curLevel);}
+function prevLevel(){if(curLevel>0)startLevel(curLevel-1);}
+function nextLevel(){if(curLevel<LEVELS.length-1)startLevel(curLevel+1);}
+
+function renderBoard(){
+  const g=document.getElementById('board');
+  g.style.width=COLS*CELL+'px';g.style.height=ROWS*CELL+'px';
+  g.innerHTML='';
+  // bg cells
+  for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){
+    const d=document.createElement('div');d.className='cell-bg';
+    d.style.gridColumn=c+1;d.style.gridRow=r+1;
+    g.appendChild(d);
+  }
+  g.style.gridTemplateColumns=`repeat(${COLS},${CELL}px)`;
+  g.style.gridTemplateRows=`repeat(${ROWS},${CELL}px)`;
+  blocks.forEach(bl=>{
+    const [w,h]=TYPE_SIZE[bl.type];
+    const d=document.createElement('div');
+    d.className=`block ${TYPE_COLOR[bl.type]}`;
+    d.id=bl.id;d.style.width=(w*CELL-4)+'px';d.style.height=(h*CELL-4)+'px';
+    d.style.left=(bl.x*CELL+2)+'px';d.style.top=(bl.y*CELL+2)+'px';
+    d.textContent=bl.type==='big'?'主公':'';
+    makeDraggable(d,bl);
+    g.appendChild(d);
+  });
+}
+
+function makeDraggable(el, bl){
+  let startX,startY,origX,origY;
+  function onStart(e){
+    if(won)return;
+    e.preventDefault();
+    const touch=e.touches?e.touches[0]:e;
+    startX=touch.clientX;startY=touch.clientY;
+    origX=bl.x;origY=bl.y;
+    el.classList.add('dragging');
+    document.addEventListener('mousemove',onMove);
+    document.addEventListener('mouseup',onEnd);
+    document.addEventListener('touchmove',onMove,{passive:false});
+    document.addEventListener('touchend',onEnd);
+  }
+  function onMove(e){
+    e.preventDefault();
+    const t=e.touches?e.touches[0]:e;
+    const dx=t.clientX-startX, dy=t.clientY-startY;
+    el.style.transform=`translate(${dx}px,${dy}px)`;
+  }
+  function onEnd(e){
+    el.classList.remove('dragging');
+    el.style.transform='';
+    document.removeEventListener('mousemove',onMove);
+    document.removeEventListener('mouseup',onEnd);
+    document.removeEventListener('touchmove',onMove);
+    document.removeEventListener('touchend',onEnd);
+    const t=e.changedTouches?e.changedTouches[0]:e;
+    const dx=Math.round((t.clientX-startX)/CELL), dy=Math.round((t.clientY-startY)/CELL);
+    if(dx!==0||dy!==0)tryMove(bl,dx,dy);
+  }
+  el.addEventListener('mousedown',onStart);
+  el.addEventListener('touchstart',onStart,{passive:false});
+}
+
+function tryMove(bl,dx,dy){
+  const nb={...bl,x:bl.x+dx,y:bl.y+dy};
+  const nbr=getBlockRect(nb);
+  if(nbr.x<0||nbr.y<0||nbr.x+nbr.w>COLS||nbr.y+nbr.h>ROWS)return;
+  const others=blocks.filter(b=>b.id!==bl.id);
+  if(others.some(o=>blocksCollide(nbr,getTypeRect(getBlockRect(o))))){
+    // snap back visual handled by re-render
+    return;
+  }
+  bl.x=nb.x;bl.y=nb.y;moves++;
+  document.getElementById('moveCnt').textContent=moves;
+  renderBoard();
+  const red=blocks.find(b=>b.type==='big');
+  if(red&&red.x===2&&red.y===4)win();
+}
+
+function win(){
+  won=true;
+  setTimeout(()=>{
+    document.getElementById('gamePanel').style.display='none';
+    document.getElementById('winPanel').style.display='block';
+    document.getElementById('finalMoves').textContent=moves;
+    document.getElementById('prevBtn').style.display=curLevel>0?'':'none';
+    document.getElementById('nextBtn').style.display=curLevel<LEVELS.length-1?'':'none';
+  },300);
+}
+</script>
+</body>
+</html>

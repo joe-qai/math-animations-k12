@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>口算消消乐 · 数益坊</title>
+<link rel="stylesheet" href="../assets/css/site.css?v=ec61a5ce">
+<style>
+.game-wrap { max-width: 720px; margin: 0 auto; padding: 32px 0; }
+.card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 24px; }
+@media (min-width: 640px) { .card-grid { grid-template-columns: repeat(5, 1fr); } }
+@media (min-width: 900px) { .card-grid { grid-template-columns: repeat(6, 1fr); } }
+.card { aspect-ratio: 1; border-radius: 12px; border: 2px solid var(--line); background: var(--card); display: flex; align-items: center; justify-content: center; font-size: clamp(13px, 3vw, 18px); font-weight: 700; color: transparent; cursor: pointer; transition: all .2s; user-select: none; position: relative; }
+.card:hover:not(.matched):not(.flipped) { border-color: var(--board-3); background: var(--paper-2); }
+.card.flipped { color: var(--ink); background: var(--paper-2); border-color: var(--board-3); cursor: default; }
+.card.matched { visibility: hidden; }
+.card.selected { border-color: var(--chalk); background: #fff9e6; color: var(--ink); }
+.start-panel, .win-panel { text-align: center; padding: 40px 20px; }
+.btn-group { display: flex; gap: 10px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
+.btn { padding: 10px 22px; border-radius: 8px; border: 1.5px solid var(--line); background: var(--card); font-size: 14px; font-weight: 600; cursor: pointer; transition: all .15s; color: var(--ink); }
+.btn:hover { border-color: var(--board-3); background: var(--paper-2); }
+.btn.active { border-color: var(--board-3); background: var(--board-3); color: #fff; }
+.btn-primary { background: var(--board); color: var(--chalk); border-color: var(--board); }
+.btn-primary:hover { background: var(--board-2); }
+.hint { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+.score-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; font-size: 14px; color: var(--muted); }
+.win-icon { font-size: 64px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要内容</a>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="../index.html"><span class="brand-mark">数</span><span>数益坊<small>K12 数学 · 动画课</small></span></a>
+    <nav class="nav-links"><a href="../index.html">首页</a><a href="index.html" aria-current="page">数学游戏</a></nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap game-wrap">
+  <a href="index.html" style="color:var(--muted);font-size:13px;text-decoration:none;">← 返回游戏列表</a>
+  <h1 style="margin:12px 0 4px;font-size:28px;">🎯 口算消消乐</h1>
+  <p style="color:var(--muted);margin:0 0 20px;">点击翻开卡片，找到算式与对应答案的配对！</p>
+
+  <div id="startPanel" class="start-panel">
+    <p class="hint">选择难度后开始：</p>
+    <div class="btn-group">
+      <button class="btn active" data-diff="easy" onclick="pickDiff('easy')">简单（加减）</button>
+      <button class="btn" data-diff="medium" onclick="pickDiff('medium')">中等（加减乘）</button>
+      <button class="btn" data-diff="hard" onclick="pickDiff('hard')">困难（四则混合）</button>
+    </div>
+    <button class="btn btn-primary" onclick="startGame()" style="margin-top:8px;">开始游戏</button>
+  </div>
+
+  <div id="gamePanel" style="display:none;">
+    <div class="score-bar">
+      <span>匹配进度：<strong id="progressText">0/0</strong></span>
+      <span>错误次数：<strong id="mistakeText">0</strong></span>
+    </div>
+    <div class="card-grid" id="cardGrid"></div>
+  </div>
+
+  <div id="winPanel" style="display:none;" class="win-panel">
+    <div class="win-icon">🎉</div>
+    <h2 style="margin:0 0 8px;">全部消除！</h2>
+    <p style="color:var(--muted);" id="winStats"></p>
+    <button class="btn btn-primary" onclick="backToList()">返回游戏列表</button>
+    <button class="btn" onclick="restart()" style="margin-left:8px;">再来一局</button>
+  </div>
+</div>
+</main>
+<footer class="site-footer"><div class="wrap"><div class="footer-base"><span>© 数益坊 · 口算消消乐</span></div></div></footer>
+
+<script>
+let difficulty = 'easy';
+let pairs = [];
+let cards = [];
+let flipped = [];
+let matched = 0;
+let mistakes = 0;
+const totalPairs = { easy: 6, medium: 8, hard: 10 };
+
+function pickDiff(d) {
+  difficulty = d;
+  document.querySelectorAll('.btn-group .btn').forEach(b => b.classList.toggle('active', b.dataset.diff === d));
+}
+
+function generatePairs() {
+  const ops = difficulty === 'easy' ? ['+','-'] : difficulty === 'medium' ? ['+','-','×'] : ['+','-','×','÷'];
+  const maxN = 20;
+  const count = totalPairs[difficulty];
+  pairs = [];
+  for (let i = 0; i < count; i++) {
+    const op = ops[Math.floor(Math.random() * ops.length)];
+    let a, b, expr, ans;
+    if (op === '+') { a = randInt(1, maxN-1); b = randInt(1, maxN-a); expr = `${a} + ${b}`; ans = a+b; }
+    else if (op === '-') { a = randInt(1, maxN); b = randInt(1, a); expr = `${a} − ${b}`; ans = a-b; }
+    else if (op === '×') { a = randInt(2, 12); b = randInt(2, 9); expr = `${a} × ${b}`; ans = a*b; }
+    else { b = randInt(2, 9); ans = randInt(1, 12); a = b*ans; expr = `${a} ÷ ${b}`; }
+    pairs.push({ expr, ans });
+  }
+}
+
+function shuffle(a) { for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+
+function startGame() {
+  generatePairs();
+  matched = 0; mistakes = 0; flipped = [];
+  const items = [];
+  pairs.forEach((p, i) => {
+    items.push({ id: i*2, text: p.expr, pairId: i });
+    items.push({ id: i*2+1, text: String(p.ans), pairId: i });
+  });
+  cards = shuffle(items);
+  render();
+  document.getElementById('startPanel').style.display = 'none';
+  document.getElementById('gamePanel').style.display = 'block';
+  document.getElementById('winPanel').style.display = 'none';
+}
+
+function render() {
+  const g = document.getElementById('cardGrid');
+  g.innerHTML = '';
+  cards.forEach((c, idx) => {
+    const div = document.createElement('div');
+    div.className = 'card';
+    const isMatched = c.matched;
+    const isFlipped = flipped.includes(idx);
+    if (isMatched) div.classList.add('matched');
+    else if (isFlipped) div.classList.add('flipped');
+    div.textContent = isMatched ? '' : (isFlipped ? c.text : '?');
+    div.addEventListener('click', () => flipCard(idx));
+    g.appendChild(div);
+  });
+  updateScore();
+}
+
+function flipCard(idx) {
+  if (flipped.includes(idx) || cards[idx].matched || flipped.length >= 2) return;
+  flipped.push(idx);
+  render();
+  if (flipped.length === 2) {
+    const [a, b] = flipped;
+    if (cards[a].pairId === cards[b].pairId) {
+      cards[a].matched = true; cards[b].matched = true;
+      matched++; flipped = [];
+      updateScore(); render();
+      if (matched === pairs.length) setTimeout(win, 400);
+    } else {
+      mistakes++; updateScore();
+      setTimeout(() => { flipped = []; render(); }, 700);
+    }
+  }
+}
+
+function updateScore() {
+  document.getElementById('progressText').textContent = `${matched}/${pairs.length}`;
+  document.getElementById('mistakeText').textContent = mistakes;
+}
+
+function win() {
+  document.getElementById('gamePanel').style.display = 'none';
+  document.getElementById('winPanel').style.display = 'block';
+  document.getElementById('winStats').textContent = `共 ${pairs.length} 对，错误 ${mistakes} 次`;
+}
+
+function restart() { startGame(); }
+function backToList() {
+  document.getElementById('startPanel').style.display = 'block';
+  document.getElementById('gamePanel').style.display = 'none';
+  document.getElementById('winPanel').style.display = 'none';
+}
+function randInt(min, max) { return Math.floor(Math.random()*(max-min+1))+min; }
+</script>
+</body>
+</html>
