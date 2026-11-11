@@ -82,9 +82,13 @@ function setDigits(n) {
 }
 
 function genSecret(n) {
-  const arr = Array.from({length:n},(_,i)=>i);
-  for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
-  return arr.join('');
+  // 首位1-9，其余从剩余数字中取，保证不重复且无前导零
+  const pool = [1,2,3,4,5,6,7,8,9];
+  shuffle(pool);
+  const first = pool[0];
+  const remaining = [0,1,2,3,4,5,6,7,8,9].filter(d => d !== first);
+  shuffle(remaining);
+  return first + remaining.slice(0, n - 1).join('');
 }
 
 function startGame() {
@@ -104,8 +108,8 @@ function startGame() {
 function submitGuess() {
   const input = document.getElementById('numInput');
   const val = input.value.trim();
-  if(val.length!==digits||new Set(val).size!==digits){
-    document.getElementById('feedbackBox').textContent='❌ 请输入不重复的指定位数数字！';
+  if(val.length!==digits||new Set(val).size!==digits||val.startsWith('0')){
+    document.getElementById('feedbackBox').textContent='❌ 请输入不重复的指定位数数字（不含前导零）！';
     return;
   }
   let bull=0, cow=0;

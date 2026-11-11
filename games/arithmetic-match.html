@@ -139,15 +139,13 @@ function flipCard(idx) {
   render();
   if (flipped.length === 2) {
     const [a, b] = flipped;
-      const [a, b] = flipped;
-      const ca = cards[a], cb = cards[b];
-      console.log('[match] a:', ca.text, 'pairId:', ca.pairId, '| b:', cb.text, 'pairId:', cb.pairId);
-      if (ca.pairId === cb.pairId) {
-        ca.matched = true; cb.matched = true;
-        matched++; flipped = [];
-        updateScore(); render();
-        if (matched === pairs.length) setTimeout(win, 400);
-      } else {
+    const ca = cards[a], cb = cards[b];
+    if (ca.pairId === cb.pairId) {
+      ca.matched = true; cb.matched = true;
+      matched++; flipped = [];
+      updateScore(); render();
+      if (matched === pairs.length) setTimeout(win, 400);
+    } else {
       mistakes++; updateScore();
       setTimeout(() => { flipped = []; render(); }, 700);
     }
