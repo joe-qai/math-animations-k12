@@ -81,7 +81,7 @@ function VennScene({ step }: { step: number }) {
         </AnimatePresence>
         {showUnion && (
           <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-1 text-xs text-muted-foreground">
-            并集取"属于 A 或属于 B"的所有元素，重复的只算一次。
+            并集取「属于 A 或属于 B」的所有元素，重复的只算一次。
           </motion.p>
         )}
       </div>

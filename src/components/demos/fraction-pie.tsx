@@ -87,7 +87,7 @@ function FractionScene({ step }: { step: number }) {
                 animate={{ opacity: 1 }}
                 className="mt-1 text-xs text-muted-foreground"
               >
-                通分后分母相同、分子直接相加 —— 这就是"同分母才能相加减"。
+                通分后分母相同、分子直接相加 —— 这就是「同分母才能相加减」。
               </motion.p>
             )}
           </AnimatePresence>
