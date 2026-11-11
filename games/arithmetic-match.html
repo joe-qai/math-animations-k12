@@ -121,13 +121,12 @@ function render() {
   const g = document.getElementById('cardGrid');
   g.innerHTML = '';
   cards.forEach((c, idx) => {
+    if (c.matched) return;
     const div = document.createElement('div');
     div.className = 'card';
-    const isMatched = c.matched;
     const isFlipped = flipped.includes(idx);
-    if (isMatched) div.classList.add('matched');
-    else if (isFlipped) div.classList.add('flipped');
-    div.textContent = isMatched ? '' : (isFlipped ? c.text : '?');
+    if (isFlipped) div.classList.add('flipped');
+    div.textContent = isFlipped ? c.text : '?';
     div.addEventListener('click', () => flipCard(idx));
     g.appendChild(div);
   });
@@ -140,12 +139,15 @@ function flipCard(idx) {
   render();
   if (flipped.length === 2) {
     const [a, b] = flipped;
-    if (cards[a].pairId === cards[b].pairId) {
-      cards[a].matched = true; cards[b].matched = true;
-      matched++; flipped = [];
-      updateScore(); render();
-      if (matched === pairs.length) setTimeout(win, 400);
-    } else {
+      const [a, b] = flipped;
+      const ca = cards[a], cb = cards[b];
+      console.log('[match] a:', ca.text, 'pairId:', ca.pairId, '| b:', cb.text, 'pairId:', cb.pairId);
+      if (ca.pairId === cb.pairId) {
+        ca.matched = true; cb.matched = true;
+        matched++; flipped = [];
+        updateScore(); render();
+        if (matched === pairs.length) setTimeout(win, 400);
+      } else {
       mistakes++; updateScore();
       setTimeout(() => { flipped = []; render(); }, 700);
     }
