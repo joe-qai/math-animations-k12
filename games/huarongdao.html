@@ -139,6 +139,14 @@ function renderBoard(){
 }
 
 function makeDraggable(el, bl){
+  // 移除旧监听，防止多次 render 后累积
+  el.removeEventListener('mousedown',el._onStart);
+  el.removeEventListener('touchstart',el._onStart);
+  document.removeEventListener('mousemove',el._onMove);
+  document.removeEventListener('mouseup',el._onEnd);
+  document.removeEventListener('touchmove',el._onMove);
+  document.removeEventListener('touchend',el._onEnd);
+
   let startX,startY,origX,origY;
   function onStart(e){
     if(won)return;
@@ -169,6 +177,9 @@ function makeDraggable(el, bl){
     const dx=Math.round((t.clientX-startX)/CELL), dy=Math.round((t.clientY-startY)/CELL);
     if(dx!==0||dy!==0)tryMove(bl,dx,dy);
   }
+  el._onStart=onStart;
+  el._onMove=onMove;
+  el._onEnd=onEnd;
   el.addEventListener('mousedown',onStart);
   el.addEventListener('touchstart',onStart,{passive:false});
 }

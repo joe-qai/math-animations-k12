@@ -74,12 +74,30 @@ let diff='easy', puzzle=[], board=[], fixed=[], selected=null, won=false, mistak
 function setDiff(d){diff=d;document.querySelectorAll('.diff-btn').forEach(b=>b.classList.toggle('active',b.dataset.d===d));}
 
 function fullBoard(){
-  const b=Array.from({length:9},()=>Array(9).fill(0));
-  function valid(b,r,c,n){for(let i=0;i<9;i++){if(b[r][i]===n||b[i][c]===n)return false;}const br=Math.floor(r/3)*3,bc=Math.floor(c/3)*3;for(let rr=br;rr<br+3;rr++)for(let cc=bc;cc<bc+3;cc++)if(b[rr][cc]===n)return false;return true;}
-  function solve(b){for(let r=0;r<9;r++)for(let c=0;c<9;c++){if(b[r][c]!==0)continue;const nums=shuffle([1,2,3,4,5,6,7,8,9]);for(const n of nums){if(valid(b,r,c,n)){b[r][c]=n;if(solve(b))return true;b[r][c]=0;}}return false;}solve(b);return b;}
-  return solve(Array.from({length:9},()=>Array(9).fill(0)));
+  // 生成合法数独基础棋盘（不依赖回溯）
+  function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  // 基础拉丁方：第r行由shift和step决定，保证每行每列唯一
+  var shift=Math.floor(Math.random()*9);
+  var step=[1,2,4,5,7,8][Math.floor(Math.random()*6)]; // 与9互质的步长
+  var b=[];
+  for(var r=0;r<9;r++){b[r]=[];for(var c=0;c<9;c++)b[r][c]=((r+shift+c*step)%9)+1;}
+  // 对每块3行做随机排列（行置换在band内不影响有效性）
+  for(var blk=0;blk<3;blk++){
+    var rs=[blk*3,blk*3+1,blk*3+2];shuffle(rs);
+    var tmp0=b[rs[0]],tmp1=b[rs[1]],tmp2=b[rs[2]];
+    b[blk*3]=tmp0;b[blk*3+1]=tmp1;b[blk*3+2]=tmp2;
+  }
+  // 对每块3列做随机排列（列置换在stack内不影响有效性）
+  for(var blk=0;blk<3;blk++){
+    var cs=[blk*3,blk*3+1,blk*3+2];shuffle(cs);
+    for(var r=0;r<9;r++){
+      // 先取三列的值，再按新顺序写回——避免写入顺序问题
+      var vals=[b[r][cs[0]],b[r][cs[1]],b[r][cs[2]]];
+      b[r][cs[0]]=vals[0];b[r][cs[1]]=vals[1];b[r][cs[2]]=vals[2];
+    }
+  }
+  return b;
 }
-function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
 function startGame(){
   const sol=fullBoard();
