@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>数学华容道 · 数益坊</title>
+<title>数字华容道 · 数益坊</title>
 <link rel="stylesheet" href="../assets/css/site.css?v=ec61a5ce">
 <style>
 .game-wrap { max-width:480px; margin:0 auto; padding:24px 0; }
@@ -13,13 +13,13 @@
   border-radius:6px; padding:4px; user-select:none; touch-action:manipulation;
 }
 .tile {
-  aspect-ratio:1; border-radius:6px; font-weight:800; font-size:clamp(18px,5vw,28px);
+  aspect-ratio:1; border-radius:6px; font-weight:800; font-size:clamp(16px,4vw,26px);
   display:flex; align-items:center; justify-content:center; cursor:pointer;
-  transition: transform .1s, box-shadow .1s; color:#fff;
+  transition: filter .1s; color:#fff;
 }
 .tile.empty { background:transparent !important; cursor:default; border:none; box-shadow:none; }
-.tile:hover:not(.empty) { filter:brightness(1.08); }
-.tile.correct { opacity:.75; }
+.tile:hover:not(.empty) { filter:brightness(1.12); }
+.tile.correct { opacity:.7; }
 .info { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; font-size:14px; color:var(--muted); flex-wrap:wrap; gap:8px; }
 .btn-group { display:flex; gap:8px; justify-content:center; margin-top:12px; flex-wrap:wrap; }
 .btn { padding:8px 16px; border-radius:6px; border:1.5px solid var(--line); background:var(--card); font-size:13px; font-weight:600; cursor:pointer; color:var(--ink); }
@@ -31,8 +31,11 @@
 .size-btn.active { border-color:var(--board-3); background:var(--board-3); color:var(--chalk); }
 .win-icon { font-size:56px; margin-bottom:12px; }
 .hint { font-size:12px; color:var(--muted); margin-top:8px; }
-/* 配色：根据数字大小用渐变色 */
-.tile[data-val] { background: var(--board-3); }
+.mode-tag {
+  display:inline-block; font-size:11px; padding:2px 8px; border-radius:99px;
+  background:var(--accent); color:var(--accent-foreground); font-weight:700; margin-left:4px;
+}
+/* 颜色 */
 .tile[data-val="1"]{background:#c98d22;}
 .tile[data-val="2"]{background:#d4a032;}
 .tile[data-val="3"]{background:#e8b84b;}
@@ -65,15 +68,15 @@
 <main id="main"><div class="wrap game-wrap">
   <a href="index.html" style="color:var(--muted);font-size:13px;text-decoration:none;">← 返回游戏列表</a>
   <h1 style="margin:12px 0 4px;font-size:28px;">🏯 数字华容道</h1>
-  <p style="color:var(--muted);margin:0 0 4px;">滑动方块将数字按顺序排列：从左上到右下依次是 1, 2, 3 … 直到最后一个格子留空。</p>
-  <p class="hint">点击相邻的空格即可把数字移入空位 · 也可用键盘方向键推动</p>
+  <p style="color:var(--muted);margin:0 0 4px;">将所有数字按从左上到右下的顺序排列，最后一个格子留空即可通关。</p>
+  <p class="hint" id="modeHint"></p>
 
   <div id="startPanel" class="start-panel">
     <p style="color:var(--muted);font-size:13px;margin-bottom:12px;">选择难度：</p>
     <div class="btn-group">
-      <button class="size-btn active" data-n="3" onclick="pickSize(3)">3×3（8 数码）</button>
-      <button class="size-btn" data-n="4" onclick="pickSize(4)">4×4（15 数码）</button>
-      <button class="size-btn" data-n="5" onclick="pickSize(5)">5×5（24 数码）</button>
+      <button class="size-btn active" data-n="3" onclick="pickSize(3)">3×3<span class="mode-tag">点击移动</span></button>
+      <button class="size-btn" data-n="4" onclick="pickSize(4)">4×4<span class="mode-tag">环绕滑动</span></button>
+      <button class="size-btn" data-n="5" onclick="pickSize(5)">5×5<span class="mode-tag">环绕滑动</span></button>
     </div>
     <button class="btn btn-primary" onclick="startGame()" style="margin-top:16px;">开始游戏</button>
   </div>
@@ -82,6 +85,7 @@
     <div class="info">
       <span>步数：<strong id="moveCnt">0</strong></span>
       <span id="sizeLabel">3×3</span>
+      <span id="modeBadge" class="mode-tag"></span>
       <span>已完成：<strong id="correctCnt">0</strong>/<strong id="totalTiles">8</strong></span>
     </div>
     <div class="board-area"><div id="board"></div></div>
@@ -102,43 +106,48 @@
 <footer class="site-footer"><div class="wrap"><div class="footer-base"><span>© 数益坊 · 数字华容道</span></div></div></footer>
 
 <script>
-const N=4;          // 默认 4×4
-let size=N, board=[], moves=0, won=false;
+let size=3, board=[], moves=0, won=false;
 
 function pickSize(n){
   size=n;
   document.querySelectorAll('.size-btn').forEach(b=>b.classList.toggle('active',parseInt(b.dataset.n)===n));
 }
 
-// 判断棋盘是否已排好序
+// 大尺寸：是否使用环绕滑动模式（true=size≥4）
+const LARGE = () => size >= 4;
+const MODE_TAG = () => LARGE() ? '环绕滑动' : '点击移动';
+const MODE_DESC = () => LARGE()
+  ? '按方向键或滑动屏幕，所有数字会沿该方向环绕滑动一整圈——这是华容道的核心玩法'
+  : '点击空格相邻的数字将其移入空格，逐步拼出顺序';
+
+// 判断是否完成（最后一格为空格，其余按顺序）
 function isSolved(){
   const total=size*size;
   for(let i=0;i<total-1;i++) if(board[i]!==i+1) return false;
-  return board[total-1]===0; // 最后一个必须是空格
+  return board[total-1]===0;
 }
 
-// 初始化解好的棋盘
+// 初始化完成态棋盘
 function initSolved(){
-  const total=size*size;
   board=[];
-  for(let i=1;i<total;i++) board.push(i);
-  board.push(0); // 空格在末尾
+  for(let i=1;i<size*size;i++) board.push(i);
+  board.push(0);
 }
 
-// 随机打乱（通过模拟随机合法移动，保证一定有解）
+// 随机打乱：模拟随机合法移动，保证一定有解
 function shuffle(){
   initSolved();
-  let emptyIdx=board.length-1;
-  const numShuffles=size*80; // 规模越大洗越多次
+  let emptyIdx=size*size-1;
+  const numShuffles=size*60;
   for(let k=0;k<numShuffles;k++){
-    const neighbors=getNeighbors(emptyIdx);
-    const pick=neighbors[Math.floor(Math.random()*neighbors.length)];
+    const nb=getNeighbors(emptyIdx);
+    const pick=nb[Math.floor(Math.random()*nb.length)];
     [board[emptyIdx],board[pick]]=[board[pick],board[emptyIdx]];
     emptyIdx=pick;
   }
+  if(isSolved()) shuffle(); // 避免恰好回到已解状态
 }
 
-// 获取某位置的上、下、左、右邻居索引
 function getNeighbors(idx){
   const r=Math.floor(idx/size), c=idx%size;
   const nb=[];
@@ -149,10 +158,51 @@ function getNeighbors(idx){
   return nb;
 }
 
-// 渲染棋盘
+// ──── 小尺寸模式：点击相邻数字滑入空格 ─────────────────────
+function clickMove(idx){
+  if(won||LARGE())return;
+  const z=board.indexOf(0);
+  if(!getNeighbors(z).includes(idx))return;
+  [board[idx],board[z]]=[board[z],board[idx]];
+  moves++;
+}
+
+// 大尺寸：环绕滑动（整体平移一圈）
+// dir: 0=上,1=右,2=下,3=左 — 传入具体方向由键盘/触摸触发
+function wrapSlide(dir){
+  const newB=new Array(size*size).fill(0);
+  for(let r=0;r<size;r++)for(let c=0;c<size;c++){
+    const src=r*size+c;
+    let nr=r, nc=c;
+    if(dir===0)   nr=(r-1+size)%size;
+    else if(dir===1)nc=(c+1)%size;
+    else if(dir===2)nr=(r+1)%size;
+    else           nc=(c-1+size)%size;
+    newB[nr*size+nc]=board[src];
+  }
+  board=newB;
+  moves++;
+}
+
+// 大尺寸模式下点击：检查目标格与空格是否同行或同列，朝空格方向做一次环绕推送
+function clickWrap(idx){
+  if(won||!LARGE())return;
+  const z=board.indexOf(0);
+  const zr=Math.floor(z/size),zc=z%size;
+  const r=Math.floor(idx/size),c=idx%size;
+  if(r===zr){
+    // 同行：水平推
+    wrapSlide(c>zc?3:1); // left=3, right=1
+  }else if(c===zc){
+    // 同列：垂直推
+    wrapSlide(r>zr?0:2); // up=0, down=2
+  }
+}
+
+// ──── 渲染 ─────────────────────────────────────────────────
 function render(){
   const el=document.getElementById('board');
-  const cellSize=Math.min(Math.floor((window.innerWidth-48)/size), Math.floor((window.innerHeight-240)/size), 72);
+  const cellSize=Math.min(Math.floor((window.innerWidth-64)/size), Math.floor((window.innerHeight-280)/size), 70);
   el.style.gridTemplateColumns=`repeat(${size},${cellSize}px)`;
   el.style.gridTemplateRows=`repeat(${size},${cellSize}px)`;
   el.innerHTML='';
@@ -165,48 +215,61 @@ function render(){
       div.className='tile';
       div.textContent=v;
       div.setAttribute('data-val',v);
-      // 标出已在正确位置的格子
       if(v===i+1) div.classList.add('correct');
-      else div.addEventListener('click',()=>moveTile(i));
+      if(LARGE()){
+        div.addEventListener('click',()=>clickWrap(i));
+      }else{
+        div.addEventListener('click',()=>clickMove(i));
+      }
     }
     el.appendChild(div);
   });
-  // 更新统计
   for(let i=0;i<board.length-1;i++) if(board[i]===i+1) correctCount++;
   document.getElementById('correctCnt').textContent=correctCount;
   document.getElementById('totalTiles').textContent=board.length-1;
 }
 
-// 点击移动某个数字
-function moveTile(idx){
-  if(won)return;
-  const emptyIdx=board.indexOf(0);
-  if(!getNeighbors(emptyIdx).includes(idx))return; // 不相邻则忽略
-  [board[idx],board[emptyIdx]]=[board[emptyIdx],board[idx]];
-  moves++;
-  document.getElementById('moveCnt').textContent=moves;
-  render();
-  if(isSolved()) win();
-}
-
-// 键盘移动
+// ──── 键盘控制 ────────────────────────────────────────────
 document.addEventListener('keydown',e=>{
   if(won)return;
-  const emptyIdx=board.indexOf(0);
-  const r=Math.floor(emptyIdx/size), c=emptyIdx%size;
-  let target=-1;
-  if(e.key==='ArrowUp'   && r<size-1) target=emptyIdx+size;
-  if(e.key==='ArrowDown' && r>0)       target=emptyIdx-size;
-  if(e.key==='ArrowLeft' && c<size-1)  target=emptyIdx+1;
-  if(e.key==='ArrowRight'&& c>0)       target=emptyIdx-1;
-  if(target>=0){e.preventDefault();moveTile(target);}
+  if(LARGE()){
+    e.preventDefault();
+    const map={'ArrowUp':0,'ArrowRight':1,'ArrowDown':2,'ArrowLeft':3};
+    if(map[e.key]!==undefined) wrapSlide(map[e.key]);
+  }else{
+    const z=board.indexOf(0);
+    const r=Math.floor(z/size), c=z%size;
+    let target=-1;
+    if(e.key==='ArrowUp'&&r<size-1) target=z+size;
+    if(e.key==='ArrowDown'&&r>0)    target=z-size;
+    if(e.key==='ArrowLeft'&&c<size-1)target=z+1;
+    if(e.key==='ArrowRight'&&c>0)   target=z-1;
+    if(target>=0){e.preventDefault();clickMove(target);}
+  }
 });
 
+// ──── 触摸滑动支持 ────────────────────────────────────────
+let tx0,ty0;
+document.addEventListener('touchstart',e=>{tx0=e.touches[0].clientX;ty0=e.touches[0].clientY;},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(won)return;
+  const dx=e.changedTouches[0].clientX-tx0, dy=e.changedTouches[0].clientY-ty0;
+  if(Math.abs(dx)<25&&Math.abs(dy)<25)return;
+  if(Math.abs(dx)>Math.abs(dy)){
+    if(dx>0) wrapSlide(1); else wrapSlide(3);
+  }else{
+    if(dy>0) wrapSlide(2); else wrapSlide(0);
+  }
+},{passive:true});
+
+// ──── 游戏流程 ────────────────────────────────────────────
 function startGame(){
   document.getElementById('startPanel').style.display='none';
   document.getElementById('gamePanel').style.display='block';
   document.getElementById('winPanel').style.display='none';
   document.getElementById('sizeLabel').textContent=size+'×'+size;
+  document.getElementById('modeBadge').textContent=MODE_TAG();
+  document.getElementById('modeHint').textContent=MODE_DESC();
   moves=0;won=false;
   document.getElementById('moveCnt').textContent=0;
   shuffle();
@@ -221,7 +284,7 @@ function win(){
   setTimeout(()=>{
     document.getElementById('gamePanel').style.display='none';
     document.getElementById('winPanel').style.display='block';
-    document.getElementById('winMsg').textContent='共移动 '+moves+' 步，用时挑战你的极限！';
+    document.getElementById('winMsg').textContent='共 '+moves+' 步完成 · '+size+'×'+size+' 棋局';
   },200);
 }
 </script>
