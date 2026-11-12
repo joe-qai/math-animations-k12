@@ -184,18 +184,30 @@ function wrapSlide(dir){
   moves++;
 }
 
-// 大尺寸模式下点击：检查目标格与空格是否同行或同列，朝空格方向做一次环绕推送
+// 大尺寸模式：点击任意数字 → 将该数字所在行（水平）或列（垂直）整体向空格方向推一格
 function clickWrap(idx){
   if(won||!LARGE())return;
   const z=board.indexOf(0);
   const zr=Math.floor(z/size),zc=z%size;
   const r=Math.floor(idx/size),c=idx%size;
+  // 优先判断：哪个方向的推动能让当前点击的格子更接近空格？
+  // 实际做法：朝空格的相对方向推送整行或整列
   if(r===zr){
-    // 同行：水平推
+    // 同行：水平推送
     wrapSlide(c>zc?3:1); // left=3, right=1
   }else if(c===zc){
-    // 同列：垂直推
+    // 同列：垂直推送
     wrapSlide(r>zr?0:2); // up=0, down=2
+  }else{
+    // 不同行不同列：选择"更靠近"的空格方向推送
+    // 若点击格在空格下方→向上推一整行(使该行整体上移)，反之向下
+    // 若点击格在空格右方→向左推，反之向右
+    const dr=r-zr, dc=c-zc;
+    if(Math.abs(dr)>=Math.abs(dc)){
+      wrapSlide(dr>0?0:2); // 上方推，下方拉
+    }else{
+      wrapSlide(dc>0?3:1); // 左推右拉
+    }
   }
 }
 
@@ -249,12 +261,18 @@ document.addEventListener('keydown',e=>{
 });
 
 // ──── 触摸滑动支持 ────────────────────────────────────────
-let tx0,ty0;
-document.addEventListener('touchstart',e=>{tx0=e.touches[0].clientX;ty0=e.touches[0].clientY;},{passive:true});
+let tx0=0,ty0=0,touchMoved=false;
+document.addEventListener('touchstart',e=>{tx0=e.touches[0].clientX;ty0=e.touches[0].clientY;touchMoved=false;},{passive:true});
+document.addEventListener('touchmove',e=>{touchMoved=true;},{passive:true});
 document.addEventListener('touchend',e=>{
   if(won)return;
+  // 检测到滑动才触发环绕推送，轻微触碰视为点击
+  if(!touchMoved){
+    // 无滑动 → 不操作，由 click 事件处理（clickWrap）
+    return;
+  }
   const dx=e.changedTouches[0].clientX-tx0, dy=e.changedTouches[0].clientY-ty0;
-  if(Math.abs(dx)<25&&Math.abs(dy)<25)return;
+  if(Math.abs(dx)<10&&Math.abs(dy)<10)return;
   if(Math.abs(dx)>Math.abs(dy)){
     if(dx>0) wrapSlide(1); else wrapSlide(3);
   }else{
