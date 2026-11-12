@@ -181,10 +181,8 @@ function render(){
 function moveTile(idx){
   if(won)return;
   const z=board.indexOf(0);
-  if(!getNeighbors(z).indexOf(idx)>=0)return; // 不相邻则忽略
-  // 修正：上面这行逻辑有误，改用直接的邻居检查
   const nbrs=getNeighbors(z);
-  if(nbrs.indexOf(idx)<0)return;
+  if(nbrs.indexOf(idx)<0)return; // 不相邻则忽略
   [board[idx],board[z]]=[board[z],board[idx]];
   moves++;
   document.getElementById('moveCnt').textContent=moves;
