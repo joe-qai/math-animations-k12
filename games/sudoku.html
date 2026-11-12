@@ -101,11 +101,15 @@ function fullBoard(){
 
 function startGame(){
   const sol=fullBoard();
-  const p=sol.map(r=>[...r]);
+  // 深拷贝解决方案，避免后续修改影响原始解
+  const p=sol.map(r=>r.slice());
   fixed=Array.from({length:9},()=>Array(9).fill(true));
   let rem=REMOVE[diff], tries=0;
-  while(rem>0&&tries<200){const r=Math.floor(Math.random()*9),c=Math.floor(Math.random()*9);if(p[r][c]!==0){p[r][c]=0;fixed[r][c]=false;rem--;}}
-  puzzle=p;board=p.map(r=>[...r]);selected=null;won=false;mistakes=0;
+  while(rem>0&&tries<200){
+    const r=Math.floor(Math.random()*9), c=Math.floor(Math.random()*9);
+    if(p[r][c]!==0){p[r][c]=0; fixed[r][c]=false; rem--;}
+  }
+  puzzle=p;board=p.map(r=>r.slice());selected=null;won=false;mistakes=0;
   document.getElementById('startPanel').style.display='none';
   document.getElementById('gamePanel').style.display='block';
   document.getElementById('winPanel').style.display='none';
