@@ -48,6 +48,7 @@ site/
   lessons.py               全部课时文案与题目（唯一内容源）
   build.py                 静态页生成器
   check.py                 链接 / 页面 / 答案自检
+  make_covers.py           用成片抽帧生成卡片封面（不叠加标题）
   extract_chapters.py     从成片检测章节时间
   theme_labs.py            把 labs 副本换成主站配色（幂等）
 scripts/optimize_videos.py mp4 无损 faststart 预处理（部署前自动执行）
@@ -82,9 +83,10 @@ python site\check.py     # 链接、题目数、章节数、视频与封面是�
 新增一节课的最小步骤：
 
 1. 在 `site/lessons.py` 里 `LESSONS.append({...})`，字段照抄现有课时；
-2. 把视频放到 `assets/videos/<id>.mp4`，封面放到 `assets/videos/posters/<id>.jpg`；
+2. 把视频放到 `assets/videos/<id>.mp4`，成片抽帧放到 `assets/videos/posters/<id>.jpg`；
 3. 运行 `python site\extract_chapters.py` 生成 `chapters.json`；
-4. 运行 `python site\build.py`。
+4. 运行 `python site\make_covers.py` 由抽帧生成卡片封面（标题已在卡片文字区，封面不再重复标题）；
+5. 运行 `python site\build.py`。
 
 `build.py` 会自动处理：首页与目录卡片、上一节/下一节翻页、章节按钮时间、答题判分数据、视频封面。
 

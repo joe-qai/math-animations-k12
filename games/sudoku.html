@@ -52,7 +52,7 @@
   </div>
 
   <div id="gamePanel" style="display:none;">
-    <div class="info-bar"><span id="diffLabel">简单</span><span>错误 <strong id="mistakeCnt">0</strong> 次</span></div>
+    <div class="info-bar"><span id="diffLabel">简单</span><span>错误 <strong id="mistakeCnt">0</strong> 次</span><span>用时 <strong id="timer">00:00</strong></span></div>
     <div class="sudoku-board" id="board"></div>
     <div class="numpad" id="numpad"></div>
     <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:10px;">点击格子后用数字键 1~9 或点击下方按钮填入</p>
@@ -70,6 +70,23 @@
 <script>
 const REMOVE={easy:30,medium:40,hard:50};
 let diff='easy', puzzle=[], board=[], solution=[], fixed=[], selected=null, won=false, mistakes=0;
+let startedAt=0, timerId=null;
+
+function fmtTime(ms){
+  const total=Math.max(0,Math.floor(ms/1000));
+  const m=Math.floor(total/60), s=total%60;
+  return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+function startTimer(){
+  stopTimer();
+  startedAt=Date.now();
+  document.getElementById('timer').textContent='00:00';
+  timerId=setInterval(()=>{document.getElementById('timer').textContent=fmtTime(Date.now()-startedAt);},250);
+}
+function stopTimer(){
+  if(timerId){clearInterval(timerId);timerId=null;}
+  return startedAt?Date.now()-startedAt:0;
+}
 
 function setDiff(d){diff=d;document.querySelectorAll('.diff-btn').forEach(b=>b.classList.toggle('active',b.dataset.d===d));}
 
@@ -104,6 +121,7 @@ function startGame(){
   document.getElementById('winPanel').style.display='none';
   document.getElementById('diffLabel').textContent={easy:'简单',medium:'中等',hard:'困难'}[diff];
   document.getElementById('mistakeCnt').textContent=0;
+  startTimer();
   renderBoard();
   buildNumpad();
 }
@@ -134,11 +152,14 @@ function enterNum(n){
    if(n!==solution[r][c]){mistakes++;document.getElementById('mistakeCnt').textContent=mistakes;}
   else if(board.every(row=>row.every(v=>v!==0)))won=true;
   renderBoard();
-  if(won) setTimeout(()=>{
-    document.getElementById('gamePanel').style.display='none';
-    document.getElementById('winPanel').style.display='block';
-    document.getElementById('winMsg').textContent='错误 '+mistakes+' 次';
-  },200);
+  if(won){
+    const elapsed=stopTimer();
+    setTimeout(()=>{
+      document.getElementById('gamePanel').style.display='none';
+      document.getElementById('winPanel').style.display='block';
+      document.getElementById('winMsg').textContent='用时 '+fmtTime(elapsed)+' · 错误 '+mistakes+' 次';
+    },200);
+  }
 }
 
 function handleKey(e){

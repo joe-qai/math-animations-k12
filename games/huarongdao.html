@@ -82,6 +82,7 @@
       <span>步数：<strong id="moveCnt">0</strong></span>
       <span id="sizeLabel">3×3</span>
       <span>已完成：<strong id="correctCnt">0</strong>/<strong id="totalTiles">8</strong></span>
+      <span>用时 <strong id="timer">00:00</strong></span>
     </div>
     <div class="board-area"><div id="board"></div></div>
     <div class="btn-group">
@@ -102,6 +103,23 @@
 
 <script>
 let size=3, board=[], moves=0, won=false;
+let startedAt=0, timerId=null;
+
+function fmtTime(ms){
+  const total=Math.max(0,Math.floor(ms/1000));
+  const m=Math.floor(total/60), s=total%60;
+  return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+function startTimer(){
+  stopTimer();
+  startedAt=Date.now();
+  document.getElementById('timer').textContent='00:00';
+  timerId=setInterval(()=>{document.getElementById('timer').textContent=fmtTime(Date.now()-startedAt);},250);
+}
+function stopTimer(){
+  if(timerId){clearInterval(timerId);timerId=null;}
+  return startedAt?Date.now()-startedAt:0;
+}
 
 function pickSize(n){
   size=n;
@@ -216,6 +234,7 @@ function startGame(){
   document.getElementById('sizeLabel').textContent=size+'×'+size;
   moves=0;won=false;
   document.getElementById('moveCnt').textContent=0;
+  startTimer();
   shuffle();
   render();
 }
@@ -225,10 +244,11 @@ function shuffleBoard(){ startGame(); }
 
 function win(){
   won=true;
+  const elapsed=stopTimer();
   setTimeout(()=>{
     document.getElementById('gamePanel').style.display='none';
     document.getElementById('winPanel').style.display='block';
-    document.getElementById('winMsg').textContent='共 '+moves+' 步完成 · '+size+'×'+size+' 棋局';
+    document.getElementById('winMsg').textContent='用时 '+fmtTime(elapsed)+' · 共 '+moves+' 步 · '+size+'×'+size+' 棋局';
   },200);
 }
 </script>
